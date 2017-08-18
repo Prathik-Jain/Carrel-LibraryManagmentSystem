@@ -9,16 +9,27 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
+        TextElement.FontFamily="Roboto"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="LibManager" Height="350" Width="525">
+        Title="LibManager" Height="550" Width="500" Visibility="Visible" WindowStyle="None">
     <Grid>
-        <materialDesign:Card Padding="32" Margin="16">
-            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">
-                Library Management..
-            </TextBlock>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="125"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="350" />
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <materialDesign:Card Grid.Column="1" Grid.Row="1" Height="350" Width="250" Margin="0,0,0,0" MinHeight="350" MinWidth="250" materialDesign:ShadowAssist.ShadowDepth="Depth3" materialDesign:ColorZoneAssist.Mode="Dark">
+            <Button Content="Button" HorizontalAlignment="Left"  Margin="100,226,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
         </materialDesign:Card>
     </Grid>
 </Window>
