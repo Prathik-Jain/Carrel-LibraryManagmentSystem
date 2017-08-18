@@ -1,0 +1,48 @@
+﻿<Page x:Class="Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibraryManagement"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="700"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextElement.FontFamily="Roboto"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+      Title="">
+    <!--Animation Begins-->
+    <Page.Resources>
+        <Storyboard x:Key="moveText"  >
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="txtWelcome" Storyboard.TargetProperty="Margin" BeginTime="0:0:0">
+                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="247,221,246,221" />
+                <SplineThicknessKeyFrame KeyTime="00:00:.4" Value="8,221,246,221" />
+                <SplineThicknessKeyFrame KeyTime="00:00:.6" Value="32,221,246,221" />
+                
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="txtLoginInstruction" Storyboard.TargetProperty="Margin" BeginTime="0:0:0">
+                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="244,278,246,202" />
+                <SplineThicknessKeyFrame KeyTime="00:00:.4" Value="8,278,246,202" />
+                <SplineThicknessKeyFrame KeyTime="00:00:.6" Value="32,278,246,202" />
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <!--Animation Ends-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="700"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="500"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="txtWelcome" VerticalAlignment="Center" FontFamily="Roboto" FontSize="48" Foreground="#FF009688" Margin="247,221,246,221" ><Run Text="Welcome,"/></TextBlock>
+        <TextBlock x:Name="txtLoginInstruction" VerticalAlignment="Center" FontFamily="Roboto" FontSize="16" Foreground="#000000" Margin="244,278,246,202"><Run Text="Please scan your card to login" BaselineAlignment="Center"></Run></TextBlock>
+        <Button Content="click" Margin="100,400,100,0" Width="100" Click="Button_Click"></Button>
+    </Grid>
+
+</Page>
