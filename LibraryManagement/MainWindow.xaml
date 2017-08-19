@@ -15,7 +15,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="LibManager" Height="550" Width="500" Visibility="Visible" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="LibManager" MinHeight="500" MinWidth="800" Visibility="Visible" WindowStyle="None" WindowStartupLocation="CenterScreen">
    <!-- <Window.Resources>
         <Storyboard x:Key="showWin" Storyboard.TargetName="btn1">
             <DoubleAnimation Storyboard.TargetName="btn1" Storyboard.TargetProperty="Width" Duration="0:0:.5" To="150" BeginTime="0:0:2"/>
