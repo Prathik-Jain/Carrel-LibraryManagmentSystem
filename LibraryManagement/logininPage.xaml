@@ -36,7 +36,7 @@
         </Storyboard>
     </Page.Resources>
     <!--Animation Ends-->
-    
+
     <Grid>
         <!-- GridAndColumnDefs-->
         <Grid.RowDefinitions>
@@ -49,7 +49,7 @@
         <Grid Grid.Column="0">
             <TextBlock x:Name="txtWelcome" VerticalAlignment="Center" FontFamily="Roboto" FontSize="48" Foreground="#FFFFFF" Margin="290,211,0,235" Height="54" RenderTransformOrigin="0.151,0.569"><Run Text="Welcome"/></TextBlock>
             <TextBlock x:Name="txtLoginInstruction" VerticalAlignment="Center" FontFamily="Roboto" FontSize="16" Foreground="#FFFFFF" Margin="290,265,0,215" Height="20"><Run Text="Please scan your card to login" BaselineAlignment="Center"></Run></TextBlock>
-            <Button Content="click" Margin="304,434,50,34" Click="Button_Click" Height="Auto"/>
+            <Button Content="click" Margin="304,434,50,34"  Height="Auto"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -103,14 +103,14 @@
             <Border CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="2" Margin="35,10,20,104" Grid.Column="1" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
             <Border CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="2" Margin="10,10,45,104" Grid.Column="1" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
             <Border CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Margin="68,10,0,104" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
-            <!--#endregion PINDots--> 
+            <!--#endregion PINDots-->
             <!--Close Button-->
             <Button x:Name="Close" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="2" Foreground="#FFFFFF" HorizontalAlignment="Left" Padding="0" Margin="91,0,-78,46" Width="59" Height="Auto" >
                 <TextBlock> <materialDesign:PackIcon Kind="Close" Height="24" Width="24" /></TextBlock>
             </Button>
             <!--end close button-->
         </Grid>
-        
+
 
     </Grid>
 
