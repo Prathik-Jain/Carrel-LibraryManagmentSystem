@@ -49,7 +49,7 @@
         <Grid Grid.Column="0">
             <TextBlock x:Name="txtWelcome" VerticalAlignment="Center" FontFamily="Roboto" FontSize="48" Foreground="#FFFFFF" Margin="290,211,0,235" Height="54" RenderTransformOrigin="0.151,0.569"><Run Text="Welcome"/></TextBlock>
             <TextBlock x:Name="txtLoginInstruction" VerticalAlignment="Center" FontFamily="Roboto" FontSize="16" Foreground="#FFFFFF" Margin="290,265,0,215" Height="20"><Run Text="Please scan your card to login" BaselineAlignment="Center"></Run></TextBlock>
-            <Button Content="click" Margin="304,434,50,34"  Height="Auto"/>
+            <!--<Button Content="click" Margin="304,434,50,34"  Height="Auto"/>-->
         </Grid>
 
         <Grid Grid.Column="1">

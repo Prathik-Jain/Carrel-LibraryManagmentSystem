@@ -14,6 +14,7 @@ Class Page1
     Dim re As Result
     Dim scr As ImageSource
     Private Sub qrScanned(str)
+        My.Computer.Audio.Play("C:\beep.wav", AudioPlayMode.Background)
         camera.Stop()
         timer.Stop()
         BeginStoryboard(movetxt)
@@ -25,7 +26,7 @@ Class Page1
         movetxt = Me.Resources("moveText")
         selectCamera()
         timer = New DispatcherTimer()
-        timer.Interval = New TimeSpan(0, 0, 1)
+        timer.Interval = New TimeSpan(0, 0, 0.5)
         timer.Start()
     End Sub
 
