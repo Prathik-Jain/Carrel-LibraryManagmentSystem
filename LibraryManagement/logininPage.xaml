@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LibraryManagement"
+      xmlns:System ="clr-namespace:System;assembly=mscorlib"
+      
       x:Name="loginPage"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
@@ -36,6 +38,17 @@
         </Storyboard>
     </Page.Resources>
     <!--Animation Ends-->
+    <!--<Page.CommandBindings>
+        <CommandBinding x:Name="clickZero"  Executed="clickZero_Executed_1"/>
+    </Page.CommandBindings>
+            <Page.InputBindings>
+                <KeyBinding Command="{Binding clickZero}" Key="NumPad0"/>
+            </Page.InputBindings>-->
+    <!--<Page.InputBindings>
+        <KeyBinding Modifiers="Control"
+                Key="0"
+                Command="{StaticResource newCust}" />
+    </Page.InputBindings>-->
 
     <Grid>
         <!-- GridAndColumnDefs-->
@@ -99,10 +112,10 @@
             </Button>
             <!--#endregion PINNumberPad-->
             <!--#region PINDOts-->
-            <Border CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="2" Margin="60,10,66,104" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
-            <Border CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="2" Margin="35,10,20,104" Grid.Column="1" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
-            <Border CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="2" Margin="10,10,45,104" Grid.Column="1" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
-            <Border CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="2" RenderTransformOrigin="0.5,0.5" Margin="68,10,0,104" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
+            <Border x:Name="dot4" CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="1" Margin="60,10,66,104" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
+            <Border x:Name="dot3" CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="1" Margin="35,10,20,104" Grid.Column="1" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
+            <Border x:Name="dot2" CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="1" Margin="10,10,45,104" Grid.Column="1" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
+            <Border x:Name="dot1" CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="1" Margin="68,10,0,104" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
             <!--#endregion PINDots-->
             <!--Close Button-->
             <Button x:Name="Close" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="2" Foreground="#FFFFFF" HorizontalAlignment="Left" Padding="0" Margin="91,0,-78,46" Width="59" Height="Auto" >
@@ -110,6 +123,7 @@
             </Button>
             <!--end close button-->
         </Grid>
+        <TextBox x:Name="txtPIN" HorizontalAlignment="Left" Height="23" Opacity="1" CaretIndex="{x:Static System:Int32.MaxValue}" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="49" Grid.Column="1" Margin="170,467,0,0" IsEnabled="False"/>
 
 
     </Grid>
