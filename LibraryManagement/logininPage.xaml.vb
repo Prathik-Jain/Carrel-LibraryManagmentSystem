@@ -1,82 +1,56 @@
-﻿Imports System.Drawing
-Imports System.Windows.Media.Animation
-Imports System.Windows.Media
-Imports ZXing
-Imports AForge.Video
-Imports System
-Imports System.Drawing.Color
-Imports AForge.Video.DirectShow
+﻿Imports System.Windows.Media.Animation
 Imports System.Windows.Threading
 Imports System.Text.RegularExpressions
-Imports System.Windows.Media.Brushes
-Imports System.Windows.Automation.Peers
+Imports newtonsoft.json
 
 Class Page1
-    Dim camera As VideoCaptureDevice
-    Dim bmp As Bitmap
+    Dim camera As New Camera
     Dim mw As New MainWindow
-    WithEvents timer As DispatcherTimer
+    WithEvents SendImage As DispatcherTimer
     Dim movetxt As Storyboard
-    Dim re As Result
-    Dim scr As ImageSource
-
+    Dim JsonConvert As JsonConvert
 
     Private Sub Me_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        ' Initializing animation
         movetxt = Me.Resources("moveText")
-        selectCamera()
-        timer = New DispatcherTimer()
-        timer.Interval = New TimeSpan(0, 0, 0.5)
-        timer.Start()
-
+        camera.StartCamera()
+        SendImage = New DispatcherTimer With {
+            .Interval = New TimeSpan(0, 0, 0.2)
+        }
+        SendImage.Start()
     End Sub
 
-    Private Sub selectCamera()
-        Dim cameras As VideoCaptureDeviceForm = New VideoCaptureDeviceForm
-        If cameras.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            camera = cameras.VideoDevice
-            camera.Start()
-            AddHandler camera.NewFrame, New NewFrameEventHandler(AddressOf capturer)
-        End If
+    Private Sub SendImage_Tick(sender As Object, e As EventArgs) Handles SendImage.Tick
+        Dim qrDecoder As New QRDecoder
+        Dim jsonString = ""
+        While jsonString = ""
+            jsonString = qrDecoder.ScanQR(camera.frame)
+        End While
+        QrScanned(jsonString)
     End Sub
 
-    Public Sub capturer(sender As Object, eventArgs As NewFrameEventArgs)
-        bmp = DirectCast(eventArgs.Frame.Clone(), Bitmap)
-    End Sub
-
-    Private Sub qrScanned(str)
+    Private Sub QrScanned(str As String)
         My.Computer.Audio.Play("C:\beep.wav", AudioPlayMode.Background)
-        camera.Stop()
-        timer.Stop()
-        BeginStoryboard(movetxt)
-        txtPIN.IsEnabled = True
-        txtPIN.Clear()
-        Keyboard.Focus(txtPIN)
-        txtWelcome.Text = "Welcome, " + str
-        txtLoginInstruction.Text = "Please enter your PIN"
-
+        If str.Contains("ADM") Then
+            camera.StopCamera()
+            SendImage.Stop()
+            Dim adnQR = New AdminQR
+            adnQR = JsonConvert.DeserializeObject(Of AdminQR)(str)
+            BeginStoryboard(movetxt)
+            txtPIN.IsEnabled = True
+            txtPIN.Clear()
+            Keyboard.Focus(txtPIN)
+            txtWelcome.Text = "Welcome, " + adnQR.Name
+            txtLoginInstruction.Text = "Please enter your PIN"
+        Else
+            MsgBox("U need to be an admin")
+        End If
     End Sub
 
     Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs) Handles Close.Click
+        'TODO make close working on welcome screen
         Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown
-        Application.Current.Shutdown()
-    End Sub
-
-    Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
-        Dim reader As New BarcodeReader
-        Dim tryAgain = True
-        If (tryAgain) Then
-            Try
-                re = reader.Decode(bmp)
-                Dim qrStr = re.ToString.Trim
-                qrScanned(qrStr)
-            Catch ex As System.ArgumentNullException
-                tryAgain = True
-            Catch a As System.NullReferenceException
-                tryAgain = True
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-        End If
+        Windows.Application.Current.Shutdown()
     End Sub
 
     Private Sub txtPIN_PrieviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles txtPIN.PreviewTextInput
@@ -88,24 +62,24 @@ Class Page1
         Dim i As Integer = 0
         Select Case (x.Length)
             Case 0
-                clearDots()
+                ClearDots()
 
             Case 1
-                clearDots()
+                ClearDots()
                 dot1.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
 
             Case 2
-                clearDots()
+                ClearDots()
                 dot1.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 dot2.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
             Case 3
-                clearDots()
+                ClearDots()
                 dot1.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 dot2.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 dot3.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
             Case 4
 
-                clearDots()
+                ClearDots()
                 dot1.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 dot2.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 dot3.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
@@ -119,63 +93,64 @@ Class Page1
     Private Sub matchPIN(x)
         If x <> "1234" Then
             txtPIN.Clear()
+            MsgBox("Naaa")
         Else
             MsgBox("Yaay!")
         End If
     End Sub
 
-    Private Sub clearDots()
+    Private Sub ClearDots()
         dot1.Background = New SolidColorBrush(Colors.White)
         dot2.Background = New SolidColorBrush(Colors.White)
         dot3.Background = New SolidColorBrush(Colors.White)
         dot4.Background = New SolidColorBrush(Colors.White)
     End Sub
 
-    Private Sub addTextToPin(v As Integer)
-        txtPIN.Text += v.ToString
+    Private Sub AddNumberToPIN(number As Integer)
+        txtPIN.Text += number.ToString
         Keyboard.Focus(txtPIN)
         txtPIN.CaretIndex = txtPIN.Text.Length
     End Sub
 
 #Region "NumberPad Button Click Events"
     Private Sub BtnZero_Click(sender As Object, e As RoutedEventArgs) Handles btnZero.Click
-        addTextToPin(0)
+        AddNumberToPIN(0)
     End Sub
 
     Private Sub BtnOne_Click(sender As Object, e As RoutedEventArgs) Handles btnOne.Click
-        addTextToPin(1)
+        AddNumberToPIN(1)
     End Sub
 
     Private Sub BtnTwo_Click(sender As Object, e As RoutedEventArgs) Handles btnTwo.Click
-        addTextToPin(2)
+        AddNumberToPIN(2)
     End Sub
 
     Private Sub BtnThree_Click(sender As Object, e As RoutedEventArgs) Handles btnThree.Click
-        addTextToPin(3)
+        AddNumberToPIN(3)
     End Sub
 
     Private Sub BtnFour_Click(sender As Object, e As RoutedEventArgs) Handles btnFour.Click
-        addTextToPin(4)
+        AddNumberToPIN(4)
     End Sub
 
     Private Sub BtnFive_Click(sender As Object, e As RoutedEventArgs) Handles btnFive.Click
-        addTextToPin(5)
+        AddNumberToPIN(5)
     End Sub
 
     Private Sub BtnSix_Click(sender As Object, e As RoutedEventArgs) Handles btnSix.Click
-        addTextToPin(6)
+        AddNumberToPIN(6)
     End Sub
 
     Private Sub BtnSeven_Click(sender As Object, e As RoutedEventArgs) Handles btnSeven.Click
-        addTextToPin(7)
+        AddNumberToPIN(7)
     End Sub
 
     Private Sub BtnEight_Click(sender As Object, e As RoutedEventArgs) Handles btnEight.Click
-        addTextToPin(8)
+        AddNumberToPIN(8)
     End Sub
 
     Private Sub BtnNine_Click(sender As Object, e As RoutedEventArgs) Handles btnNine.Click
-        addTextToPin(9)
+        AddNumberToPIN(9)
     End Sub
 #End Region
 End Class

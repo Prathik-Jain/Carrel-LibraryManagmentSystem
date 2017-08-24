@@ -1,6 +1,7 @@
 ﻿Imports System.Windows.Media.Animation
 'Commented things for personal use do not DELETE
 Class MainWindow
+    Dim camera As New Camera
     Dim showWin As Storyboard
     Dim hideWin As Storyboard
     Private Sub Button_Click(sender As Object, e As RoutedEventArgs)

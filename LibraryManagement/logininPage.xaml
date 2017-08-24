@@ -34,21 +34,10 @@
                 <SplineThicknessKeyFrame KeyTime="00:00:.8" Value="32,265,32,195" />
             </ThicknessAnimationUsingKeyFrames>
             <DoubleAnimation Storyboard.TargetName="btnOne" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:.8" />
-            <ColorAnimation Storyboard.TargetName="loginPage" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#00BCD4" Duration="0:0:.8"/>
+            <ColorAnimation Storyboard.TargetName="loginPage" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#212121" Duration="0:0:.8"/>
         </Storyboard>
     </Page.Resources>
     <!--Animation Ends-->
-    <!--<Page.CommandBindings>
-        <CommandBinding x:Name="clickZero"  Executed="clickZero_Executed_1"/>
-    </Page.CommandBindings>
-            <Page.InputBindings>
-                <KeyBinding Command="{Binding clickZero}" Key="NumPad0"/>
-            </Page.InputBindings>-->
-    <!--<Page.InputBindings>
-        <KeyBinding Modifiers="Control"
-                Key="0"
-                Command="{StaticResource newCust}" />
-    </Page.InputBindings>-->
 
     <Grid>
         <!-- GridAndColumnDefs-->
@@ -80,7 +69,7 @@
             </Grid.RowDefinitions>
             <!--GridAndColumnDefs-->
             <!--#region PINNumberPad-->
-            <Button x:Name="btnOne"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Grid.Row="1" Margin="13,60,13,13" Background="#ffffff" BorderBrush="#03A9F4"    Opacity="0" IsEnabled="True">
+            <Button x:Name="btnOne"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Grid.Row="1" Margin="13,60,13,13" Background="#ffffff" BorderBrush="#03A9F4" Opacity="0" IsEnabled="True">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="1"  />
             </Button>
             <Button x:Name="btnFour"  Grid.Row="2"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="13,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Opacity="{Binding ElementName=btnOne, Path=Opacity}">
@@ -123,7 +112,7 @@
             </Button>
             <!--end close button-->
         </Grid>
-        <TextBox x:Name="txtPIN" HorizontalAlignment="Left" Height="23" Opacity="1" CaretIndex="{x:Static System:Int32.MaxValue}" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="49" Grid.Column="1" Margin="170,467,0,0" IsEnabled="False"/>
+        <TextBox x:Name="txtPIN" HorizontalAlignment="Left" Height="23" Opacity="0" CaretIndex="{x:Static System:Int32.MaxValue}" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="49" Grid.Column="1" Margin="170,467,0,0" IsEnabled="False"/>
 
 
     </Grid>
