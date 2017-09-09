@@ -112,7 +112,7 @@
             </Button>
             <!--end close button-->
         </Grid>
-        <TextBox x:Name="txtPIN" HorizontalAlignment="Left" Height="23" Opacity="0" CaretIndex="{x:Static System:Int32.MaxValue}" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="49" Grid.Column="1" Margin="170,467,0,0" IsEnabled="False"/>
+        <TextBox x:Name="TxtPIN" HorizontalAlignment="Left" Height="23" Opacity="0" CaretIndex="{x:Static System:Int32.MaxValue}" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="49" Grid.Column="1" Margin="170,467,0,0" IsEnabled="False"/>
 
 
     </Grid>

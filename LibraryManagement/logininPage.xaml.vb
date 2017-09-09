@@ -1,11 +1,12 @@
 ﻿Imports System.Windows.Media.Animation
 Imports System.Windows.Threading
 Imports System.Text.RegularExpressions
-Imports newtonsoft.json
+Imports Newtonsoft.Json
+Imports System.Data.SqlClient
 
 Class Page1
     Dim camera As New Camera
-    Dim mw As New MainWindow
+    Dim MainWindow As New MainWindow
     WithEvents SendImage As DispatcherTimer
     Dim movetxt As Storyboard
     Dim JsonConvert As JsonConvert
@@ -29,21 +30,27 @@ Class Page1
         QrScanned(jsonString)
     End Sub
 
+
+    Dim admin = New AdminQR
+    Dim loginService = New AdminService
     Private Sub QrScanned(str As String)
         My.Computer.Audio.Play("C:\beep.wav", AudioPlayMode.Background)
         If str.Contains("ADM") Then
-            camera.StopCamera()
-            SendImage.Stop()
-            Dim adnQR = New AdminQR
-            adnQR = JsonConvert.DeserializeObject(Of AdminQR)(str)
-            BeginStoryboard(movetxt)
-            txtPIN.IsEnabled = True
-            txtPIN.Clear()
-            Keyboard.Focus(txtPIN)
-            txtWelcome.Text = "Welcome, " + adnQR.Name
-            txtLoginInstruction.Text = "Please enter your PIN"
+            admin = JsonConvert.DeserializeObject(Of AdminQR)(str)
+            If loginService.CheckUser(admin.UID, admin.Name) = 1 Then
+                camera.StopCamera()
+                SendImage.Stop()
+                BeginStoryboard(movetxt)
+                txtPIN.IsEnabled = True
+                txtPIN.Clear()
+                Keyboard.Focus(txtPIN)
+                txtWelcome.Text = "Welcome, " + admin.Name
+                txtLoginInstruction.Text = "Please enter your PIN"
+            Else
+                MsgBox("Admin Not Found!!")
+            End If
         Else
-            MsgBox("U need to be an admin")
+            MsgBox("Invalid Card! Please scan an Admin card.")
         End If
     End Sub
 
@@ -53,14 +60,13 @@ Class Page1
         Windows.Application.Current.Shutdown()
     End Sub
 
-    Private Sub txtPIN_PrieviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles txtPIN.PreviewTextInput
+    Private Sub TxtPIN_PrieviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles txtPIN.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
     End Sub
 
     Private Sub TxtPIN_TextChanged(sender As Object, e As TextChangedEventArgs) Handles txtPIN.TextChanged
-        Dim x = txtPIN.Text.Replace(" ", "")
-        Dim i As Integer = 0
-        Select Case (x.Length)
+        Dim PIN = txtPIN.Text.Replace(" ", "")
+        Select Case (PIN.Length)
             Case 0
                 ClearDots()
 
@@ -85,19 +91,20 @@ Class Page1
                 dot3.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 dot4.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 'HACK to update UI befor matchPIN() executes.
-                matchPIN(x)
+                If loginService.MatchPIN(admin.UID, PIN) = 1 Then
+                    Dim Dash = New DashBoard
+                    Dash.Show()
+                    loginPage.Visibility = Visibility.Collapsed
+
+                Else
+                    MsgBox("naaaa")
+                    txtPIN.Clear()
+                End If
         End Select
 
     End Sub
 
-    Private Sub matchPIN(x)
-        If x <> "1234" Then
-            txtPIN.Clear()
-            MsgBox("Naaa")
-        Else
-            MsgBox("Yaay!")
-        End If
-    End Sub
+
 
     Private Sub ClearDots()
         dot1.Background = New SolidColorBrush(Colors.White)

@@ -13,13 +13,12 @@ Public Class QRDecoder
                 jsonString = result.ToString.Trim
             Catch ex As System.ArgumentNullException
                 tryAgain = True
-                Catch a As System.NullReferenceException
-                    tryAgain = True
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
-            End If
+            Catch a As System.NullReferenceException
+                tryAgain = True
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
         ScanQR = jsonString
     End Function
-
 End Class

@@ -66,6 +66,7 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -95,10 +96,18 @@
     </ApplicationDefinition>
     <Compile Include="AdminQR.vb" />
     <Compile Include="Camera.vb" />
+    <Compile Include="DashBoard.xaml.vb">
+      <DependentUpon>DashBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="logininPage.xaml.vb">
       <DependentUpon>logininPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="QRDecoder.vb" />
+    <Compile Include="Sevices\AdminService.vb" />
+    <Page Include="DashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -165,7 +174,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
