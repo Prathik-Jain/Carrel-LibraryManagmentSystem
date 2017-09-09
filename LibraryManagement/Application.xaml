@@ -12,11 +12,11 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!-- primary -->
-            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#B3F8D4"/>
+            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#B3F7ff"/>
             <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF"/>
             <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#00E5FF"/>
             <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF"/>
-            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#00E25E"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#00d3ff"/>
             <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FFFFFF"/>
             <!-- accent -->
             <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#212121"/>

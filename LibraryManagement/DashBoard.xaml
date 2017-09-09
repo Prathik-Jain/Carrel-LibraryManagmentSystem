@@ -42,10 +42,8 @@
                     <TextBox Width="800" 
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         materialDesign:HintAssist.Hint="Search"
-                             
+                             BorderBrush="{DynamicResource PrimaryHueDarkBrush}"
                              SelectionBrush="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                             <!--BorderBrush="{DynamicResource SecondaryAccentBrush}"-->
-                             materialDesign:HintAssist.FloatingScale="1.2"
                         VerticalAlignment="Center"
                         Foreground="White"
                         Height="40"/>
