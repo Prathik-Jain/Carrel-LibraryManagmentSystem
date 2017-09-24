@@ -1,8 +1,8 @@
 ﻿<Application x:Class="Application"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:LibraryManagement"
-    StartupUri="DashBoard.xaml">
+    xmlns:local="clr-namespace:Carrel"
+    StartupUri="StartUp.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,12 +14,12 @@
             <!-- primary -->
             <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#B3F7ff"/>
             <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF"/>
-            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#00E5FF"/>
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#283592"/>
             <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF"/>
             <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#00d3ff"/>
             <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FFFFFF"/>
             <!-- accent -->
-            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#212121"/>
+            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#e31c60"/>
             <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#FFFFFF"/>
         </ResourceDictionary>
     </Application.Resources>
