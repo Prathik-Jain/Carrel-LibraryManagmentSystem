@@ -22,6 +22,8 @@ Public Class AdminService
         connection.Open()
         Try
             CheckUser = command.ExecuteScalar()
+        Catch e As Exception
+            MsgBox("Database error")
         Finally
             command.Connection.Close()
         End Try
