@@ -10,6 +10,9 @@ Public Class AdminService
         connection.Open()
         Try
             MatchPIN = command.ExecuteScalar()
+        Catch e As Exception
+            MsgBox("Database error")
+            Return False
         Finally
             command.Connection.Close()
         End Try
@@ -24,10 +27,10 @@ Public Class AdminService
             CheckUser = command.ExecuteScalar()
         Catch e As Exception
             MsgBox("Database error")
+            Return False
         Finally
             command.Connection.Close()
         End Try
-
     End Function
 
 End Class
