@@ -102,6 +102,11 @@
     <Compile Include="logininPage.xaml.vb">
       <DependentUpon>logininPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="QRDecoder.vb" />
     <Compile Include="Sevices\AdminService.vb" />
     <Compile Include="StartUp.xaml.vb">
@@ -159,6 +164,7 @@
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -173,9 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ScannerBeep.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Database\CARREL.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
