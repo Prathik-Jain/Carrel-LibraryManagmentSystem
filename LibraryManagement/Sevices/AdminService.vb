@@ -7,8 +7,8 @@ Public Class AdminService
         Dim command = New SqlCommand("Select count(*) from Admin where UID=@UID and PIN=@PIN", connection)
         command.Parameters.Add(New SqlParameter("@UID", UID))
         command.Parameters.Add(New SqlParameter("@PIN", PIN))
-        connection.Open()
         Try
+            connection.Open()
             MatchPIN = command.ExecuteScalar()
         Catch e As Exception
             MsgBox("Database error")
@@ -22,8 +22,8 @@ Public Class AdminService
         Dim command = New SqlCommand("Select count(*) from Admin where UID=@UID and Name=@Name", connection)
         command.Parameters.Add(New SqlParameter("@UID", UID))
         command.Parameters.Add(New SqlParameter("@Name", Name))
-        connection.Open()
         Try
+            connection.Open()
             CheckUser = command.ExecuteScalar()
         Catch e As Exception
             MsgBox("Database error")
