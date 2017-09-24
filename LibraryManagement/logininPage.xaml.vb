@@ -187,6 +187,5 @@ Class Page1
     Private Sub BtnNine_Click(sender As Object, e As RoutedEventArgs) Handles btnNine.Click
         AddNumberToPIN(9)
     End Sub
-
 #End Region
 End Class
