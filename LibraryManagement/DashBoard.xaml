@@ -12,7 +12,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        xmlns:local="clr-namespace:LibraryManagement"
+        xmlns:local="clr-namespace:Carrel"
         mc:Ignorable="d"
         Title="DashBoard" Height="720" Width="1280"
         WindowState="Maximized"
@@ -24,15 +24,16 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!--<Rectangle Fill="#212121" materialDesign:ShadowAssist.ShadowDepth="Depth3" Stroke="Black" Grid.RowSpan="2"  Height="120" VerticalAlignment="Top"/>-->
-        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3"
+        <!--<Rectangle Fill="#212121" materialDesign:ShadowAssist.ShadowDepth="Depth3" Stroke="Black" Grid.RowSpan="2"  Height="120" VerticalAlignment="Top"/>-->
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0"
                              UniformCornerRadius="0"
-                             Height="160" 
+                             Height="400" 
                              VerticalAlignment="top" 
                              Grid.RowSpan="2" 
                              Background="{DynamicResource SecondaryAccentBrush}">
             <StackPanel VerticalAlignment="Center" Width="800">
                 <Grid Height="40">
-                <materialDesign:PackIcon
+                    <materialDesign:PackIcon
             Width="24" Kind="Magnify" 
                     Height="24" 
                     Foreground="White"
@@ -47,12 +48,17 @@
                         VerticalAlignment="Center"
                         Foreground="White"
                         Height="40"/>
-                
+
                 </Grid>
             </StackPanel>
         </materialDesign:Card>
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Margin="0,0,56,56" Grid.Row="1">
-            <TextBlock> <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" /></TextBlock>
+            <TextBlock><InlineUIContainer>
+                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+                </InlineUIContainer></TextBlock>
         </Button>
+        <materialDesign:Card MinWidth="800"
+                             MinHeight="500"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth5" Margin="110,129,85,0" Grid.RowSpan="2"/>
     </Grid>
 </Window>
