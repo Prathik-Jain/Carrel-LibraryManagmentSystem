@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:LibraryManagement"
+      xmlns:local="clr-namespace:Carrel"
       xmlns:System ="clr-namespace:System;assembly=mscorlib"
       
       x:Name="loginPage"
@@ -18,6 +18,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="#FF00E676"
         FontFamily="{DynamicResource MaterialDesignFont}"
+      TextBlock.Foreground="Black"
       Title="">
     <!--Animation Begins-->
     <Page.Resources>
@@ -69,35 +70,35 @@
             </Grid.RowDefinitions>
             <!--GridAndColumnDefs-->
             <!--#region PINNumberPad-->
-            <Button x:Name="btnOne"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Grid.Row="1" Margin="13,60,13,13" Background="#ffffff" BorderBrush="#03A9F4" Opacity="0" IsEnabled="True">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="1"  />
+            <Button x:Name="btnOne"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Grid.Row="1" Margin="13,60,13,13" Background="#ffffff" BorderBrush="#03A9F4" Opacity="0" IsEnabled="True" IsTabStop="False">
+                <TextBlock x:Name="PINText" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="1" Foreground="Black"  />
             </Button>
-            <Button x:Name="btnFour"  Grid.Row="2"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="13,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Opacity="{Binding ElementName=btnOne, Path=Opacity}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="4"/>
+            <Button x:Name="btnFour"  Grid.Row="2"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="13,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="4" Foreground="{Binding ElementName=PINText,Path=Foreground}"/>
             </Button>
-            <Button x:Name="btnSeven"  Grid.Row="3"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="13,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Opacity="{Binding ElementName=btnOne, Path=Opacity}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="7" />
+            <Button x:Name="btnSeven"  Grid.Row="3"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="13,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="7" Foreground="{Binding ElementName=PINText,Path=Foreground}" />
             </Button>
-            <Button x:Name="btnTwo"  Grid.Row="1" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,60,13,13"  Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="2" />
+            <Button x:Name="btnTwo"  Grid.Row="1" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,60,13,13"  Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="2" Foreground="{Binding ElementName=PINText,Path=Foreground}" />
             </Button>
-            <Button x:Name="btnFive"  Grid.Row="2"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="5" />
+            <Button x:Name="btnFive"  Grid.Row="2"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="5"  Foreground="{Binding ElementName=PINText,Path=Foreground}" />
             </Button>
-            <Button x:Name="btnEight"  Grid.Row="3"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="8" />
+            <Button x:Name="btnEight"  Grid.Row="3"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="8" Foreground="{Binding ElementName=PINText,Path=Foreground}" />
             </Button>
-            <Button x:Name="btnThree"  Grid.Row="1" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,60,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="2"  Opacity="{Binding ElementName=btnOne, Path=Opacity}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="3" />
+            <Button x:Name="btnThree"  Grid.Row="1" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,60,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="2"  Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="3" Foreground="{Binding ElementName=PINText,Path=Foreground}" />
             </Button>
-            <Button x:Name="btnSix"  Grid.Row="2"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="2" Opacity="{Binding ElementName=btnOne, Path=Opacity}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="6" />
+            <Button x:Name="btnSix"  Grid.Row="2"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="2" Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="6" Foreground="{Binding ElementName=PINText,Path=Foreground}" />
             </Button>
-            <Button x:Name="btnNine"  Grid.Row="3"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="2" Opacity="{Binding ElementName=btnOne, Path=Opacity}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="9" />
+            <Button x:Name="btnNine"  Grid.Row="3"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"  Grid.Column="2" Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="9" Foreground="{Binding ElementName=PINText,Path=Foreground}" />
             </Button>
-            <Button x:Name="btnZero"  Grid.Row="3"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="81,69,13,-55" Background="#ffffff" BorderBrush="#03A9F4"  Grid.ColumnSpan="2" Grid.RowSpan="2" Opacity="{Binding ElementName=btnOne, Path=Opacity}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="0" />
+            <Button x:Name="btnZero"  Grid.Row="3"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0" Margin="81,69,13,-55" Background="#ffffff" BorderBrush="#03A9F4"  Grid.ColumnSpan="2" Grid.RowSpan="2" Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="0"  Foreground="{Binding ElementName=PINText,Path=Foreground}"/>
             </Button>
             <!--#endregion PINNumberPad-->
             <!--#region PINDOts-->
@@ -107,7 +108,7 @@
             <Border x:Name="dot1" CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="1" Margin="68,10,0,104" Grid.Row="1" Opacity="{Binding ElementName=btnOne, Path=Opacity}"/>
             <!--#endregion PINDots-->
             <!--Close Button-->
-            <Button x:Name="Close" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="2" Foreground="#FFFFFF" HorizontalAlignment="Left" Padding="0" Margin="91,0,-78,46" Width="59" Height="Auto" >
+            <Button x:Name="Close" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="2" Foreground="#FFFFFF" HorizontalAlignment="Left" Padding="0" Margin="91,0,-78,46" Width="59" Height="Auto" IsTabStop="False" >
                 <TextBlock> <materialDesign:PackIcon Kind="Close" Height="24" Width="24" /></TextBlock>
             </Button>
             <!--end close button-->
