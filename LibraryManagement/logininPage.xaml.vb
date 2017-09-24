@@ -6,66 +6,94 @@ Imports System.Data.SqlClient
 
 Class Page1
     Dim camera As New Camera
-    Dim MainWindow As New MainWindow
     WithEvents SendImage As DispatcherTimer
+    WithEvents DelayTimer As DispatcherTimer
     Dim movetxt As Storyboard
     Dim JsonConvert As JsonConvert
 
     Private Sub Me_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         ' Initializing animation
         movetxt = Me.Resources("moveText")
+        InitializeComponent()
+
         camera.StartCamera()
         SendImage = New DispatcherTimer With {
             .Interval = New TimeSpan(0, 0, 0.2)
         }
         SendImage.Start()
+
     End Sub
 
-    Private Sub SendImage_Tick(sender As Object, e As EventArgs) Handles SendImage.Tick
+    Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles SendImage.Tick
         Dim qrDecoder As New QRDecoder
         Dim jsonString = ""
-        While jsonString = ""
-            jsonString = qrDecoder.ScanQR(camera.frame)
-        End While
-        QrScanned(jsonString)
+        jsonString = qrDecoder.ScanQR(camera.frame)
+        Try
+            If jsonString <> "" Then
+                QrScanned(jsonString)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
 
     Dim admin = New AdminQR
     Dim loginService = New AdminService
-    Private Sub QrScanned(str As String)
-        My.Computer.Audio.Play("C:\beep.wav", AudioPlayMode.Background)
+    Public Async Sub QrScanned(str As String)
+        My.Computer.Audio.Play(My.Resources.ScannerBeep, AudioPlayMode.Background)
         If str.Contains("ADM") Then
             admin = JsonConvert.DeserializeObject(Of AdminQR)(str)
-            If loginService.CheckUser(admin.UID, admin.Name) = 1 Then
-                camera.StopCamera()
-                SendImage.Stop()
-                BeginStoryboard(movetxt)
-                txtPIN.IsEnabled = True
-                txtPIN.Clear()
-                Keyboard.Focus(txtPIN)
-                txtWelcome.Text = "Welcome, " + admin.Name
-                txtLoginInstruction.Text = "Please enter your PIN"
-            Else
-                MsgBox("Admin Not Found!!")
-            End If
+            Try
+                If loginService.CheckUser(admin.UID, admin.Name) = 1 Then
+                    camera.StopCamera()
+                    SendImage.Stop()
+                    UpdateScreen()
+                Else
+
+                    loginPage.Background = Brushes.OrangeRed
+                    txtLoginInstruction.Text = "Admin not found"
+                    SendImage.Stop()
+                    Await Task.Delay(2000)
+                    SendImage.Start()
+                End If
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
         Else
             MsgBox("Invalid Card! Please scan an Admin card.")
         End If
+
+    End Sub
+
+
+    Private Sub UpdateScreen()
+        'Updates login screen with Admin info.
+        BeginStoryboard(movetxt)
+        TxtPIN.IsEnabled = True
+        TxtPIN.Clear()
+        Keyboard.Focus(TxtPIN)
+        txtWelcome.Text = "Welcome, " + admin.Name
+        txtLoginInstruction.Text = "Please enter your PIN"
     End Sub
 
     Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs) Handles Close.Click
-        'TODO make close working on welcome screen
+        StopAllServices()
         Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown
         Windows.Application.Current.Shutdown()
     End Sub
 
-    Private Sub TxtPIN_PrieviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles txtPIN.PreviewTextInput
+    Private Sub StopAllServices()
+        camera.StopCamera()  'Stops the webCam.
+        SendImage.Stop() 'Stops sending images to decode.
+    End Sub
+
+    Private Sub TxtPIN_PrieviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtPIN.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
     End Sub
 
-    Private Sub TxtPIN_TextChanged(sender As Object, e As TextChangedEventArgs) Handles txtPIN.TextChanged
-        Dim PIN = txtPIN.Text.Replace(" ", "")
+    Private Sub TxtPIN_TextChanged(sender As Object, e As TextChangedEventArgs) Handles TxtPIN.TextChanged
+        Dim PIN = TxtPIN.Text.Replace(" ", "")
         Select Case (PIN.Length)
             Case 0
                 ClearDots()
@@ -98,7 +126,7 @@ Class Page1
 
                 Else
                     MsgBox("naaaa")
-                    txtPIN.Clear()
+                    TxtPIN.Clear()
                 End If
         End Select
 
@@ -114,9 +142,9 @@ Class Page1
     End Sub
 
     Private Sub AddNumberToPIN(number As Integer)
-        txtPIN.Text += number.ToString
-        Keyboard.Focus(txtPIN)
-        txtPIN.CaretIndex = txtPIN.Text.Length
+        TxtPIN.Text += number.ToString
+        Keyboard.Focus(TxtPIN)
+        TxtPIN.CaretIndex = TxtPIN.Text.Length 'Brings the caret to the end.
     End Sub
 
 #Region "NumberPad Button Click Events"
@@ -159,5 +187,6 @@ Class Page1
     Private Sub BtnNine_Click(sender As Object, e As RoutedEventArgs) Handles btnNine.Click
         AddNumberToPIN(9)
     End Sub
+
 #End Region
 End Class
