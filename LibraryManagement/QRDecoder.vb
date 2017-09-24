@@ -6,19 +6,14 @@ Public Class QRDecoder
     Dim jsonString
     Dim reader As New BarcodeReader
     Public Function ScanQR(frame As Bitmap)
-        Dim tryAgain = True
-        If (tryAgain) Then
-            Try
-                result = reader.Decode(frame)
-                jsonString = result.ToString.Trim
-            Catch ex As System.ArgumentNullException
-                tryAgain = True
-            Catch a As System.NullReferenceException
-                tryAgain = True
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-        End If
+        Try
+            result = reader.Decode(frame)
+            jsonString = result.ToString.Trim
+        Catch ex As System.ArgumentNullException
+        Catch a As System.NullReferenceException
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
         ScanQR = jsonString
     End Function
 End Class
