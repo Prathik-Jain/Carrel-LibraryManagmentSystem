@@ -91,9 +91,16 @@
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                         
                                         IsCancel="True"
-                                        Margin="380,550,0,0"
-                                        Command="materialDesign:DialogHost.CloseDialogCommand" Content="CANCEL" HorizontalAlignment="Left" Width="86"/>
+                                        Margin="275,565,0,0"
+                                        
+                          
+              Command="materialDesign:DialogHost.CloseDialogCommand" Content="CANCEL" Height="36" MinWidth="64" HorizontalAlignment="Left" Width="90"/>
+            <Button x:Name="ACCEPT" Style="{StaticResource MaterialDesignFlatButton}"
+                                        IsDefault="True"
+                                        Margin="0,-37,135,0"
+                                        Command="materialDesign:DialogHost.CloseDialogCommand" Content="ACCEPT" Height="36" HorizontalAlignment="Right" Width="90"/>
         </StackPanel>
+
         <TextBox 
 				    x:Name="ISBNTextBox"
 				    materialDesign:HintAssist.Hint="ISBN no" Margin="71,99,41,485" RenderTransformOrigin="0.493,0.458" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24" Width="288"/>
