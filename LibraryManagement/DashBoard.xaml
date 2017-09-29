@@ -32,6 +32,7 @@
                              VerticalAlignment="top" 
                              Grid.RowSpan="2" 
                              Background="{DynamicResource PrimaryHueMidBrush}">
+            <!--Search Bar-->
             <StackPanel VerticalAlignment="Center" Width="800">
                 <Grid Height="40">
                     <materialDesign:PackIcon
@@ -53,10 +54,11 @@
                 </Grid>
             </StackPanel>
         </materialDesign:Card>
-
+          
         <materialDesign:Card MinWidth="800"
                              MinHeight="500"
                              materialDesign:ShadowAssist.ShadowDepth="Depth5" Margin="110,129,85,0" Grid.RowSpan="1"/>
+        <!--BookDialog-->
         <materialDesign:DialogHost 
                                     materialDesign:ShadowAssist.ShadowDepth="Depth5"
                                    MinWidth="1280"
@@ -67,7 +69,7 @@
             <materialDesign:DialogHost.DialogContent>
                 <local:BookForm x:Name="add"></local:BookForm>
             </materialDesign:DialogHost.DialogContent>
-
+         <!--Fab Button-->
             <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Margin="1275,680,0,56" Grid.Row="1"  Command="materialDesign:DialogHost.OpenDialogCommand" RenderTransformOrigin="7.75,4.625" Width="56" Height="56" HorizontalAlignment="Left">
                 <TextBlock><InlineUIContainer>
                     <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
