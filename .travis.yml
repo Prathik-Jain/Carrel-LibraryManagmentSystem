@@ -1,4 +1,3 @@
 language: csharp
 solution: LibraryManagement.sln
-script:
-	xbuild /p:VbcToolExe=vbnc.exe LibraryManagement.sln
+script: xbuild /p:VbcToolExe=vbnc.exe LibraryManagement.sln
