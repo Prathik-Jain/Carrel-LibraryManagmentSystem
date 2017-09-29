@@ -1,0 +1,152 @@
+﻿<UserControl x:Class="BookForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextElement.FontFamily="Roboto"
+            TextOptions.TextFormattingMode="Ideal" 
+            TextOptions.TextRenderingMode="Auto"        
+            Background="{DynamicResource MaterialDesignPaper}"
+            FontFamily="{DynamicResource MaterialDesignFont}">
+    <UserControl.Resources>
+        <!--Change the defaults-->
+        <Style TargetType="materialDesign:PackIcon">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Margin" Value="16"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Foreground" Value="#000000"/>
+            <Setter Property="Opacity" Value="0.54"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="16 0"/>
+            <Setter Property="MinHeight" Value="24"/>
+            <Setter Property="MinWidth" Value="240"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <!--#region Row & Column Definition-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32"/>
+            <!--Gutter-->
+            <ColumnDefinition Width="56"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="48"/>
+            <!--Gutter-->
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <!--Gutter-->
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="48"/>
+            <!--Space between form and buttons-->
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="48"/>
+            <!--Gutter-->
+        </Grid.RowDefinitions>
+
+        <!--#endregion-->
+
+        <!--#region  ISBN-->
+        <materialDesign:PackIcon Kind="BarcodeScan" 
+                                 Grid.Row="1"/>
+        <TextBox x:Name="txtISBN"
+                 Grid.Row="1"
+				 materialDesign:HintAssist.Hint="ISBN Number"/>
+        <!--#endregion-->
+
+        <!--#region Name-->
+        <materialDesign:PackIcon Kind="BookVariant" 
+                                 Grid.Row="2"/>
+        <TextBox x:Name="txtName"
+                 Grid.Row="2"
+				 materialDesign:HintAssist.Hint="Name"/>
+        <!--#endregion-->
+
+        <!--#region Author-->
+        <materialDesign:PackIcon Kind="AccountMultiple" 
+                                 Grid.Row="3"/>
+        <ComboBox   x:Name="txtAuthor"
+                    Grid.Column="2" Grid.Row="3"
+                    materialDesign:HintAssist.Hint="Authors"
+                    IsEditable="True"
+                    Margin="16 0" VerticalAlignment="Center" MinHeight="24" MinWidth="240">
+            <ComboBoxItem>Dr.M.A.Rama</ComboBoxItem>
+            <ComboBoxItem>E.Balaguruswamy</ComboBoxItem>
+            <ComboBoxItem>Srikanth.S</ComboBoxItem>
+            <ComboBoxItem>Forouzan</ComboBoxItem>
+        </ComboBox>
+        <!--#endregion-->
+
+        <!--#region Publisher-->
+        <materialDesign:PackIcon Kind="Store" 
+                                 Grid.Row="4"/>
+        <TextBox x:Name="PublisherTextBox"
+                 Grid.Row="4"
+                 materialDesign:HintAssist.Hint="Publisher"/>
+        <!--#endregion-->
+
+        <!--#region Price-->
+        <materialDesign:PackIcon Kind="CurrencyInr" 
+                                 Grid.Row="5"/>
+        <TextBox x:Name="txtPrice"
+                 Grid.Row="5"
+                 materialDesign:HintAssist.Hint="Price"/>
+        <!--#endregion-->
+
+        <!--#region Edition-->
+        <materialDesign:PackIcon Kind="NotificationClearAll" 
+                                 Grid.Row="6"/>
+        <TextBox x:Name="txtEdition"
+                 Grid.Row="6"
+                 materialDesign:HintAssist.Hint="Edition"/>
+        <!--#endregion-->
+
+        <!--#region Rack-->
+        <materialDesign:PackIcon Kind="ViewStream" 
+                                 Grid.Row="7"/>
+        <TextBox x:Name="txtRack"
+                 Grid.Row="7"
+                 materialDesign:HintAssist.Hint="Rack"/>
+        <!--#endregion-->
+
+        <!--#region Buttons-->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="9" Grid.Column="2"
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Right">
+
+            <Button x:Name="btnAccept" 
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    IsDefault="True"
+                    Command="materialDesign:DialogHost.CloseDialogCommand"
+                    Content="ACCEPT" 
+                    Height="36" Width="90"/>
+
+            <Button x:Name="btnCancel"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    IsCancel="True"
+                    Command="materialDesign:DialogHost.CloseDialogCommand" 
+                    Content="CANCEL" 
+                    Height="36" MinWidth="64"/>
+        </StackPanel>
+        <!--#endregion-->
+    </Grid>
+</UserControl>

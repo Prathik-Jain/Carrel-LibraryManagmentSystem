@@ -12,15 +12,15 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!-- primary -->
-            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#B3F7ff"/>
-            <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF"/>
-            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#283592"/>
+            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#686868"/>
+            <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF" Opacity="0.7"/>
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#212121"/>
             <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF"/>
-            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#00d3ff"/>
-            <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#454545"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FFFFFF" Opacity="0.5"/>
             <!-- accent -->
             <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#64dd17"/>
-            <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#000000" Opacity="0.87"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

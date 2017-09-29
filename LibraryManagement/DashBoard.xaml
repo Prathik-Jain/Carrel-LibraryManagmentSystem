@@ -4,6 +4,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -30,7 +31,9 @@
                              Height="400" 
                              VerticalAlignment="top" 
                              Grid.RowSpan="2" 
-                             Background="{DynamicResource PrimaryHueMidBrush  }">
+                             Background="{DynamicResource PrimaryHueMidBrush}">
+            <!--Search Bar-->
+
             <StackPanel VerticalAlignment="Center" Width="800">
                 <Grid Height="40">
                     <materialDesign:PackIcon
@@ -40,7 +43,7 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"/>
                     <TextBlock/>
-                    <TextBox Width="800" 
+                    <TextBox 
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         materialDesign:HintAssist.Hint="Search"
                              BorderBrush="{DynamicResource PrimaryHueMidBrush}"
@@ -52,16 +55,27 @@
                 </Grid>
             </StackPanel>
         </materialDesign:Card>
-        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" 
-                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-
-                  Margin="0,0,56,56" Grid.Row="1">
-            <TextBlock><InlineUIContainer>
-                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" Opacity="0.87" Foreground ="Black" />
-                </InlineUIContainer></TextBlock>
-        </Button>
         <materialDesign:Card MinWidth="800"
                              MinHeight="500"
-                             materialDesign:ShadowAssist.ShadowDepth="Depth5" Margin="110,129,85,0" Grid.RowSpan="2"/>
+                             materialDesign:ShadowAssist.ShadowDepth="Depth5" Margin="110,129,85,0" Grid.RowSpan="1"/>
+        <!--BookDialog-->
+        <materialDesign:DialogHost 
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                                   MinWidth="1280"
+                                   MinHeight="720" 
+                                   VerticalAlignment="Top" 
+                                                                      CloseOnClickAway="True" Margin="-4,0" RenderTransformOrigin="0.513,0.546">
+
+            <materialDesign:DialogHost.DialogContent>
+                <local:BookForm x:Name="add"></local:BookForm>
+            </materialDesign:DialogHost.DialogContent>
+         <!--Fab Button-->
+            <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Margin="1275,680,0,56" Grid.Row="1"  Command="materialDesign:DialogHost.OpenDialogCommand" RenderTransformOrigin="7.75,4.625" Width="56" Height="56" HorizontalAlignment="Left">
+                <TextBlock><InlineUIContainer>
+                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+                </InlineUIContainer></TextBlock>
+            </Button>
+        </materialDesign:DialogHost>
     </Grid>
+
 </Window>
