@@ -16,89 +16,36 @@
                 <ColumnDefinition Width="226*"/>
             </Grid.ColumnDefinitions>
 
-            <!--QR Code Icon-->
+            <!--Icons-->
             <materialDesign:PackIcon Kind="Qrcode" Foreground="{Binding BorderBrush, ElementName=NameTextBox}" Margin="24,94,382,0" RenderTransformOrigin="0.535,0.417" Width="24" Height="24" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" >
-                <materialDesign:PackIcon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform X="0.16"/>
-                    </TransformGroup>
-                </materialDesign:PackIcon.RenderTransform>
             </materialDesign:PackIcon>
 
-            <!--Book Icon-->
+            
             <materialDesign:PackIcon Kind="BookOpenVariant" Foreground="{Binding BorderBrush, ElementName=NameTextBox}" Margin="24,152,0,0" RenderTransformOrigin="0.684,0.417" Width="24" Height="24" Grid.ColumnSpan="2" >
-                <materialDesign:PackIcon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform X="-6.992"/>
-                    </TransformGroup>
-                </materialDesign:PackIcon.RenderTransform>
             </materialDesign:PackIcon>
 
-            <!--Authors Icon-->
+           
             <materialDesign:PackIcon Kind="AccountMultiple" Foreground="{Binding BorderBrush, ElementName=NameTextBox}" Margin="23,208,0,0" RenderTransformOrigin="0.577,0.5" Width="24" Height="24" Grid.ColumnSpan="2" >
-                <materialDesign:PackIcon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform X="-1.856"/>
-                    </TransformGroup>
-                </materialDesign:PackIcon.RenderTransform>
             </materialDesign:PackIcon>
 
-            <!--Publisher Icon-->
+         
             <materialDesign:PackIcon Kind="Store" Foreground="{Binding BorderBrush, ElementName=NameTextBox}" Margin="23,318,0,0" RenderTransformOrigin="0.684,0.417" Width="24" Height="24" Grid.ColumnSpan="2" >
-                <materialDesign:PackIcon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform X="-6.992"/>
-                    </TransformGroup>
-                </materialDesign:PackIcon.RenderTransform>
             </materialDesign:PackIcon>
-            <!--Price Icon-->
-            <materialDesign:PackIcon Kind="CurrencyInr" Foreground="{Binding BorderBrush, ElementName=NameTextBox}" Margin="29,264,377,0" RenderTransformOrigin="0.684,0.417" Width="24" Height="24" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" >
-                <materialDesign:PackIcon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform X="-6.992"/>
-                    </TransformGroup>
-                </materialDesign:PackIcon.RenderTransform>
+            
+            
+            <materialDesign:PackIcon Kind="CurrencyInr" Foreground="{Binding BorderBrush, ElementName=NameTextBox}" Margin="24,264,382,0" RenderTransformOrigin="0.684,0.417" Width="24" Height="24" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" >
             </materialDesign:PackIcon>
 
-            <!--Edition Icon-->
+           
             <materialDesign:PackIcon Kind="NotificationClearAll" Foreground="{Binding BorderBrush, ElementName=NameTextBox}" Margin="24,378,0,0" RenderTransformOrigin="0.577,0.417" Width="24" Height="24" Grid.ColumnSpan="2" >
-                <materialDesign:PackIcon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform X="-1.856"/>
-                    </TransformGroup>
-                </materialDesign:PackIcon.RenderTransform>
             </materialDesign:PackIcon>
 
-            <!--Rack Icon-->
+            
             <materialDesign:PackIcon Kind="ViewStream" Foreground="{Binding BorderBrush, ElementName=NameTextBox}" Margin="24,437,0,0" RenderTransformOrigin="0.684,0.417" Width="24" Height="24" Grid.ColumnSpan="2" >
-                <materialDesign:PackIcon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform X="-6.992"/>
-                    </TransformGroup>
-                </materialDesign:PackIcon.RenderTransform>
             </materialDesign:PackIcon>
         </Grid>
+        
+       
         <!--Flat Buttons-->
         <StackPanel Height="608" Width="430" VerticalAlignment="Bottom" HorizontalAlignment="Left">
 
@@ -113,18 +60,19 @@
                                         Margin="0,-35,145,0"
                                         Command="materialDesign:DialogHost.CloseDialogCommand" Content="ADD" Height="36" HorizontalAlignment="Right" Width="68"/>
         </StackPanel>
+        
 
-        <!--ISBN TextField-->
+        <!--Text Fields-->
         <TextBox 
-				    x:Name="ISBNTextBox"
+				    x:Name="ISBN"
 				    materialDesign:HintAssist.Hint="ISBN no" Margin="71,103,71,481" RenderTransformOrigin="0.493,0.458" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="24" Width="288"/>
 
-        <!--Name TextField-->
+        
         <TextBox 
-            x:Name="NameTextBox"
+            x:Name="Name"
             materialDesign:HintAssist.Hint="Name" Margin="0,0,71,419" RenderTransformOrigin="0.504,0.423" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="288"/>
 
-        <!--Author TextField-->
+     
         <ComboBox materialDesign:HintAssist.Hint="Authors"
                   IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" Margin="71,218,71,362">
             <ComboBoxItem>Dr.M.A.Rama</ComboBoxItem>
@@ -133,24 +81,24 @@
             <ComboBoxItem>Forouzan</ComboBoxItem>
         </ComboBox>
 
-        <!--Publisher TextField-->
+       
         <TextBox 
-            x:Name="PublisherTextBox"
+            x:Name="Publisher"
             materialDesign:HintAssist.Hint="Publisher" Margin="0,0,71,255" RenderTransformOrigin="0.5,0.462" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="288"/>
 
-        <!--Price TextField-->
+       
         <TextBox 
-            x:Name="PriceTextBox"
+            x:Name="Price"
             materialDesign:HintAssist.Hint="Price" Margin="0,0,71,311" RenderTransformOrigin="0.5,0.5" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="288"/>
 
-        <!--Edition TextField-->
+       
         <TextBox 
-            x:Name="EditionTextBox"
+            x:Name="Edition"
             materialDesign:HintAssist.Hint="Edition" Margin="0,0,71,198" RenderTransformOrigin="0.5,0.5" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="288"/>
 
-        <!--Rack Textfield-->
+        
         <TextBox 
-            x:Name="RackTextBox"
+            x:Name="Rack"
             materialDesign:HintAssist.Hint="Rack" Margin="0,0,71,137" RenderTransformOrigin="0.5,0.423" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="288"/>
 
     </Grid>
