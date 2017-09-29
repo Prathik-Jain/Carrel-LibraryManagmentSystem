@@ -30,20 +30,20 @@
                              Height="400" 
                              VerticalAlignment="top" 
                              Grid.RowSpan="2" 
-                             Background="{DynamicResource SecondaryAccentBrush}">
+                             Background="{DynamicResource PrimaryHueMidBrush  }">
             <StackPanel VerticalAlignment="Center" Width="800">
                 <Grid Height="40">
                     <materialDesign:PackIcon
             Width="24" Kind="Magnify" 
                     Height="24" 
-                    Foreground="White"
+                    Foreground="Black"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"/>
                     <TextBlock/>
                     <TextBox Width="800" 
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         materialDesign:HintAssist.Hint="Search"
-                             BorderBrush="{DynamicResource PrimaryHueDarkBrush}"
+                             BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              SelectionBrush="{DynamicResource PrimaryHueDarkForegroundBrush}"
                         VerticalAlignment="Center"
                         Foreground="White"
@@ -52,9 +52,12 @@
                 </Grid>
             </StackPanel>
         </materialDesign:Card>
-        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Margin="0,0,56,56" Grid.Row="1">
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+
+                  Margin="0,0,56,56" Grid.Row="1">
             <TextBlock><InlineUIContainer>
-                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" Opacity="0.87" Foreground ="Black" />
                 </InlineUIContainer></TextBlock>
         </Button>
         <materialDesign:Card MinWidth="800"
