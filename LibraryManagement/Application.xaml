@@ -19,7 +19,7 @@
             <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#00d3ff"/>
             <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FFFFFF"/>
             <!-- accent -->
-            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#e31c60"/>
+            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#64dd17"/>
             <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#FFFFFF"/>
         </ResourceDictionary>
     </Application.Resources>

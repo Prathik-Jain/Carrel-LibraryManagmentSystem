@@ -33,19 +33,20 @@
                              Grid.RowSpan="2" 
                              Background="{DynamicResource PrimaryHueMidBrush}">
             <!--Search Bar-->
+
             <StackPanel VerticalAlignment="Center" Width="800">
                 <Grid Height="40">
                     <materialDesign:PackIcon
             Width="24" Kind="Magnify" 
                     Height="24" 
-                    Foreground="White"
+                    Foreground="Black"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"/>
                     <TextBlock/>
                     <TextBox 
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         materialDesign:HintAssist.Hint="Search"
-                             BorderBrush="{DynamicResource PrimaryHueDarkBrush}"
+                             BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                              SelectionBrush="{DynamicResource PrimaryHueDarkForegroundBrush}"
                         VerticalAlignment="Center"
                         Foreground="White"
@@ -54,7 +55,6 @@
                 </Grid>
             </StackPanel>
         </materialDesign:Card>
-          
         <materialDesign:Card MinWidth="800"
                              MinHeight="500"
                              materialDesign:ShadowAssist.ShadowDepth="Depth5" Margin="110,129,85,0" Grid.RowSpan="1"/>
