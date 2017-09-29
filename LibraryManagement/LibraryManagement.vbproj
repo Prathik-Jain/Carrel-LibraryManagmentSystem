@@ -127,8 +127,8 @@
     <Compile Include="StartUp.xaml.vb">
       <DependentUpon>StartUp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControl.xaml.vb">
-      <DependentUpon>UserControl.xaml</DependentUpon>
+    <Compile Include="BookForm.xaml.vb">
+      <DependentUpon>BookForm.xaml</DependentUpon>
     </Compile>
     <Page Include="DashBoard.xaml">
       <SubType>Designer</SubType>
@@ -146,7 +146,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControl.xaml">
+    <Page Include="BookForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -65,7 +65,7 @@
                                                                       CloseOnClickAway="True" Margin="-4,0" RenderTransformOrigin="0.513,0.546">
 
             <materialDesign:DialogHost.DialogContent>
-                <local:UserControl x:Name="add"></local:UserControl>
+                <local:BookForm x:Name="add"></local:BookForm>
             </materialDesign:DialogHost.DialogContent>
 
             <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Margin="1275,680,0,56" Grid.Row="1"  Command="materialDesign:DialogHost.OpenDialogCommand" RenderTransformOrigin="7.75,4.625" Width="56" Height="56" HorizontalAlignment="Left">
