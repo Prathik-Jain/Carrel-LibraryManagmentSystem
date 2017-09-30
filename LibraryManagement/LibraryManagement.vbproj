@@ -130,6 +130,9 @@
     <Compile Include="BookForm.xaml.vb">
       <DependentUpon>BookForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MemberForm.xaml.vb">
+      <DependentUpon>MemberForm.xaml</DependentUpon>
+    </Compile>
     <Page Include="DashBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BookForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MemberForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
