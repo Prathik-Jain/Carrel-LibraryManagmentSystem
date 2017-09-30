@@ -47,26 +47,103 @@
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="48"/>
         </Grid.RowDefinitions>
-        
+
         <materialDesign:PackIcon Kind="Account" 
-                                 Grid.Row="1"/>
+                                 Grid.Row="4"/>
         <TextBox x:Name="txtFirstName"
-                 Grid.Row="1"
+                 Grid.Row="4"
 				 materialDesign:HintAssist.Hint="First Name"/>
         <TextBox x:Name="txtLastName"
-                 Grid.Row="1" Grid.Column="3"
+                 Grid.Row="4" Grid.Column="3"
 				 materialDesign:HintAssist.Hint="Last Name"/>
-        
+
         <materialDesign:PackIcon Kind="Phone" 
-                                 Grid.Row="2"/>
+                                 Grid.Row="5"/>
         <!--grid.column span means it can extend upto 2 columns-->
         <TextBox x:Name="txtPhone"
-                 Grid.Row="2"
+                 Grid.Row="5"
                  Grid.ColumnSpan="2" 
 				 materialDesign:HintAssist.Hint="Phone"/>
+
+        <materialDesign:PackIcon Kind="SortVariant"
+                                 Grid.Row="6"/>
+        <ComboBox   x:Name="txtDepartment"
+                    Grid.Column="2" 
+                    Grid.Row="6" Grid.ColumnSpan="2"
+                    materialDesign:HintAssist.Hint="Department"
+                    IsEditable="True"
+                    Margin="16 0" VerticalAlignment="Center" MinHeight="24" MinWidth="240">
+            <ComboBoxItem>BCA</ComboBoxItem>
+            <ComboBoxItem>B.Com</ComboBoxItem>
+            <ComboBoxItem>B.Sc</ComboBoxItem>
+            <ComboBoxItem>BBM</ComboBoxItem>
+        </ComboBox>
+        <materialDesign:PackIcon Kind="Details" 
+                                 Grid.Row="7"/>
+        <ComboBox   x:Name="txtSemester"
+                    Grid.Column="2" 
+                    Grid.Row="7" Grid.ColumnSpan="2"
+                    materialDesign:HintAssist.Hint="Semester"
+                    IsEditable="True"
+                    Margin="16 0" VerticalAlignment="Center" MinHeight="24" MinWidth="240">
+            <ComboBoxItem>1</ComboBoxItem>
+            <ComboBoxItem>2</ComboBoxItem>
+            <ComboBoxItem>3</ComboBoxItem>
+            <ComboBoxItem>4</ComboBoxItem>
+            <ComboBoxItem>5</ComboBoxItem>
+            <ComboBoxItem>6</ComboBoxItem>
+        </ComboBox>
+       
+
+        <Ellipse Grid.ColumnSpan="2" 
+                 Fill="#FFF4F4F5" 
+                 HorizontalAlignment="Left" 
+                 Height="150" 
+                 Grid.RowSpan="3" 
+                 Grid.Row="1"
+                 Grid.Column="2"
+                 Stroke="#64dd17"
+                 StrokeThickness="5"
+                 VerticalAlignment="Top" 
+                 Width="150" 
+                 Margin="198,18,0,0"/>
+
+        <materialDesign:PackIcon Kind="Camera" 
+                                 Grid.Row="3" 
+                                 Grid.Column="2" 
+                                 Margin="0,0,16,0"/>
+        
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="9" Grid.Column="3"
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Right">
+
+            <Button  
+                    x:Name="btnAccept" 
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    IsDefault="True"
+                    Command="materialDesign:DialogHost.CloseDialogCommand"
+                    Content="ACCEPT" 
+                    Height="36" Width="90"/>
+
+            <Button x:Name="btnCancel"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    IsCancel="True"
+                    Command="materialDesign:DialogHost.CloseDialogCommand" 
+                    Content="CANCEL" 
+                    Height="36" MinWidth="64"/>
+        </StackPanel>
+       
+                                                        
 
     </Grid>
 </UserControl>
