@@ -4,6 +4,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
         
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -64,18 +65,41 @@
                                    MinWidth="1280"
                                    MinHeight="720" 
                                    VerticalAlignment="Top" 
-                                                                      CloseOnClickAway="True" Margin="-4,0" RenderTransformOrigin="0.513,0.546">
+                                   CloseOnClickAway="True"
+                                   Margin="-4,0" 
+                                   RenderTransformOrigin="0.513,0.546">
 
             <materialDesign:DialogHost.DialogContent>
-                <local:BookForm x:Name="add"></local:BookForm>
+                <dragablz:TabablzControl FixedHeaderCount="3">
+                    <dragablz:TabablzControl.InterTabController>
+                        <dragablz:InterTabController />
+                    </dragablz:TabablzControl.InterTabController>
+                    <TabItem
+                        Width="80"
+                        Height="30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="#000000"
+                        
+                        Header="BOOK" IsSelected="True">
+                        <local:BookForm></local:BookForm>
+                    </TabItem>
+                    <TabItem Header="MEMBER">
+                        <local:MemberForm></local:MemberForm>
+                    </TabItem>
+                </dragablz:TabablzControl>
+
             </materialDesign:DialogHost.DialogContent>
-         <!--Fab Button-->
+
+            
+            <!--Fab Button-->
             <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Margin="1275,680,0,56" Grid.Row="1"  Command="materialDesign:DialogHost.OpenDialogCommand" RenderTransformOrigin="7.75,4.625" Width="56" Height="56" HorizontalAlignment="Left">
                 <TextBlock><InlineUIContainer>
                     <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
                 </InlineUIContainer></TextBlock>
             </Button>
         </materialDesign:DialogHost>
+        
     </Grid>
-
+     
 </Window>

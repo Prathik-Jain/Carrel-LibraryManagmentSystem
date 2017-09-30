@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              mc:Ignorable="d"
             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
             TextElement.FontWeight="Regular"
@@ -14,6 +15,7 @@
             Background="{DynamicResource MaterialDesignPaper}"
             FontFamily="{DynamicResource MaterialDesignFont}">
     <UserControl.Resources>
+       
         <!--Change the defaults-->
         <Style TargetType="materialDesign:PackIcon">
             <Setter Property="Grid.Column" Value="1"/>
@@ -66,7 +68,7 @@
 
         <!--#region  ISBN-->
         <materialDesign:PackIcon Kind="BarcodeScan" 
-                                 Grid.Row="1"/>
+                                 Grid.Row="1" Margin="0,0,16,10"/>
         <TextBox x:Name="txtISBN"
                  Grid.Row="1"
 				 materialDesign:HintAssist.Hint="ISBN Number"/>
@@ -74,7 +76,7 @@
 
         <!--#region Name-->
         <materialDesign:PackIcon Kind="BookVariant" 
-                                 Grid.Row="2"/>
+                                 Grid.Row="2" Margin="0,0,16,10"/>
         <TextBox x:Name="txtName"
                  Grid.Row="2"
 				 materialDesign:HintAssist.Hint="Name"/>
@@ -82,7 +84,7 @@
 
         <!--#region Author-->
         <materialDesign:PackIcon Kind="AccountMultiple" 
-                                 Grid.Row="3"/>
+                                 Grid.Row="3" Margin="0,0,16,14"/>
         <ComboBox   x:Name="txtAuthor"
                     Grid.Column="2" Grid.Row="3"
                     materialDesign:HintAssist.Hint="Authors"
@@ -97,7 +99,7 @@
 
         <!--#region Publisher-->
         <materialDesign:PackIcon Kind="Store" 
-                                 Grid.Row="4"/>
+                                 Grid.Row="4" Margin="0,0,16,10"/>
         <TextBox x:Name="PublisherTextBox"
                  Grid.Row="4"
                  materialDesign:HintAssist.Hint="Publisher"/>
@@ -105,7 +107,7 @@
 
         <!--#region Price-->
         <materialDesign:PackIcon Kind="CurrencyInr" 
-                                 Grid.Row="5"/>
+                                 Grid.Row="5" Margin="0,0,16,10"/>
         <TextBox x:Name="txtPrice"
                  Grid.Row="5"
                  materialDesign:HintAssist.Hint="Price"/>
@@ -113,7 +115,7 @@
 
         <!--#region Edition-->
         <materialDesign:PackIcon Kind="NotificationClearAll" 
-                                 Grid.Row="6"/>
+                                 Grid.Row="6" Margin="0,0,16,10"/>
         <TextBox x:Name="txtEdition"
                  Grid.Row="6"
                  materialDesign:HintAssist.Hint="Edition"/>
@@ -121,7 +123,7 @@
 
         <!--#region Rack-->
         <materialDesign:PackIcon Kind="ViewStream" 
-                                 Grid.Row="7"/>
+                                 Grid.Row="7" Margin="0,0,16,10"/>
         <TextBox x:Name="txtRack"
                  Grid.Row="7"
                  materialDesign:HintAssist.Hint="Rack"/>
@@ -132,14 +134,8 @@
                     Grid.Row="9" Grid.Column="2"
                     VerticalAlignment="Bottom" 
                     HorizontalAlignment="Right">
-            <materialDesign:Snackbar IsActive="true"
-                                              x:Name="Snackbaraccept">
-                <materialDesign:SnackbarMessage 
-                                              
-                                              Content="Added Successfully" />
-
-            </materialDesign:Snackbar>
-            <Button Click="SnackBar3_OnClick"
+     
+                    <Button
                     x:Name="btnAccept" 
                     Style="{StaticResource MaterialDesignFlatButton}"
                     IsDefault="True"
