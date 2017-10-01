@@ -1,28 +1,32 @@
 ﻿<Application x:Class="Application"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Carrel"
-    StartupUri="DashBoard.xaml">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Carrel"
+             StartupUri="DashBoard.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.red.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.green.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!-- primary -->
-            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#686868"/>
-            <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF" Opacity="0.7"/>
-            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#212121"/>
-            <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF"/>
-            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#454545"/>
-            <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FFFFFF" Opacity="0.5"/>
+            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#BCBCBC" />
+            <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF" Opacity="0.7" />
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#212121" />
+            <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#454545" />
+            <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FFFFFF" Opacity="0.5" />
             <!-- accent -->
-            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#64dd17"/>
-            <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#000000" Opacity="0.87"/>
-            
+            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#64dd17" />
+            <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#000000" Opacity="0.87" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
