@@ -1,14 +1,8 @@
 ﻿Public Class DashBoard
-    Private Sub Button_Click(sender As Object, e As RoutedEventArgs)
+    Private Sub BtnMemb_Click(sender As Object, e As RoutedEventArgs)
         MemberHost.IsOpen = True
-
-
-
     End Sub
-    Private Sub Button2_Click(sender As Object, e As RoutedEventArgs)
+    Private Sub BtnBook_Click(sender As Object, e As RoutedEventArgs)
         BookHost.IsOpen = True
-
-
-
-    End Sub
+      End Sub
 End Class

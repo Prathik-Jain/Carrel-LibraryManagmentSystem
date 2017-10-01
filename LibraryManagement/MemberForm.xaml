@@ -78,7 +78,8 @@
                  Width="26"                 
                  Height="26" 
                 Grid.RowSpan="2">
-            <materialDesign:PackIcon Kind="Camera" 
+            <materialDesign:PackIcon 
+                                 Kind="Camera" 
                                  Height="24" 
                                  Width="24" 
                                  Margin="0" 
