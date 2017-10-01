@@ -1,11 +1,10 @@
-﻿Imports System.Windows.Media.Animation
+﻿Imports System.Text.RegularExpressions
+Imports System.Windows.Media.Animation
 Imports System.Windows.Threading
-Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
-Imports System.Data.SqlClient
 
 Class Page1
-    Dim camera As New Camera
+    Dim ReadOnly camera As New Camera
     WithEvents SendImage As DispatcherTimer
     WithEvents DelayTimer As DispatcherTimer
     Dim movetxt As Storyboard
@@ -19,9 +18,8 @@ Class Page1
         camera.StartCamera()
         SendImage = New DispatcherTimer With {
             .Interval = New TimeSpan(0, 0, 0.2)
-        }
+            }
         SendImage.Start()
-
     End Sub
 
     Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles SendImage.Tick
@@ -39,11 +37,12 @@ Class Page1
 
 
     Dim admin = New AdminQR
-    Dim loginService = New AdminService
+    Dim ReadOnly loginService = New AdminService
+
     Public Async Sub QrScanned(str As String)
         My.Computer.Audio.Play(My.Resources.ScannerBeep, AudioPlayMode.Background)
         If str.Contains("ADM") Then
-            admin = JsonConvert.DeserializeObject(Of AdminQR)(str)
+            admin = JsonConvert.DeserializeObject (Of AdminQR)(str)
             Try
                 If loginService.CheckUser(admin.UID, admin.Name) = 1 Then
                     camera.StopCamera()
@@ -63,7 +62,6 @@ Class Page1
         Else
             MsgBox("Invalid Card! Please scan an Admin card.")
         End If
-
     End Sub
 
 
@@ -88,7 +86,8 @@ Class Page1
         SendImage.Stop() 'Stops sending images to decode.
     End Sub
 
-    Private Sub TxtPIN_PrieviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtPIN.PreviewTextInput
+    Private Sub TxtPIN_PrieviewTextInput(sender As Object, e As TextCompositionEventArgs) _
+        Handles TxtPIN.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
     End Sub
 
@@ -129,9 +128,7 @@ Class Page1
                     TxtPIN.Clear()
                 End If
         End Select
-
     End Sub
-
 
 
     Private Sub ClearDots()
@@ -148,6 +145,7 @@ Class Page1
     End Sub
 
 #Region "NumberPad Button Click Events"
+
     Private Sub BtnZero_Click(sender As Object, e As RoutedEventArgs) Handles btnZero.Click
         AddNumberToPIN(0)
     End Sub
@@ -187,5 +185,6 @@ Class Page1
     Private Sub BtnNine_Click(sender As Object, e As RoutedEventArgs) Handles btnNine.Click
         AddNumberToPIN(9)
     End Sub
+
 #End Region
 End Class

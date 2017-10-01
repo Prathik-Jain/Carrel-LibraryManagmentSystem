@@ -12,11 +12,12 @@
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextElement.FontFamily="Roboto"
-        TextOptions.TextFormattingMode="Ideal" 
-        TextOptions.TextRenderingMode="Auto"        
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="LibManager" MinHeight="500" MinWidth="800" MaxHeight="500" Visibility="Visible" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="LibManager" MinHeight="500" MinWidth="800" MaxHeight="500" Visibility="Visible" WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
     <!-- <Window.Resources>
         <Storyboard x:Key="showWin" Storyboard.TargetName="btn1">
             <DoubleAnimation Storyboard.TargetName="btn1" Storyboard.TargetProperty="Width" Duration="0:0:.5" To="150" BeginTime="0:0:2"/>
@@ -35,19 +36,22 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="125"/>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="125" />
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="125" />
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="100" />
             <RowDefinition Height="350" />
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="100" />
         </Grid.RowDefinitions>
-        <materialDesign:Card Grid.Column="1" Grid.Row="1" Height="350" Width="250" Margin="0,0,0,0" MinHeight="350" MinWidth="250" materialDesign:ShadowAssist.ShadowDepth="Depth3" materialDesign:ColorZoneAssist.Mode="Dark">
-            <Button x:Name="btn1"  Content="Button" HorizontalAlignment="Center"   VerticalAlignment="Center"  Width="75" Click="Button_Click"/>
+        <materialDesign:Card Grid.Column="1" Grid.Row="1" Height="350" Width="250" Margin="0,0,0,0" MinHeight="350"
+                             MinWidth="250" materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                             materialDesign:ColorZoneAssist.Mode="Dark">
+            <Button x:Name="btn1" Content="Button" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75"
+                    Click="Button_Click" />
         </materialDesign:Card>
-    
+
     </Grid>
 </Window>

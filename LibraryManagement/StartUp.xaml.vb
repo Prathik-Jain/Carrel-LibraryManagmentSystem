@@ -11,6 +11,7 @@ Class StartUp
         Dim page1 As New Page1()
         Me.Content = page1
     End Sub
+
     Private Sub Me_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         'showWin = Me.Resources("showWin")
         'hideWin = Me.Resources("hideWin")
