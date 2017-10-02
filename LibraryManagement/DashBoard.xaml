@@ -125,6 +125,7 @@
 
         </materialDesign:PopupBox>
         <!--#endregion-->
+        <materialDesign:Snackbar x:Name="Snackbar" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="1" Margin="56 0 0 56" HorizontalAlignment="Center"/>  
     </Grid>
 
 </Window>
