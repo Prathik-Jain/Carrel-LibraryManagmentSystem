@@ -103,11 +103,11 @@
                                  Margin="0,0,16,10" />
 
 
-        <TextBox x:Name="txtFirstName"
+        <TextBox x:Name="TxtFirstName"
                  Grid.Row="3"
                  materialDesign:HintAssist.Hint="First Name"
                  Margin="16,10" Height="36" />
-        <TextBox x:Name="txtLastName"
+        <TextBox x:Name="TxtLastName"
                  Grid.Row="4" Grid.Column="2"
                  materialDesign:HintAssist.Hint="Last Name"
                  Margin="16,10"
@@ -120,7 +120,7 @@
                                  Grid.Row="5"
                                  Margin="0,0,16,10" />
         <!--grid.column span means it can extend upto 2 columns-->
-        <TextBox x:Name="txtPhone"
+        <TextBox x:Name="TxtPhone"
                  Grid.Row="5"
                  materialDesign:HintAssist.Hint="Phone"
                  Margin="16,10"
@@ -131,7 +131,7 @@
         <materialDesign:PackIcon Kind="SortVariant"
                                  Grid.Row="6"
                                  Margin="0,0,16,14" />
-        <ComboBox x:Name="txtDepartment"
+        <ComboBox x:Name="TxtDepartment"
                   Grid.Column="2"
                   Grid.Row="6"
                   materialDesign:HintAssist.Hint="Department"
@@ -152,7 +152,7 @@
         <materialDesign:PackIcon Kind="Details"
                                  Grid.Row="7"
                                  Margin="0,0,16,14" />
-        <ComboBox x:Name="txtSemester"
+        <ComboBox x:Name="TxtSemester"
                   Grid.Column="2"
                   Grid.Row="7"
                   materialDesign:HintAssist.Hint="Semester"
@@ -181,14 +181,14 @@
                     Width="174">
 
             <Button
-                x:Name="btnAccept"
+                x:Name="BtnAccept"
                 Style="{StaticResource MaterialDesignFlatButton}"
-                IsDefault="True"
                 Command="materialDesign:DialogHost.CloseDialogCommand"
-                Content="ACCEPT"
+                IsDefault="True"
+                Content="ADD"
                 Height="36" Width="90" />
 
-            <Button x:Name="btnCancel"
+            <Button x:Name="BtnCancel"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     IsCancel="True"
                     Command="materialDesign:DialogHost.CloseDialogCommand"
