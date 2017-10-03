@@ -71,26 +71,27 @@
 
         <!--#region Dialogs-->
         <!--BookForm Dialog-->
-        <materialDesign:DialogHost x:Name="BookForm"
+        <materialDesign:DialogHost x:Name="BookFormDialog"
                                    CloseOnClickAway="True"
                                    Grid.Row="0" Grid.RowSpan="2">
             <materialDesign:DialogHost.DialogContent>
-                <local:BookForm />
+                <local:BookForm  x:Name="BookForm"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
 
         <!--MemberForm Dialog-->
-        <materialDesign:DialogHost x:Name="MemberForm"
+        <materialDesign:DialogHost x:Name="MemberFormDialog"
                                    CloseOnClickAway="True"
                                    Grid.Row="0" Grid.RowSpan="2">
             <materialDesign:DialogHost.DialogContent>
-                <local:MemberForm />
+                <local:MemberForm x:Name="MemberForm"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
         <!--#endregion-->
 
         <!--FAB Popup-->
-        <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
+        <materialDesign:PopupBox x:Name="FAB"
+                                 Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
                                  PlacementMode="TopAndAlignCentres"
                                  HorizontalAlignment="Right"
                                  VerticalAlignment="Bottom"
@@ -99,8 +100,7 @@
                                  Grid.Row="1">
 
             <StackPanel>
-                <Button x:Name="BtnMember"
-                        Click="BtnMember_OnClick"
+                <Button x:Name="BtnAddMember"
                         Height="32"
                         Width="32"
                         Margin="8"
@@ -111,8 +111,7 @@
                         Style="{StaticResource MaterialDesignFloatingActionLightButton}">
                     <materialDesign:PackIcon Kind="Account" />
                 </Button>
-                <Button x:Name="BtnBook"
-                        Click="BtnBook_OnClick"
+                <Button x:Name="BtnAddBook"
                         Width="32"
                         Height="32"
                         Margin="8"
@@ -126,6 +125,7 @@
 
         </materialDesign:PopupBox>
         <!--#endregion-->
+        <materialDesign:Snackbar x:Name="Snackbar" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="1" Margin="56 0 0 56" HorizontalAlignment="Center"/>  
     </Grid>
 
 </Window>

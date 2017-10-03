@@ -115,6 +115,7 @@
     </ApplicationDefinition>
     <Compile Include="AdminQR.vb" />
     <Compile Include="Camera.vb" />
+    <Compile Include="Class\Member.vb" />
     <Compile Include="DashBoard.xaml.vb">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
@@ -128,6 +129,7 @@
     </Compile>
     <Compile Include="QRDecoder.vb" />
     <Compile Include="Sevices\AdminService.vb" />
+    <Compile Include="Sevices\MemberService.vb" />
     <Compile Include="StartUp.xaml.vb">
       <DependentUpon>StartUp.xaml</DependentUpon>
     </Compile>

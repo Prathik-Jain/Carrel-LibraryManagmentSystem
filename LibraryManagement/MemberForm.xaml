@@ -40,9 +40,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="32" />
             <ColumnDefinition Width="56" />
-            <ColumnDefinition Width="136" />
-            <ColumnDefinition Width="136" />
+            <ColumnDefinition Width="272" />
             <ColumnDefinition Width="48" />
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="48" />
@@ -60,23 +60,32 @@
         <!--#endregion-->
 
         <!--#region Image attachment-->
-        <Ellipse
-            Fill="#cccccc"
+        <Image
+            
             HorizontalAlignment="Left"
             Height="150"
             Grid.RowSpan="4"
             Grid.Column="2"
-            Stroke="#64dd17"
-            StrokeThickness="5"
             VerticalAlignment="Top"
             Width="150"
-            Margin="45,20,0,0" Grid.ColumnSpan="2" />
+            Margin="45,20,0,0" />
+        <Ellipse
+             HorizontalAlignment="Left"
+            Stroke="#64dd17"
+            StrokeThickness="5"
+            Height="150"
+            Grid.RowSpan="4"
+            Grid.Column="2"
+            VerticalAlignment="Top"
+            Width="150"
+            Margin="45,20,0,0" Grid.ColumnSpan="2"
+            />
         <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Grid.Row="2"
                 Grid.Column="2"
-                Margin="62,34,42,46"
+                Margin="151,35,95,51"
                 Width="26"
-                Height="26"
+                Height="26" 
                 Grid.RowSpan="2">
             <materialDesign:PackIcon
                 Kind="Camera"
@@ -94,15 +103,13 @@
                                  Margin="0,0,16,10" />
 
 
-        <TextBox x:Name="txtFirstName"
+        <TextBox x:Name="TxtFirstName"
                  Grid.Row="3"
                  materialDesign:HintAssist.Hint="First Name"
-                 Grid.ColumnSpan="2"
                  Margin="16,10" Height="36" />
-        <TextBox x:Name="txtLastName"
+        <TextBox x:Name="TxtLastName"
                  Grid.Row="4" Grid.Column="2"
                  materialDesign:HintAssist.Hint="Last Name"
-                 Grid.ColumnSpan="2"
                  Margin="16,10"
                  Height="36" />
         <!--#endregion-->
@@ -113,10 +120,9 @@
                                  Grid.Row="5"
                                  Margin="0,0,16,10" />
         <!--grid.column span means it can extend upto 2 columns-->
-        <TextBox x:Name="txtPhone"
+        <TextBox x:Name="TxtPhone"
                  Grid.Row="5"
                  materialDesign:HintAssist.Hint="Phone"
-                 Grid.ColumnSpan="2"
                  Margin="16,10"
                  Height="36" />
         <!--#endregion-->
@@ -125,7 +131,7 @@
         <materialDesign:PackIcon Kind="SortVariant"
                                  Grid.Row="6"
                                  Margin="0,0,16,14" />
-        <ComboBox x:Name="txtDepartment"
+        <ComboBox x:Name="TxtDepartment"
                   Grid.Column="2"
                   Grid.Row="6"
                   materialDesign:HintAssist.Hint="Department"
@@ -134,7 +140,6 @@
                   VerticalAlignment="Center"
                   MinHeight="24"
                   MinWidth="240"
-                  Grid.ColumnSpan="2"
                   Height="28">
             <ComboBoxItem Content="BCA" />
             <ComboBoxItem Content="B.Com" />
@@ -147,12 +152,15 @@
         <materialDesign:PackIcon Kind="Details"
                                  Grid.Row="7"
                                  Margin="0,0,16,14" />
-        <ComboBox x:Name="txtSemester"
+        <ComboBox x:Name="TxtSemester"
                   Grid.Column="2"
                   Grid.Row="7"
                   materialDesign:HintAssist.Hint="Semester"
                   IsEditable="True"
-                  Margin="16,14" VerticalAlignment="Center" MinHeight="24" MinWidth="240" Grid.ColumnSpan="2"
+                  Margin="16,14" 
+                  VerticalAlignment="Center" 
+                  MinHeight="24" 
+                  MinWidth="240" 
                   Height="28">
             <ComboBoxItem Content="1" />
             <ComboBoxItem Content="2" />
@@ -169,25 +177,25 @@
                     Grid.Row="9" Grid.Column="2"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Right"
-                    Grid.ColumnSpan="2"
                     Height="36"
                     Width="174">
 
             <Button
-                x:Name="btnAccept"
+                x:Name="BtnAccept"
                 Style="{StaticResource MaterialDesignFlatButton}"
-                IsDefault="True"
                 Command="materialDesign:DialogHost.CloseDialogCommand"
-                Content="ACCEPT"
+                IsDefault="True"
+                Content="ADD"
                 Height="36" Width="90" />
 
-            <Button x:Name="btnCancel"
+            <Button x:Name="BtnCancel"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     IsCancel="True"
                     Command="materialDesign:DialogHost.CloseDialogCommand"
                     Content="CANCEL"
                     Height="36" MinWidth="64" />
         </StackPanel>
+
         <!--#endregion-->
 
 
