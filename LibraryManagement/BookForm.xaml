@@ -71,7 +71,7 @@
         <!--#region  ISBN-->
         <materialDesign:PackIcon Kind="BarcodeScan"
                                  Grid.Row="1" Margin="0,0,16,10" />
-        <TextBox x:Name="txtISBN"
+        <TextBox x:Name="TxtISBN"
                  Grid.Row="1"
                  materialDesign:HintAssist.Hint="ISBN Number" />
         <!--#endregion-->
@@ -79,7 +79,7 @@
         <!--#region Name-->
         <materialDesign:PackIcon Kind="BookVariant"
                                  Grid.Row="2" Margin="0,0,16,10" />
-        <TextBox x:Name="txtName"
+        <TextBox x:Name="TxtName"
                  Grid.Row="2"
                  materialDesign:HintAssist.Hint="Name" />
         <!--#endregion-->
@@ -87,16 +87,12 @@
         <!--#region Author-->
         <materialDesign:PackIcon Kind="AccountMultiple"
                                  Grid.Row="3" Margin="0,0,16,14" />
-        <ComboBox x:Name="txtAuthor"
+        <ComboBox x:Name="TxtAuthor"
                   Grid.Column="2" Grid.Row="3"
                   materialDesign:HintAssist.Hint="Authors"
                   IsEditable="True"
-                  Margin="16 0" VerticalAlignment="Center" MinHeight="24" MinWidth="240">
-            <ComboBoxItem>Dr.M.A.Rama</ComboBoxItem>
-            <ComboBoxItem>E.Balaguruswamy</ComboBoxItem>
-            <ComboBoxItem>Srikanth.S</ComboBoxItem>
-            <ComboBoxItem>Forouzan</ComboBoxItem>
-        </ComboBox>
+                  Margin="16 0" VerticalAlignment="Center" MinHeight="24" MinWidth="240"/>
+
         <!--#endregion-->
 
         <!--#region Publisher-->
@@ -110,7 +106,7 @@
         <!--#region Price-->
         <materialDesign:PackIcon Kind="CurrencyInr"
                                  Grid.Row="5" Margin="0,0,16,10" />
-        <TextBox x:Name="txtPrice"
+        <TextBox x:Name="TxtPrice"
                  Grid.Row="5"
                  materialDesign:HintAssist.Hint="Price" />
         <!--#endregion-->
@@ -118,7 +114,7 @@
         <!--#region Edition-->
         <materialDesign:PackIcon Kind="NotificationClearAll"
                                  Grid.Row="6" Margin="0,0,16,10" />
-        <TextBox x:Name="txtEdition"
+        <TextBox x:Name="TxtEdition"
                  Grid.Row="6"
                  materialDesign:HintAssist.Hint="Edition" />
         <!--#endregion-->
@@ -126,7 +122,7 @@
         <!--#region Rack-->
         <materialDesign:PackIcon Kind="ViewStream"
                                  Grid.Row="7" Margin="0,0,16,10" />
-        <TextBox x:Name="txtRack"
+        <TextBox x:Name="TxtRack"
                  Grid.Row="7"
                  materialDesign:HintAssist.Hint="Rack" />
         <!--#endregion-->
@@ -134,7 +130,7 @@
         <!--#region No of Books-->
         <materialDesign:PackIcon Kind="BookMultiple"
                                  Grid.Row="8" Margin="0,0,16,10" />
-        <TextBox x:Name="txtNoofBooks"
+        <TextBox x:Name="TxtBooks"
                  Grid.Row="8"
                  materialDesign:HintAssist.Hint="No of Books" />
         <!--#endregion-->
@@ -146,14 +142,14 @@
                     HorizontalAlignment="Right">
 
             <Button
-                x:Name="btnAccept"
+                x:Name="BtnAccept"
                 Style="{StaticResource MaterialDesignFlatButton}"
                 IsDefault="True"
                 Command="materialDesign:DialogHost.CloseDialogCommand"
-                Content="ACCEPT"
+                Content="ADD"
                 Height="36" Width="90" />
 
-            <Button x:Name="btnCancel"
+            <Button x:Name="BtnCancle"
                     IsCancel="True"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     Command="materialDesign:DialogHost.CloseDialogCommand"
