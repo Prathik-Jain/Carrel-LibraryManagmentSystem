@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Card"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+             xmlns:local="clr-namespace:Carrel"
+             mc:Ignorable="d" 
+             d:DesignHeight="204" d:DesignWidth="323.49"
+              Background="{DynamicResource MaterialDesignPaper}">
+    
+    <Grid>
+
+
+        <Label x:Name="TxtName"
+                 Width="170"
+                 materialDesign:HintAssist.Hint="Name"
+                 Margin="112,111,11,57"
+                 Height="36" />
+        <Label x:Name="TxtDepartment"
+                 Width="170"
+                 materialDesign:HintAssist.Hint="Department"
+                 Margin="110,147,13,21"
+                 Height="36" />
+        <Label x:Name="TxtPhone"
+                 Width="170"
+                 materialDesign:HintAssist.Hint="Phone"
+                 Margin="112,70,11,98"
+                 Height="36" />
+        <Label x:Name="TxtUID"
+                 Width="170"
+                 materialDesign:HintAssist.Hint="UID"
+                 Margin="113,29,10,139"
+                 Height="36" />
+        <Image Width="100" Height="100" Margin="10,47,213,57"/>
+    </Grid>
+</UserControl>

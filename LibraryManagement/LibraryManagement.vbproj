@@ -115,6 +115,9 @@
     </ApplicationDefinition>
     <Compile Include="AdminQR.vb" />
     <Compile Include="Camera.vb" />
+    <Compile Include="Card.xaml.vb">
+      <DependentUpon>Card.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Class\Member.vb" />
     <Compile Include="DashBoard.xaml.vb">
       <DependentUpon>DashBoard.xaml</DependentUpon>
@@ -139,6 +142,10 @@
     <Compile Include="MemberForm.xaml.vb">
       <DependentUpon>MemberForm.xaml</DependentUpon>
     </Compile>
+    <Page Include="Card.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DashBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
