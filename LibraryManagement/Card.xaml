@@ -4,35 +4,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-
              xmlns:local="clr-namespace:Carrel"
-             mc:Ignorable="d" 
-             d:DesignHeight="204" d:DesignWidth="323.49"
-              Background="{DynamicResource MaterialDesignPaper}">
-    
+             mc:Ignorable="d"
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextElement.FontFamily="Roboto"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             FontFamily="{DynamicResource MaterialDesignFont}" Height="267.75" Width="473.09">
     <Grid>
 
-
-        <Label x:Name="TxtName"
+        <Label x:Name="LblName"
                  Width="170"
                  materialDesign:HintAssist.Hint="Name"
-                 Margin="112,111,11,57"
-                 Height="36" />
-        <Label x:Name="TxtDepartment"
+                 Margin="0,135,38,97"
+                 Height="36" HorizontalAlignment="Right" d:LayoutOverrides="Width" />
+        <Label x:Name="LblDepartment"
                  Width="170"
                  materialDesign:HintAssist.Hint="Department"
-                 Margin="110,147,13,21"
-                 Height="36" />
-        <Label x:Name="TxtPhone"
+                 Margin="0,171,40,61"
+                 Height="36" HorizontalAlignment="Right" d:LayoutOverrides="Width" />
+        <Label x:Name="LblPhone"
                  Width="170"
                  materialDesign:HintAssist.Hint="Phone"
-                 Margin="112,70,11,98"
-                 Height="36" />
-        <Label x:Name="TxtUID"
+                 Margin="0,94,38,0"
+                 Height="36" HorizontalAlignment="Right" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" />
+        <Label x:Name="LblUID"
                  Width="170"
                  materialDesign:HintAssist.Hint="UID"
-                 Margin="113,29,10,139"
-                 Height="36" />
-        <Image Width="100" Height="100" Margin="10,47,213,57"/>
+                 Margin="0,53,37,179"
+                 Height="36" HorizontalAlignment="Right" d:LayoutOverrides="Width" />
+        <Image x:Name="ImgQR" Width="200" Height="200" Margin="10,37,263,31"/>
     </Grid>
 </UserControl>
