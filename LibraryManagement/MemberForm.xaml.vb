@@ -11,9 +11,10 @@ Public Class MemberForm
                 .Sem = TxtSemester.Text
                 }
         If Await MemberService.AddMember(member) Then
-            DashBoard.SnackBarMessageQueue.Enqueue("Registered "+ TxtFirstName.Text+ " as Member.", "UNDO", Sub()
-                MsgBox("Undo Clicked")
-            End Sub)
+            DashBoard.SnackBarMessageQueue.Enqueue("Registered "+ TxtFirstName.Text+ " as Member.", "CARD",Sub ()
+                                                                                                              Dim card As New Card
+                                                                                                               card.UpdateCard
+                                                                                                           End Sub)
         Else
             DashBoard.SnackBarMessageQueue.Enqueue("Failed registering "+ TxtFirstName.Text) 
         End If
