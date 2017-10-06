@@ -113,7 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdminQR.vb" />
+    <Compile Include="CardHolder.xaml.vb">
+      <DependentUpon>CardHolder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Class\Admin.vb" />
     <Compile Include="Camera.vb" />
     <Compile Include="Card.xaml.vb">
       <DependentUpon>Card.xaml</DependentUpon>
@@ -143,6 +146,10 @@
       <DependentUpon>MemberForm.xaml</DependentUpon>
     </Compile>
     <Page Include="Card.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CardHolder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
