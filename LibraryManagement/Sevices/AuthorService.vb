@@ -18,4 +18,12 @@ Public Class AuthorService
         connection.Close()
         Return Authors
     End Function
+
+    Friend Sub AddAuthor(AUTHOR As String)
+   Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = new SqlCommand("INSERT INTO AUTHOR VALUES ('"+AUTHOR+"')" ,connection)
+        connection.Open()
+        query.ExecuteNonQueryAsync()
+        query.Connection.Close()
+    End Sub
 End Class
