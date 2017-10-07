@@ -34,8 +34,10 @@
             <Setter Property="MinHeight" Value="24" />
             <Setter Property="MinWidth" Value="240" />
         </Style>
+
     </UserControl.Resources>
     <Grid>
+
         <!--#region Row & Column Definition-->
 
         <Grid.ColumnDefinitions>
@@ -53,6 +55,8 @@
             <RowDefinition Height="56" />
             <RowDefinition Height="56" />
             <RowDefinition Height="56" />
+            <RowDefinition Height="auto"/>
+
             <RowDefinition Height="56" />
             <RowDefinition Height="56" />
             <RowDefinition Height="56" />
@@ -79,65 +83,94 @@
         <!--#region Name-->
         <materialDesign:PackIcon Kind="BookVariant"
                                  Grid.Row="2" Margin="0,0,16,10" />
-        <TextBox x:Name="TxtName"
+        <TextBox x:Name="TxtTitle"
                  Grid.Row="2"
-                 materialDesign:HintAssist.Hint="Name" />
+                 materialDesign:HintAssist.Hint="Title" />
         <!--#endregion-->
 
         <!--#region Author-->
         <materialDesign:PackIcon Kind="AccountMultiple"
                                  Grid.Row="3" Margin="0,0,16,14" />
-        <ComboBox x:Name="TxtAuthor"
+        <ComboBox x:Name="CmbAuthor"
                   Grid.Column="2" Grid.Row="3"
                   materialDesign:HintAssist.Hint="Authors"
                   IsEditable="True"
                   Margin="16 0" VerticalAlignment="Center" MinHeight="24" MinWidth="240"/>
 
         <!--#endregion-->
+        <!--#region Author-->
+
+        <ListBox x:Name="LstAuthor"
+                  Grid.Column="2" Grid.Row="4"
+                    SelectionMode="Extended"
+                  ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.PanningMode="HorizontalFirst"
+                  Margin="0 0" VerticalAlignment="Center" IsTabStop="False" MinWidth="240" Focusable="False" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <materialDesign:Chip Content="{Binding}" 
+                                           IsDeletable="True"
+                                             Padding="0"
+                                             Focusable="False"
+                                             IsTabStop="False"
+                                 Margin="0 0 0 0"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" Focusable="False" MaxWidth="240"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+        </ListBox>
+
+        <!--#endregion-->
 
         <!--#region Publisher-->
         <materialDesign:PackIcon Kind="Store"
-                                 Grid.Row="4" Margin="0,0,16,10" />
-        <TextBox x:Name="PublisherTextBox"
-                 Grid.Row="4"
+                                 Grid.Row="5" Margin="0,0,16,10" />
+        <TextBox x:Name="TxtPublisher"
+                 Grid.Row="5"
                  materialDesign:HintAssist.Hint="Publisher" />
         <!--#endregion-->
 
         <!--#region Price-->
         <materialDesign:PackIcon Kind="CurrencyInr"
-                                 Grid.Row="5" Margin="0,0,16,10" />
+                                 Grid.Row="6" Margin="0,0,16,10" />
         <TextBox x:Name="TxtPrice"
-                 Grid.Row="5"
+                 Grid.Row="6"
                  materialDesign:HintAssist.Hint="Price" />
         <!--#endregion-->
 
         <!--#region Edition-->
         <materialDesign:PackIcon Kind="NotificationClearAll"
-                                 Grid.Row="6" Margin="0,0,16,10" />
+                                 Grid.Row="7" Margin="0,0,16,10" />
         <TextBox x:Name="TxtEdition"
-                 Grid.Row="6"
+                 Grid.Row="7"
                  materialDesign:HintAssist.Hint="Edition" />
         <!--#endregion-->
 
         <!--#region Rack-->
         <materialDesign:PackIcon Kind="ViewStream"
-                                 Grid.Row="7" Margin="0,0,16,10" />
+                                 Grid.Row="8" Margin="0,0,16,10" />
         <TextBox x:Name="TxtRack"
-                 Grid.Row="7"
+                 Grid.Row="8"
                  materialDesign:HintAssist.Hint="Rack" />
         <!--#endregion-->
 
         <!--#region No of Books-->
         <materialDesign:PackIcon Kind="BookMultiple"
-                                 Grid.Row="8" Margin="0,0,16,10" />
-        <TextBox x:Name="TxtBooks"
-                 Grid.Row="8"
+                                 Grid.Row="9" Margin="0,0,16,10" />
+        <TextBox x:Name="TxtNumber"
+                 Grid.Row="9"
                  materialDesign:HintAssist.Hint="No of Books" />
         <!--#endregion-->
 
         <!--#region Buttons-->
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="10" Grid.Column="2"
+                    Grid.Row="11" Grid.Column="2"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Right">
 
