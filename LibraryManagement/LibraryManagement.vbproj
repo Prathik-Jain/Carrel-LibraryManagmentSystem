@@ -130,6 +130,7 @@
     <Compile Include="QRDecoder.vb" />
     <Compile Include="Sevices\AdminService.vb" />
     <Compile Include="Sevices\AuthorService.vb" />
+    <Compile Include="Sevices\BookService.vb" />
     <Compile Include="Sevices\MemberService.vb" />
     <Compile Include="StartUp.xaml.vb">
       <DependentUpon>StartUp.xaml</DependentUpon>
