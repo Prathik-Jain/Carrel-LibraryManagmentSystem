@@ -16,26 +16,126 @@
              FontFamily="{DynamicResource MaterialDesignFont}" Height="267.75" Width="473.09">
     <Grid>
 
-        <Label x:Name="LblName"
-                 Width="170"
-                 materialDesign:HintAssist.Hint="Name"
-                 Margin="0,135,38,97"
-                 Height="36" HorizontalAlignment="Right" d:LayoutOverrides="Width" />
-        <Label x:Name="LblDepartment"
-                 Width="170"
-                 materialDesign:HintAssist.Hint="Department"
-                 Margin="0,171,40,61"
-                 Height="36" HorizontalAlignment="Right" d:LayoutOverrides="Width" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="56"/>
+            <ColumnDefinition Width="*"/>
+
+            <ColumnDefinition Width="16"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="16"/>
+        </Grid.RowDefinitions>
+
+
+        <materialDesign:PackIcon Kind="Phone" 
+                                 Width="24" 
+                                 Height="24" 
+                                 Grid.Column="2" 
+                                 Grid.Row="4" 
+                                 Margin="0,0,16,10" 
+                                 HorizontalAlignment="Right" 
+                                 VerticalAlignment="Bottom"/>
+
         <Label x:Name="LblPhone"
-                 Width="170"
+                 Width="140"
                  materialDesign:HintAssist.Hint="Phone"
-                 Margin="0,94,38,0"
-                 Height="36" HorizontalAlignment="Right" VerticalAlignment="Top" d:LayoutOverrides="Width, Height" />
+                 Margin="0,0,15,10"
+                 Height="36" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="4" VerticalAlignment="Bottom" />
+
+        <materialDesign:PackIcon Kind="School" 
+                                 Width="24" 
+                                 Height="24" 
+                                 Grid.Column="2"
+                                 Grid.Row="3" Margin="0,0,21,10" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+
+        <Label x:Name="LblDepartment"
+                 Width="140"
+                 materialDesign:HintAssist.Hint="Department"
+                 Margin="0,0,15,10"
+                 Height="36" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="3" VerticalAlignment="Bottom" />
+        <Label x:Name="LblName"
+                 Width="200"
+                 materialDesign:HintAssist.Hint="Name"
+                 Margin="0,10,10,0"
+                 Height="36" 
+                 HorizontalAlignment="Right" 
+                 VerticalAlignment="Top" 
+                 Grid.ColumnSpan="2" 
+                 Grid.Column="2" 
+                 Grid.Row="2" />
         <Label x:Name="LblUID"
                  Width="170"
                  materialDesign:HintAssist.Hint="UID"
-                 Margin="0,53,37,179"
-                 Height="36" HorizontalAlignment="Right" d:LayoutOverrides="Width" />
-        <Image x:Name="ImgQR" Width="200" Height="200" Margin="10,37,263,31"/>
+                 Margin="0,38,10,0"
+                 Height="30" 
+                 HorizontalAlignment="Right" 
+                 Grid.Column="1" 
+                 Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top" />
+        <Image x:Name="ImgQR" 
+               Width="180" 
+               Height="180" 
+               Margin="0,0,40,44" 
+               Grid.Column="1" 
+               Grid.Row="1" 
+               Grid.RowSpan="4"
+               
+               />
+        <Viewbox Stretch="Uniform"/>
+        <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Name="svg4577" Grid.ColumnSpan="3" Margin="40,-55,7,10" Grid.RowSpan="6" Grid.Column="2" >
+            <Canvas.Resources>
+                <EllipseGeometry xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="clipPath4609" Center="3.582546,195.44836" RadiusX="80.2817" RadiusY="80.2817"/>
+                <EllipseGeometry xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="clipPath4848" Center="3.582546,195.44836" RadiusX="80.2817" RadiusY="80.2817"/>
+            </Canvas.Resources>
+            <Canvas.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </Canvas.RenderTransform>
+            <!--Unknown tag: sodipodi:namedview-->
+            <!--Unknown tag: metadata-->
+            <Canvas x:Name="layer1">
+                <Canvas x:Name="g4621" Opacity="1">
+                    <Canvas.RenderTransform>
+                        <MatrixTransform Matrix="0.81823161 0 0 0.81823161 106.30021 -40.352493"/>
+                    </Canvas.RenderTransform>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4613" Fill="#FF000000" StrokeThickness="0.24299616" Opacity="0.82099998" Data="m -76.729171 115.91728 c -8.55486 -1.49394 -13.670136 1.63348 -22.224996 7.88834 v 39.42292 c 11.822329 -8.54044 17.458202 -8.16618 25.66458 -8.15292 z">
+                        <Path.RenderTransform>
+                            <TranslateTransform X="88.106252" Y="33.602084"/>
+                        </Path.RenderTransform>
+                    </Path>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4615" Fill="#FF000000" StrokeThickness="0.24299616" Opacity="0.82099998" Data="m -122.23751 115.91728 c 8.55486 -1.49394 13.67014 1.63348 22.225 7.88834 v 39.42292 c -11.82233 -8.54044 -17.4582 -8.16618 -25.66458 -8.15292 z">
+                        <Path.RenderTransform>
+                            <TranslateTransform X="88.106252" Y="33.602084"/>
+                        </Path.RenderTransform>
+                    </Path>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4617" Fill="#FF000000" StrokeThickness="0.25031665" Opacity="1" Data="m -44.805017 153.99215 -2.731617 34.84748 c -0.02935 -0.0184 -0.0592 -0.0354 -0.08837 -0.0543 v 1.18391 l -0.161232 2.05724 3.149679 0.1974 c 11.038356 1.07637 17.569794 3.13556 29.290719 8.73229 -11.592918 -11.32823 -20.566047 -10.06618 -27.000935 -10.65155 l 2.8205 -35.98126 z"/>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4619" Fill="#FF000000" StrokeThickness="0.25031665" Opacity="1" Data="m 20.566703 154.52132 2.731616 34.84749 c 0.02935 -0.0184 0.05919 -0.0354 0.08837 -0.0543 v 1.1839 l 0.161231 2.05724 -3.149679 0.19741 C 9.3598853 193.82943 2.8284484 195.88862 -8.8924776 201.48534 2.7004414 190.15712 11.673569 191.41916 18.108458 190.8338 l -2.820505 -35.98124 z"/>
+                </Canvas>
+                <Canvas x:Name="g4576">
+                    <Canvas.RenderTransform>
+                        <MatrixTransform Matrix="1.8763383 0 0 1.8763383 124.90267 -246.94359"/>
+                    </Canvas.RenderTransform>
+                </Canvas>
+                <Canvas x:Name="g45762">
+                    <Canvas.RenderTransform>
+                        <MatrixTransform Matrix="1.4958036 0 0 1.4958036 113.8032 -176.26752"/>
+                    </Canvas.RenderTransform>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4564" Fill="#FF000000" StrokeThickness="0.21656057" Data="m -25.370129 206.46822 q -0.07614 0.65137 -0.482187 1.00667 -0.403231 0.35247 -1.074342 0.35247 -0.727509 0 -1.167398 -0.52166 -0.437069 -0.52167 -0.437069 -1.3958 v -0.39477 q 0 -0.57242 0.203026 -1.00667 0.205845 -0.43425 0.580878 -0.66548 0.375033 -0.23404 0.868499 -0.23404 0.654193 0 1.048965 0.36658 0.394773 0.36375 0.459628 1.00948 h -0.544221 q -0.0705 -0.49064 -0.30736 -0.71059 -0.234041 -0.21994 -0.657012 -0.21994 -0.518842 0 -0.814922 0.38349 -0.29326 0.38349 -0.29326 1.09126 v 0.3976 q 0 0.66829 0.279162 1.06306 0.27916 0.39477 0.781084 0.39477 0.451167 0 0.69085 -0.20302 0.242503 -0.20585 0.321458 -0.71341 z"/>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4566" Fill="#FF000000" StrokeThickness="0.21656057" Data="m -19.721209 206.69944 h -1.720078 l -0.386313 1.07153 h -0.55832 l 1.567808 -4.10563 h 0.473726 l 1.57063 4.10563 h -0.555502 z m -1.556529 -0.44553 h 1.3958 l -0.699311 -1.92028 z"/>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4568" Fill="#FF000000" StrokeThickness="0.21656057" Data="m -14.069471 206.1101 h -0.964371 v 1.66087 h -0.544221 v -4.10563 h 1.359143 q 0.69367 0 1.065884 0.31581 0.375033 0.31582 0.375033 0.91926 0 0.38349 -0.208665 0.66829 -0.205845 0.2848 -0.575239 0.42579 l 0.964371 1.74264 v 0.0338 h -0.580878 z m -0.964371 -0.44271 h 0.831841 q 0.403231 0 0.640094 -0.20866 0.239683 -0.20867 0.239683 -0.55832 0 -0.38067 -0.228404 -0.5837 -0.225584 -0.20303 -0.654193 -0.20584 h -0.829021 z"/>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4570" Fill="#FF000000" StrokeThickness="0.21656057" Data="m -7.9073489 206.1101 h 0.9643713 v 1.66087 h 0.5442213 v -4.10563 h -1.3591433 q -0.6936705 0 -1.065884 0.31581 -0.3750333 0.31582 -0.3750333 0.91926 0 0.38349 0.2086652 0.66829 0.2058453 0.2848 0.575239 0.42579 l -0.9643713 1.74264 v 0.0338 h 0.5808785 z m 0.9643713 -0.44271 h -0.8318408 q -0.4032312 0 -0.6400943 -0.20866 -0.239683 -0.20867 -0.239683 -0.55832 0 -0.38067 0.2284039 -0.5837 0.2255838 -0.20303 0.6541933 -0.20584 h 0.8290209 z"/>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4572" Fill="#FF000000" StrokeThickness="0.21656057" Data="M -0.85698908 205.87324 H -2.6362826 v 1.45502 h 2.06691303 v 0.44271 H -3.177684 v -4.10563 h 2.5801163 v 0.44553 h -2.0387149 v 1.31966 h 1.77929352 z"/>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4574" Fill="#FF000000" StrokeThickness="0.21656057" Data="m 3.2946186 207.32826 h 1.9456615 v 0.44271 H 2.7503974 v -4.10563 h 0.5442212 z"/>
+                </Canvas>
+            </Canvas>
+        </Canvas>
+
     </Grid>
 </UserControl>

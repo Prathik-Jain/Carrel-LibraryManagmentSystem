@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LibraryManagement", "LibraryManagement\LibraryManagement.vbproj", "{F174BF5D-18F0-4FC2-A3AF-41FFC50453FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F54E6FFF-9497-433B-9C50-C3B9DEED2755}"
+	ProjectSection(SolutionItems) = preProject
+		LibraryManagement\NameandBook.xaml = LibraryManagement\NameandBook.xaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
