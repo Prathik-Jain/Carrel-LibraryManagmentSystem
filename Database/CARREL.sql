@@ -66,6 +66,13 @@ GO
 	);
 
 -------------------------------------------------------------------------------
+--CREATING Department Table
+	CREATE TABLE [dbo].[Dept](
+	[ID] INT NOT NULL IDENTITY,
+ 	[NAME] [NVARCHAR](MAX) NOT NULL
+	);
+
+-------------------------------------------------------------------------------
 --Creating Admin Table
 	CREATE TABLE [dbo].[Admin] (
     [ID]        [TINYINT]           NOT NULL,
