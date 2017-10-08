@@ -21,7 +21,8 @@ Public Class AuthorService
 
     Friend Sub AddAuthor(AUTHOR As String)
    Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim query = new SqlCommand("INSERT INTO AUTHOR VALUES ('"+AUTHOR+"')" ,connection)
+        Dim query = new SqlCommand("INSERT INTO AUTHOR VALUES (@Author)" ,connection)
+        query.Parameters.Add(New SqlParameter("@Author",AUTHOR))
         connection.Open()
         query.ExecuteNonQueryAsync()
         query.Connection.Close()
