@@ -156,7 +156,7 @@ GO
 				TITLE NVARCHAR(MAX) '$.Title',
 				AUTHOR NVARCHAR(MAX) '$.Author',
 				PUBLSIHER NVARCHAR(MAX) '$.Publisher',
-				EDITION TINYINT '$.Edition',
+				EDITION NCHAR(3) '$.Edition',
 				PRICE SMALLINT '$.Price',
 				RACK NVARCHAR(2) '$.Rack'
 			)
