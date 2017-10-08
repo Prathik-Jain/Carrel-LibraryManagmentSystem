@@ -125,15 +125,16 @@
                   ScrollViewer.CanContentScroll="True"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ScrollViewer.PanningMode="HorizontalFirst"
+                 
                   Margin="0 0" VerticalAlignment="Center" IsTabStop="False" MinWidth="240" Focusable="False" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <materialDesign:Chip Content="{Binding}" 
-                                           IsDeletable="True"
-                                             Padding="0"
-                                             Focusable="False"
-                                             IsTabStop="False"
-                                 Margin="0 0 0 0"/>
+                                         IsDeletable="True"
+                                         DeleteClick="RemoveAuthorFromList"
+                                         DeleteCommandParameter="{Binding ElementName=LstAuthor, Path=SelectedIndex}"
+                                         Margin="0 0 4 4">
+                    </materialDesign:Chip>
                 </DataTemplate>
             </ListBox.ItemTemplate>
 

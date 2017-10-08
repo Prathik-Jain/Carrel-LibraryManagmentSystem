@@ -91,4 +91,7 @@ Public Class BookForm
       e.Handled=  Regex.IsMatch(e.Text, "[^a-zA-Z0-9]+$")
     End Sub
     #End Region
+    Private Sub RemoveAuthorFromList (sender As Object, e As RoutedEventArgs)
+        LstAuthor.Items.Remove(sender.Content)
+    End Sub
 End Class
