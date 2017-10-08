@@ -1,4 +1,5 @@
-﻿Imports Newtonsoft.Json
+﻿Imports System.Text.RegularExpressions
+Imports Newtonsoft.Json
 Public Class BookForm
     Dim authorService As New AuthorService
     Private Sub BookForm_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
@@ -33,7 +34,7 @@ Public Class BookForm
         Book.Title = TxtTitle.Text
         Book.Author = JsonConvert.SerializeObject(LstAuthor.Items)
         Book.Publisher = TxtPublisher.Text
-        Book.Edition = TxtEdition.Text
+        Book.Edition = CmbEdition.Text
         Book.Price = TxtPrice.Text
         Book.Rack = TxtRack.Text
         Dim number As Integer = Convert.ToInt32(TxtNumber.Text)
@@ -61,4 +62,32 @@ Public Class BookForm
         Next
     End Sub
 
+    Private Sub FieldLostFocus(sender As Object, e As RoutedEventArgs)
+        Dim txt = DirectCast(sender, TextBox)
+                                txt.GetBindingExpression(TextBox.TextProperty).UpdateSource()
+    End Sub
+
+    Private Sub TxtISBN_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtISBN.PreviewTextInput
+        e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
+    End Sub
+
+    Private Sub TxtPublisher_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtPublisher.PreviewTextInput
+        e.Handled = Regex.IsMatch(e.Text, "[^a-zA-Z]+$")
+    End Sub
+
+    Private Sub TxtPrice_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtPrice.PreviewTextInput
+      e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
+    End Sub
+
+    Private Sub TxtNumber_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtNumber.PreviewTextInput
+      e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
+    End Sub
+
+    Private Sub TxtRack_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtRack.PreviewTextInput
+      e.Handled=  Regex.IsMatch(e.Text, "[^a-zA-Z0-9]+$")
+    End Sub
+
+    Private Sub TxtTitle_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtTitle.PreviewTextInput
+      e.Handled=  Regex.IsMatch(e.Text, "[^a-zA-Z0-9]+$")
+    End Sub
 End Class
