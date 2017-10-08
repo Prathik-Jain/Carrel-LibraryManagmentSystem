@@ -115,7 +115,6 @@
     </ApplicationDefinition>
     <Compile Include="AdminQR.vb" />
     <Compile Include="Camera.vb" />
-    <Compile Include="Class\Member.vb" />
     <Compile Include="DashBoard.xaml.vb">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
