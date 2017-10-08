@@ -38,7 +38,7 @@ Public Class BookForm
         Book.Rack = TxtRack.Text
         Dim number As Integer = Convert.ToInt32(TxtNumber.Text)
         If Await BookService.AddBook(Book, number) Then
-            DashBoard.SnackBarMessageQueue.Enqueue("Added  BOOKS", "UNDO", Sub()
+            DashBoard.SnackBarMessageQueue.Enqueue(TxtNumber.Text+" Book(s) Added", "UNDO", Sub()
                                                                                MsgBox("Undo Clicked")
                                                                            End Sub)
         Else
