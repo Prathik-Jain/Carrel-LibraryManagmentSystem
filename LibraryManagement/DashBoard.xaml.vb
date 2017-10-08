@@ -4,7 +4,7 @@ Public Class DashBoard
     Public Shared SnackBarMessageQueue as SnackbarMessageQueue
 
     Private Sub BtnAddBook_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddBook.Click
-
+        SnackBarMessageQueue = Snackbar.MessageQueue
         BookFormDialog.IsOpen = True
         FAB.IsEnabled = False
     End Sub

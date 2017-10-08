@@ -129,9 +129,11 @@
     <Compile Include="QRDecoder.vb" />
     <Compile Include="Sevices\AdminService.vb" />
     <Compile Include="Sevices\DepatmentService.vb" />
+    <Compile Include="Sevices\AuthorService.vb" />
+    <Compile Include="Sevices\BookService.vb" />
     <Compile Include="Sevices\MemberService.vb" />
     <Compile Include="StartUp.xaml.vb">
-      <DependentUpon>StartUp.xaml</DependentUpon>
+    <DependentUpon>StartUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="BookForm.xaml.vb">
       <DependentUpon>BookForm.xaml</DependentUpon>
@@ -139,6 +141,9 @@
     <Compile Include="MemberForm.xaml.vb">
       <DependentUpon>MemberForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validations\ISBNLength.vb" />
+    <Compile Include="Validations\None.vb" />
+    <Compile Include="Validations\NotEmpty.vb" />
     <Page Include="DashBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -218,5 +223,6 @@
   <ItemGroup>
     <None Include="Resources\ScannerBeep.wav" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
