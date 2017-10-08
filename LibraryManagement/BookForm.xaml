@@ -76,12 +76,12 @@
                  materialDesign:HintAssist.Hint="ISBN Number" />
         <!--#endregion-->
 
-        <!--#region Name-->
+        <!--#region Title-->
         <materialDesign:PackIcon Kind="BookVariant"
                                  Grid.Row="2" Margin="0,0,16,10" />
-        <TextBox x:Name="txtName"
+        <TextBox x:Name="txtTitle"
                  Grid.Row="2"
-                 materialDesign:HintAssist.Hint="Name" />
+                 materialDesign:HintAssist.Hint="Title" />
         <!--#endregion-->
 
         <!--#region Author-->
