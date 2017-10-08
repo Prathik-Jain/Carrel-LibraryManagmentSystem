@@ -73,7 +73,7 @@
          <!--#region UID-->
         <Label x:Name="LblUID" 
                  Width="250"
-                 materialDesign:HintAssist.Hint="Name"
+                 materialDesign:HintAssist.Hint="UID"
                  FontSize="25"
                  FontWeight="Bold"
                  Grid.Row="2"
@@ -95,7 +95,7 @@
                  materialDesign:HintAssist.Hint="Department"
                  Grid.Row="4"
                  Grid.Column="2" 
-                 Margin="0,10,37,0" 
+                 Margin="0,0,37,10" 
                  Height="36" />
         <!--#endregion-->
          
@@ -111,7 +111,8 @@
                  materialDesign:HintAssist.Hint="Semester"
                  Grid.Row="5"
                  Grid.Column="2"
-                 Margin="0,10,37,0" />
+                 Height="36"
+                 Margin="0,0,37,10" />
         <!--#endregion-->
         
          <!--#region Phone-->
@@ -121,10 +122,10 @@
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblPhone"
                  Width="200"
-                 materialDesign:HintAssist.Hint="Department"
+                 materialDesign:HintAssist.Hint="Phone"
                  Grid.Row="6"
                  Grid.Column="2"
-                 Height="36"  Margin="0,10,37,0"/>
+                 Height="36"  Margin="0,0,37,10"/>
         <!--#endregion-->
 
 
@@ -136,10 +137,7 @@
                 Width="15"
                 Height="14"
                 Grid.Row="0"
-                Grid.Column="5" 
-                VerticalAlignment="Bottom" 
-                HorizontalAlignment="Right" 
-                Margin="0,-3,-3,37" 
+                Grid.Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,-3,-3,37" Click="Button_Click"
                 Background="#ffffff"
                 BorderBrush="#ffffff">
             <materialDesign:PackIcon Kind="Close"
@@ -207,7 +205,6 @@
                 Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,2">
             <materialDesign:PackIcon Kind="Pencil"/>
         </Button>
-        
 
 
 

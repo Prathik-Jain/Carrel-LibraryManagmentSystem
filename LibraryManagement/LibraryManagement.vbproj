@@ -145,6 +145,12 @@
     <Compile Include="MemberForm.xaml.vb">
       <DependentUpon>MemberForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewBook.xaml.vb">
+      <DependentUpon>ViewBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMember.xaml.vb">
+      <DependentUpon>ViewMember.xaml</DependentUpon>
+    </Compile>
     <Page Include="Card.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,6 +180,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MemberForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewMember.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
