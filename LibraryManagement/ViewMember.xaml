@@ -3,10 +3,214 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Carrel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             Background="{DynamicResource MaterialDesignPaper}"
+             d:DesignHeight="590" d:DesignWidth="640">
+
+    <!--Change the Defaults-->
+    <UserControl.Resources>
+        <Style TargetType="materialDesign:PackIcon">
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontFamily" Value="roboto"/>
+
+        </Style>
+    </UserControl.Resources>
+
+
     <Grid>
-            
+        
+        <!--#region Rows and Coloumn Definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32" />
+            <ColumnDefinition Width="56" />
+            <ColumnDefinition Width="272" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="56"/>
+            <ColumnDefinition Width="32"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="32" />
+        </Grid.RowDefinitions>
+        <!--#endregion-->        
+
+        
+        <!--#region Name-->
+        <Label x:Name="LblName" 
+                 Width="300"
+                 materialDesign:HintAssist.Hint="Name"
+                 FontSize="36"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Height="50" 
+                 Grid.ColumnSpan="2"  
+                 Margin="0,6,18,0" 
+                 Foreground="#283592"
+                 />
+        <!--#endregion-->
+
+
+         <!--#region UID-->
+        <Label x:Name="LblUID" 
+                 Width="250"
+                 materialDesign:HintAssist.Hint="Name"
+                 FontSize="25"
+                 FontWeight="Bold"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Height="40" 
+                Grid.ColumnSpan="2" 
+                Margin="0,10,70,0" />
+        <!-- #endregion-->
+
+
+
+         <!--#region Department-->
+        <materialDesign:PackIcon Kind="School"
+                                 Grid.Row="4"
+                                 Grid.Column="1"
+                                 Margin="0,0,16,10"/>
+        <Label x:Name="LblDepartment"
+                 Width="200"
+                 materialDesign:HintAssist.Hint="Department"
+                 Grid.Row="4"
+                 Grid.Column="2" 
+                 Margin="0,10,37,0" 
+                 Height="36" />
+        <!--#endregion-->
+         
+        
+        <!--#region Semester-->
+        <materialDesign:PackIcon Kind="Details"
+                                 Grid.Row="5"
+                                 Grid.Column="1"
+                                 Margin="0,0,16,10"/>
+
+          <Label x:Name="LblSemester" 
+                 Width="200"
+                 materialDesign:HintAssist.Hint="Semester"
+                 Grid.Row="5"
+                 Grid.Column="2"
+                 Margin="0,10,37,0" />
+        <!--#endregion-->
+        
+         <!--#region Phone-->
+        <materialDesign:PackIcon Kind="Phone"
+                                 Grid.Row="6"
+                                 Grid.Column="1"
+                                 Margin="0,0,16,10"/>
+        <Label x:Name="LblPhone"
+                 Width="200"
+                 materialDesign:HintAssist.Hint="Department"
+                 Grid.Row="6"
+                 Grid.Column="2"
+                 Height="36"  Margin="0,10,37,0"/>
+        <!--#endregion-->
+
+
+
+
+
+         <!--#region  Close Button-->
+        <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                Width="15"
+                Height="14"
+                Grid.Row="0"
+                Grid.Column="5" 
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Right" 
+                Margin="0,-3,-3,37" 
+                Background="#ffffff"
+                BorderBrush="#ffffff">
+            <materialDesign:PackIcon Kind="Close"
+                                     Width="7.5"
+                                     Height="7.5"
+                                     Foreground="#000000"/>
+
+        </Button>
+        
+        
+        <!--#region Toggle Buttons-->
+        
+        <!--#region PrintQR-->
+        <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                          
+                          IsEnabled="True" 
+                          Margin="0,0,10,54" 
+                          Grid.Column="3" 
+                          HorizontalAlignment="Right" 
+                          VerticalAlignment="Bottom" 
+                          Grid.RowSpan="2">
+
+
+            <materialDesign:PackIcon Kind="Printer" 
+                                     Height="21" 
+                                     Width="21" 
+                                     Foreground="#283592"/>
+        </ToggleButton>
+        <!--#endregion-->
+
+         <!--#region DeleteMember-->
+        <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                          
+                          IsEnabled="True" 
+                          Margin="0,0,6,54" 
+                          Grid.Column="4" 
+                          HorizontalAlignment="Right" 
+                          VerticalAlignment="Bottom" 
+                          Grid.RowSpan="2">
+             <materialDesign:PackIcon Kind="Delete" Height="21" Width="21" Foreground="#e30101" Opacity="1" />
+        </ToggleButton>
+        <!--#endregion-->
+        
+        <!--#endregion-->
+
+
+         <!--#region  QR-->
+        <Image x:Name="ImgQR" 
+               Width="200" 
+               Height="200"
+               Grid.Row="1"
+               Grid.Column="3" 
+               Grid.ColumnSpan="2" 
+               HorizontalAlignment="Right" 
+               Margin="0,0,10,0" 
+               Grid.RowSpan="4" 
+               VerticalAlignment="Bottom"/>
+        <!--#endregion-->
+
+        <!--Fab Edit Button-->
+        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                Width="56"
+                Height="56"
+                Grid.Row="9"
+                Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,2">
+            <materialDesign:PackIcon Kind="Pencil"/>
+        </Button>
+        
+
+
+
+
     </Grid>
 </UserControl>
