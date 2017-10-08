@@ -1,7 +1,6 @@
 ﻿Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 Public Class BookForm
-    Dim authorService As New AuthorService
     Private Sub BookForm_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         CmbAuthor.ItemsSource = AuthorService.GetAuthors()
     End Sub
@@ -57,16 +56,17 @@ Public Class BookForm
                 End If
             Next
             If flag Then
-                authorService.AddAuthor(item.ToString)
+                AuthorService.AddAuthor(item.ToString)
             End If
         Next
     End Sub
-
+    #Region "ValidationOnLostFocus"
     Private Sub FieldLostFocus(sender As Object, e As RoutedEventArgs)
         Dim txt = DirectCast(sender, TextBox)
                                 txt.GetBindingExpression(TextBox.TextProperty).UpdateSource()
     End Sub
-
+    #End Region
+    #Region "InputConstraint"
     Private Sub TxtISBN_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtISBN.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
     End Sub
@@ -90,4 +90,5 @@ Public Class BookForm
     Private Sub TxtTitle_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtTitle.PreviewTextInput
       e.Handled=  Regex.IsMatch(e.Text, "[^a-zA-Z0-9]+$")
     End Sub
+    #End Region
 End Class

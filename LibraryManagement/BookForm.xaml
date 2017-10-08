@@ -34,7 +34,6 @@
             <Setter Property="MinHeight" Value="24" />
             <Setter Property="MinWidth" Value="240" />
             <EventSetter Event="LostFocus" Handler="FieldLostFocus"/>
-            <Setter Property="CharacterCasing" Value="Normal"/>
         </Style>
 
     </UserControl.Resources>
