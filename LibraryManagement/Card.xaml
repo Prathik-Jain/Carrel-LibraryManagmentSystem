@@ -13,12 +13,39 @@
              TextElement.FontFamily="Roboto"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
-             FontFamily="{DynamicResource MaterialDesignFont}" Height="267.75" Width="473.09">
+             FontFamily="{DynamicResource MaterialDesignFont}" Height="205" Width="324">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontFamily" Value="roboto"/>
+
+
+        </Style>
+        <Style TargetType="materialDesign:PackIcon">
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+
+
+        </Style>
+
+        <Style TargetType="Rectangle">
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="Width" Value="324"/>
+            <Setter Property="Fill" Value="{DynamicResource PrimaryHueMidBrush}"/>
+            <Setter Property="Grid.ColumnSpan" Value="5"/>
+        </Style>
+
+
+    </UserControl.Resources>
     <Grid>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="16"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="56"/>
             <ColumnDefinition Width="*"/>
 
@@ -27,70 +54,85 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="16"/>
+
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
+
+
             <RowDefinition Height="56"/>
-            <RowDefinition Height="56"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="16"/>
         </Grid.RowDefinitions>
 
 
         <materialDesign:PackIcon Kind="Phone" 
-                                 Width="24" 
-                                 Height="24" 
                                  Grid.Column="2" 
-                                 Grid.Row="4" 
-                                 Margin="0,0,16,10" 
-                                 HorizontalAlignment="Right" 
-                                 VerticalAlignment="Bottom"/>
+                                 Grid.Row="3" 
+                                 Margin="0,0,20,10"/>
+
 
         <Label x:Name="LblPhone"
-                 Width="140"
+                 Width="93"
                  materialDesign:HintAssist.Hint="Phone"
-                 Margin="0,0,15,10"
-                 Height="36" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="4" VerticalAlignment="Bottom" />
+                 Margin="0,0,9,15"
+                 Grid.Column="3" 
+                 Grid.Row="3" 
+                 Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+
+
 
         <materialDesign:PackIcon Kind="School" 
-                                 Width="24" 
-                                 Height="24" 
+                                
                                  Grid.Column="2"
-                                 Grid.Row="3" Margin="0,0,21,10" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                                 Grid.Row="2" Margin="0,0,20,0" />
+
+
 
         <Label x:Name="LblDepartment"
-                 Width="140"
+                 Width="120"
                  materialDesign:HintAssist.Hint="Department"
-                 Margin="0,0,15,10"
-                 Height="36" HorizontalAlignment="Right" Grid.Column="3" Grid.Row="3" VerticalAlignment="Bottom" />
-        <Label x:Name="LblName"
-                 Width="200"
+                 Margin="0,0,-18,45"
+                 Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+
+
+        <Label x:Name="LblName" 
+                 Width="120"
                  materialDesign:HintAssist.Hint="Name"
-                 Margin="0,10,10,0"
-                 Height="36" 
-                 HorizontalAlignment="Right" 
-                 VerticalAlignment="Top" 
+                 FontSize="18"
+                 FontWeight="Bold"
+                 Margin="0,0,10,24"
                  Grid.ColumnSpan="2" 
                  Grid.Column="2" 
-                 Grid.Row="2" />
+                 Grid.Row="1"  
+                 Grid.RowSpan="2"
+                 Content="fjgn"/>
+
+
         <Label x:Name="LblUID"
-                 Width="170"
+                 Width="100"
                  materialDesign:HintAssist.Hint="UID"
-                 Margin="0,38,10,0"
-                 Height="30" 
-                 HorizontalAlignment="Right" 
-                 Grid.Column="1" 
-                 Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top" />
+                 Margin="0,0,21,0"
+                 Grid.Row="3"
+                 Grid.RowSpan="2" 
+                 Grid.Column="1"
+                 FontSize="14"
+                 FontWeight="Bold"/>
+
         <Image x:Name="ImgQR" 
-               Width="180" 
-               Height="180" 
-               Margin="0,0,40,44" 
-               Grid.Column="1" 
-               Grid.Row="1" 
-               Grid.RowSpan="4"
-               
-               />
-        <Viewbox Stretch="Uniform"/>
-        <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Name="svg4577" Grid.ColumnSpan="3" Margin="40,-55,7,10" Grid.RowSpan="6" Grid.Column="2" >
+               Width="150" 
+               Height="150" 
+               Margin="0,2,0,19" 
+               Grid.RowSpan="3" Grid.Column="1" Grid.Row="1" />
+
+        <Rectangle Margin="0,0,0,6"/>
+        <Rectangle Grid.Row="4" Margin="0,7,0,0"/>
+
+
+
+
+
+
+
+        <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" x:Name="svg4577" Margin="128,-65,47,61" Grid.Column="1" Grid.ColumnSpan="2">
             <Canvas.Resources>
                 <EllipseGeometry xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="clipPath4609" Center="3.582546,195.44836" RadiusX="80.2817" RadiusY="80.2817"/>
                 <EllipseGeometry xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="clipPath4848" Center="3.582546,195.44836" RadiusX="80.2817" RadiusY="80.2817"/>
@@ -101,22 +143,10 @@
             <!--Unknown tag: sodipodi:namedview-->
             <!--Unknown tag: metadata-->
             <Canvas x:Name="layer1">
-                <Canvas x:Name="g4621" Opacity="1">
+                <Canvas x:Name="g4621" Opacity="1" >
                     <Canvas.RenderTransform>
                         <MatrixTransform Matrix="0.81823161 0 0 0.81823161 106.30021 -40.352493"/>
                     </Canvas.RenderTransform>
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4613" Fill="#FF000000" StrokeThickness="0.24299616" Opacity="0.82099998" Data="m -76.729171 115.91728 c -8.55486 -1.49394 -13.670136 1.63348 -22.224996 7.88834 v 39.42292 c 11.822329 -8.54044 17.458202 -8.16618 25.66458 -8.15292 z">
-                        <Path.RenderTransform>
-                            <TranslateTransform X="88.106252" Y="33.602084"/>
-                        </Path.RenderTransform>
-                    </Path>
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4615" Fill="#FF000000" StrokeThickness="0.24299616" Opacity="0.82099998" Data="m -122.23751 115.91728 c 8.55486 -1.49394 13.67014 1.63348 22.225 7.88834 v 39.42292 c -11.82233 -8.54044 -17.4582 -8.16618 -25.66458 -8.15292 z">
-                        <Path.RenderTransform>
-                            <TranslateTransform X="88.106252" Y="33.602084"/>
-                        </Path.RenderTransform>
-                    </Path>
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4617" Fill="#FF000000" StrokeThickness="0.25031665" Opacity="1" Data="m -44.805017 153.99215 -2.731617 34.84748 c -0.02935 -0.0184 -0.0592 -0.0354 -0.08837 -0.0543 v 1.18391 l -0.161232 2.05724 3.149679 0.1974 c 11.038356 1.07637 17.569794 3.13556 29.290719 8.73229 -11.592918 -11.32823 -20.566047 -10.06618 -27.000935 -10.65155 l 2.8205 -35.98126 z"/>
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4619" Fill="#FF000000" StrokeThickness="0.25031665" Opacity="1" Data="m 20.566703 154.52132 2.731616 34.84749 c 0.02935 -0.0184 0.05919 -0.0354 0.08837 -0.0543 v 1.1839 l 0.161231 2.05724 -3.149679 0.19741 C 9.3598853 193.82943 2.8284484 195.88862 -8.8924776 201.48534 2.7004414 190.15712 11.673569 191.41916 18.108458 190.8338 l -2.820505 -35.98124 z"/>
                 </Canvas>
                 <Canvas x:Name="g4576">
                     <Canvas.RenderTransform>
@@ -127,15 +157,14 @@
                     <Canvas.RenderTransform>
                         <MatrixTransform Matrix="1.4958036 0 0 1.4958036 113.8032 -176.26752"/>
                     </Canvas.RenderTransform>
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4564" Fill="#FF000000" StrokeThickness="0.21656057" Data="m -25.370129 206.46822 q -0.07614 0.65137 -0.482187 1.00667 -0.403231 0.35247 -1.074342 0.35247 -0.727509 0 -1.167398 -0.52166 -0.437069 -0.52167 -0.437069 -1.3958 v -0.39477 q 0 -0.57242 0.203026 -1.00667 0.205845 -0.43425 0.580878 -0.66548 0.375033 -0.23404 0.868499 -0.23404 0.654193 0 1.048965 0.36658 0.394773 0.36375 0.459628 1.00948 h -0.544221 q -0.0705 -0.49064 -0.30736 -0.71059 -0.234041 -0.21994 -0.657012 -0.21994 -0.518842 0 -0.814922 0.38349 -0.29326 0.38349 -0.29326 1.09126 v 0.3976 q 0 0.66829 0.279162 1.06306 0.27916 0.39477 0.781084 0.39477 0.451167 0 0.69085 -0.20302 0.242503 -0.20585 0.321458 -0.71341 z"/>
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4566" Fill="#FF000000" StrokeThickness="0.21656057" Data="m -19.721209 206.69944 h -1.720078 l -0.386313 1.07153 h -0.55832 l 1.567808 -4.10563 h 0.473726 l 1.57063 4.10563 h -0.555502 z m -1.556529 -0.44553 h 1.3958 l -0.699311 -1.92028 z"/>
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4568" Fill="#FF000000" StrokeThickness="0.21656057" Data="m -14.069471 206.1101 h -0.964371 v 1.66087 h -0.544221 v -4.10563 h 1.359143 q 0.69367 0 1.065884 0.31581 0.375033 0.31582 0.375033 0.91926 0 0.38349 -0.208665 0.66829 -0.205845 0.2848 -0.575239 0.42579 l 0.964371 1.74264 v 0.0338 h -0.580878 z m -0.964371 -0.44271 h 0.831841 q 0.403231 0 0.640094 -0.20866 0.239683 -0.20867 0.239683 -0.55832 0 -0.38067 -0.228404 -0.5837 -0.225584 -0.20303 -0.654193 -0.20584 h -0.829021 z"/>
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4570" Fill="#FF000000" StrokeThickness="0.21656057" Data="m -7.9073489 206.1101 h 0.9643713 v 1.66087 h 0.5442213 v -4.10563 h -1.3591433 q -0.6936705 0 -1.065884 0.31581 -0.3750333 0.31582 -0.3750333 0.91926 0 0.38349 0.2086652 0.66829 0.2058453 0.2848 0.575239 0.42579 l -0.9643713 1.74264 v 0.0338 h 0.5808785 z m 0.9643713 -0.44271 h -0.8318408 q -0.4032312 0 -0.6400943 -0.20866 -0.239683 -0.20867 -0.239683 -0.55832 0 -0.38067 0.2284039 -0.5837 0.2255838 -0.20303 0.6541933 -0.20584 h 0.8290209 z"/>
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4572" Fill="#FF000000" StrokeThickness="0.21656057" Data="M -0.85698908 205.87324 H -2.6362826 v 1.45502 h 2.06691303 v 0.44271 H -3.177684 v -4.10563 h 2.5801163 v 0.44553 h -2.0387149 v 1.31966 h 1.77929352 z"/>
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4574" Fill="#FF000000" StrokeThickness="0.21656057" Data="m 3.2946186 207.32826 h 1.9456615 v 0.44271 H 2.7503974 v -4.10563 h 0.5442212 z"/>
                 </Canvas>
             </Canvas>
         </Canvas>
+        <Path x:Name="path4613" Fill="#FFE31C60" StrokeThickness="0.24299616" Opacity="0.82099998" Data="M18.262613,57.233829 L16.989365,60.778805 19.541018,60.778805 z M41.694407,56.822597 C41.172048,56.826057 40.773406,56.952721 40.498479,57.202595 40.220118,57.452465 40.080936,57.811649 40.080936,58.280147 40.080936,58.710464 40.226991,59.054031 40.519099,59.310844 40.807771,59.567646 41.197822,59.696049 41.689251,59.696049 L43.209934,59.696049 43.209934,56.822597 z M28.700202,56.822597 L28.700202,59.696049 30.220885,59.696049 C30.712315,59.696049 31.102365,59.567646 31.391037,59.310844 31.683145,59.054031 31.8292,58.710464 31.8292,58.280147 31.8292,57.811649 31.690018,57.452465 31.411655,57.202595 31.13673,56.952721 30.738088,56.826057 30.21573,56.822597 z M7.1363468,56.000141 C7.93363,56.000141 8.5728321,56.219685 9.0539532,56.658775 9.5350742,57.094475 9.815155,57.699055 9.8941956,58.472515 L8.8993092,58.472515 C8.8133888,57.884823 8.6260948,57.459251 8.3374252,57.195793 8.0521927,56.932346 7.6518345,56.800625 7.1363468,56.800625 6.5040188,56.800625 6.0074348,57.030296 5.6465931,57.489643 5.2891884,57.94899 5.110487,58.602547 5.110487,59.450317 L5.110487,60.164688 C5.110487,60.965168 5.2805977,61.601833 5.620821,62.074692 5.9610405,62.54755 6.437006,62.783977 7.0487156,62.783977 7.5985661,62.783977 8.0195446,62.662388 8.3116531,62.419208 8.6071987,62.172642 8.8030834,61.74538 8.8993092,61.137421 L9.8941956,61.137421 C9.8014011,61.917637 9.5075741,62.520531 9.0127125,62.94611 8.5212841,63.368301 7.8666172,63.579395 7.0487156,63.579395 6.1620789,63.579395 5.4507084,63.266972 4.9146023,62.642128 4.3819351,62.017269 4.1156006,61.18132 4.1156006,60.134285 L4.1156006,59.424999 C4.1156006,58.739353 4.2393169,58.136459 4.4867496,57.61631 4.7376194,57.096165 5.0915852,56.697609 5.5486488,56.420639 6.0057125,56.140305 6.5349445,56.000141 7.1363468,56.000141 z M61.106405,56.000118 L62.101292,56.000118 62.101292,62.762134 65.658142,62.762134 65.658142,63.579407 61.106405,63.579407 z M50.227424,56.000118 L54.944117,56.000118 54.944117,56.822597 51.217155,56.822597 51.217155,59.258785 54.46987,59.258785 54.46987,60.076061 51.217155,60.076061 51.217155,62.762134 54.995665,62.762134 54.995665,63.579407 50.227424,63.579407 z M41.720181,56.000118 L44.204821,56.000118 44.204821,63.579407 43.209934,63.579407 43.209934,60.513321 41.446973,60.513321 39.818038,63.579334 38.756138,63.579334 38.756138,63.516937 40.519099,60.299896 C40.068908,60.126377 39.718378,59.864365 39.467509,59.513859 39.213202,59.163349 39.086049,58.752113 39.086049,58.280147 39.086049,57.537483 39.314581,56.971809 39.771646,56.583126 40.225272,56.194454 40.874784,56.000118 41.720181,56.000118 z M27.705316,56.000118 L30.189956,56.000118 C31.035351,56.000118 31.684863,56.194454 32.138491,56.583126 32.595554,56.971809 32.824086,57.537483 32.824086,58.280147 32.824086,58.752113 32.696933,59.163349 32.442627,59.513859 32.191758,59.864365 31.841228,60.126377 31.391037,60.299896 L33.153997,63.516937 33.153997,63.579334 32.092098,63.579334 30.463162,60.513321 28.700202,60.513321 28.700202,63.579407 27.705316,63.579407 z M17.829605,56.000118 L18.69562,56.000118 21.566878,63.579407 20.551369,63.579407 19.834846,61.601288 16.690382,61.601288 15.984167,63.579407 14.963505,63.579407 z M66.899183,2.5329205 L69.630798,38.361324 C69.660149,38.342407 69.689987,38.324928 69.71917,38.305496 L69.71917,39.52272 69.880402,41.637871 66.730721,41.840836 C55.692366,42.947506 49.160928,45.064659 37.440002,50.81892 49.032921,39.171825 58.006048,40.469391 64.440937,39.867554 L61.620432,2.8734836 z M2.9812202,2.5329101 L8.259964,2.8734431 5.4394646,39.867531 C11.874353,40.469379 20.847482,39.171802 32.4404,50.818909 20.719475,45.064636 14.188036,42.947483 3.1496811,41.840816 L0,41.637859 0.16123199,39.522709 0.16123199,38.305473 C0.19040298,38.324905 0.22025299,38.342384 0.24960327,38.361301 z M15.889248,0.0012494532 C22.342196,-0.0700094 27.111674,2.9179627 34.329837,8.086359 L34.329837,46.693993 C22.507507,38.330173 16.871637,38.696693 8.6652565,38.709679 L12.104837,0.36115367 C13.441534,0.13255263 14.694258,0.014444785 15.889248,0.0012494532 z M54.103842,0.0012463293 C55.298832,0.014441931 56.551556,0.13255009 57.888252,0.36115158 L61.327835,38.709679 C53.12146,38.696693 47.485588,38.330166 35.663254,46.693996 L35.663254,8.0863494 C42.881419,2.9179568 47.650892,-0.070014243 54.103842,0.0012463293 z" RenderTransformOrigin="0.510347006626224,-8.87658769263297E-10" Stretch="Fill" Grid.Column="1" Margin="119,-13.5,47,46.5" Grid.ColumnSpan="2" Grid.RowSpan="2" >
+            <Path.RenderTransform>
+                <TranslateTransform X="88.106252" Y="33.602084"/>
+            </Path.RenderTransform>
+        </Path>
 
     </Grid>
 </UserControl>
