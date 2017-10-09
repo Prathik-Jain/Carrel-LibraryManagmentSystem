@@ -28,7 +28,7 @@
 
 
     <Grid>
-        
+
         <!--#region Rows and Coloumn Definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="32" />
@@ -52,9 +52,9 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="32" />
         </Grid.RowDefinitions>
-        <!--#endregion-->        
+        <!--#endregion-->
 
-        
+
         <!--#region Name-->
         <Label x:Name="LblName" 
                  Width="300"
@@ -70,7 +70,7 @@
         <!--#endregion-->
 
 
-         <!--#region UID-->
+        <!--#region UID-->
         <Label x:Name="LblUID" 
                  Width="250"
                  materialDesign:HintAssist.Hint="UID"
@@ -85,7 +85,7 @@
 
 
 
-         <!--#region Department-->
+        <!--#region Department-->
         <materialDesign:PackIcon Kind="School"
                                  Grid.Row="4"
                                  Grid.Column="1"
@@ -95,27 +95,27 @@
                  materialDesign:HintAssist.Hint="Department"
                  Grid.Row="4"
                  Grid.Column="2" 
-                 Margin="0,0,37,10" 
+                 Margin="0,0,37,0" 
                  Height="36" />
         <!--#endregion-->
-         
-        
+
+
         <!--#region Semester-->
         <materialDesign:PackIcon Kind="Details"
                                  Grid.Row="5"
                                  Grid.Column="1"
                                  Margin="0,0,16,10"/>
 
-          <Label x:Name="LblSemester" 
+        <Label x:Name="LblSemester" 
                  Width="200"
                  materialDesign:HintAssist.Hint="Semester"
                  Grid.Row="5"
                  Grid.Column="2"
                  Height="36"
-                 Margin="0,0,37,10" />
+                 Margin="0,0,37,0" />
         <!--#endregion-->
-        
-         <!--#region Phone-->
+
+        <!--#region Phone-->
         <materialDesign:PackIcon Kind="Phone"
                                  Grid.Row="6"
                                  Grid.Column="1"
@@ -125,31 +125,11 @@
                  materialDesign:HintAssist.Hint="Phone"
                  Grid.Row="6"
                  Grid.Column="2"
-                 Height="36"  Margin="0,0,37,10"/>
+                 Height="36"  Margin="0,0,37,0"/>
         <!--#endregion-->
 
-
-
-
-
-         <!--#region  Close Button-->
-        <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                Width="15"
-                Height="14"
-                Grid.Row="0"
-                Grid.Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,-3,-3,37"
-                Background="#ffffff"
-                BorderBrush="#ffffff">
-            <materialDesign:PackIcon Kind="Close"
-                                     Width="7.5"
-                                     Height="7.5"
-                                     Foreground="#000000"/>
-
-        </Button>
-        
-        
         <!--#region Toggle Buttons-->
-        
+
         <!--#region PrintQR-->
         <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                           
@@ -168,7 +148,7 @@
         </ToggleButton>
         <!--#endregion-->
 
-         <!--#region DeleteMember-->
+        <!--#region DeleteMember-->
         <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                           
                           IsEnabled="True" 
@@ -177,14 +157,14 @@
                           HorizontalAlignment="Right" 
                           VerticalAlignment="Bottom" 
                           Grid.RowSpan="2">
-             <materialDesign:PackIcon Kind="Delete" Height="21" Width="21" Foreground="#e30101" Opacity="1" />
+            <materialDesign:PackIcon Kind="Delete" Height="21" Width="21" Foreground="#e30101" Opacity="1" />
         </ToggleButton>
         <!--#endregion-->
-        
+
         <!--#endregion-->
 
 
-         <!--#region  QR-->
+        <!--#region  QR-->
         <Image x:Name="ImgQR" 
                Width="200" 
                Height="200"
@@ -205,9 +185,6 @@
                 Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,2">
             <materialDesign:PackIcon Kind="Pencil"/>
         </Button>
-
-
-
-
+        
     </Grid>
 </UserControl>
