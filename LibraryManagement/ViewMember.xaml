@@ -56,24 +56,32 @@
 
         
         <!--#region Name-->
-        <Label x:Name="LblName" 
-                 Width="300"
-                 materialDesign:HintAssist.Hint="Name"
+        <StackPanel 
+            Orientation="Horizontal" 
+            Margin="0 6 18 0"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2">
+
+                    <Label x:Name="LblFName" 
                  FontSize="36"
-                 Grid.Row="1"
-                 Grid.Column="1"
                  Height="50" 
-                 Grid.ColumnSpan="2"  
                  Margin="0,6,18,0" 
                  Foreground="#283592"
                  />
+        <Label x:Name="LblLName" 
+                 FontSize="36"
+                 Height="50" 
+                    Visibility="Hidden"
+                 Foreground="#283592"
+                 />
+        </StackPanel>
         <!--#endregion-->
 
 
          <!--#region UID-->
         <Label x:Name="LblUID" 
                  Width="250"
-                 materialDesign:HintAssist.Hint="UID"
                  FontSize="25"
                  FontWeight="Bold"
                  Grid.Row="2"
@@ -92,7 +100,6 @@
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblDepartment"
                  Width="200"
-                 materialDesign:HintAssist.Hint="Department"
                  Grid.Row="4"
                  Grid.Column="2" 
                  Margin="0,0,37,10" 
@@ -108,7 +115,6 @@
 
           <Label x:Name="LblSemester" 
                  Width="200"
-                 materialDesign:HintAssist.Hint="Semester"
                  Grid.Row="5"
                  Grid.Column="2"
                  Height="36"
@@ -122,7 +128,6 @@
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblPhone"
                  Width="200"
-                 materialDesign:HintAssist.Hint="Phone"
                  Grid.Row="6"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,37,10"/>
@@ -198,7 +203,8 @@
         <!--#endregion-->
 
         <!--Fab Edit Button-->
-        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+        <Button x:Name="BtnEdit"
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
                 Height="56"
                 Grid.Row="9"
