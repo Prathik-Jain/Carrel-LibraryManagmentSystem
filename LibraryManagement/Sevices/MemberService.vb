@@ -26,6 +26,7 @@ Public Class MemberService
             data.Add(reader("LNAME").ToString)
             data.Add(reader("PHONE").ToString)
             data.Add(reader("DEPT").ToString)
+            data.Add(reader("SEM").ToString)
             data.Add(reader("UID").ToString)
       Return data
     End Function
