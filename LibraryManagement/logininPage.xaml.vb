@@ -36,13 +36,13 @@ Class Page1
     End Sub
 
 
-    Dim admin = New AdminQR
+    Dim admin = New Admin
     Dim ReadOnly loginService = New AdminService
 
     Public Async Sub QrScanned(str As String)
         My.Computer.Audio.Play(My.Resources.ScannerBeep, AudioPlayMode.Background)
         If str.Contains("ADM") Then
-            admin = JsonConvert.DeserializeObject (Of AdminQR)(str)
+            admin = JsonConvert.DeserializeObject (Of Admin)(str)
             Try
                 If loginService.CheckUser(admin.UID, admin.Name) = 1 Then
                     camera.StopCamera()

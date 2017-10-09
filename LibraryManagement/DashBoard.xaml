@@ -78,7 +78,14 @@
                 <local:BookForm  x:Name="BookForm"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-
+        <!--PrintQR Dialog-->
+        <materialDesign:DialogHost x:Name="PrintQRDialog"
+                                   CloseOnClickAway="True"
+                                   Grid.Row="0" Grid.RowSpan="2">
+            <materialDesign:DialogHost.DialogContent>
+                <local:CardHolder x:Name="a" />
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
         <!--MemberForm Dialog-->
         <materialDesign:DialogHost x:Name="MemberFormDialog"
                                    CloseOnClickAway="True"

@@ -19,10 +19,16 @@ Public Class DashBoard
         Handles BookFormDialog.DialogClosing
         FAB.IsEnabled = True
     End Sub
-
-
     Private Sub MemberFormDialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
         Handles MemberFormDialog.DialogClosing
+        FAB.IsEnabled = True
+    End Sub
+
+    Private Sub PrintQRDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) Handles PrintQRDialog.DialogOpened
+         FAB.IsEnabled =False
+    End Sub
+
+    Private Sub PrintQRDialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) Handles PrintQRDialog.DialogClosing
         FAB.IsEnabled = True
     End Sub
 End Class

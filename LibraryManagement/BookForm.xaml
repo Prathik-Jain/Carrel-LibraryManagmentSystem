@@ -91,7 +91,7 @@
         </TextBox>
         <!--#endregion-->
 
-        <!--#region Name-->
+        <!--#region Title-->
         <materialDesign:PackIcon Kind="BookVariant"
                                  Grid.Row="2" Margin="0,0,16,10" />
         <TextBox x:Name="TxtTitle"
