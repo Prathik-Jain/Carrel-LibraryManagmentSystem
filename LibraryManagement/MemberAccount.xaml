@@ -1,0 +1,168 @@
+﻿<UserControl x:Class="MemberAccount"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Carrel"
+              Background="{DynamicResource MaterialDesignPaper}"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="700">
+    
+    <!--Chsnge Defaults-->
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+
+        <Style TargetType="materialDesign:PackIcon">
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+
+        </Style>
+    </UserControl.Resources>
+    
+    <!--#region Rows and Coloumn Definitions-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="56"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="56"/>
+            <ColumnDefinition Width="32"/>
+
+
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+
+        <!--#region Name-->
+        <Label x:Name="LblName" 
+                 Width="300"
+                 FontSize="36"
+                 FontWeight="Bold"
+                 Grid.Row="1"
+                 Height="50"
+                 Grid.Column="1" 
+                 Grid.ColumnSpan="2"  
+                 Margin="0,0,56,0" 
+                 Foreground="#283592"
+                 />
+        <!--#endregion-->
+
+        <!--#region UID-->
+        <Label x:Name="LblUID" 
+                 Width="250"
+                 FontSize="24"
+                 FontWeight="Light"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Height="40" 
+                Grid.ColumnSpan="2" 
+                Margin="0,0,106,0"/>
+        <!-- #endregion-->
+
+        <!--#region Department-->
+        <materialDesign:PackIcon Kind="School"
+                                 Grid.Row="4"
+                                 Grid.Column="1"
+                                 Margin="0,0,16,10"/>
+        <Label x:Name="LblDepartment"
+                 Width="118"
+                 Grid.Row="4"
+                 Grid.Column="2" 
+                 Margin="0,0,138,0" 
+                 Height="36" />
+        <!--#endregion-->
+
+        <!--#region Semester-->
+        <Label x:Name="LblSemester"
+            Width="70"
+            Grid.Row="4"
+            Grid.Column="2" 
+            Margin="0,0,36,0" 
+            Height="36" />
+        <!--#endregion-->
+
+        <!--#region Phone-->
+        <materialDesign:PackIcon Kind="Phone"
+                                 Grid.Row="5"
+                                 Grid.Column="1"
+                                 Margin="0,0,16,10"/>
+        <Label x:Name="LblPhone"
+                 Width="200"
+                 Grid.Row="5"
+                 Grid.Column="2"
+                 Height="36"  
+                 Margin="0,0,56,0"/>
+        <!--#endregion-->
+
+        <!--Fab Edit Button-->
+
+        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                Width="56"
+                Height="56"
+                Grid.Row="6"
+                Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <materialDesign:PackIcon Kind="Pencil"/>
+        </Button>
+
+
+        <Rectangle Width="700" 
+                   Height="15" 
+                   Grid.ColumnSpan="6" 
+                   Margin="0,21,0,20" 
+                   Grid.Row="6"
+            />
+ 
+        <!--#region Borrowed Book Details List-->
+        <ListView Grid.Row="7"
+                  FontFamily="roboto"
+                  FontSize="16"
+                  FontWeight="ExtraBlack"
+                  ItemsSource="{Binding Items1}" 
+                  Grid.ColumnSpan="3" 
+                  Margin="0,0,0,46" 
+                  Grid.RowSpan="2" 
+                  Grid.Column="1" 
+                  HorizontalAlignment="Right" 
+                  Width="580" Height="56" 
+                  VerticalAlignment="Bottom">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="80" DisplayMemberBinding="{Binding Slno}" Header="Sl.No" />
+                    <GridViewColumn Width="150"  DisplayMemberBinding="{Binding Title}" Header="Title" />
+                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding BookID}" Header="BookID" />
+                    <GridViewColumn Width="150" DisplayMemberBinding="{Binding BorrowedOn}" Header="BorrowedOn" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--#endregion-->
+
+
+
+
+
+
+
+    </Grid>
+</UserControl>
