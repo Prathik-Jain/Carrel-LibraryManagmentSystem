@@ -59,7 +59,6 @@
         <!--#region Name-->
         <Label x:Name="LblName" 
                  Width="300"
-                 materialDesign:HintAssist.Hint="Name"
                  FontSize="36"
                  Grid.Row="1"
                  Grid.Column="1"
@@ -74,7 +73,6 @@
         <!--#region UID-->
         <Label x:Name="LblUID" 
                  Width="250"
-                 materialDesign:HintAssist.Hint="UID"
                  FontSize="25"
                  FontWeight="Bold"
                  Grid.Row="2"
@@ -93,7 +91,6 @@
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblDepartment"
                  Width="200"
-                 materialDesign:HintAssist.Hint="Department"
                  Grid.Row="4"
                  Grid.Column="2" 
                  Margin="0,0,37,0" 
@@ -109,7 +106,6 @@
 
         <Label x:Name="LblSemester" 
                  Width="200"
-                 materialDesign:HintAssist.Hint="Semester"
                  Grid.Row="5"
                  Grid.Column="2"
                  Height="36"
@@ -123,15 +119,14 @@
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblPhone"
                  Width="200"
-                 materialDesign:HintAssist.Hint="Phone"
                  Grid.Row="6"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,37,0"/>
         <!--#endregion-->
-        
+
         <!--#region Toggle Buttons-->
 
-        
+
         <!--#region PrintQR-->
         <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                           
@@ -177,6 +172,9 @@
                Margin="0,0,10,0" 
                Grid.RowSpan="4" 
                VerticalAlignment="Bottom"/>
+        <!--#endregion-->
+        <!--Fab Edit Button-->
+
         <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
                 Height="56"
@@ -184,11 +182,9 @@
                 Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,2">
             <materialDesign:PackIcon Kind="Pencil"/>
         </Button>
-        <!--#endregion-->
+        
 
-        <!--Fab Edit Button-->
-
-
+       
 
 
     </Grid>
