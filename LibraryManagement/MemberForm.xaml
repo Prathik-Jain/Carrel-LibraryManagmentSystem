@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              mc:Ignorable="d"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:validation="clr-namespace:Carrel.Validation"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
              TextElement.FontSize="13"
@@ -32,6 +32,7 @@
             <Setter Property="Margin" Value="16 0" />
             <Setter Property="MinHeight" Value="24" />
             <Setter Property="MinWidth" Value="240" />
+            <EventSetter Event="LostFocus" Handler="FieldLostFocus"/>
         </Style>
     </UserControl.Resources>
 
@@ -106,12 +107,28 @@
         <TextBox x:Name="TxtFirstName"
                  Grid.Row="3"
                  materialDesign:HintAssist.Hint="First Name"
-                 Margin="16,10" Height="36" />
+                 Margin="16,10" Height="36" >
+            <TextBox.Text>
+                <Binding ElementName="TxtFirstName" Path="Text" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <validation:NotEmpty/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <TextBox x:Name="TxtLastName"
                  Grid.Row="4" Grid.Column="2"
                  materialDesign:HintAssist.Hint="Last Name"
                  Margin="16,10"
-                 Height="36" />
+                 Height="36" >
+            <TextBox.Text>
+                <Binding ElementName="TxtLastName" Path="Text" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <validation:NotEmpty/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <!--#endregion-->
 
 
@@ -124,14 +141,23 @@
                  Grid.Row="5"
                  materialDesign:HintAssist.Hint="Phone"
                  Margin="16,10"
-                 Height="36" />
+                 Height="36" MaxLength="10" >
+            <TextBox.Text>
+                <Binding ElementName="TxtPhone" Path="Text" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <validation:NotEmpty/>
+                        <validation:ISBNLength/> <!--As ISBNLength =10 -->
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <!--#endregion-->
 
         <!--#region Department-->
         <materialDesign:PackIcon Kind="SortVariant"
                                  Grid.Row="6"
                                  Margin="0,0,16,14" />
-        <ComboBox x:Name="TxtDepartment"
+        <ComboBox x:Name="CmbDept"
                   Grid.Column="2"
                   Grid.Row="6"
                   materialDesign:HintAssist.Hint="Department"
@@ -141,10 +167,13 @@
                   MinHeight="24"
                   MinWidth="240"
                   Height="28">
-            <ComboBoxItem Content="BCA" />
-            <ComboBoxItem Content="B.Com" />
-            <ComboBoxItem Content="B.Sc" />
-            <ComboBoxItem Content="BBM" />
+            <ComboBox.Text>
+                <Binding ElementName="CmbDept" Path="Text" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <validation:NotEmpty/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
         </ComboBox>
         <!--#endregion-->
 
@@ -156,12 +185,14 @@
                   Grid.Column="2"
                   Grid.Row="7"
                   materialDesign:HintAssist.Hint="Semester"
-                  IsEditable="True"
+                  IsEditable="False"
                   Margin="16,14" 
                   VerticalAlignment="Center" 
                   MinHeight="24" 
                   MinWidth="240" 
                   Height="28">
+            <ComboBoxItem Content="0" />
+            <ComboBoxItem Content="1" />
             <ComboBoxItem Content="1" />
             <ComboBoxItem Content="2" />
             <ComboBoxItem Content="3" />

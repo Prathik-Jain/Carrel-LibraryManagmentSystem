@@ -55,7 +55,7 @@ GO
 	[TITLE]  [NVARCHAR](MAX) NOT NULL,
 	[AUTHOR] [NVARCHAR](MAX) NOT NULL, --Will contain JSON string of authors.
 	[PUBLISHER] [NVARCHAR](MAX) NOT NULL,
-	[EDITION] [TINYINT] NULL,
+	[EDITION] [NCHAR](3) NULL,
 	[PRICE] [SMALLINT] NOT NULL,
 	[AVAILABLE] [BIT] NOT NULL DEFAULT 1,
 	[RACK] [NVARCHAR](2) NULL, 
@@ -63,6 +63,13 @@ GO
 	[LASTBORROWED] [NVARCHAR](MAX) NULL, -- Will contain JSON string of last borrower with time.
 	[ADDEDON] [DATE] NOT NULL DEFAULT CONVERT(DATE,GETDATE(),6)
 	PRIMARY KEY CLUSTERED ([UID] ASC)
+	);
+
+-------------------------------------------------------------------------------
+--CREATING Department Table
+	CREATE TABLE [dbo].[Dept](
+	[ID] INT NOT NULL IDENTITY,
+ 	[NAME] [NVARCHAR](MAX) NOT NULL
 	);
 
 -------------------------------------------------------------------------------
@@ -149,7 +156,7 @@ GO
 				TITLE NVARCHAR(MAX) '$.Title',
 				AUTHOR NVARCHAR(MAX) '$.Author',
 				PUBLSIHER NVARCHAR(MAX) '$.Publisher',
-				EDITION TINYINT '$.Edition',
+				EDITION NCHAR(3) '$.Edition',
 				PRICE SMALLINT '$.Price',
 				RACK NVARCHAR(2) '$.Rack'
 			)
