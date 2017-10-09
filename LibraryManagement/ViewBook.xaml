@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:Carrel"
              mc:Ignorable="d" 
              Background="{DynamicResource MaterialDesignPaper}"
-             d:DesignHeight="650" d:DesignWidth="700">
+             d:DesignHeight="650" d:DesignWidth="550">
 
 
     <!--Change the Defaults-->
@@ -23,6 +23,7 @@
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="FontFamily" Value="roboto"/>
+            <Setter Property="FontSize" Value="16"/>
 
         </Style>
     </UserControl.Resources>
@@ -66,7 +67,7 @@
                  Grid.Column="1"
                  Height="50" 
                  Grid.ColumnSpan="3"  
-                 Margin="0,0,144,0" 
+                 Margin="0,0,30,0" 
                  Foreground="#283592"
                  />
         <!--#endregion-->
@@ -161,7 +162,7 @@
 
         <!--#region Toggle Buttons-->
 
-        
+
         <!--#region PrintQR-->
         <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                           
@@ -195,19 +196,6 @@
 
         <!--#endregion-->
 
-
-        <!--#region  QR-->
-        <Image x:Name="ImgQR" 
-               Width="200" 
-               Height="200"
-               Grid.Row="2"
-               Grid.Column="3" 
-               Grid.ColumnSpan="2" 
-               HorizontalAlignment="Right" 
-               Margin="0,0,10,0" 
-               Grid.RowSpan="4" 
-               VerticalAlignment="Bottom"/>
-
         <!--Fab Edit Button-->
         <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
@@ -218,7 +206,7 @@
         </Button>
         <!--#endregion-->
 
-      
+
 
 
 
