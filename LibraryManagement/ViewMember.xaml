@@ -137,7 +137,7 @@
                 Width="15"
                 Height="14"
                 Grid.Row="0"
-                Grid.Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,-3,-3,37" Click="Button_Click"
+                Grid.Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,-3,-3,37"
                 Background="#ffffff"
                 BorderBrush="#ffffff">
             <materialDesign:PackIcon Kind="Close"
