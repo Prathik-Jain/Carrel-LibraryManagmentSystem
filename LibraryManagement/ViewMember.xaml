@@ -64,7 +64,8 @@
             Grid.Column="1"
             Grid.ColumnSpan="2">
 
-                    <Label x:Name="LblFName" 
+                <Label x:Name="LblFName" 
+                 Width="300"
                  FontSize="36"
                  Height="50" 
                  Margin="0,6,18,0" 
@@ -72,8 +73,8 @@
                  />
         <Label x:Name="LblLName" 
                  FontSize="36"
-                 Height="50" 
-                    Visibility="Hidden"
+                  Height="50" 
+                  Visibility="Hidden"
                  Foreground="#283592"
                  />
         </StackPanel>
@@ -133,10 +134,10 @@
                  Grid.Column="2"
                  Height="36"  Margin="0,0,37,0"/>
         <!--#endregion-->
-        
+
         <!--#region Toggle Buttons-->
 
-        
+
         <!--#region PrintQR-->
         <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                           
@@ -187,7 +188,6 @@
         <!--Fab Edit Button-->
         <Button x:Name="BtnEdit"
                 Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-        
                 Width="56"
                 Height="56"
                 Grid.Row="9"
@@ -199,6 +199,5 @@
 
 
 
-
-    </Grid>
+       </Grid>
 </UserControl>

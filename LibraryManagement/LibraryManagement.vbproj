@@ -127,6 +127,9 @@
     <Compile Include="logininPage.xaml.vb">
       <DependentUpon>logininPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MemberAccount.xaml.vb">
+      <DependentUpon>MemberAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -173,6 +176,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="logininPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MemberAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
