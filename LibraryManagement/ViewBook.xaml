@@ -59,9 +59,8 @@
 
 
         <!--#region Name-->
-        <Label x:Name="LblName" 
+        <Label x:Name="LblTitle" 
                  Width="400"
-                 materialDesign:HintAssist.Hint="Name"
                  FontSize="36"
                  Grid.Row="1"
                  Grid.Column="1"
@@ -76,7 +75,6 @@
         <!--#region BookID-->
         <Label x:Name="LblBookoID" 
                  Width="250"
-                 materialDesign:HintAssist.Hint="BookID"
                  FontSize="25"
                  FontWeight="Bold"
                  Grid.Row="2"
@@ -95,7 +93,6 @@
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblISBN"
                  Width="200"
-                 materialDesign:HintAssist.Hint="ISBN"
                  Grid.Row="3"
                  Grid.Column="2" 
                  Margin="0,0,53,10" 
@@ -103,25 +100,9 @@
         <!--#endregion-->
 
 
-        <!--#region BookTitle-->
-        <materialDesign:PackIcon Kind="Book"
-                                 Grid.Row="4"
-                                 Grid.Column="1"
-                                 Margin="0,0,16,10"/>
-
-        <Label x:Name="LblTitle" 
-                 Width="200"
-                 materialDesign:HintAssist.Hint="Title"
-                 Grid.Row="4"
-                 Grid.Column="2"
-                 Height="36"
-                 Margin="0,0,53,10" />
-        <!--#endregion-->
-
-        <!--#region Authors-->
+                <!--#region Authors-->
         <materialDesign:PackIcon Kind="AccountMultiple"
                                  Grid.Row="5"
-                                 Grid.Column="1"
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblAuthors"
                  Width="200"
