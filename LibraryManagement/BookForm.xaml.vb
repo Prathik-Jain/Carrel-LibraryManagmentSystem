@@ -38,8 +38,9 @@ Public Class BookForm
         Book.Rack = TxtRack.Text
         Dim number As Integer = Convert.ToInt32(TxtNumber.Text)
         If Await BookService.AddBook(Book, number) Then
-            DashBoard.SnackBarMessageQueue.Enqueue(TxtNumber.Text+" Book(s) Added", "UNDO", Sub()
-                                                                               MsgBox("Undo Clicked")
+            DashBoard.SnackBarMessageQueue.Enqueue(TxtNumber.Text+" Book(s) Added", "VIEW", Sub()
+                                                                               Dim BookView As New ViewBook
+                                                                                                BookView.UpdateView(number)
                                                                            End Sub)
         Else
             DashBoard.SnackBarMessageQueue.Enqueue("Failed registering ")

@@ -24,9 +24,9 @@ Public Class MemberForm
         member.Dept = CmbDept.Text
         member.Sem = TxtSemester.Text
         If Await MemberService.AddMember(member) Then
-            DashBoard.SnackBarMessageQueue.Enqueue("Registered "+ TxtFirstName.Text+ " as Member.", "CARD",Sub ()
-                                                                                                              Dim card As New Card
-                                                                                                               card.UpdateCard
+            DashBoard.SnackBarMessageQueue.Enqueue("Registered "+ TxtFirstName.Text+ " as Member.", "VIEW",Sub ()
+                                                                                                              Dim viewMember As New ViewMember
+                                                                                                               viewMember.UpdateView
                                                                                                            End Sub)
         Else
             DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
