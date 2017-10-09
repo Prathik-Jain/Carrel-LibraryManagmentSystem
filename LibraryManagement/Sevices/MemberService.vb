@@ -30,4 +30,20 @@ Public Class MemberService
             data.Add(reader("UID").ToString)
       Return data
     End Function
+
+    Friend Shared Function EditMember(UID As String, member As Object) As Task(Of Integer)
+                Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = new SqlCommand("UPDATE Member 
+                                    SET FNAME = @FName, LNAME = @LName, PHONE = @Phone, DEPT = @Dept, SEM = @Sem
+                                    WHERE UID = @UID" ,connection)
+        query.Parameters.Add(New SqlParameter("@FName",member("FName").ToString))
+        query.Parameters.Add(New SqlParameter("@LName", member("LName").ToString))
+        query.Parameters.Add(New SqlParameter("@Phone", member("Phone").ToString))
+        query.Parameters.Add(New SqlParameter("@Dept", member("Dept").ToString))
+        query.Parameters.Add(New SqlParameter("@Sem",member("Sem").ToString))
+        query.Parameters.Add(New SqlParameter("@UID", UID))
+        connection.Open()
+        Return query.ExecuteNonQueryAsync()
+        query.Connection.Close()
+    End Function
 End Class
