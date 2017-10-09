@@ -4,9 +4,10 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Serialization
 
 Public Class MemberService
-    Friend Shared Function AddMember(member As Member) As Task(Of Integer)
+    Friend Shared Function AddMember(member As Object) As Task(Of Integer)
         Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim query = new SqlCommand("INSERT INTO JSON (CATEGORY,DATA) VALUES ('MEM','"+JsonConvert.SerializeObject(member)+"')" ,connection)
+        Dim query = new SqlCommand("INSERT INTO JSON (CATEGORY,DATA) VALUES ('MEM',@JSONString)" ,connection)
+        query.Parameters.Add(New SqlParameter("@JSONString",JsonConvert.SerializeObject(member)))
         connection.Open()
         Return query.ExecuteNonQueryAsync()
         query.Connection.Close()
@@ -25,6 +26,7 @@ Public Class MemberService
             data.Add(reader("LNAME").ToString)
             data.Add(reader("PHONE").ToString)
             data.Add(reader("DEPT").ToString)
+            data.Add(reader("SEM").ToString)
             data.Add(reader("UID").ToString)
       Return data
     End Function

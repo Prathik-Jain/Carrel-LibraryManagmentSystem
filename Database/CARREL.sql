@@ -55,7 +55,7 @@ GO
 	[TITLE]  [NVARCHAR](MAX) NOT NULL,
 	[AUTHOR] [NVARCHAR](MAX) NOT NULL, --Will contain JSON string of authors.
 	[PUBLISHER] [NVARCHAR](MAX) NOT NULL,
-	[EDITION] [TINYINT] NULL,
+	[EDITION] [NVARCHAR](3) NULL,
 	[PRICE] [SMALLINT] NOT NULL,
 	[AVAILABLE] [BIT] NOT NULL DEFAULT 1,
 	[RACK] [NVARCHAR](2) NULL, 
@@ -63,6 +63,13 @@ GO
 	[LASTBORROWED] [NVARCHAR](MAX) NULL, -- Will contain JSON string of last borrower with time.
 	[ADDEDON] [DATE] NOT NULL DEFAULT CONVERT(DATE,GETDATE(),6)
 	PRIMARY KEY CLUSTERED ([UID] ASC)
+	);
+
+-------------------------------------------------------------------------------
+--CREATING Department Table
+	CREATE TABLE [dbo].[Dept](
+	[ID] INT NOT NULL IDENTITY,
+ 	[NAME] [NVARCHAR](MAX) NOT NULL
 	);
 
 -------------------------------------------------------------------------------
@@ -88,7 +95,7 @@ GO
     [FNAME]     [NVARCHAR](MAX)  NOT NULL,
     [LNAME]     [NVARCHAR](MAX)  NULL,
 	[PHONE]     [NCHAR](10)    NOT NULL,
-	[DEPT]		[NCHAR](3) NOT NULL,
+	[DEPT]		[NVARCHAR](5) NOT NULL,
 	[SEM]		[TINYINT] NULL,
 	[MAXBOOKS]	[TINYINT] NOT NULL DEFAULT 2,
 	[BORROWEDBOOKS] [NVARCHAR](MAX) NULL,
@@ -149,7 +156,7 @@ GO
 				TITLE NVARCHAR(MAX) '$.Title',
 				AUTHOR NVARCHAR(MAX) '$.Author',
 				PUBLSIHER NVARCHAR(MAX) '$.Publisher',
-				EDITION TINYINT '$.Edition',
+				EDITION NVARCHAR(3) '$.Edition',
 				PRICE SMALLINT '$.Price',
 				RACK NVARCHAR(2) '$.Rack'
 			)
@@ -167,7 +174,7 @@ GO
 			FNAME VARCHAR(MAX) '$.FName',
 			LNAME VARCHAR(MAX) '$.LName',
 			PHONE NCHAR(10) '$.Phone',
-			DEPT NCHAR(3) '$.Dept',
+			DEPT NVARCHAR(5) '$.Dept',
 			SEM TINYINT '$.Sem'
 		)
 	END

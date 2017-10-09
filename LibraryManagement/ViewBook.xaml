@@ -58,6 +58,7 @@
         <!--#endregion-->
 
 
+
         <!--#region Title-->
         <Label x:Name="LblTitle" 
                  Width="400"
@@ -71,8 +72,7 @@
                  />
         <!--#endregion-->
 
-
-        <!--#region ISBN-->
+          <!--#region ISBN-->
         <materialDesign:PackIcon Kind="BarcodeScan"
                                  Grid.Row="3"
                                  Grid.Column="1"
@@ -86,12 +86,10 @@
         <!--#endregion-->
 
 
-       
 
-        <!--#region Authors-->
+                <!--#region Authors-->
         <materialDesign:PackIcon Kind="AccountMultiple"
-                                 Grid.Row="4"
-                                 Grid.Column="1"
+                                 Grid.Row="5"
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblAuthors"
                  Width="200"
