@@ -24,11 +24,19 @@ Public Class DashBoard
         FAB.IsEnabled = True
     End Sub
 
-    Private Sub PrintQRDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) Handles PrintQRDialog.DialogOpened
+    Private Sub ViewMemberDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) Handles ViewMemberDialog.DialogOpened
          FAB.IsEnabled =False
     End Sub
 
-    Private Sub PrintQRDialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) Handles PrintQRDialog.DialogClosing
+    Private Sub ViewMemberDialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) Handles ViewMemberDialog.DialogClosing
+        FAB.IsEnabled = True
+    End Sub
+    
+    Private Sub ViewBookDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) Handles ViewBookDialog.DialogOpened
+         FAB.IsEnabled =False
+    End Sub
+
+    Private Sub ViewBookDialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) Handles ViewBookDialog.DialogClosing
         FAB.IsEnabled = True
     End Sub
 End Class
