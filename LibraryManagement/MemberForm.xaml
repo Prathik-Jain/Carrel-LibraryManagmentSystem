@@ -96,7 +96,10 @@
                 Opacity="0.87" />
         </Button>
         <!--#endregion-->
-
+        <!--#region UID-->
+        <Label x:Name="LblUID"
+               Visibility="Hidden"
+               Content=""/>
 
         <!--#region Name-->
         <materialDesign:PackIcon Kind="Account"
@@ -136,9 +139,8 @@
         <materialDesign:PackIcon Kind="Phone"
                                  Grid.Row="5"
                                  Margin="0,0,16,10" />
-        <!--grid.column span means it can extend upto 2 columns-->
         <TextBox x:Name="TxtPhone"
-                 Grid.Row="5"
+                 Grid.Row="5" Grid.Column="2"
                  materialDesign:HintAssist.Hint="Phone"
                  Margin="16,10"
                  Height="36" MaxLength="10" >

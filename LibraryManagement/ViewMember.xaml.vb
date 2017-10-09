@@ -1,12 +1,14 @@
 ﻿Imports System.Drawing
+Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 Public Class ViewMember
+    Dim dashBoard As DashBoard = Application.Current.Windows(0)
+    Dim data = New ArrayList
+
     Friend Sub UpdateView()
-        Dim x As DashBoard
-        x = Application.Current.Windows(0)
-        Dim data = New ArrayList
         data = MemberService.PrintLastAdded()
-        LblName.Content = data(0) + " " + data(1)
+        LblFName.Content = data(0).ToString.ToUpper
+        LblLName.Content =data(1)
         LblPhone.Content = data(2)
         LblDepartment.Content = data(3)
         LblSemester.Content = data(4)
@@ -21,13 +23,23 @@ Public Class ViewMember
         qr.Options.Height = 150
         Dim result = New Bitmap(qr.Write(QRJson))
         ImgQR.Source = ImageSourceForBitmap(result)
-
-        x.MemberView.Content = Me
-        x.ViewMemberDialog.IsOpen = True
+        dashBoard.MemberView.Content = Me
+        dashBoard.ViewMemberDialog.IsOpen = True
     End Sub
-    Public Function ImageSourceForBitmap(bmp As Bitmap)
 
+    Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
+        dashBoard.ViewMemberDialog.IsOpen = False
+        dashBoard.MemberForm.TxtFirstName.Text = LblFName.Content
+        dashBoard.MemberForm.TxtLastName.Text = LblLName.Content
+        dashBoard.MemberForm.TxtPhone.Text = LblPhone.Content
+        dashBoard.MemberForm.CmbDept.Text = LblDepartment.Content
+        dashBoard.MemberForm.TxtSemester.Text = LblSemester.Content
+        dashBoard.MemberForm.LblUID.Content = LblUID.Content
+        dashBoard.MemberFormDialog.IsOpen = True
+    End Sub
+
+    Public Function ImageSourceForBitmap(bmp As Bitmap)
         Dim handle = bmp.GetHbitmap()
         Return Interop.Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions())
-        End Function
+    End Function
 End Class

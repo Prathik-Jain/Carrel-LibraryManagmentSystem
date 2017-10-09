@@ -23,14 +23,28 @@ Public Class MemberForm
         member.Phone = TxtPhone.Text
         member.Dept = CmbDept.Text
         member.Sem = TxtSemester.Text
-        If Await MemberService.AddMember(member) Then
-            DashBoard.SnackBarMessageQueue.Enqueue("Registered "+ TxtFirstName.Text+ " as Member.", "VIEW",Sub ()
-                                                                                                              Dim viewMember As New ViewMember
-                                                                                                               viewMember.UpdateView
-                                                                                                           End Sub)
+        If LblUID.Content.ToString = "" Then
+
+            If Await MemberService.AddMember(member) Then
+                DashBoard.SnackBarMessageQueue.Enqueue("Registered " + TxtFirstName.Text + " as Member.", "VIEW", Sub()
+                                                                                                                      Dim viewMember As New ViewMember
+                                                                                                                      viewMember.UpdateView()
+                                                                                                                  End Sub)
+            Else
+                DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
+            End If
         Else
-            DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
+            If Await MemberService.EditMember(LblUID.Content.ToString, member) Then
+                DashBoard.SnackBarMessageQueue.Enqueue("Edited " + TxtFirstName.Text + ".", "VIEW", Sub()
+                                                                                                                  Dim viewMember As New ViewMember
+                                                                                                                  viewMember.UpdateView()
+                                                                                                              End Sub)
+
+            Else
+                DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
+            End If
         End If
+
     End Sub
 
     Private Sub FieldLostFocus(sender As Object, e As RoutedEventArgs)

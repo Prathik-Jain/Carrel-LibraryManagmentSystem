@@ -57,16 +57,27 @@
 
 
         <!--#region Name-->
-        <Label x:Name="LblName" 
+        <StackPanel 
+            Orientation="Horizontal" 
+            Margin="0 6 18 0"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2">
+
+                <Label x:Name="LblFName" 
                  Width="300"
                  FontSize="36"
-                 Grid.Row="1"
-                 Grid.Column="1"
                  Height="50" 
-                 Grid.ColumnSpan="2"  
                  Margin="0,6,18,0" 
                  Foreground="#283592"
                  />
+        <Label x:Name="LblLName" 
+                 FontSize="36"
+                  Height="50" 
+                  Visibility="Hidden"
+                 Foreground="#283592"
+                 />
+        </StackPanel>
         <!--#endregion-->
 
 
@@ -173,19 +184,20 @@
                Grid.RowSpan="4" 
                VerticalAlignment="Bottom"/>
         <!--#endregion-->
-        <!--Fab Edit Button-->
 
-        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+        <!--Fab Edit Button-->
+        <Button x:Name="BtnEdit"
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
                 Height="56"
                 Grid.Row="9"
                 Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,2">
             <materialDesign:PackIcon Kind="Pencil"/>
-        </Button>
-        
+      </Button>
 
-       
+        <!--Fab Edit Button-->
 
 
-    </Grid>
+
+       </Grid>
 </UserControl>
