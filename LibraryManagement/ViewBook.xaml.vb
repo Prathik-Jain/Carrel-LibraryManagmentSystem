@@ -1,4 +1,8 @@
 ﻿Public Class ViewBook
+    Public sub New
+        ' This call is required by the designer.
+        InitializeComponent()
+    End Sub
      Friend Sub UpdateView(number As Integer)
         Dim x As DashBoard
         x = Application.Current.Windows(0)

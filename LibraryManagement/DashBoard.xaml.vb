@@ -1,6 +1,11 @@
 ﻿Imports MaterialDesignThemes.Wpf
 
 Public Class DashBoard
+    Public sub New
+
+        ' This call is required by the designer.
+        InitializeComponent()
+    End Sub
     Public Shared SnackBarMessageQueue as SnackbarMessageQueue
 
     Private Sub BtnAddBook_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddBook.Click

@@ -1,12 +1,18 @@
 ﻿Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 Public Class MemberForm
+    Public Sub New
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        CmbDept.ItemsSource = DepatmentService.GetDept()
+
+    End Sub
     Private Sub BtnAccept_Click(sender As Object, e As RoutedEventArgs) Handles BtnAccept.Click
         AddMember()
         AddDept()
-    End Sub
-    Private Sub MemberForm_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        CmbDept.ItemsSource = DepatmentService.GetDept()
     End Sub
     Private Sub AddDept()
         For Each item In CmbDept.Items

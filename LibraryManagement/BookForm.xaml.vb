@@ -1,8 +1,14 @@
 ﻿Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 Public Class BookForm
-    Private Sub BookForm_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+    Public Sub New
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
         CmbAuthor.ItemsSource = AuthorService.GetAuthors()
+
     End Sub
 
     Private Sub CmbAuthor_KeyDown(sender As Object, e As Input.KeyEventArgs) Handles CmbAuthor.KeyDown

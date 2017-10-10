@@ -4,7 +4,12 @@ Imports Newtonsoft.Json
 Public Class ViewMember
     Dim dashBoard As DashBoard = Application.Current.Windows(0)
     Dim data = New ArrayList
+Public Sub New
 
+    ' This call is required by the designer.
+    InitializeComponent()
+
+End Sub
     Friend Sub UpdateView()
         data = MemberService.PrintLastAdded()
         LblFName.Content = data(0).ToString.ToUpper
