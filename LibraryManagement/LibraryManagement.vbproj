@@ -113,9 +113,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdminForm.xaml.vb">
-      <DependentUpon>AdminForm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Class\Admin.vb" />
     <Compile Include="Camera.vb" />
     <Compile Include="Card.xaml.vb">
@@ -156,10 +153,6 @@
     <Compile Include="ViewMember.xaml.vb">
       <DependentUpon>ViewMember.xaml</DependentUpon>
     </Compile>
-    <Page Include="AdminForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Card.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
