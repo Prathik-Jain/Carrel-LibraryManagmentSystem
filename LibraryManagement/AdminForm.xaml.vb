@@ -1,5 +1,9 @@
 ﻿Imports System.Text.RegularExpressions
 Public Class AdminForm
+    Public Sub New
+      ' This call is required by the designer.
+        InitializeComponent()
+    End Sub
     Private Sub FieldLostFocus(sender As Object, e As RoutedEventArgs)
         Dim txt = DirectCast(sender, TextBox)
         txt.GetBindingExpression(TextBox.TextProperty).UpdateSource()
