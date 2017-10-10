@@ -1,0 +1,206 @@
+﻿<UserControl x:Class="AdminForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:validation="clr-namespace:Carrel.Validation"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextElement.FontFamily="Roboto"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+    
+    
+    <UserControl.Resources>
+        <!--Change the defaults-->
+        <Style TargetType="materialDesign:PackIcon">
+            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="Margin" Value="16" />
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Width" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Foreground" Value="#000000" />
+            <Setter Property="Opacity" Value="0.54" />
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+            <Setter Property="Grid.Column" Value="2" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="16 0" />
+            <Setter Property="MinHeight" Value="24" />
+            <Setter Property="MinWidth" Value="240" />
+            <EventSetter Event="LostFocus" Handler="FieldLostFocus"/>
+        </Style>
+    </UserControl.Resources>
+
+    <!--#region Rows and coloumn definition-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32" />
+            <ColumnDefinition Width="56" />
+            <ColumnDefinition Width="272" />
+            <ColumnDefinition Width="48" />
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="56" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="48" />
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        
+        
+        <!--#region Name-->
+        <materialDesign:PackIcon Kind="Account"
+                                 Grid.Row="1"
+                                 Margin="0,0,16,10" />
+
+
+        <TextBox x:Name="TxtFirstName"
+                 Grid.Row="1"
+                 materialDesign:HintAssist.Hint="First Name"
+                 Margin="16,10" 
+                 Height="36" >
+            <TextBox.Text>
+                <Binding ElementName="TxtFirstName" Path="Text" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <validation:NotEmpty/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        
+        <TextBox x:Name="TxtLastName"
+                 Grid.Row="2" Grid.Column="2"
+                 materialDesign:HintAssist.Hint="Last Name"
+                 Margin="16,10"
+                 Height="36" >
+            <TextBox.Text>
+                <Binding ElementName="TxtLastName" 
+                         Path="Text" 
+                         UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <validation:NotEmpty/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <!--#endregion-->
+
+
+        <!--#region Phone-->
+        <materialDesign:PackIcon Kind="Phone"
+                                 Grid.Row="3"
+                                 Margin="0,0,16,10" />
+        <TextBox x:Name="TxtPhone"
+                 Grid.Row="3" Grid.Column="2"
+                 materialDesign:HintAssist.Hint="Phone"
+                 Margin="16,10"
+                 Height="36" 
+                 MaxLength="10" >
+            <TextBox.Text>
+                <Binding ElementName="TxtPhone" 
+                         Path="Text" 
+                         UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <validation:NotEmpty/>
+                        <validation:ISBNLength/><!--As ISBN-->
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <!--#endregion-->
+
+        <!--#region SecurityQuestion-->
+        <materialDesign:PackIcon Kind="Security"
+                                 Grid.Row="4"
+                                 Margin="0,0,16,14" />
+        <ComboBox x:Name="CmbSecurityQ"
+                  Grid.Column="2"
+                  Grid.Row="4"
+                  materialDesign:HintAssist.Hint="Security Question"
+                  IsEditable="True"
+                  Margin="16,14"
+                  VerticalAlignment="Center"
+                  MinHeight="24"
+                  MinWidth="240"
+                  Height="28">
+            <ComboBox.Text>
+                <Binding ElementName="CmbSecurityQ" 
+                         Path="Text" 
+                         UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <validation:NotEmpty/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
+        </ComboBox>
+        <!--#endregion-->
+
+        <!--#region Password-->
+        <materialDesign:PackIcon Kind="Lock"
+                                 Grid.Row="5"
+                                 Margin="0,0,16,14" />
+        <TextBox x:Name="TxtPassword"
+                 Grid.Row="5" 
+                 Grid.Column="2"
+                 materialDesign:HintAssist.Hint="Password"
+                 Margin="16,10"
+                 Height="36" 
+                 MaxLength="4" >
+            <TextBox.Text>
+                <Binding ElementName="TxtPassword" 
+                         Path="Text" 
+                         UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <validation:NotEmpty/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        
+        <!--#endregion-->
+
+
+        <!--#region Buttons-->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="7" Grid.Column="2"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Height="36"
+                    Width="174">
+
+            <Button
+                x:Name="BtnAdd"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                Command="materialDesign:DialogHost.CloseDialogCommand"
+                IsDefault="True"
+                Content="ADD"
+                Height="36" Width="90" />
+
+            <Button x:Name="BtnCancel"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    IsCancel="True"
+                    Command="materialDesign:DialogHost.CloseDialogCommand"
+                    Content="CANCEL"
+                    Height="36" MinWidth="64" />
+        </StackPanel>
+
+        <!--#endregion-->
+
+
+    </Grid>
+</UserControl>

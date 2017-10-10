@@ -8,12 +8,13 @@
               Background="{DynamicResource MaterialDesignPaper}"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="700">
-    
+
     <!--Chsnge Defaults-->
     <UserControl.Resources>
         <Style TargetType="Label">
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
 
         <Style TargetType="materialDesign:PackIcon">
@@ -24,12 +25,11 @@
 
         </Style>
     </UserControl.Resources>
-    
+
     <!--#region Rows and Coloumn Definitions-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
-            <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
@@ -57,16 +57,15 @@
 
         <!--#region Name-->
         <Label x:Name="LblName" 
-                 Width="300"
+                 Width="334"
                  FontSize="36"
                  FontWeight="Bold"
                  Grid.Row="1"
                  Height="50"
                  Grid.Column="1" 
                  Grid.ColumnSpan="2"  
-                 Margin="0,0,56,0" 
-                 Foreground="#283592"
-                 />
+                 Margin="0,0,22,0" 
+                 Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
         <!--#endregion-->
 
         <!--#region UID-->
@@ -78,71 +77,62 @@
                  Grid.Column="1"
                  Height="40" 
                 Grid.ColumnSpan="2" 
-                Margin="0,0,106,0"/>
+                Margin="0,0,106,10"/>
         <!-- #endregion-->
 
         <!--#region Department-->
         <materialDesign:PackIcon Kind="School"
-                                 Grid.Row="4"
+                                 Grid.Row="3"
                                  Grid.Column="1"
-                                 Margin="0,0,16,10"/>
+                                 Margin="0,0,22,10"/>
         <Label x:Name="LblDepartment"
-                 Width="118"
-                 Grid.Row="4"
+                 Width="82"
+                 Grid.Row="3"
                  Grid.Column="2" 
-                 Margin="0,0,138,0" 
-                 Height="36" />
+                 Margin="0,0,188,0" 
+                 Height="36"/>
         <!--#endregion-->
 
         <!--#region Semester-->
         <Label x:Name="LblSemester"
             Width="70"
-            Grid.Row="4"
+            Grid.Row="3"
             Grid.Column="2" 
-            Margin="0,0,36,0" 
+            Margin="0,0,106,0" 
             Height="36" />
         <!--#endregion-->
 
         <!--#region Phone-->
         <materialDesign:PackIcon Kind="Phone"
-                                 Grid.Row="5"
+                                 Grid.Row="4"
                                  Grid.Column="1"
-                                 Margin="0,0,16,10"/>
+                                 Margin="0,0,22,10"/>
         <Label x:Name="LblPhone"
                  Width="200"
-                 Grid.Row="5"
+                 Grid.Row="4"
                  Grid.Column="2"
                  Height="36"  
-                 Margin="0,0,56,0"/>
+                 Margin="0,0,70,0" />
         <!--#endregion-->
 
-        <!--Fab Edit Button-->
 
-        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                Width="56"
-                Height="56"
-                Grid.Row="6"
-                Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <materialDesign:PackIcon Kind="Pencil"/>
-        </Button>
 
 
         <Rectangle Width="700" 
                    Height="15" 
                    Grid.ColumnSpan="6" 
-                   Margin="0,21,0,20" 
-                   Grid.Row="6"
+                   Margin="0,10,0,31" 
+                   Grid.Row="5"
+                   Fill="{DynamicResource PrimaryHueDarkBrush}"
             />
- 
+
         <!--#region Borrowed Book Details List-->
-        <ListView Grid.Row="7"
+        <ListView Grid.Row="6"
                   FontFamily="roboto"
                   FontSize="16"
                   FontWeight="ExtraBlack"
-                  ItemsSource="{Binding Items1}" 
+                  
                   Grid.ColumnSpan="3" 
-                  Margin="0,0,0,46" 
-                  Grid.RowSpan="2" 
                   Grid.Column="1" 
                   HorizontalAlignment="Right" 
                   Width="580" Height="56" 
@@ -157,6 +147,20 @@
             </ListView.View>
         </ListView>
         <!--#endregion-->
+
+        <!--Fab Edit Button-->
+        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                Width="56"
+                Height="56"
+                Grid.Row="4"
+                Grid.Column="4" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" 
+                Margin="0,0,0,10" 
+                Grid.RowSpan="2">
+            <materialDesign:PackIcon Kind="Pencil"/>
+        </Button>
+
 
 
 
