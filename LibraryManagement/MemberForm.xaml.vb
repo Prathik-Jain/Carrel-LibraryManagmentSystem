@@ -1,14 +1,17 @@
-﻿Imports System.Text.RegularExpressions
+﻿Imports System.ComponentModel
+Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 Public Class MemberForm
-    Public Sub New
+    Public Sub New()
 
         ' This call is required by the designer.
         InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        CmbDept.ItemsSource = DepatmentService.GetDept()
-
+        If DesignerProperties.GetIsInDesignMode(New DependencyObject()) Then
+            Return
+        Else
+            'Executes when MemberForm is loaded - Not accessed by designer
+            CmbDept.ItemsSource = DepatmentService.GetDept()
+        End If
     End Sub
     Private Sub BtnAccept_Click(sender As Object, e As RoutedEventArgs) Handles BtnAccept.Click
         AddMember()
@@ -42,9 +45,9 @@ Public Class MemberForm
         Else
             If Await MemberService.EditMember(LblUID.Content.ToString, member) Then
                 DashBoard.SnackBarMessageQueue.Enqueue("Edited " + TxtFirstName.Text + ".", "VIEW", Sub()
-                                                                                                                  Dim viewMember As New ViewMember
-                                                                                                                  viewMember.UpdateView()
-                                                                                                              End Sub)
+                                                                                                        Dim viewMember As New ViewMember
+                                                                                                        viewMember.UpdateView()
+                                                                                                    End Sub)
 
             Else
                 DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
