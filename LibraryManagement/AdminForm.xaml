@@ -150,12 +150,26 @@
         </ComboBox>
         <!--#endregion-->
 
-        <!--#region Password-->
-        <materialDesign:PackIcon Kind="Lock"
+        <!--#region Answer-->
+        <materialDesign:PackIcon Kind="ChevronRight"
                                  Grid.Row="5"
                                  Margin="0,0,16,14" />
-        <TextBox x:Name="TxtPassword"
+        <TextBox x:Name="TxtAnswer"
                  Grid.Row="5" 
+                 Grid.Column="2"
+                 materialDesign:HintAssist.Hint="Answer"
+                 Margin="16,10"
+                 Height="36">
+
+        </TextBox>
+
+
+        <!--#region Password-->
+        <materialDesign:PackIcon Kind="Lock"
+                                 Grid.Row="6"
+                                 Margin="0,0,16,14" />
+        <TextBox x:Name="TxtPassword"
+                 Grid.Row="6" 
                  Grid.Column="2"
                  materialDesign:HintAssist.Hint="Password"
                  Margin="16,10"
@@ -177,7 +191,7 @@
 
         <!--#region Buttons-->
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="7" Grid.Column="2"
+                    Grid.Row="8" Grid.Column="2"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Right"
                     Height="36"

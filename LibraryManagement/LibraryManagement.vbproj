@@ -150,6 +150,9 @@
     <Compile Include="MemberForm.xaml.vb">
       <DependentUpon>MemberForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewAdmin.xaml.vb">
+      <DependentUpon>ViewAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewBook.xaml.vb">
       <DependentUpon>ViewBook.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MemberForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
