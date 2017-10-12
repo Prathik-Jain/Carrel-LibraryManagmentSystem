@@ -25,7 +25,7 @@ Public Class MemberAccount
         dashBoard.MemberPopup.Content = Me
         dashBoard.MemberPopupDialog.IsOpen = True
     End Sub
-    Public Sub startCameraAndTimer()
+    Public Sub StartCameraAndTimer()
         camera = New Camera
         camera.StartCamera()
         SendImage = New DispatcherTimer With {
@@ -34,7 +34,7 @@ Public Class MemberAccount
         SendImage.Start()
     End Sub
 
-    Public Sub stopCameraAndTimer()
+    Public Sub StopCameraAndTimer()
         camera.StopCamera()
         SendImage.Stop()
     End Sub
@@ -45,30 +45,54 @@ Public Class MemberAccount
         jsonString = qrDecoder.ScanQR(camera.frame)
         Try
             If jsonString <> "" Then
-                stopCameraAndTimer
-                QrScanned(jsonString)
+                StopCameraAndTimer
+                QrScanned(jsonString:=jsonString)
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
-    Private Sub QrScanned(jsonString As String)
+    Private Async Sub QrScanned(jsonString As String)
         My.Computer.Audio.Play(My.Resources.ScannerBeep, AudioPlayMode.Background)
+        Try
+            If jsonString.Contains("UID") Then
+                if AWAIT CheckBookInList 'Checks and returns book if found
+                    updateList("MEM-0001")
+                ElseIf await BookService.AddBorrower("BOOK-2","MEM-0001") 
+                    updateList("MEM-0001")
+                Else 
+                    MsgBox("Failed to Update database")
+                End If
+            else
+                MsgBox("Please scan a book to add or return")
+            End If
+        Catch ex As Exception
+            msgbox(ex.ToString())
+        End Try
+
         
-        If jsonString.Contains("UID") Then
-           if BookService.AddBorrower("BOOK-2",LblUID.Content.ToString) Then
-                MsgBox("BookAdded")
-                BorrowedList.ItemsSource = BookService.GetBooks("MEM-0001")
-                startCameraAndTimer
-           End If
-            Else
-            MsgBox("Scan a book only")
-        End If
     End Sub
 
+    Private async Sub updateList(memberID As String)
+        BorrowedList.ItemsSource =BookService.GetBooks("MEM-0001")
+        Await Task.Delay(50)
+        StartCameraAndTimer
+    End Sub
+
+    Private Async Function CheckBookInList() As Task(Of Boolean)
+        dim FLAG = False
+        for each item in BorrowedList.Items
+            If item.BookID.ToString().Contains("BOOK-2")
+               Await BookService.Return("BOOK-2")
+                FLAG =1
+            End If
+        Next
+       Return FLAG
+    End Function
+
     Private Sub MemberAccount_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        startCameraAndTimer
+        StartCameraAndTimer
 
     End Sub
 End Class
