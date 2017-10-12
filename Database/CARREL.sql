@@ -209,7 +209,7 @@ INSERT INTO Author VALUES("Mohana H.K"),("E Balaguruswamy"),("M Morris Mano"),("
 -------------------------------------------------------------------------------
 --INSERTING DEPARTMENT VAULES
 
-INSERT INTO Department VALUES("BA"),("BCA"),("B.Com"),("Bsc"),("BHM"),("BBA"),("M.Com"),("MCA"),("Msc"),("MBA")
+INSERT INTO Department VALUES("BA"),("BCA"),("B.Com"),("B.Sc"),("BHM"),("BBA"),("M.Com"),("MCA"),("M.Sc"),("MBA")
 -------------------------------------------------------------------------------
 
 
