@@ -196,3 +196,22 @@ GO
 	 END
 GO
 -------------------------------------------------------------------------------
+--INSERTING VALUES---
+-------------------------------------------------------------------------------
+--INSERTING AUTHOR VALUES
+
+INSERT INTO Author VALUES("Mohana H.K"),("E Balaguruswamy"),("M Morris Mano"),("Chitra Ravi"),
+("B.G Prasanthi"),("Nethra H.S"),("Bharathi A"),("Soogamma T.Makal"),("Ashok N.Kamthane")("R.P.Jain"),
+("Satyrs S.S"),("Shamkant B. Navathe"),("Ronald E Walpole"),("Lafore Robert"),("S.Ramesh"),
+("Abraham Silberschatz"),("Gurumit Singh"),("M.G.Venkateshmurthy"),("Forouzan"),("Billey E. Gillett"),
+("John C Martin"),("Dhamdhere"),("Behrouz A. Forouzan"),("Robert W Sebesta")
+
+-------------------------------------------------------------------------------
+--INSERTING DEPARTMENT VAULES
+
+INSERT INTO Department VALUES("BA"),("BCA"),("B.Com"),("Bsc"),("BHM"),("BBA"),("M.Com"),("MCA"),("Msc"),("MBA")
+-------------------------------------------------------------------------------
+
+
+
+
