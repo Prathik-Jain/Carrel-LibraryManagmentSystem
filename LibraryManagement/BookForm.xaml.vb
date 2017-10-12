@@ -1,4 +1,5 @@
-﻿Imports System.Text.RegularExpressions
+﻿Imports System.ComponentModel
+Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 Public Class BookForm
     Public Sub New
@@ -6,8 +7,12 @@ Public Class BookForm
         ' This call is required by the designer.
         InitializeComponent()
 
-        ' Add any initialization after the InitializeComponent() call.
-        CmbAuthor.ItemsSource = AuthorService.GetAuthors()
+        If DesignerProperties.GetIsInDesignMode(New DependencyObject()) Then
+            Return
+        Else
+            'Executes when BookForm is loaded - Not accessed by designer
+            CmbAuthor.ItemsSource = AuthorService.GetAuthors()
+        End If
 
     End Sub
 
@@ -44,10 +49,10 @@ Public Class BookForm
         Book.Rack = TxtRack.Text
         Dim number As Integer = Convert.ToInt32(TxtNumber.Text)
         If Await BookService.AddBook(Book, number) Then
-            DashBoard.SnackBarMessageQueue.Enqueue(TxtNumber.Text+" Book(s) Added", "VIEW", Sub()
-                                                                               Dim BookView As New ViewBook
-                                                                                                BookView.UpdateView(number)
-                                                                           End Sub)
+            DashBoard.SnackBarMessageQueue.Enqueue(TxtNumber.Text + " Book(s) Added", "VIEW", Sub()
+                                                                                                  Dim BookView As New ViewBook
+                                                                                                  BookView.UpdateView(number)
+                                                                                              End Sub)
         Else
             DashBoard.SnackBarMessageQueue.Enqueue("Failed registering ")
         End If
@@ -67,13 +72,13 @@ Public Class BookForm
             End If
         Next
     End Sub
-    #Region "ValidationOnLostFocus"
+#Region "ValidationOnLostFocus"
     Private Sub FieldLostFocus(sender As Object, e As RoutedEventArgs)
         Dim txt = DirectCast(sender, TextBox)
-                                txt.GetBindingExpression(TextBox.TextProperty).UpdateSource()
+        txt.GetBindingExpression(TextBox.TextProperty).UpdateSource()
     End Sub
-    #End Region
-    #Region "InputConstraint"
+#End Region
+#Region "InputConstraint"
     Private Sub TxtISBN_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtISBN.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
     End Sub
@@ -83,22 +88,22 @@ Public Class BookForm
     End Sub
 
     Private Sub TxtPrice_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtPrice.PreviewTextInput
-      e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
+        e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
     End Sub
 
     Private Sub TxtNumber_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtNumber.PreviewTextInput
-      e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
+        e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
     End Sub
 
     Private Sub TxtRack_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtRack.PreviewTextInput
-      e.Handled=  Regex.IsMatch(e.Text, "[^a-zA-Z0-9]+$")
+        e.Handled = Regex.IsMatch(e.Text, "[^a-zA-Z0-9]+$")
     End Sub
 
     Private Sub TxtTitle_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtTitle.PreviewTextInput
-      e.Handled=  Regex.IsMatch(e.Text, "[^a-zA-Z0-9]+$")
+        e.Handled = Regex.IsMatch(e.Text, "[^a-zA-Z0-9]+$")
     End Sub
-    #End Region
-    Private Sub RemoveAuthorFromList (sender As Object, e As RoutedEventArgs)
+#End Region
+    Private Sub RemoveAuthorFromList(sender As Object, e As RoutedEventArgs)
         LstAuthor.Items.Remove(sender.Content)
     End Sub
 End Class

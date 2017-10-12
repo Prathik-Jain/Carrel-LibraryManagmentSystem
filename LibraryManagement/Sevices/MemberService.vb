@@ -56,4 +56,27 @@ Public Class MemberService
             query.Connection.Close()
         End Try
     End Function
+    Friend Shared Function GetMember(UID As String)
+        Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = New SqlCommand("SELECT * FROM MEMBER WHERE UID = @UID",connection)
+        query.Parameters.Add(New SqlParameter("@UID",UID))
+        Try
+            connection.Open
+            Dim reader As SqlDataReader
+            reader = query.ExecuteReader
+            Dim data As New ArrayList
+            reader.Read
+                data.Add(reader("FName").ToString)
+                data.Add(reader("LName").ToString)
+                data.Add(reader("Phone").ToString)
+                data.Add(reader("Dept").ToString)
+                data.Add(reader("Sem").ToString)
+                data.Add(reader("MaxBooks").ToString)
+                data.Add(reader("BorrowedBooks").ToString)
+                data.Add(reader("Dues").ToString)
+            Return data
+            Finally
+                query.Connection.Close
+        End Try
+    End Function
 End Class

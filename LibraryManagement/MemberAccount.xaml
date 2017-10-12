@@ -123,24 +123,24 @@
                    Grid.ColumnSpan="6" 
                    Margin="0,10,0,31" 
                    Grid.Row="5"
-                   Fill="{DynamicResource PrimaryHueDarkBrush}"
-            />
+                   Fill="{DynamicResource PrimaryHueDarkBrush}"/>
 
         <!--#region Borrowed Book Details List-->
         <ListView Grid.Row="6"
+                    Grid.RowSpan="4"
                   FontFamily="roboto"
                   FontSize="16"
                   FontWeight="ExtraBlack"
-                  
+                  x:Name="BorrowedList"
                   Grid.ColumnSpan="3" 
                   Grid.Column="1" 
                   HorizontalAlignment="Right" 
-                  Width="580" Height="56" 
+                  Width="580" 
                   VerticalAlignment="Bottom">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="80" DisplayMemberBinding="{Binding Slno}" Header="Sl.No" />
-                    <GridViewColumn Width="150"  DisplayMemberBinding="{Binding Title}" Header="Title" />
+                <GridView  >
+                    <GridViewColumn Width="150" Header="Sl. No." DisplayMemberBinding="{Binding Sl}"/>
+                    <GridViewColumn Width="150" Header="Title" DisplayMemberBinding="{Binding Title}"/>
                     <GridViewColumn Width="120" DisplayMemberBinding="{Binding BookID}" Header="BookID" />
                     <GridViewColumn Width="150" DisplayMemberBinding="{Binding BorrowedOn}" Header="BorrowedOn" />
                 </GridView>

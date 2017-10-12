@@ -70,37 +70,54 @@
                              Grid.RowSpan="2" />
 
         <!--#region Dialogs-->
+        
         <!--BookForm Dialog-->
         <materialDesign:DialogHost x:Name="BookFormDialog"
                                    CloseOnClickAway="True"
+                                   IsOpen="False"
                                    Grid.Row="0" Grid.RowSpan="2">
             <materialDesign:DialogHost.DialogContent>
                 <local:BookForm  x:Name="BookForm"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
+        
+        <!--MemberForm Dialog-->
+        <materialDesign:DialogHost x:Name="MemberFormDialog"
+                                   CloseOnClickAway="True"
+                                   IsOpen="False"
+                                   Grid.Row="0" Grid.RowSpan="2">
+            <materialDesign:DialogHost.DialogContent>
+                <local:MemberForm x:Name="MemberForm"/>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        
         <!--ViewMemberDialog Dialog-->
         <materialDesign:DialogHost x:Name="ViewMemberDialog"
                                    CloseOnClickAway="True"
+                                   IsOpen="False"
                                    Grid.Row="0" Grid.RowSpan="2">
             <materialDesign:DialogHost.DialogContent>
                 <local:ViewMember x:Name="MemberView" />
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        <!--MemberForm Dialog-->
+        
         <!--ViewBookDialog Dialog-->
         <materialDesign:DialogHost x:Name="ViewBookDialog"
                                    CloseOnClickAway="True"
+                                   IsOpen="False"
                                    Grid.Row="0" Grid.RowSpan="2">
             <materialDesign:DialogHost.DialogContent>
                 <local:ViewMember x:Name="BookView" />
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        <!--MemberForm Dialog-->
-        <materialDesign:DialogHost x:Name="MemberFormDialog"
+        
+        <!--MemberPopUp Dialog-->
+        <materialDesign:DialogHost x:Name="MemberPopupDialog"
                                    CloseOnClickAway="True"
+                                   IsOpen="False"
                                    Grid.Row="0" Grid.RowSpan="2">
             <materialDesign:DialogHost.DialogContent>
-                <local:MemberForm x:Name="MemberForm"/>
+                <local:MemberAccount x:Name="MemberPopup"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
         <!--#endregion-->
