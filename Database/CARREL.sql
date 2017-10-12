@@ -60,7 +60,8 @@ GO
 	[AVAILABLE] [BIT] NOT NULL DEFAULT 1,
 	[RACK] [NVARCHAR](2) NULL, 
 	[QRPRINTED] [BIT] NOT NULL DEFAULT 0,
-	[LASTBORROWED] [NVARCHAR](MAX) NULL, -- Will contain JSON string of last borrower with time.
+	[BORROWEDBY] [NVARCHAR](MAX) NULL, 
+	[BORROWEDON] [DATE] NULL,
 	[ADDEDON] [DATE] NOT NULL DEFAULT CONVERT(DATE,GETDATE(),6)
 	PRIMARY KEY CLUSTERED ([UID] ASC)
 	);
@@ -200,16 +201,16 @@ GO
 -------------------------------------------------------------------------------
 --INSERTING AUTHOR VALUES
 
-INSERT INTO Author VALUES("Mohana H.K"),("E Balaguruswamy"),("M Morris Mano"),("Chitra Ravi"),
-("B.G Prasanthi"),("Nethra H.S"),("Bharathi A"),("Soogamma T.Makal"),("Ashok N.Kamthane")("R.P.Jain"),
-("Satyrs S.S"),("Shamkant B. Navathe"),("Ronald E Walpole"),("Lafore Robert"),("S.Ramesh"),
-("Abraham Silberschatz"),("Gurumit Singh"),("M.G.Venkateshmurthy"),("Forouzan"),("Billey E. Gillett"),
-("John C Martin"),("Dhamdhere"),("Behrouz A. Forouzan"),("Robert W Sebesta")
+INSERT INTO Author VALUES('Mohana H.K'),('E Balaguruswamy'),('M Morris Mano'),('Chitra Ravi'),
+('B.G Prasanthi'),('Nethra H.S'),('Bharathi A'),('Soogamma T.Makal'),('Ashok N.Kamthane'),('R.P.Jain'),
+('Satyrs S.S'),('Shamkant B. Navathe'),('Ronald E Walpole'),('Lafore Robert'),('S.Ramesh'),
+('Abraham Silberschatz'),('Gurumit Singh'),('M.G.Venkateshmurthy'),('Forouzan'),('Billey E. Gillett'),
+('John C Martin'),('Dhamdhere'),('Behrouz A. Forouzan'),('Robert W Sebesta')
 
 -------------------------------------------------------------------------------
 --INSERTING DEPARTMENT VAULES
 
-INSERT INTO Department VALUES("BA"),("BCA"),("B.Com"),("B.Sc"),("BHM"),("BBA"),("M.Com"),("MCA"),("M.Sc"),("MBA")
+INSERT INTO Dept VALUES('BA'),('BCA'),('B.Com'),('B.Sc'),('BHM'),('BBA'),('M.Com'),('MCA'),('M.Sc'),('MBA')
 -------------------------------------------------------------------------------
 
 
