@@ -56,6 +56,15 @@ Public Class MemberService
             query.Connection.Close()
         End Try
     End Function
+
+    ''Friend Shared Sub AddBook()
+    ''     Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+    ''    Dim query = New SqlCommand("UPDATE Member
+    ''                                SET BORROWEDBOOK = 
+    ''                                WHERE UID = @UID",connection)
+    ''    query.Parameters.Add(New SqlParameter("@UID",UID))
+    'End Sub
+
     Friend Shared Function GetMember(UID As String)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("SELECT * FROM MEMBER WHERE UID = @UID",connection)
