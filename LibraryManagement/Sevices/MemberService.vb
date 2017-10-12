@@ -24,7 +24,6 @@ Public Class MemberService
             reader = query.ExecuteReader
             Dim data As New ArrayList
             reader.Read()
-
             data.Add(reader("FNAME").ToString)
             data.Add(reader("LNAME").ToString)
             data.Add(reader("PHONE").ToString)
@@ -56,14 +55,6 @@ Public Class MemberService
             query.Connection.Close()
         End Try
     End Function
-
-    ''Friend Shared Sub AddBook()
-    ''     Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-    ''    Dim query = New SqlCommand("UPDATE Member
-    ''                                SET BORROWEDBOOK = 
-    ''                                WHERE UID = @UID",connection)
-    ''    query.Parameters.Add(New SqlParameter("@UID",UID))
-    'End Sub
 
     Friend Shared Function GetMember(UID As String)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
