@@ -139,6 +139,7 @@
                   VerticalAlignment="Bottom">
             <ListView.View>
                 <GridView  >
+                    <GridViewColumn Width="150" Header="Sl. No." DisplayMemberBinding="{Binding Sl}"/>
                     <GridViewColumn Width="150" Header="Title" DisplayMemberBinding="{Binding Title}"/>
                     <GridViewColumn Width="120" DisplayMemberBinding="{Binding BookID}" Header="BookID" />
                     <GridViewColumn Width="150" DisplayMemberBinding="{Binding BorrowedOn}" Header="BorrowedOn" />

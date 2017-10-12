@@ -13,8 +13,10 @@ Public Class MemberAccount
         LblSemester.Content = data(4)
         Dim Borrowed = JsonConvert.DeserializeObject(data(6))
         Dim BookList As New List(Of Book)
+        Dim count = 1
         For Each item As Linq.JObject In Borrowed
-            BookList.Add(New Book With {.BookID = item.GetValue("UID"), .BorrowedOn = item.GetValue("On"), .Title = item.GetValue("Title")})
+            BookList.Add(New Book With {.Sl=count, .BookID = item.GetValue("UID"), .BorrowedOn = item.GetValue("On"), .Title = item.GetValue("Title")})
+            count += 1
         Next
         BorrowedList.ItemsSource = BookList
         dashBoard.MemberPopup.Content = Me
@@ -23,6 +25,7 @@ Public Class MemberAccount
 
 End Class
 Class Book
+    Property Sl
     Property BookID
     Property Title
     Property BorrowedOn
