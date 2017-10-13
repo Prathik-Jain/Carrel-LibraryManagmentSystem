@@ -19,8 +19,8 @@
         <Style TargetType="materialDesign:PackIcon">
             <Setter Property="Grid.Column" Value="1" />
             <Setter Property="Margin" Value="16" />
-            <Setter Property="Height" Value="24" />
-            <Setter Property="Width" Value="24" />
+            <!--<Setter Property="Height" Value="24" />
+            <Setter Property="Width" Value="24" />-->
             <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="HorizontalAlignment" Value="Right" />
             <Setter Property="Foreground" Value="#000000" />
@@ -53,14 +53,12 @@
             <RowDefinition Height="56" />
             <RowDefinition Height="56" />
             <RowDefinition Height="56" />
-            <RowDefinition Height="56" />
-            <RowDefinition Height="56" />
             <RowDefinition Height="*" />
             <RowDefinition Height="48" />
         </Grid.RowDefinitions>
         <!--#endregion-->
 
-        <!--#region Image attachment-->
+        <!--#region Image attachment
         <Image
             
             HorizontalAlignment="Left"
@@ -94,8 +92,8 @@
                 Width="24"
                 Margin="0"
                 Opacity="0.87" />
-        </Button>
-        <!--#endregion-->
+        </Button>  #end region-->
+        
         <!--#region UID-->
         <Label x:Name="LblUID"
                Visibility="Hidden"
@@ -103,12 +101,12 @@
 
         <!--#region Name-->
         <materialDesign:PackIcon Kind="Account"
-                                 Grid.Row="3"
+                                 Grid.Row="1"
                                  Margin="0,0,16,10" />
 
 
         <TextBox x:Name="TxtFirstName"
-                 Grid.Row="3"
+                 Grid.Row="1"
                  materialDesign:HintAssist.Hint="First Name"
                  Margin="16,10" Height="36" >
             <TextBox.Text>
@@ -120,7 +118,7 @@
             </TextBox.Text>
         </TextBox>
         <TextBox x:Name="TxtLastName"
-                 Grid.Row="4" Grid.Column="2"
+                 Grid.Row="2" Grid.Column="2"
                  materialDesign:HintAssist.Hint="Last Name"
                  Margin="16,10"
                  Height="36" >
@@ -137,10 +135,10 @@
 
         <!--#region Phone-->
         <materialDesign:PackIcon Kind="Phone"
-                                 Grid.Row="5"
+                                 Grid.Row="3"
                                  Margin="0,0,16,10" />
         <TextBox x:Name="TxtPhone"
-                 Grid.Row="5" Grid.Column="2"
+                 Grid.Row="3" Grid.Column="2"
                  materialDesign:HintAssist.Hint="Phone"
                  Margin="16,10"
                  Height="36" MaxLength="10" >
@@ -157,11 +155,11 @@
 
         <!--#region Department-->
         <materialDesign:PackIcon Kind="SortVariant"
-                                 Grid.Row="6"
+                                 Grid.Row="4"
                                  Margin="0,0,16,14" />
         <ComboBox x:Name="CmbDept"
                   Grid.Column="2"
-                  Grid.Row="6"
+                  Grid.Row="4"
                   materialDesign:HintAssist.Hint="Department"
                   IsEditable="True"
                   Margin="16,14"
@@ -181,11 +179,11 @@
 
         <!--#region Semester-->
         <materialDesign:PackIcon Kind="Details"
-                                 Grid.Row="7"
+                                 Grid.Row="5"
                                  Margin="0,0,16,14" />
         <ComboBox x:Name="TxtSemester"
                   Grid.Column="2"
-                  Grid.Row="7"
+                  Grid.Row="5"
                   materialDesign:HintAssist.Hint="Semester"
                   IsEditable="False"
                   Margin="16,14" 
@@ -207,7 +205,7 @@
 
         <!--#region Buttons-->
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="9" Grid.Column="2"
+                    Grid.Row="7" Grid.Column="2"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Right"
                     Height="36"
