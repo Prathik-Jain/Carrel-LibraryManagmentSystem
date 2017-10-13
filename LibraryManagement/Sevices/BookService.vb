@@ -53,19 +53,38 @@ Public Class BookService
     
     End Function
 
-    Friend Shared Function AddBorrower(BookID  As String,MemberID As String) As Integer
+    Friend Shared Async function [Return](bookId As String) As Task(Of Integer)
+        Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = new SqlCommand("UPDATE Book
+                                    SET BORROWEDBY = ''
+                                    WHERE UID = @BookID" ,connection)
+        
+        Try
+            query.Parameters.Add(New SqlParameter("@BookID",bookId))
+            connection.Open
+            Return await query.ExecuteNonQueryAsync
+            
+        Finally
+            query.Connection.Close
+        End Try
+    End Function
+
+    Friend Async Shared Function AddBorrower(BookID  As String,MemberID As String) As Task(Of Integer)
          Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = new SqlCommand("UPDATE Book
                                     SET BORROWEDBY = @MemberID, BORROWEDON = @NOW
                                     WHERE UID = @BooKID" ,connection)
+            Connection.Open()
         
         Try
             query.Parameters.Add(New SqlParameter("@MemberID",MemberID))
             query.Parameters.Add(New SqlParameter("@BooKID",BookId))
             query.Parameters.Add(New SqlParameter("@NOW",Now.Date()))
-            connection.Open
-            Return query.ExecuteNonQuery
-            
+            Dim x= Await query.ExecuteNonQueryAsync
+            Return x
+            Catch e As Exception
+            MsgBox(e.ToString())
+            Throw
             Finally
             query.Connection.Close
         End Try
