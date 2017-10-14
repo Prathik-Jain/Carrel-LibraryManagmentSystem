@@ -62,14 +62,14 @@ Public Class MemberService
         End Try
     End Function
 
-    Friend Shared Function GetMember(uid As String)
+    Friend Shared Async Function GetMember(uid As String) As Task(Of ArrayList)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("SELECT * FROM MEMBER WHERE UID = @UID",connection)
         query.Parameters.Add(New SqlParameter("@UID",UID))
         Try
             connection.Open
             Dim reader As SqlDataReader
-            reader = query.ExecuteReader
+            reader = await query.ExecuteReaderAsync
             Dim data As New ArrayList
             reader.Read
                 data.Add(reader("FName").ToString)
