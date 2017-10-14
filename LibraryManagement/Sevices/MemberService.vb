@@ -7,11 +7,6 @@ Public Class MemberService
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("INSERT INTO JSON (CATEGORY,DATA) VALUES ('MEM',@JSONString)", connection)
 
-        query.Parameters.Add(New SqlParameter("@JSONString", JsonConvert.SerializeObject(member)))
-        connection.Open()
-        Return query.ExecuteNonQueryAsync()
-        query.Connection.Close()
-    
         Try
             connection.Open()
             query.Parameters.Add(New SqlParameter("@JSONString", JsonConvert.SerializeObject(member)))
