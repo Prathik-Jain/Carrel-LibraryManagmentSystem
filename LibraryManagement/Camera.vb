@@ -3,9 +3,9 @@ Imports AForge.Video
 Imports AForge.Video.DirectShow
 
 Public Class Camera
-    Public camera As VideoCaptureDevice
-    Public videoDevices As FilterInfoCollection
-    Public frame As Bitmap
+    Public Camera As VideoCaptureDevice
+    Public VideoDevices As FilterInfoCollection
+    Public Frame As Bitmap
 
     Public Sub StartCamera()
         videoDevices = New FilterInfoCollection(FilterCategory.VideoInputDevice)

@@ -117,7 +117,7 @@
                          UpdateSourceTrigger="LostFocus">
                     <Binding.ValidationRules>
                         <validation:NotEmpty/>
-                        <validation:ISBNLength/><!--As ISBN-->
+                        <validation:IsbnLength/><!--As ISBN-->
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>

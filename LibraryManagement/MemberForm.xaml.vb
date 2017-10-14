@@ -33,25 +33,34 @@ Public Class MemberForm
         member.Dept = CmbDept.Text
         member.Sem = TxtSemester.Text
         If LblUID.Content.ToString = "" Then
-
-            If Await MemberService.AddMember(member) Then
-                DashBoard.SnackBarMessageQueue.Enqueue("Registered " + TxtFirstName.Text + " as Member.", "VIEW", Sub()
-                                                                                                                      Dim viewMember As New ViewMember
-                                                                                                                      viewMember.UpdateView()
-                                                                                                                  End Sub)
-            Else
-                DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
-            End If
+            Try
+                If  Await MemberService.AddMember(member) Then
+                    DashBoard.SnackBarMessageQueue.Enqueue("Registered " + TxtFirstName.Text + " as Member.", "VIEW", Sub()
+                        Dim viewMember As New ViewMember
+                        viewMember.UpdateView()
+                    End Sub)
+                else
+                    DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
+                End If
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
+           
         Else
-            If Await MemberService.EditMember(LblUID.Content.ToString, member) Then
-                DashBoard.SnackBarMessageQueue.Enqueue("Edited " + TxtFirstName.Text + ".", "VIEW", Sub()
-                                                                                                        Dim viewMember As New ViewMember
-                                                                                                        viewMember.UpdateView()
-                                                                                                    End Sub)
+            Try
+                If Not Await MemberService.EditMember(LblUID.Content.ToString, member) Then
+                    DashBoard.SnackBarMessageQueue.Enqueue("Edited " + TxtFirstName.Text + ".", "VIEW", Sub()
+                        Dim viewMember As New ViewMember
+                        viewMember.UpdateView()
+                    End Sub)
 
-            Else
-                DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
-            End If
+                Else
+                    DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
+                End If
+            Catch ex As Exception
+                MsgBox(ex.ToString())
+                Throw
+            End Try
         End If
 
     End Sub
