@@ -5,13 +5,13 @@ Public Class MemberAccount
     Dim _dashBoard As DashBoard = Application.Current.Windows(0)
     WithEvents _sendImage As DispatcherTimer
     Dim _camera As Camera
-    Public sub New ()
+    Public sub New 
 
         ' This call is required by the designer.
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
     End Sub
-    Public Async sub GetData(uid As String)
+    Public Async Sub GetData(uid As String)
         dim data as ArrayList = await MemberService.GetMember(UID)
         BorrowedList.ItemsSource = new List(Of Book) (Await BookService.GetBooksBorrowed(UID))
         LblUID.Content = UID
@@ -19,9 +19,9 @@ Public Class MemberAccount
         LblPhone.Content = data(2)
         LblDepartment.Content = data(3)
         LblSemester.Content = data(4)
-        _dashBoard.MemberPopup.Content = me
+        _dashBoard.MemberPopup.Content = Me
         _dashBoard.MemberPopupDialog.IsOpen = True
-    End sub
+    End Sub
     Public Sub StartCameraAndTimer()
         _camera = New Camera
         _camera.StartCamera()
@@ -31,10 +31,10 @@ Public Class MemberAccount
         _sendImage.Start()
     End Sub
 
-    Public sub StopCameraAndTimer() 
+    Public Sub StopCameraAndTimer() 
          _camera.StopCamera()
         _sendImage.Stop()
-    End sub
+    End Sub
 
     Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles _sendImage.Tick
         Dim qrDecoder As New QRDecoder
