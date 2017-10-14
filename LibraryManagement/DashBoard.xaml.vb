@@ -3,8 +3,8 @@ Imports MaterialDesignThemes.Wpf
 
 Public Class DashBoard
     Public Shared SnackBarMessageQueue As SnackbarMessageQueue
-    WithEvents SendImage As DispatcherTimer
-    Dim camera As Camera
+    WithEvents _sendImage As DispatcherTimer
+    Dim _camera As Camera
 
     Public Sub New()
         ' This call is required by the designer.
@@ -12,24 +12,24 @@ Public Class DashBoard
         startCameraAndTimer()
     End Sub
 
-    Public Sub startCameraAndTimer()
-        camera = New Camera
-        camera.StartCamera()
-        SendImage = New DispatcherTimer With {
+    Public Sub StartCameraAndTimer()
+        _camera = New Camera
+        _camera.StartCamera()
+        _sendImage = New DispatcherTimer With {
             .Interval = New TimeSpan(0, 0, 0.2)
             }
-        SendImage.Start()
+        _sendImage.Start()
     End Sub
 
-    Public Sub stopCameraAndTimer()
-        camera.StopCamera()
-        SendImage.Stop()
+    Public Sub StopCameraAndTimer()
+        _camera.StopCamera()
+        _sendImage.Stop()
     End Sub
 
-    Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles SendImage.Tick
+    Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles _sendImage.Tick
         Dim qrDecoder As New QRDecoder
         Dim jsonString = ""
-        jsonString = qrDecoder.ScanQR(camera.frame)
+        jsonString = qrDecoder.ScanQR(_camera.frame)
         Try
             If jsonString <> "" Then
                 stopCameraAndTimer()
@@ -45,7 +45,7 @@ Public Class DashBoard
         If jsonString.Contains("MEM") Then
             MsgBox("Member")
         ElseIf jsonString.Contains("ADM") Then
-            Dim memberAccount As New MemberAccount
+            dim memberAccount =new MemberAccount
             memberAccount.GetData("MEM-0001")
             FAB.IsEnabled = False
         ElseIf jsonString.Contains("BOOK") Then
@@ -68,14 +68,17 @@ Public Class DashBoard
         stopCameraAndTimer()
     End Sub
 
-    Private Sub FormDialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
+    Private Sub Dialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
         Handles MemberFormDialog.DialogClosing,
-                BookFormDialog.DialogClosing
+                BookFormDialog.DialogClosing,
+                MemberPopupDialog.DialogClosing,
+                ViewMemberDialog.DialogClosing,
+                ViewBookDialog.DialogClosing
         FAB.IsEnabled = True
         startCameraAndTimer()
     End Sub
 
-    Private Sub ViewDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
+    Private Sub Dialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
         Handles ViewMemberDialog.DialogOpened,
                 ViewBookDialog.DialogOpened,
                 Me.Unloaded
@@ -83,15 +86,4 @@ Public Class DashBoard
         stopCameraAndTimer()
     End Sub
 
-    Private Sub ViewDialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
-        Handles ViewMemberDialog.DialogClosing,
-                ViewBookDialog.DialogClosing
-        FAB.IsEnabled = True
-        startCameraAndTimer()
-    End Sub
-
-    Private Sub MemberPopupDialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
-        Handles MemberPopupDialog.DialogClosing
-        startCameraAndTimer()
-    End Sub
 End Class

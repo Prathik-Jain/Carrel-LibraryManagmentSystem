@@ -1,4 +1,4 @@
 ﻿Public Class Admin
-    Public UID As String
+    Public Uid As String
     Public Name As String
 End Class

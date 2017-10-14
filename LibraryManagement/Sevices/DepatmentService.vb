@@ -3,26 +3,41 @@
 Public Class DepatmentService
 
     Public Shared Function GetDept() As ArrayList
-        Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim DR as SqlDataReader
-        Dim query = new SqlCommand("SELECT * FROM DEPT", connection)
-        connection.Open()
-        DR = query.ExecuteReader()
-        dim Dept = New ArrayList
-        While(DR.Read())
-            Dept.Add(DR.GetString(1))
-        End While
-        DR.Close()
-        connection.Close()
-        Return Dept
+        Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim dr as SqlDataReader
+        Dim query = New SqlCommand("SELECT * FROM DEPT", connection)
+        Try
+            connection.Open()
+            DR = query.ExecuteReader()
+            dim dept = New ArrayList
+            While(DR.Read())
+                Dept.Add(DR.GetString(1))
+            End While
+            DR.Close()
+            Return Dept
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.connection.Close()
+        End Try
+        
+        
     End Function
 
-     Shared Sub AddDepatment(DEPT As String)
+     Friend Shared Async Sub AddDepatment(dept As String)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("INSERT INTO DEPT VALUES (@DEPT)", connection)
-        query.Parameters.Add(New SqlParameter("@DEPT",DEPT))
-        connection.Open()
-        query.ExecuteNonQueryAsync()
-        query.Connection.Close()
+        Try
+            query.Parameters.Add(New SqlParameter("@DEPT",DEPT))
+            connection.Open()
+            Await query.ExecuteNonQueryAsync()
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.connection.Close()
+        End Try
+       
     End Sub
 End Class

@@ -4,28 +4,28 @@ Imports System.Windows.Threading
 Imports Newtonsoft.Json
 
 Class Page1
-    Dim ReadOnly camera As New Camera
-    WithEvents SendImage As DispatcherTimer
-    WithEvents DelayTimer As DispatcherTimer
-    Dim movetxt As Storyboard
-    Dim JsonConvert As JsonConvert
+    Dim ReadOnly _camera As New Camera
+    WithEvents _sendImage As DispatcherTimer
+    WithEvents _delayTimer As DispatcherTimer
+    Dim _movetxt As Storyboard
+    Dim _jsonConvert As JsonConvert
 
     Private Sub Me_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         ' Initializing animation
-        movetxt = Me.Resources("moveText")
+        _movetxt = Me.Resources("moveText")
         InitializeComponent()
 
-        camera.StartCamera()
-        SendImage = New DispatcherTimer With {
+        _camera.StartCamera()
+        _sendImage = New DispatcherTimer With {
             .Interval = New TimeSpan(0, 0, 0.2)
             }
-        SendImage.Start()
+        _sendImage.Start()
     End Sub
 
-    Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles SendImage.Tick
+    Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles _sendImage.Tick
         Dim qrDecoder As New QRDecoder
         Dim jsonString = ""
-        jsonString = qrDecoder.ScanQR(camera.frame)
+        jsonString = qrDecoder.ScanQR(_camera.frame)
         Try
             If jsonString <> "" Then
                 QrScanned(jsonString)
@@ -36,25 +36,25 @@ Class Page1
     End Sub
 
 
-    Dim admin = New Admin
-    Dim ReadOnly loginService = New AdminService
+    Dim _admin = New Admin
+    Dim ReadOnly _loginService = New AdminService
 
     Public Async Sub QrScanned(str As String)
         My.Computer.Audio.Play(My.Resources.ScannerBeep, AudioPlayMode.Background)
         If str.Contains("ADM") Then
-            admin = JsonConvert.DeserializeObject (Of Admin)(str)
+            _admin = JsonConvert.DeserializeObject (Of Admin)(str)
             Try
-                If loginService.CheckUser(admin.UID, admin.Name) = 1 Then
-                    camera.StopCamera()
-                    SendImage.Stop()
+                If _loginService.CheckUser(_admin.UID, _admin.Name) = 1 Then
+                    _camera.StopCamera()
+                    _sendImage.Stop()
                     UpdateScreen()
                 Else
 
                     loginPage.Background = Brushes.OrangeRed
                     txtLoginInstruction.Text = "Admin not found"
-                    SendImage.Stop()
+                    _sendImage.Stop()
                     Await Task.Delay(2000)
-                    SendImage.Start()
+                    _sendImage.Start()
                 End If
             Catch ex As Exception
                 MsgBox(ex.ToString)
@@ -67,11 +67,11 @@ Class Page1
 
     Private Sub UpdateScreen()
         'Updates login screen with Admin info.
-        BeginStoryboard(movetxt)
+        BeginStoryboard(_movetxt)
         TxtPIN.IsEnabled = True
         TxtPIN.Clear()
         Keyboard.Focus(TxtPIN)
-        txtWelcome.Text = "Welcome, " + admin.Name
+        txtWelcome.Text = "Welcome, " + _admin.Name
         txtLoginInstruction.Text = "Please enter your PIN"
     End Sub
 
@@ -82,8 +82,8 @@ Class Page1
     End Sub
 
     Private Sub StopAllServices()
-        camera.StopCamera()  'Stops the webCam.
-        SendImage.Stop() 'Stops sending images to decode.
+        _camera.StopCamera()  'Stops the webCam.
+        _sendImage.Stop() 'Stops sending images to decode.
     End Sub
 
     Private Sub TxtPIN_PrieviewTextInput(sender As Object, e As TextCompositionEventArgs) _
@@ -92,7 +92,7 @@ Class Page1
     End Sub
 
     Private Sub TxtPIN_TextChanged(sender As Object, e As TextChangedEventArgs) Handles TxtPIN.TextChanged
-        Dim PIN = TxtPIN.Text.Replace(" ", "")
+        Dim pin = TxtPIN.Text.Replace(" ", "")
         Select Case (PIN.Length)
             Case 0
                 ClearDots()
@@ -118,8 +118,8 @@ Class Page1
                 dot3.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 dot4.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 'HACK to update UI befor matchPIN() executes.
-                If loginService.MatchPIN(admin.UID, PIN) = 1 Then
-                    Dim Dash = New DashBoard
+                If _loginService.MatchPIN(_admin.UID, PIN) = 1 Then
+                    Dim dash = New DashBoard
                     Dash.Show()
                     loginPage.Visibility = Visibility.Collapsed
 
@@ -138,7 +138,7 @@ Class Page1
         dot4.Background = New SolidColorBrush(Colors.White)
     End Sub
 
-    Private Sub AddNumberToPIN(number As Integer)
+    Private Sub AddNumberToPin(number As Integer)
         TxtPIN.Text += number.ToString
         Keyboard.Focus(TxtPIN)
         TxtPIN.CaretIndex = TxtPIN.Text.Length 'Brings the caret to the end.

@@ -146,7 +146,7 @@
                 <Binding ElementName="TxtPhone" Path="Text" UpdateSourceTrigger="LostFocus">
                     <Binding.ValidationRules>
                         <validation:NotEmpty/>
-                        <validation:ISBNLength/> <!--As ISBNLength =10 -->
+                        <validation:IsbnLength/> <!--As ISBNLength =10 -->
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>

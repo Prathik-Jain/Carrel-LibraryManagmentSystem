@@ -1,30 +1,40 @@
-﻿Imports System.Data
-Imports System.Data.SqlClient
-Imports MahApps.Metro.Converters
+﻿Imports System.Data.SqlClient
 
 Public Class AuthorService
     Public Shared Function GetAuthors() As ArrayList
-        Dim connection =
-                new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim DR as SqlDataReader
-        Dim query = new SqlCommand("SELECT * FROM AUTHOR", connection)
-        connection.Open()
-        DR = query.ExecuteReader()
-        dim Authors = New ArrayList
-        While(DR.Read())
-            Authors.Add(DR.GetString(1))
-        End While
-        DR.Close()
-        connection.Close()
-        Return Authors
+        Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim dr as SqlDataReader
+        Dim query = New SqlCommand("SELECT * FROM AUTHOR", connection)
+        Try
+            connection.Open()
+            DR = query.ExecuteReader()
+            dim authors = New ArrayList
+            While(DR.Read())
+                Authors.Add(DR.GetString(1))
+            End While
+            DR.Close()
+            Return Authors
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.connection.Close()
+        End Try
+       
     End Function
 
-    Friend shared Sub AddAuthor(AUTHOR As String)
-   Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim query = new SqlCommand("INSERT INTO AUTHOR VALUES (@Author)" ,connection)
-        query.Parameters.Add(New SqlParameter("@Author",AUTHOR))
-        connection.Open()
-        query.ExecuteNonQueryAsync()
-        query.Connection.Close()
+    Friend Shared Async Sub AddAuthor(author As String)
+   Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = New SqlCommand("INSERT INTO AUTHOR VALUES (@Author)" ,connection)
+        Try
+            query.Parameters.Add(New SqlParameter("@Author",AUTHOR))
+            connection.Open()
+            await query.ExecuteNonQueryAsync()
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.connection.Close()
+        End Try
     End Sub
 End Class

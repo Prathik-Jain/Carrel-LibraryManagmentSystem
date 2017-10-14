@@ -39,7 +39,7 @@ Public Class BookForm
         AddAuthor()
     End Sub
     Private Async Sub AddBook()
-        Dim Book As Object = New Linq.JObject
+        Dim book As Object = New Linq.JObject
         Book.ISBN = TxtISBN.Text
         Book.Title = TxtTitle.Text
         Book.Author = JsonConvert.SerializeObject(LstAuthor.Items)
@@ -50,7 +50,7 @@ Public Class BookForm
         Dim number As Integer = Convert.ToInt32(TxtNumber.Text)
         If Await BookService.AddBook(Book, number) Then
             DashBoard.SnackBarMessageQueue.Enqueue(TxtNumber.Text + " Book(s) Added", "VIEW", Sub()
-                                                                                                  Dim BookView As New ViewBook
+                                                                                                  Dim bookView As New ViewBook
                                                                                                   BookView.UpdateView(number)
                                                                                               End Sub)
         Else

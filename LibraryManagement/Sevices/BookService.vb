@@ -2,91 +2,178 @@
 Imports Newtonsoft.Json
 
 Public Class BookService
-    Friend Shared Function AddBook(Book As Object, number As Integer) As Task(Of Integer)
-        Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+    Friend Shared Async Function AddBook(book As Object, number As Integer) As Task(Of Integer)
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("INSERT INTO JSON VALUES ('BOOK',@JSONString,@Number)", connection)
-        query.Parameters.Add(New SqlParameter("@JSONString", JsonConvert.SerializeObject(Book)))
-        query.Parameters.Add(New SqlParameter("@Number", number))
-        connection.Open()
-        Return query.ExecuteNonQueryAsync()
-        query.Connection.Close()
-    End Function
-
-    Friend Shared Function GetBooks(MemberID As String) As List(Of Book)
-        Dim list As New List(Of Book)
-        Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim query = new SqlCommand("SELECT UID, TITLE, BORROWEDON FROM BOOK WHERE BORROWEDBY = @MemberID" ,connection)
-        Dim reader As SqlDataReader
-        Dim data As New ArrayList
         Try
-            query.Parameters.Add(New SqlParameter("@MemberID", MemberID))
-            connection.Open
-            reader= query.ExecuteReader
-            Dim count =0
-            While reader.Read
-                list.Add(New Book With {.Sl = count, .BookID = reader("UID").ToString, .BorrowedOn = reader("BORROWEDON").ToString, .Title = reader("TITLE").ToString})
-                count += 1
-            End While
-            Return list
+            query.Parameters.Add(New SqlParameter("@JSONString", JsonConvert.SerializeObject(book)))
+            query.Parameters.Add(New SqlParameter("@Number", number))
+            connection.Open()
+            Return Await query.ExecuteNonQueryAsync()
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
         Finally
-            query.Connection.Close
+            query.Connection.Close()
         End Try
     End Function
 
-    Friend Shared Function PrintLastAdded()
-         Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim query = new SqlCommand("SELECT * FROM BOOK WHERE ID = (SELECT MAX(ID) FROM BOOK)" ,connection)
-        connection.Open()
+    Friend Async Shared Function GetBooksBorrowed(memberId As String) As Task(Of List(Of Book))
+Dim list As New List(Of Book)
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query =
+                New SqlCommand("SELECT UID, TITLE, BORROWEDON FROM BOOK WHERE BORROWEDBY = @memberID", connection)
         Dim reader As SqlDataReader
-        reader = query.ExecuteReader
-        Dim data As New ArrayList
-        reader.Read
+        Try
+            query.Parameters.Add(New SqlParameter("@MemberID", memberId))
+            connection.Open()
+            reader = Await query.ExecuteReaderAsync
+            Dim count = 1
+            While reader.Read
+                list.Add(
+                    New Book _
+                            With {.Sl = count, .BookId = reader("UID").ToString,
+                            .BorrowedOn = reader("BORROWEDON").ToString, .Title = reader("TITLE").ToString})
+                count += 1
+            End While
+            Return list
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.Connection.Close()
+        End Try
+    End Function
 
-            data.add(reader("ISBN").ToString)
+    Friend Shared Function GetLastAdded() As ArrayList
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query =
+                New SqlCommand("SELECT * FROM BOOK WHERE ID = (SELECT MAX(ID) FROM BOOK)", connection)
+        Try
+            connection.Open()
+            Dim reader As SqlDataReader
+            reader = query.ExecuteReader
+            Dim data As New ArrayList
+            reader.Read()
+            data.Add(reader("ISBN").ToString)
             data.Add(reader("TITLE").ToString)
             data.Add(reader("AUTHOR").ToString)
             data.Add(reader("PUBLISHER").ToString)
             data.Add(reader("EDITION").ToString)
             data.Add(reader("PRICE").ToString)
             data.Add(reader("RACK").ToString)
-      Return data
-    
-    End Function
-
-    Friend Shared Async function [Return](bookId As String) As Task(Of Integer)
-        Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim query = new SqlCommand("UPDATE Book
-                                    SET BORROWEDBY = ''
-                                    WHERE UID = @BookID" ,connection)
-        
-        Try
-            query.Parameters.Add(New SqlParameter("@BookID",bookId))
-            connection.Open
-            Return await query.ExecuteNonQueryAsync
-            
+            Return data
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
         Finally
-            query.Connection.Close
+            query.Connection.Close()
         End Try
     End Function
 
-    Friend Async Shared Function AddBorrower(BookID  As String,MemberID As String) As Task(Of Integer)
-         Dim connection = new SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim query = new SqlCommand("UPDATE Book
-                                    SET BORROWEDBY = @MemberID, BORROWEDON = @NOW
-                                    WHERE UID = @BooKID" ,connection)
-            Connection.Open()
-        
+    Friend Shared Async Function Returned(bookId As String) As Task(Of Integer)
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query =
+                New SqlCommand("UPDATE Book SET BORROWEDBY = '', BORROWEDON = '', AVAILABLE = 1  WHERE UID = @BookID",
+                               connection)
+
         Try
-            query.Parameters.Add(New SqlParameter("@MemberID",MemberID))
-            query.Parameters.Add(New SqlParameter("@BooKID",BookId))
-            query.Parameters.Add(New SqlParameter("@NOW",Now.Date()))
-            Dim x= Await query.ExecuteNonQueryAsync
-            Return x
-            Catch e As Exception
+            query.Parameters.Add(New SqlParameter("@BookID", bookId))
+            connection.Open()
+            Return Await query.ExecuteNonQueryAsync
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.Connection.Close()
+        End Try
+    End Function
+
+    Friend Shared Async Function Borrowed(bookId As String, memberId As String) As Task(Of Integer)
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query =
+                New SqlCommand("UPDATE Book SET BORROWEDBY = @MemberID, BORROWEDON = @NOW, AVAILABLE = 0 WHERE UID = @BooKID",
+                    connection)
+        connection.Open()
+
+        Try
+            query.Parameters.Add(New SqlParameter("@MemberID", memberId))
+            query.Parameters.Add(New SqlParameter("@BooKID", bookId))
+            query.Parameters.Add(New SqlParameter("@NOW", Now.Date()))
+            Return Await query.ExecuteNonQueryAsync
+        Catch e As Exception
             MsgBox(e.ToString())
             Throw
-            Finally
-            query.Connection.Close
+        Finally
+            query.Connection.Close()
+        End Try
+    End Function
+
+    Public Shared Function GetBookById(bookId As String) As Object
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = New SqlCommand("SELECT * FROM BOOK WHERE ID = @BookID", connection)
+
+        Try
+            query.Parameters.Add(New SqlParameter("BookID", bookId))
+            connection.Open()
+            Dim reader As SqlDataReader
+            reader = query.ExecuteReader
+            Dim data As New ArrayList
+            reader.Read()
+            data.Add(reader("ISBN").ToString)
+            data.Add(reader("TITLE").ToString)
+            data.Add(reader("AUTHOR").ToString)
+            data.Add(reader("PUBLISHER").ToString)
+            data.Add(reader("EDITION").ToString)
+            data.Add(reader("PRICE").ToString)
+            data.Add(reader("RACK").ToString)
+            data.Add(reader("AVAILABLE").ToString())
+            data.Add(reader("BORROWEDBY").ToString())
+            data.Add(reader("BORROWEDON").ToString())
+            data.Add(reader("ADDEDON").ToString())
+            Return data
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.Connection.Close()
+        End Try
+    End Function
+
+    Public Shared Function GetNumber(isbn As String) As String
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = New SqlCommand("SELECT COUNT(ISBN) FROM BOOK WHERE ISBN = @ISBN", connection)
+        Try
+            connection.Open()
+            Return query.ExecuteScalar
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.Connection.Close()
+        End Try
+    End Function
+
+    Public Shared Function GetAvailable(isbn As String) As String
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query =
+                New SqlCommand("SELECT COUNT(ISBN) FROM BOOK WHERE ISBN = @ISBN AND AVAILABLE = 1", connection)
+        Try
+            connection.Open()
+            Return query.ExecuteScalar
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.Connection.Close()
         End Try
     End Function
 End Class

@@ -80,7 +80,7 @@
                 <Binding ElementName="TxtISBN" Path="Text" UpdateSourceTrigger="LostFocus">
                     <Binding.ValidationRules>
                         <validation:NotEmpty/>
-                        <validation:ISBNLength/>
+                        <validation:IsbnLength/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
