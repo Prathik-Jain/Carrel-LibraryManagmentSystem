@@ -39,18 +39,18 @@ Public Class DashBoard
             MsgBox(ex.ToString)
         End Try
     End Sub
-
+    Dim memberAccount As MemberAccount
     Private Sub QrScanned(jsonString As String)
         My.Computer.Audio.Play(My.Resources.ScannerBeep, AudioPlayMode.Background)
         If jsonString.Contains("MEM") Then
             MsgBox("Member")
         ElseIf jsonString.Contains("ADM") Then
-            dim memberAccount =new MemberAccount
+            stopcameraandtimer
+            memberAccount = new MemberAccount
             memberAccount.GetData("MEM-0001")
             FAB.IsEnabled = False
         ElseIf jsonString.Contains("BOOK") Then
             MsgBox("BOok")
-
         End If
     End Sub
 
@@ -71,7 +71,6 @@ Public Class DashBoard
     Private Sub Dialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
         Handles MemberFormDialog.DialogClosing,
                 BookFormDialog.DialogClosing,
-                MemberPopupDialog.DialogClosing,
                 ViewMemberDialog.DialogClosing,
                 ViewBookDialog.DialogClosing
         FAB.IsEnabled = True
@@ -86,4 +85,9 @@ Public Class DashBoard
         stopCameraAndTimer()
     End Sub
 
+    Private async Sub MemberPopupDialog_Unloaded(sender As Object, e As RoutedEventArgs) Handles MemberPopupDialog.DialogClosing
+        memberAccount.stopCameraAndTimer
+        await task.delay(1000)
+        StartCameraAndTimer
+    End Sub
 End Class
