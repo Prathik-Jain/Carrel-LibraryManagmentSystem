@@ -107,6 +107,9 @@
     <Compile Include="DashBoard.xaml.vb">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Delete.xaml.vb">
+      <DependentUpon>Delete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="logininPage.xaml.vb">
       <DependentUpon>logininPage.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Delete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="logininPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
