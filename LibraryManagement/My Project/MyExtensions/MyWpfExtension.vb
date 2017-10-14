@@ -14,10 +14,10 @@ Namespace My
     ''' <remarks></remarks>
     <HideModuleName>
     Module MyWpfExtension
-        Private ReadOnly s_Computer As New ThreadSafeObjectProvider(Of Computer)
-        Private ReadOnly s_User As New ThreadSafeObjectProvider(Of User)
-        Private ReadOnly s_Windows As New ThreadSafeObjectProvider(Of MyWindows)
-        Private ReadOnly s_Log As New ThreadSafeObjectProvider(Of Log)
+        Private ReadOnly SComputer As New ThreadSafeObjectProvider(Of Computer)
+        Private ReadOnly SUser As New ThreadSafeObjectProvider(Of User)
+        Private ReadOnly SWindows As New ThreadSafeObjectProvider(Of MyWindows)
+        Private ReadOnly SLog As New ThreadSafeObjectProvider(Of Log)
 
         ''' <summary>
         '''     Returns the application object for the running application
@@ -35,7 +35,7 @@ Namespace My
         <SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")>
         Friend ReadOnly Property Computer As Computer
             Get
-                Return s_Computer.GetInstance()
+                Return SComputer.GetInstance()
             End Get
         End Property
 
@@ -46,7 +46,7 @@ Namespace My
         <SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")>
         Friend ReadOnly Property User As User
             Get
-                Return s_User.GetInstance()
+                Return SUser.GetInstance()
             End Get
         End Property
 
@@ -56,7 +56,7 @@ Namespace My
         <SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")>
         Friend ReadOnly Property Log As Log
             Get
-                Return s_Log.GetInstance()
+                Return SLog.GetInstance()
             End Get
         End Property
 
@@ -67,7 +67,7 @@ Namespace My
         Friend ReadOnly Property Windows As MyWindows
             <DebuggerHidden>
             Get
-                Return s_Windows.GetInstance()
+                Return SWindows.GetInstance()
             End Get
         End Property
 
@@ -78,20 +78,20 @@ Namespace My
                  "My.MyWpfExtenstionModule.Windows")>
         Friend NotInheritable Class MyWindows
             <DebuggerHidden>
-            Private Shared Function Create__Instance__ (Of T As {New, Window})(Instance As T) As T
+            Private Shared Function Create__Instance__ (Of T As {New, Window})(instance As T) As T
                 If Instance Is Nothing Then
-                    If s_WindowBeingCreated IsNot Nothing Then
-                        If s_WindowBeingCreated.ContainsKey(GetType(T)) = True Then
+                    If _sWindowBeingCreated IsNot Nothing Then
+                        If _sWindowBeingCreated.ContainsKey(GetType(T)) = True Then
                             Throw _
                                 New InvalidOperationException(
                                     "The window cannot be accessed via My.Windows from the Window constructor.")
                         End If
                     Else
-                        s_WindowBeingCreated = New Hashtable()
+                        _sWindowBeingCreated = New Hashtable()
                     End If
-                    s_WindowBeingCreated.Add(GetType(T), Nothing)
+                    _sWindowBeingCreated.Add(GetType(T), Nothing)
                     Return New T()
-                    s_WindowBeingCreated.Remove(GetType(T))
+                    _sWindowBeingCreated.Remove(GetType(T))
                 Else
                     Return Instance
                 End If
@@ -109,7 +109,7 @@ Namespace My
                 MyBase.New()
             End Sub
 
-            <ThreadStatic> Private Shared s_WindowBeingCreated As Hashtable
+            <ThreadStatic> Private Shared _sWindowBeingCreated As Hashtable
 
             <EditorBrowsable(EditorBrowsableState.Never)>
             Public Overrides Function Equals(o As Object) As Boolean

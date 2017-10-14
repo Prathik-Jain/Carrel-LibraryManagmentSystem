@@ -3,15 +3,18 @@ Imports Newtonsoft.Json
 
 Public Class MemberService
 
-    Friend Shared Function AddMember(member As Object) As Task(Of Integer)
+    Friend Async Shared Function AddMember(member As Object) As Task(Of Integer)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("INSERT INTO JSON (CATEGORY,DATA) VALUES ('MEM',@JSONString)", connection)
-        query.Parameters.Add(New SqlParameter("@JSONString", JsonConvert.SerializeObject(member)))
         Try
             connection.Open()
-            Return query.ExecuteNonQueryAsync()
+            query.Parameters.Add(New SqlParameter("@JSONString", JsonConvert.SerializeObject(member)))
+            Return Await query.ExecuteNonQueryAsync()
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
         Finally
-            query.Connection.Close()
+                query.connection.Close()
         End Try
     End Function
 
@@ -31,13 +34,15 @@ Public Class MemberService
             data.Add(reader("SEM").ToString)
             data.Add(reader("UID").ToString)
             Return data
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
         Finally
-            query.Connection.Close()
+            query.connection.Close()
         End Try
-
     End Function
 
-    Friend Shared Function EditMember(UID As String, member As Object) As Task(Of Integer)
+    Friend Shared Async Function EditMember(uid As String, member As Object) As Task(Of Integer)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("UPDATE Member 
                                     SET FNAME = @FName, LNAME = @LName, PHONE = @Phone, DEPT = @Dept, SEM = @Sem
@@ -50,13 +55,13 @@ Public Class MemberService
         query.Parameters.Add(New SqlParameter("@UID", UID))
         Try
             connection.Open()
-            Return query.ExecuteNonQueryAsync()
+            Return Await query.ExecuteNonQueryAsync()
         Finally
-            query.Connection.Close()
+            query.connection.Close()
         End Try
     End Function
 
-    Friend Shared Function GetMember(UID As String)
+    Friend Shared Function GetMember(uid As String)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("SELECT * FROM MEMBER WHERE UID = @UID",connection)
         query.Parameters.Add(New SqlParameter("@UID",UID))
@@ -72,11 +77,25 @@ Public Class MemberService
                 data.Add(reader("Dept").ToString)
                 data.Add(reader("Sem").ToString)
                 data.Add(reader("MaxBooks").ToString)
-                data.Add(reader("BorrowedBooks").ToString)
                 data.Add(reader("Dues").ToString)
             Return data
             Finally
-                query.Connection.Close
+                query.connection.Close
         End Try
+    End Function
+
+    Public Shared Function GetMemberById(memberId As String) As String
+        Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = New SqlCommand("SELECT FNAME FROM MEMBER WHERE UID = @MemberID",connection)
+        query.Parameters.Add(New SqlParameter("@MemberID",memberID))
+        Try
+            connection.Open()
+            Return query.ExecuteScalarAsync().ToString()
+        Catch ex As Exception
+            Throw
+            Finally
+            query.connection.Close()
+        End Try
+
     End Function
 End Class

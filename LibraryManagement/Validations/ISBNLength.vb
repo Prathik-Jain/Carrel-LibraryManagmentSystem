@@ -1,6 +1,6 @@
 ﻿Imports System.Globalization
 Namespace Validation
-Public Class ISBNLength
+Public Class IsbnLength
     		Inherits ValidationRule
 		Public Overrides Function Validate(value As Object, cultureInfo As CultureInfo) As ValidationResult
         If value.ToString.Trim.Length = 10
