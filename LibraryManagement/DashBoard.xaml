@@ -15,8 +15,6 @@
         xmlns:local="clr-namespace:Carrel"
         mc:Ignorable="d"
         Title="DashBoard"
-        WindowState="Maximized"
-        WindowStyle="None"
         WindowStartupLocation="CenterScreen">
 
     <Grid>
