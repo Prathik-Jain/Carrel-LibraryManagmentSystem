@@ -1,11 +1,16 @@
 ﻿Imports System.Drawing
+Imports System.Runtime.InteropServices
+Imports Microsoft.Win32.SafeHandles
 Imports ZXing
 
 Public Class QrDecoder
+    Implements  IDisposable
     Dim _camera As Camera
     Dim _result As Result
     Dim _jsonString
     Dim ReadOnly _reader As New BarcodeReader
+    Private disposed As Boolean = False
+    Private handle As SafeHandle = New SafeFileHandle(IntPtr.Zero, True)
 
     Public Function ScanQr(frame As Bitmap)
         Try
@@ -18,4 +23,24 @@ Public Class QrDecoder
         End Try
         ScanQR = _jsonString
     End Function
+
+    Public Sub Dispose() Implements IDisposable.Dispose
+        Dispose(True)
+        GC.SuppressFinalize(Me)
+    End Sub
+    Protected Overridable Sub Dispose(disposing As Boolean)
+        If disposed Then
+            Return
+        End If
+
+        If disposing Then
+            ' Free any other managed objects here.
+            '
+            handle.Dispose()
+        End If
+
+        ' Free any unmanaged objects here.
+        '
+        disposed = True
+    End Sub
 End Class
