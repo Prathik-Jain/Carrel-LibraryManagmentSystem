@@ -64,14 +64,14 @@
             Grid.Column="1"
             Grid.ColumnSpan="2">
 
-                <Label x:Name="LblFName" 
+            <Label x:Name="LblFName" 
                  Width="300"
                  FontSize="36"
                  Height="50" 
                  Margin="0,6,18,0" 
                  Foreground="#283592"
                  />
-        <Label x:Name="LblLName" 
+            <Label x:Name="LblLName" 
                  FontSize="36"
                   Height="50" 
                   Visibility="Hidden"
@@ -90,7 +90,7 @@
                  Grid.Column="1"
                  Height="40" 
                 Grid.ColumnSpan="2" 
-                Margin="0,10,70,0" />
+                Margin="0,0,78,0" />
         <!-- #endregion-->
 
 
@@ -99,12 +99,14 @@
         <materialDesign:PackIcon Kind="School"
                                  Grid.Row="4"
                                  Grid.Column="1"
-                                 Margin="0,0,16,10"/>
+                                 Margin="0,0,22,12" 
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Bottom"/>
         <Label x:Name="LblDepartment"
                  Width="200"
                  Grid.Row="4"
                  Grid.Column="2" 
-                 Margin="0,0,37,0" 
+                 Margin="0,0,48,0" 
                  Height="36" />
         <!--#endregion-->
 
@@ -113,26 +115,26 @@
         <materialDesign:PackIcon Kind="Details"
                                  Grid.Row="5"
                                  Grid.Column="1"
-                                 Margin="0,0,16,10"/>
+                                 Margin="0,0,22,10"/>
 
         <Label x:Name="LblSemester" 
                  Width="200"
                  Grid.Row="5"
                  Grid.Column="2"
                  Height="36"
-                 Margin="0,0,37,0" />
+                 Margin="0,0,48,0" />
         <!--#endregion-->
 
         <!--#region Phone-->
         <materialDesign:PackIcon Kind="Phone"
                                  Grid.Row="6"
                                  Grid.Column="1"
-                                 Margin="0,0,16,10"/>
+                                 Margin="0,0,22,10"/>
         <Label x:Name="LblPhone"
                  Width="200"
                  Grid.Row="6"
                  Grid.Column="2"
-                 Height="36"  Margin="0,0,37,0"/>
+                 Height="36"  Margin="0,0,48,0" VerticalAlignment="Bottom"/>
         <!--#endregion-->
 
         <!--#region Toggle Buttons-->
@@ -183,21 +185,23 @@
                Margin="0,0,10,0" 
                Grid.RowSpan="4" 
                VerticalAlignment="Bottom"/>
-        <!--#endregion-->
-
-        <!--Fab Edit Button-->
         <Button x:Name="BtnEdit"
                 Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
                 Height="56"
                 Grid.Row="9"
                 Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,2">
-            <materialDesign:PackIcon Kind="Pencil"/>
-      </Button>
+            <materialDesign:PackIcon Kind="Pencil"
+                                     Width="24"
+                                     Height="24"/>
+        </Button>
+        <!--#endregion-->
+
+        <!--Fab Edit Button-->
 
         <!--Fab Edit Button-->
 
 
 
-       </Grid>
+    </Grid>
 </UserControl>
