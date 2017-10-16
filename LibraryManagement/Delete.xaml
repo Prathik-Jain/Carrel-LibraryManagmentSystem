@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:Carrel"
              mc:Ignorable="d" 
               Background="{DynamicResource MaterialDesignPaper}"
-             d:DesignHeight="180" d:DesignWidth="450">
+             MinWidth="350">
     <UserControl.Resources>
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="Roboto"/>
@@ -21,7 +21,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="8"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="56"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="8"/>
 
         </Grid.RowDefinitions>
@@ -32,23 +32,23 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label Content="Are you sure you want to"
+        <Label x:Name="LblPrompt" Content="Are you sure you want to"
                FontSize="21" 
-               Margin="10,10,55,58"
+               Margin="10, 10"
                Height="40" 
                Grid.Column="1" 
-                Grid.Row="1"
-               Opacity="0.57"/>
+                Grid.Row="1"/>
 
         <StackPanel
            Orientation="Horizontal"
                     Grid.Row="2" Grid.Column="1"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Center"
                     HorizontalAlignment="Right"
-                    Height="36"
-                    Width="174" Margin="0,0,10,10">
+                    Height="40"
+                    Width="174">
             <Button
                 x:Name="BtnDelete"
+                Command="materialDesign:DialogHost.CloseDialogCommand"
                 IsEnabled="True"
                 Foreground="#e30101"
                 Style="{StaticResource MaterialDesignFlatButton}"
