@@ -19,6 +19,20 @@ Public Class MemberService
         End Try
     End Function
 
+    Friend Async Shared Function Delete(uid As String) As Task(Of Boolean)
+        Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = new SqlCommand("DELETE FROM Member WHERE UID = @UID",connection)
+        query.Parameters.Add(new SqlParameter("@UID",uid))
+        Try
+            Connection.Open()
+            Return Await query.ExecuteNonQueryAsync()
+        Catch  ex As Exception
+            MsgBox(ex.ToString())
+        Finally
+            query.Connection.Close()
+        End Try
+    End Function
+
     Friend Shared Function PrintLastAdded()
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("SELECT * FROM MEMBER WHERE ID = (SELECT MAX(ID) FROM MEMBER)", connection)

@@ -159,8 +159,8 @@
         <!--#endregion-->
 
         <!--#region DeleteMember-->
-        <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-                          
+        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                          Click ="OpenDeleteDialog"
                           IsEnabled="True" 
                           Margin="0,0,6,54" 
                           Grid.Column="4" 
@@ -168,7 +168,7 @@
                           VerticalAlignment="Bottom" 
                           Grid.RowSpan="2">
             <materialDesign:PackIcon Kind="Delete" Height="21" Width="21" Foreground="#e30101" Opacity="1" />
-        </ToggleButton>
+        </Button>
         <!--#endregion-->
 
         <!--#endregion-->
@@ -201,7 +201,16 @@
 
         <!--Fab Edit Button-->
 
-
+        <!--MemberForm Dialog-->
+        <materialDesign:DialogHost x:Name="DeleteMemberDialog"
+                                   CloseOnClickAway="True"
+                                   IsOpen="False"
+                                   Grid.Column="0" Grid.ColumnSpan="6"
+                                   Grid.Row="0" Grid.RowSpan="11">
+            <materialDesign:DialogHost.DialogContent>
+                <local:Delete x:Name="DeleteMember"/>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
 
     </Grid>
 </UserControl>
