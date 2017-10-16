@@ -23,7 +23,9 @@ Public Class DashBoard
 
     Public Sub StopCameraAndTimer()
         _camera.StopCamera()
+        _camera.Camera.WaitForStop()
         _sendImage.Stop()
+        _camera.Dispose()
     End Sub
 
     Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles _sendImage.Tick
@@ -34,6 +36,7 @@ Public Class DashBoard
             If jsonString <> "" Then
                 stopCameraAndTimer()
                 QrScanned(jsonString)
+                qrDecoder.Dispose()
             End If
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -47,7 +50,7 @@ Public Class DashBoard
         ElseIf jsonString.Contains("ADM") Then
             stopcameraandtimer
             memberAccount = new MemberAccount
-            memberAccount.GetData("MEM-0001")
+           memberAccount.GetData("MEM-0001")
             FAB.IsEnabled = False
         ElseIf jsonString.Contains("BOOK") Then
             MsgBox("BOok")
@@ -86,8 +89,10 @@ Public Class DashBoard
     End Sub
 
     Private async Sub MemberPopupDialog_Unloaded(sender As Object, e As RoutedEventArgs) Handles MemberPopupDialog.DialogClosing
-        memberAccount.stopCameraAndTimer
-        await task.delay(1000)
+        await Task.Run(Sub()
+            memberAccount.StopCameraAndTimer()
+                       End Sub)
         StartCameraAndTimer
     End Sub
+    
 End Class

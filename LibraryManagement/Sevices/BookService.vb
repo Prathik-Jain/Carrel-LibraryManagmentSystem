@@ -19,7 +19,7 @@ Public Class BookService
         End Try
     End Function
 
-    Friend Async Shared Function GetBooksBorrowed(memberId As String) As Task(Of List(Of Book))
+    Friend  Shared Function GetBooksBorrowed(memberId As String) As List(Of book)
 Dim list As New List(Of Book)
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
@@ -29,7 +29,7 @@ Dim list As New List(Of Book)
         Try
             query.Parameters.Add(New SqlParameter("@MemberID", memberId))
             connection.Open()
-            reader = Await query.ExecuteReaderAsync
+            reader =query.ExecuteReader
             Dim count = 1
             While reader.Read
                 list.Add(
@@ -74,7 +74,7 @@ Dim list As New List(Of Book)
         End Try
     End Function
 
-    Friend Shared Async Function Returned(bookId As String) As Task(Of Integer)
+    Friend Shared Function Returned(bookId As String) As Integer
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query =
@@ -84,7 +84,7 @@ Dim list As New List(Of Book)
         Try
             query.Parameters.Add(New SqlParameter("@BookID", bookId))
             connection.Open()
-            Return Await query.ExecuteNonQueryAsync
+            Return query.ExecuteNonQuery
         Catch ex As Exception
             MsgBox(ex.ToString())
             Throw
@@ -93,7 +93,7 @@ Dim list As New List(Of Book)
         End Try
     End Function
 
-    Friend Shared Async Function Borrowed(bookId As String, memberId As String) As Task(Of Integer)
+    Friend Shared Function Borrowed(bookId As String, memberId As String) as Integer
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query =
@@ -105,7 +105,7 @@ Dim list As New List(Of Book)
             query.Parameters.Add(New SqlParameter("@MemberID", memberId))
             query.Parameters.Add(New SqlParameter("@BooKID", bookId))
             query.Parameters.Add(New SqlParameter("@NOW", Now.Date()))
-            Return Await query.ExecuteNonQueryAsync
+            Return query.ExecuteNonQuery
         Catch e As Exception
             MsgBox(e.ToString())
             Throw
