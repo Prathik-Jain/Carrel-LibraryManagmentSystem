@@ -13,8 +13,8 @@
     <!--Change the Defaults-->
     <UserControl.Resources>
         <Style TargetType="materialDesign:PackIcon">
-            <Setter Property="Height" Value="24"/>
-            <Setter Property="Width" Value="24"/>
+            <!--<Setter Property="Height" Value="24"/>
+            <Setter Property="Width" Value="24"/>-->
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
         </Style>
@@ -192,18 +192,22 @@
                           Grid.RowSpan="2">
             <materialDesign:PackIcon Kind="Delete" Height="21" Width="21" Foreground="#e30101" Opacity="1" />
         </ToggleButton>
+        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                Width="56"
+                Height="56"
+                Grid.Row="10"
+                Grid.Column="4" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom">
+            <materialDesign:PackIcon Kind="Pencil"
+                                     Width="24"
+                                     Height="24"/>
+        </Button>
         <!--#endregion-->
 
         <!--#endregion-->
 
         <!--Fab Edit Button-->
-        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                Width="56"
-                Height="56"
-                Grid.Row="10"
-                Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <materialDesign:PackIcon Kind="Pencil"/>
-        </Button>
         <!--#endregion-->
 
 
