@@ -1,5 +1,7 @@
 ﻿Imports System.Drawing
+Imports System.Security.Cryptography
 Imports System.Text.RegularExpressions
+Imports System.Windows.Controls.Primitives
 Imports Newtonsoft.Json
 Public Class ViewMember
     Dim _dashBoard As DashBoard = Application.Current.Windows(0)
@@ -24,6 +26,7 @@ End Sub
         ImgQR.Source = QRGenerator.Generate(QRString)
         _dashBoard.MemberView.Content = Me
         _dashBoard.ViewMemberDialog.IsOpen = True
+        DeleteMember.SetData("MEM",_data(5))
     End Sub
 
     Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
@@ -38,6 +41,10 @@ End Sub
     End Sub
 
 
+    Private Sub OpenDeleteDialog(sender As Object, e As RoutedEventArgs)
+        DeleteMember.LblPrompt.Content = "Delete Member?"
+        DeleteMemberDialog.IsOpen= True
+    End Sub
 End Class
 Public  class QrGenerator
     public Shared Function Generate(jsonString As String) As ImageSource
