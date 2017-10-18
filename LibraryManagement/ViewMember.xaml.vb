@@ -37,6 +37,7 @@ End Sub
         _dashBoard.MemberForm.CmbDept.Text = LblDepartment.Content
         _dashBoard.MemberForm.TxtSemester.Text = LblSemester.Content
         _dashBoard.MemberForm.LblUID.Content = LblUID.Content
+        _dashBoard.MemberForm.BtnAccept.Content = "UPDATE"
         _dashBoard.MemberFormDialog.IsOpen = True
     End Sub
 
