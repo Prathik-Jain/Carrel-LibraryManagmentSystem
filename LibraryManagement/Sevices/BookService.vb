@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports System.Data.SqlClient
 Imports Newtonsoft.Json
 
 Public Class BookService
@@ -19,33 +20,25 @@ Public Class BookService
         End Try
     End Function
 
-    Friend  Shared Function GetBooksBorrowed(memberId As String) As List(Of book)
-Dim list As New List(Of Book)
+    Friend Shared function GetBooksBorrowed(memberId As String) 
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query =
                 New SqlCommand("SELECT UID, TITLE, BORROWEDON FROM BOOK WHERE BORROWEDBY = @memberID", connection)
-        Dim reader As SqlDataReader
         Try
             query.Parameters.Add(New SqlParameter("@MemberID", memberId))
             connection.Open()
-            reader =query.ExecuteReader
-            Dim count = 1
-            While reader.Read
-                list.Add(
-                    New Book _
-                            With {.Sl = count, .BookId = reader("UID").ToString,
-                            .BorrowedOn = reader("BORROWEDON").ToString, .Title = reader("TITLE").ToString})
-                count += 1
-            End While
-            Return list
+            dim da = new SqlDataAdapter(query)
+            Dim dt = new DataTable("Students")
+            da.Fill(dt)
+            Return dt.DefaultView
         Catch ex As Exception
             MsgBox(ex.ToString())
             Throw
         Finally
             query.Connection.Close()
         End Try
-    End Function
+    End function
 
     Friend Shared Function GetLastAdded() As ArrayList
         Dim connection =
@@ -74,7 +67,7 @@ Dim list As New List(Of Book)
         End Try
     End Function
 
-    Friend Shared Function Returned(bookId As String) As Integer
+    Friend Shared Async Function Returned(bookId As String) As Task(Of Integer)
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query =
@@ -84,7 +77,7 @@ Dim list As New List(Of Book)
         Try
             query.Parameters.Add(New SqlParameter("@BookID", bookId))
             connection.Open()
-            Return query.ExecuteNonQuery
+            Return Await query.ExecuteNonQueryAsync
         Catch ex As Exception
             MsgBox(ex.ToString())
             Throw
@@ -93,7 +86,7 @@ Dim list As New List(Of Book)
         End Try
     End Function
 
-    Friend Shared Function Borrowed(bookId As String, memberId As String) as Integer
+    Friend Shared Async Function Borrowed(bookId As String, memberId As String) as Task(Of Integer)
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query =
@@ -105,7 +98,7 @@ Dim list As New List(Of Book)
             query.Parameters.Add(New SqlParameter("@MemberID", memberId))
             query.Parameters.Add(New SqlParameter("@BooKID", bookId))
             query.Parameters.Add(New SqlParameter("@NOW", Now.Date()))
-            Return query.ExecuteNonQuery
+            Return Await query.ExecuteNonQueryAsync
         Catch e As Exception
             MsgBox(e.ToString())
             Throw

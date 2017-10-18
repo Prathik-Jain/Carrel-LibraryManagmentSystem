@@ -5,6 +5,7 @@ Public Class DashBoard
     Public Shared SnackBarMessageQueue As SnackbarMessageQueue
     WithEvents _sendImage As DispatcherTimer
     Dim _camera As Camera
+    dim memberAccount as new MemberAccount 
 
     Public Sub New()
         ' This call is required by the designer.
@@ -42,20 +43,41 @@ Public Class DashBoard
             MsgBox(ex.ToString)
         End Try
     End Sub
-    Dim memberAccount As MemberAccount
-    Private Sub QrScanned(jsonString As String)
+    Private Async Sub QrScanned(jsonString As String)
         My.Computer.Audio.Play(My.Resources.ScannerBeep, AudioPlayMode.Background)
-        If jsonString.Contains("MEM") Then
-            MsgBox("Member")
-        ElseIf jsonString.Contains("ADM") Then
-            stopcameraandtimer
-            memberAccount = new MemberAccount
-           memberAccount.GetData("MEM-0001")
-            FAB.IsEnabled = False
-        ElseIf jsonString.Contains("BOOK") Then
-            MsgBox("BOok")
+        If MemberPopupDialog.IsOpen
+            Try
+                If jsonString.Contains("UID") Then
+                    if await memberAccount.CheckBookInList 'Checks and returns book if found
+                        memberAccount.GetData("MEM-0001")
+                        StartCameraAndTimer()
+                    ElseIf await BookService.Borrowed("BOOK-2","MEM-0001") 
+                        memberAccount.getData("MEM-0001")
+                        StartCameraAndTimer()
+                    Else 
+                        MsgBox("Failed to Update database")
+                    End If
+                else
+                    MsgBox("Please scan a book to add or return")
+                End If
+            Catch ex As Exception
+                msgbox(ex.ToString())
+            End Try
+            Else 
+                If jsonString.Contains("MEM") Then
+                    MsgBox("Member")
+                ElseIf jsonString.Contains("ADM") Then
+                    stopcameraandtimer
+                    memberAccount.GetData("MEM-0001")
+                    FAB.IsEnabled = False
+                ElseIf jsonString.Contains("BOOK") Then
+                    MsgBox("BOok")
+                End If
         End If
+       
     End Sub
+
+
 
     Private Sub BtnAddBook_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddBook.Click
         SnackBarMessageQueue = Snackbar.MessageQueue
@@ -80,19 +102,15 @@ Public Class DashBoard
         startCameraAndTimer()
     End Sub
 
-    Private Sub Dialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
+    Private  Sub Dialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
         Handles ViewMemberDialog.DialogOpened,
                 ViewBookDialog.DialogOpened,
+                MemberPopupDialog.DialogOpened,
                 Me.Unloaded
         FAB.IsEnabled = False
-        stopCameraAndTimer()
+StartCameraAndTimer()
     End Sub
 
-    Private async Sub MemberPopupDialog_Unloaded(sender As Object, e As RoutedEventArgs) Handles MemberPopupDialog.DialogClosing
-        await Task.Run(Sub()
-            memberAccount.StopCameraAndTimer()
-                       End Sub)
-        StartCameraAndTimer
-    End Sub
+
     
 End Class

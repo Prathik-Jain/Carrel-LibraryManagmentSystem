@@ -11,6 +11,11 @@
 
     <!--Chsnge Defaults-->
     <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DataGrid.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+    
         <Style TargetType="Label">
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
@@ -22,18 +27,14 @@
             <Setter Property="Height" Value="24"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
-
         </Style>
+        </ResourceDictionary>
     </UserControl.Resources>
 
     <!--#region Rows and Coloumn Definitions-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
-            <RowDefinition Height="56"/>
-            <RowDefinition Height="56"/>
-            <RowDefinition Height="56"/>
-            <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
@@ -126,27 +127,9 @@
                    Fill="{DynamicResource PrimaryHueDarkBrush}"/>
 
         <!--#region Borrowed Book Details List-->
-        <ListView Grid.Row="6"
-                    Grid.RowSpan="4"
-                  FontFamily="roboto"
-                  FontSize="16"
-                  FontWeight="ExtraBlack"
-                  x:Name="BorrowedList"
-                  Grid.ColumnSpan="3" 
-                  Grid.Column="1" 
-                  HorizontalAlignment="Right" 
-                  Width="580" 
-                  VerticalAlignment="Bottom">
-            <ListView.View>
-                <GridView  >
-                    <GridViewColumn Width="150" Header="Sl. No." DisplayMemberBinding="{Binding Sl}"/>
-                    <GridViewColumn Width="150" Header="Title" DisplayMemberBinding="{Binding Title}"/>
-                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding BookID}" Header="BookID" />
-                    <GridViewColumn Width="150" DisplayMemberBinding="{Binding BorrowedOn}" Header="BorrowedOn" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <!--#endregion-->
+        <DataGrid Margin="0 8 0 0" x:Name="BorrowedList" Grid.Row="6" Grid.ColumnSpan="6"  ItemsSource="{Binding x}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="True"
+                  materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8"/>
+            <!--#endregion-->
 
         <!--Fab Edit Button-->
         <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
