@@ -51,7 +51,7 @@ Public Class BookForm
         If Await BookService.AddBook(Book, number) Then
             DashBoard.SnackBarMessageQueue.Enqueue(TxtNumber.Text + " Book(s) Added", "VIEW", Sub()
                                                                                                   Dim bookView As New ViewBook
-                                                                                                  BookView.UpdateView(number)
+                                                                                                  BookView.ViewLastRecord(number)
                                                                                               End Sub)
         Else
             DashBoard.SnackBarMessageQueue.Enqueue("Failed registering ")
