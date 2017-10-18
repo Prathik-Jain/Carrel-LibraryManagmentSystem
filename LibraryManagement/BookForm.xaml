@@ -113,7 +113,8 @@
                   IsEditable="True"
                   Margin="16 0" VerticalAlignment="Center" MinHeight="24" MinWidth="240"/>
 
-        <!--#endregion-->
+
+            <!--#endregion-->
         <!--#region AuthorList-->
 
         <ListBox x:Name="LstAuthor"
@@ -140,7 +141,6 @@
                     <StackPanel Orientation="Horizontal" Focusable="False" MaxWidth="240"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
-
         </ListBox>
 
         <!--#endregion-->
@@ -249,13 +249,43 @@
                 x:Name="BtnAccept"
                 IsDefault="True"
                 Command="materialDesign:DialogHost.CloseDialogCommand"
-                Style="{StaticResource MaterialDesignFlatButton}"
                 Content="ADD"
-                Height="36" Width="90" />
+                Height="36" Width="90" >
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=TxtISBN}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=TxtTitle}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=Items.Count, ElementName=LstAuthor}" Value="0">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=TxtPublisher}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=TxtEdition}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=TxtPrice}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=TxtNumber}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=Text.Length, ElementName=TxtNumber}" Value="0">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                </Button>
 
 
 
-            <Button x:Name="BtnCancle"
+                <Button x:Name="BtnCancle"
                     IsCancel="True"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     Command="materialDesign:DialogHost.CloseDialogCommand"

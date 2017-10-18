@@ -31,7 +31,7 @@ Public Class MemberForm
         member.LName = TxtLastName.Text
         member.Phone = TxtPhone.Text
         member.Dept = CmbDept.Text
-        member.Sem = TxtSemester.Text
+        member.Sem = CmbSemister.Text
         If LblUID.Content.ToString = "" Then
             Try
                 If  Await MemberService.AddMember(member) Then
