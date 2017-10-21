@@ -7,14 +7,14 @@
              xmlns:local="clr-namespace:Carrel"
              mc:Ignorable="d" 
              Background="{DynamicResource MaterialDesignPaper}"
-             d:DesignHeight="650" d:DesignWidth="550">
+             d:DesignHeight="670" d:DesignWidth="640">
 
 
     <!--Change the Defaults-->
     <UserControl.Resources>
         <Style TargetType="materialDesign:PackIcon">
-            <!--<Setter Property="Height" Value="24"/>
-            <Setter Property="Width" Value="24"/>-->
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Width" Value="24"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
         </Style>
@@ -53,10 +53,20 @@
             <RowDefinition Height="56" />
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
-            <RowDefinition Height="*" />
             <RowDefinition Height="32" />
         </Grid.RowDefinitions>
         <!--#endregion-->
+
+        <!--#region  QR-->
+        <Image x:Name="ImgQR" 
+               Width="200" 
+               Height="200"
+               Grid.Row="2"
+               Grid.Column="3" 
+               Grid.ColumnSpan="2" 
+               HorizontalAlignment="Right" 
+               Grid.RowSpan="4" 
+               VerticalAlignment="Bottom" Margin="0,0,0,28"/>
 
 
         <!--#region Title-->
@@ -67,20 +77,33 @@
                  Grid.Column="1"
                  Height="50" 
                  Grid.ColumnSpan="3"  
-                 Margin="0,0,30,0" 
+                 Margin="0,0,120,0" 
                  Foreground="#283592"
                  />
         <!--#endregion-->
 
+        <!--#region UID-->
+        <Label x:Name="LblUID" 
+                 Width="250"
+                 FontSize="25"
+                 FontWeight="Bold"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Height="40" 
+                Grid.ColumnSpan="2" 
+                Margin="0,0,106,0" />
+        <!-- #endregion-->
+
+
 
         <!--#region ISBN-->
         <materialDesign:PackIcon Kind="BarcodeScan"
-                                 Grid.Row="3"
+                                 Grid.Row="4"
                                  Grid.Column="1"
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblISBN"
                  Width="200"
-                 Grid.Row="3"
+                 Grid.Row="4"
                  Grid.Column="2" 
                  Margin="0,0,53,0" 
                  Height="36" />
@@ -89,47 +112,47 @@
 
         <!--#region Authors-->
         <materialDesign:PackIcon Kind="AccountMultiple"
-                                 Grid.Row="4"
+                                 Grid.Row="5"
                                  Margin="0,0,16,10" Grid.Column="1"/>
         <Label x:Name="LblAuthors"
-                 Width="200"
-                 Grid.Row="4"
-                 Grid.Column="2"
-                 Height="36"  Margin="0,0,53,0"/>
-        <!--#endregion-->
-
-        <!--#region Publisher-->
-        <materialDesign:PackIcon Kind="Store"
-                                 Grid.Row="5"
-                                 Grid.Column="1"
-                                 Margin="0,0,16,10"/>
-        <Label x:Name="LblPublisher"
                  Width="200"
                  Grid.Row="5"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
         <!--#endregion-->
 
-        <!--#region Price-->
-        <materialDesign:PackIcon Kind="CurrencyInr"
+        <!--#region Publisher-->
+        <materialDesign:PackIcon Kind="Store"
                                  Grid.Row="6"
                                  Grid.Column="1"
                                  Margin="0,0,16,10"/>
-        <Label x:Name="LblPrice"
+        <Label x:Name="LblPublisher"
                  Width="200"
                  Grid.Row="6"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
         <!--#endregion-->
 
+        <!--#region Price-->
+        <materialDesign:PackIcon Kind="CurrencyInr"
+                                 Grid.Row="7"
+                                 Grid.Column="1"
+                                 Margin="0,0,16,10"/>
+        <Label x:Name="LblPrice"
+                 Width="200"
+                 Grid.Row="7"
+                 Grid.Column="2"
+                 Height="36"  Margin="0,0,53,0"/>
+        <!--#endregion-->
+
         <!--#region Edition-->
         <materialDesign:PackIcon Kind="NotificationClearAll"
-                                 Grid.Row="7"
+                                 Grid.Row="8"
                                  Grid.Column="1"
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblEdition"
                  Width="200"
-                 Grid.Row="7"
+                 Grid.Row="8"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,54" Grid.RowSpan="2"/>
         <!--#endregion-->
@@ -137,12 +160,12 @@
 
         <!--#region Rack-->
         <materialDesign:PackIcon Kind="ViewStream"
-                                 Grid.Row="8"
+                                 Grid.Row="9"
                                  Grid.Column="1"
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblRack"
                  Width="200"
-                 Grid.Row="8"
+                 Grid.Row="9"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
         <!--#endregion-->
@@ -150,12 +173,12 @@
 
         <!--#region NoofBooks-->
         <materialDesign:PackIcon Kind="BookMultiple"
-                                 Grid.Row="9"
+                                 Grid.Row="10"
                                  Grid.Column="1"
                                  Margin="0,0,16,10"/>
         <Label x:Name="LblNoofBooks"
                  Width="200"
-                 Grid.Row="9"
+                 Grid.Row="10"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
         <!--#endregion-->
@@ -209,7 +232,7 @@
 
         <!--Fab Edit Button-->
         <!--#endregion-->
-<!--Change column and row span accordingly-->
+        <!--Change column and row span accordingly
         <materialDesign:DialogHost x:Name="DeleteBookDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
@@ -218,7 +241,7 @@
             <materialDesign:DialogHost.DialogContent>
                 <local:Delete x:Name="DeleteBook"/>
             </materialDesign:DialogHost.DialogContent>
-        </materialDesign:DialogHost>
+        </materialDesign:DialogHost>-->
 
 
 
