@@ -36,7 +36,7 @@ Public Class MemberForm
             Try
                 If  Await MemberService.AddMember(member) Then
                     DashBoard.SnackBarMessageQueue.Enqueue("Registered " + TxtFirstName.Text + " as Member.", "VIEW", Sub()
-                        Dim memberPopup as new MemberAccount
+                        Dim memberPopup as new MemberPopup
                                                                                                                           memberPopup.GetData(MemberService.GetLastUid())
                     End Sub)
                 else
@@ -51,7 +51,7 @@ Public Class MemberForm
                 If Await MemberService.EditMember(LblUID.Content.ToString, member) Then
                     
                     DashBoard.SnackBarMessageQueue.Enqueue("Edited " + TxtFirstName.Text + ".", "VIEW", Sub()
-                        Dim memberPopup as new MemberAccount
+                        Dim memberPopup as new MemberPopup
                         memberPopup.GetData(MemberService.GetLastUid())
                     End Sub)
 
