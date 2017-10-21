@@ -112,7 +112,13 @@
                  Grid.Row="2" 
                  Foreground="{DynamicResource PrimaryHueMidBrush}"/>
         <!--#endregion-->
-
+        <Label x:Name="LblCat"
+               Width="100"
+               Margin="0,0,24,10"
+               Grid.Row="1" 
+               Grid.Column="1"
+               FontSize="14"
+               FontWeight="Bold" />
         <!--#region UID-->
         <Label x:Name="LblUID"
                  Width="100"
