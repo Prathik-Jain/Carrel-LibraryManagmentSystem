@@ -192,7 +192,8 @@
                           Grid.RowSpan="2">
             <materialDesign:PackIcon Kind="Delete" Height="21" Width="21" Foreground="#e30101" Opacity="1" />
         </ToggleButton>
-        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+        <Button x:Name="BtnEdit"
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
                 Height="56"
                 Grid.Row="10"
