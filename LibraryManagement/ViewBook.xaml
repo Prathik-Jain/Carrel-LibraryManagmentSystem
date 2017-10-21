@@ -210,7 +210,7 @@
 
         <!--Fab Edit Button-->
         <!--#endregion-->
-<!--Change column and row span accordingly-->
+        <!--Change column and row span accordingly-->
         <materialDesign:DialogHost x:Name="DeleteBookDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
@@ -220,11 +220,5 @@
                 <local:Delete x:Name="DeleteBook"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-
-
-
-
-
-
     </Grid>
 </UserControl>
