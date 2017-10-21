@@ -250,7 +250,8 @@
                 IsDefault="True"
                 Command="materialDesign:DialogHost.CloseDialogCommand"
                 Content="ADD"
-                Height="36" Width="90" >
+                Height="36" 
+                Width="90">
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
                         <Style.Triggers>
@@ -285,7 +286,7 @@
 
 
 
-                <Button x:Name="BtnCancle"
+                <Button x:Name="BtnCancel"
                     IsCancel="True"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     Command="materialDesign:DialogHost.CloseDialogCommand"

@@ -103,7 +103,14 @@
     <Compile Include="AdminForm.xaml.vb">
       <DependentUpon>AdminForm.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="Adminpopup.xaml.vb">
+      <DependentUpon>Adminpopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Class\Admin.vb" />
+
     <Compile Include="Class\Camera.vb" />
+
     <Compile Include="Card.xaml.vb">
       <DependentUpon>Card.xaml</DependentUpon>
     </Compile>
@@ -144,6 +151,10 @@
       <DependentUpon>ViewBook.xaml</DependentUpon>
     </Compile>
     <Page Include="AdminForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adminpopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
