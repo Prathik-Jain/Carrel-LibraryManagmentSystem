@@ -28,6 +28,7 @@ Public Class MemberService
             Return Await query.ExecuteNonQueryAsync()
         Catch  ex As Exception
             MsgBox(ex.ToString())
+            Throw
         Finally
             query.Connection.Close()
         End Try

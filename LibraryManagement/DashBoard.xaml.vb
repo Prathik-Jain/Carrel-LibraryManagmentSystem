@@ -61,7 +61,7 @@ Public Class DashBoard
                     MsgBox("Please scan a book to add or return")
                 End If
             Catch ex As Exception
-                msgbox(ex.ToString())
+                MsgBox(ex.ToString())
             End Try
             Else 
                 If jsonString.Contains("MEM") Then

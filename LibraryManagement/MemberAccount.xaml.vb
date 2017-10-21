@@ -54,6 +54,9 @@ Public Class MemberAccount
         Next
        Return FLAG
     End Function
-
+    Private Sub OpenDeleteDialog(sender As Object, e As RoutedEventArgs)
+        DeleteMember.LblPrompt.Content = "Delete Member?"
+        DeleteMemberDialog.IsOpen= True
+    End Sub
 End Class
 
