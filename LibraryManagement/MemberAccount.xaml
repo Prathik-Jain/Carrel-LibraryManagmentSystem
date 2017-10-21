@@ -132,7 +132,8 @@
             <!--#endregion-->
 
         <!--Fab Edit Button-->
-        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+        <Button x:Name="BtnEdit"
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
                 Height="56"
                 Grid.Row="4"
