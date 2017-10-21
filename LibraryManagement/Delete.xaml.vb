@@ -19,7 +19,7 @@
         if cat.ToString() = "MEM"
           If await MemberService.Delete(id) Then
                   DashBoard.SnackBarMessageQueue.Enqueue("Deleted Member.")
-                  _dashboard.ViewMemberDialog.IsOpen=False
+                  _dashboard.MemberPopupDialog.IsOpen=False
                 End If
         ElseIf  cat.ToString() = "BOOK"
             'BookService.Delete(id)
