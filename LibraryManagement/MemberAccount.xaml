@@ -9,25 +9,25 @@
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="700">
 
-    <!--Chsnge Defaults-->
+    <!--Change Defaults-->
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DataGrid.xaml" />
             </ResourceDictionary.MergedDictionaries>
-    
-        <Style TargetType="Label">
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
 
-        <Style TargetType="materialDesign:PackIcon">
-            <Setter Property="Width" Value="24"/>
-            <Setter Property="Height" Value="24"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-        </Style>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="VerticalAlignment" Value="Bottom"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <Style TargetType="materialDesign:PackIcon">
+                <Setter Property="Width" Value="24"/>
+                <Setter Property="Height" Value="24"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="VerticalAlignment" Value="Bottom"/>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -57,17 +57,29 @@
         <!--#endregion-->
 
         <!--#region Name-->
-        <Label x:Name="LblName" 
-                 Width="334"
+        <StackPanel 
+            Orientation="Horizontal" 
+            Margin="0 6 18 0"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2">
+
+            <Label x:Name="LblFName" 
+                 Width="300"
                  FontSize="36"
-                 FontWeight="Bold"
-                 Grid.Row="1"
-                 Height="50"
-                 Grid.Column="1" 
-                 Grid.ColumnSpan="2"  
-                 Margin="0,0,22,0" 
-                 Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+                 Height="50" 
+                 Margin="0,6,18,0" 
+                 Foreground="#283592"
+                 />
+            <Label x:Name="LblLName" 
+                 FontSize="36"
+                  Height="50" 
+                  Visibility="Hidden"
+                 Foreground="#283592"
+                 />
+        </StackPanel>
         <!--#endregion-->
+
 
         <!--#region UID-->
         <Label x:Name="LblUID" 
@@ -127,12 +139,78 @@
                    Fill="{DynamicResource PrimaryHueDarkBrush}"/>
 
         <!--#region Borrowed Book Details List-->
-        <DataGrid Margin="0 8 0 0" x:Name="BorrowedList" Grid.Row="6" Grid.ColumnSpan="6"  ItemsSource="{Binding x}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="True"
-                  materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8"/>
-            <!--#endregion-->
+        <DataGrid Margin="0 8 0 0" x:Name="BorrowedList" Grid.Row="6" 
+                  Grid.ColumnSpan="6"  
+                  ItemsSource="{Binding x}" 
+                  CanUserSortColumns="True" 
+                  CanUserAddRows="False" 
+                  AutoGenerateColumns="True"
+                  materialDesign:DataGridAssist.CellPadding="13 8 8 8" 
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="8"/>
+        <!--#endregion-->
+
+        <!--#region DeleteMember-->
+        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                          Click ="OpenDeleteDialog"
+                          IsEnabled="True" 
+                          Margin="0,0,6,54" 
+                          Grid.Column="4" 
+                          HorizontalAlignment="Right" 
+                          VerticalAlignment="Bottom" 
+                          Grid.RowSpan="2">
+            <materialDesign:PackIcon Kind="Delete" 
+                                     Height="21" 
+                                     Width="21" 
+                                     Foreground="#e30101" 
+                                     Opacity="1"/>
+        </Button>
+        <!--#endregion-->
+
+        <!--MemberForm Dialog-->
+        <materialDesign:DialogHost x:Name="DeleteMemberDialog"
+                                   CloseOnClickAway="True"
+                                   IsOpen="False"
+                                   Grid.Column="0" 
+                                   Grid.ColumnSpan="6"
+                                   Grid.Row="0" 
+                                   Grid.RowSpan="11">
+            <materialDesign:DialogHost.DialogContent>
+                <local:Delete x:Name="DeleteMember"/>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+
+        <!--#region  QR-->
+        <Image x:Name="ImgQR" 
+               Width="150" 
+               Height="150"
+               Grid.Row="1"
+               Grid.Column="3" 
+               Grid.ColumnSpan="2" 
+               HorizontalAlignment="Right" 
+               Grid.RowSpan="3" 
+               VerticalAlignment="Bottom"/>
+        <!--#region DeleteMember-->
+        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                          
+                          IsEnabled="True" 
+                          Margin="0,0,10,54" 
+                          Grid.Column="3" 
+                          HorizontalAlignment="Right" 
+                          VerticalAlignment="Bottom" 
+                          Grid.RowSpan="2">
+            <materialDesign:PackIcon Kind="Printer" 
+                                     Height="21" 
+                                     Width="21" 
+                                     Foreground="#283592" 
+                                     Opacity="1"/>
+        </Button>
+
+
 
         <!--Fab Edit Button-->
-        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+        <Button x:Name="BtnEdit"
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
                 Height="56"
                 Grid.Row="4"
@@ -143,13 +221,5 @@
                 Grid.RowSpan="2">
             <materialDesign:PackIcon Kind="Pencil"/>
         </Button>
-
-
-
-
-
-
-
-
     </Grid>
 </UserControl>
