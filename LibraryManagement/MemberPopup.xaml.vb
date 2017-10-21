@@ -2,7 +2,7 @@
 Imports System.Windows.Threading
 Imports Newtonsoft.Json
 Imports  System.Threading
-Public Class MemberAccount
+Public Class MemberPopup
     Dim _dashBoard As DashBoard
     Dim data as ArrayList
     WithEvents _sendImage As New DispatcherTimer
@@ -63,6 +63,19 @@ Public Class MemberAccount
         DeleteMember.SetData("MEM",lbluid.Content)
         DeleteMember.LblPrompt.Content = "Delete Member?"
         DeleteMemberDialog.IsOpen= True
+    End Sub
+
+    Private Sub OpenPrintDialog(sender As Object, e As RoutedEventArgs)
+        PrintMember.ImgQR.Source = ImgQR.Source
+        PrintMember.LblDepartment.Content = LblDepartment.Content
+        PrintMember.LblPhone.Content =LblPhone.Content
+        PrintMember.LblName.Content = LblName.Content
+        PrintMember.LblUID.content = LblUID.Content
+        PrintMember.LblCat.Content = "MEMBER"
+        Dim printdlg As new PrintDialog
+        if printDlg.ShowDialog() = true
+            printDlg.PrintVisual(PrintMember, "User Control Printing.")
+            End If
     End Sub
 End Class
 

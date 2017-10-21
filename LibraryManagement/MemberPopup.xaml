@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MemberAccount"
+﻿<UserControl x:Class="MemberPopup"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -71,12 +71,7 @@
                  Margin="0,6,18,0" 
                  Foreground="#283592"
                  />
-            <Label x:Name="LblLName" 
-                 FontSize="36"
-                  Height="50" 
-                  Visibility="Hidden"
-                 Foreground="#283592"
-                 />
+
         </StackPanel>
         <!--#endregion-->
 
@@ -166,7 +161,7 @@
         </Button>
         <!--#endregion-->
 
-        <!--MemberForm Dialog-->
+        <!--MemberForm Delete Dialog-->
         <materialDesign:DialogHost x:Name="DeleteMemberDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
@@ -176,6 +171,19 @@
                                    Grid.RowSpan="8">
             <materialDesign:DialogHost.DialogContent>
                 <local:Delete x:Name="DeleteMember"/>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+        <!--MemberForm Print Dialog-->
+        <materialDesign:DialogHost x:Name="PrintMemberDialog"
+                                   CloseOnClickAway="True"
+                                   IsOpen="False"
+                                   Grid.Column="0" 
+                                   Grid.ColumnSpan="6"
+                                   Grid.Row="0" 
+                                   Grid.RowSpan="8">
+            <materialDesign:DialogHost.DialogContent>
+                <local:Card x:Name="PrintMember"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
 
@@ -190,9 +198,9 @@
                HorizontalAlignment="Right" 
                Grid.RowSpan="3" 
                VerticalAlignment="Bottom"/>
-        <!--#region DeleteMember-->
+        <!--#region PrintMember-->
         <Button Style="{StaticResource MaterialDesignFlatButton}"
-                          
+                          Click ="OpenPrintDialog"
                           IsEnabled="True" 
                           Margin="0,0,10,54" 
                           Grid.Column="3" 
