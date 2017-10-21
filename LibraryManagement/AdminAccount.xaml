@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="AdminAccount"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Carrel"
+              Background="{DynamicResource MaterialDesignPaper}"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="700">
+
+    <!--Change Defaults-->
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DataGrid.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="Label">
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="VerticalAlignment" Value="Bottom"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <Style TargetType="materialDesign:PackIcon">
+                <Setter Property="Width" Value="24"/>
+                <Setter Property="Height" Value="24"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="VerticalAlignment" Value="Bottom"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <!--#region Rows and Coloumn Definitions-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="56"/>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="56"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="56"/>
+            <ColumnDefinition Width="32"/>
+
+
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+
+        <!--#region Name-->
+        <Label x:Name="LblName" 
+                 Width="334"
+                 FontSize="36"
+                 FontWeight="Bold"
+                 Grid.Row="1"
+                 Height="50"
+                 Grid.Column="1" 
+                 Grid.ColumnSpan="2"  
+                 Margin="0,0,22,0" 
+                 Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <!--#endregion-->
+
+        <!--#region UID-->
+        <Label x:Name="LblUID" 
+                 Width="250"
+                 FontSize="24"
+                 FontWeight="Light"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Height="40" 
+                Grid.ColumnSpan="2" 
+                Margin="0,0,106,10"/>
+        <!-- #endregion-->
+
+
+
+        <!--#region Phone-->
+        <materialDesign:PackIcon Kind="Phone"
+                                 Grid.Row="3"
+                                 Grid.Column="1"
+                                 Margin="0,0,22,10"/>
+        <Label x:Name="LblPhone"
+                 Width="200"
+                 Grid.Row="3"
+                 Grid.Column="2"
+                 Height="36"  
+                 Margin="0,0,70,0" />
+        <!--#endregion-->
+
+
+
+
+        <Rectangle Width="700" 
+                   Height="10" 
+                   Grid.ColumnSpan="6" 
+                   Margin="0,10,0,31" 
+                   Grid.Row="4"
+                   Fill="{DynamicResource PrimaryHueDarkBrush}"/>
+
+        <!--#region Borrowed Book Details List-->
+        <!--#endregion-->
+
+        <!--Fab Edit Button-->
+        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                Width="56"
+                Height="56"
+                Grid.Row="3"
+                Grid.Column="4" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" 
+                Margin="0,0,0,10" 
+                Grid.RowSpan="2">
+            <materialDesign:PackIcon Kind="Pencil"/>
+        </Button>
+
+        <materialDesign:Card x:Name="ChangeSem"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth0" 
+                             Width="220" 
+                             Height="244"
+                             Grid.Column="2" 
+                             Margin="0,10,70,0" 
+                             Grid.Row="5" 
+                             HorizontalAlignment="Right"/>
+
+        <materialDesign:Card x:Name="AddAdmin"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth0" 
+                             Width="220" 
+                             Height="244"
+                             Grid.Column="3" 
+                             Margin="0,10,0,0" 
+                             Grid.Row="5" 
+                             HorizontalAlignment="Right"/>
+
+
+
+
+
+
+
+    </Grid>
+</UserControl>
