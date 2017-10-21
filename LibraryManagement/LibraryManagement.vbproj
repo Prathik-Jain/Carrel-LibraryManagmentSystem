@@ -99,7 +99,6 @@
     <Compile Include="AdminForm.xaml.vb">
       <DependentUpon>AdminForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Class\Admin.vb" />
     <Compile Include="Camera.vb" />
     <Compile Include="Card.xaml.vb">
       <DependentUpon>Card.xaml</DependentUpon>
