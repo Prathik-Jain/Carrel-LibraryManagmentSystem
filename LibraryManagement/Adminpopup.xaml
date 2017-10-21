@@ -102,7 +102,7 @@
         <Rectangle Width="700" 
                    Height="10" 
                    Grid.ColumnSpan="6" 
-                   Margin="0,10,0,31" 
+                   Margin="0,36,0,10" 
                    Grid.Row="4"
                    Fill="{DynamicResource PrimaryHueDarkBrush}"/>
 
@@ -113,30 +113,34 @@
         <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
                 Height="56"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="4" 
                 HorizontalAlignment="Right" 
                 VerticalAlignment="Bottom" 
-                Margin="0,0,0,10" 
+                Margin="0,0,0,352" 
                 Grid.RowSpan="2">
             <materialDesign:PackIcon Kind="Pencil"/>
         </Button>
 
-        <materialDesign:Card x:Name="ChangeSem"
-                             materialDesign:ShadowAssist.ShadowDepth="Depth0" 
+        <Button x:Name="ChangeSem"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3" 
+                             BorderBrush="#ffffff"
                              Width="220" 
                              Height="244"
                              Grid.Column="2" 
-                             Margin="0,10,70,0"
+                             Margin="0,42,70,76"
                              Grid.Row="5" 
-                             HorizontalAlignment="Right"/>
+                             HorizontalAlignment="Right"
+                             Background="#ffffff"/>
 
-        <materialDesign:Card x:Name="AddAdmin"
-                             materialDesign:ShadowAssist.ShadowDepth="Depth0" 
+        <Button x:Name="AddAdmin"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                             Background="#ffffff"
+                              BorderThickness="0"
                              Width="220" 
                              Height="244"
                              Grid.Column="3" 
-                             Margin="0,10,50,0" 
+                             Margin="0,42,50,76" 
                              Grid.Row="5" 
                              HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
 
