@@ -104,14 +104,15 @@
     <Compile Include="Card.xaml.vb">
       <DependentUpon>Card.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Class\QrGenerator.vb" />
     <Compile Include="DashBoard.xaml.vb">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Delete.xaml.vb">
       <DependentUpon>Delete.xaml</DependentUpon>
     </Compile>
-    <Compile Include="logininPage.xaml.vb">
-      <DependentUpon>logininPage.xaml</DependentUpon>
+    <Compile Include="loginPage.xaml.vb">
+      <DependentUpon>loginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MemberAccount.xaml.vb">
       <DependentUpon>MemberAccount.xaml</DependentUpon>
@@ -168,7 +169,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="logininPage.xaml">
+    <Page Include="loginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
