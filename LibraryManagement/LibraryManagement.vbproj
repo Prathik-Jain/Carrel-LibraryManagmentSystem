@@ -51,6 +51,10 @@
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
       <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
@@ -99,22 +103,26 @@
     <Compile Include="AdminForm.xaml.vb">
       <DependentUpon>AdminForm.xaml</DependentUpon>
     </Compile>
+
     <Compile Include="Adminpopup.xaml.vb">
       <DependentUpon>Adminpopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Admin.vb" />
-    <Compile Include="Camera.vb" />
+
+    <Compile Include="Class\Camera.vb" />
+
     <Compile Include="Card.xaml.vb">
       <DependentUpon>Card.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Class\QrGenerator.vb" />
     <Compile Include="DashBoard.xaml.vb">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Delete.xaml.vb">
       <DependentUpon>Delete.xaml</DependentUpon>
     </Compile>
-    <Compile Include="logininPage.xaml.vb">
-      <DependentUpon>logininPage.xaml</DependentUpon>
+    <Compile Include="Login.xaml.vb">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="MemberAccount.xaml.vb">
       <DependentUpon>MemberAccount.xaml</DependentUpon>
@@ -124,7 +132,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QRDecoder.vb" />
+    <Compile Include="Class\QRDecoder.vb" />
     <Compile Include="Sevices\AdminService.vb" />
     <Compile Include="Sevices\DepatmentService.vb" />
     <Compile Include="Sevices\AuthorService.vb" />
@@ -139,14 +147,8 @@
     <Compile Include="MemberForm.xaml.vb">
       <DependentUpon>MemberForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewAdmin.xaml.vb">
-      <DependentUpon>ViewAdmin.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewBook.xaml.vb">
       <DependentUpon>ViewBook.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewMember.xaml.vb">
-      <DependentUpon>ViewMember.xaml</DependentUpon>
     </Compile>
     <Page Include="AdminForm.xaml">
       <SubType>Designer</SubType>
@@ -175,7 +177,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="logininPage.xaml">
+    <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,15 +197,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewAdmin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ViewBook.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ViewMember.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -264,6 +258,5 @@
   <ItemGroup>
     <None Include="Resources\ScannerBeep.wav" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -3,7 +3,7 @@ Imports System.Windows.Media.Animation
 Imports System.Windows.Threading
 Imports Newtonsoft.Json
 
-Class Page1
+Class Login
     Dim ReadOnly _camera As New Camera
     WithEvents _sendImage As DispatcherTimer
     WithEvents _delayTimer As DispatcherTimer
@@ -44,13 +44,13 @@ Class Page1
         If str.Contains("ADM") Then
             _admin = JsonConvert.DeserializeObject (Of Admin)(str)
             Try
-                If _loginService.CheckUser(_admin.UID, _admin.Name) = 1 Then
+                If _loginService.CheckUser(_admin.UID, _admin.FName) = 1 Then
                     _camera.StopCamera()
                     _sendImage.Stop()
                     UpdateScreen()
                 Else
 
-                    loginPage.Background = Brushes.OrangeRed
+                    Me.Background = Brushes.OrangeRed
                     txtLoginInstruction.Text = "Admin not found"
                     _sendImage.Stop()
                     Await Task.Delay(2000)
@@ -71,11 +71,11 @@ Class Page1
         TxtPIN.IsEnabled = True
         TxtPIN.Clear()
         Keyboard.Focus(TxtPIN)
-        txtWelcome.Text = "Welcome, " + _admin.Name
+        txtWelcome.Text = "Welcome, " + _admin.FName
         txtLoginInstruction.Text = "Please enter your PIN"
     End Sub
 
-    Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs) Handles Close.Click
+    Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs) Handles BtnClose.Click
         StopAllServices()
         Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown
         Windows.Application.Current.Shutdown()
@@ -119,10 +119,13 @@ Class Page1
                 dot4.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 'HACK to update UI befor matchPIN() executes.
                 If _loginService.MatchPIN(_admin.UID, PIN) = 1 Then
-                    Dim dash = New DashBoard
-                    Dash.Show()
-                    loginPage.Visibility = Visibility.Collapsed
+                    _camera.StopCamera()
+                    Dim dash As New DashBoard()
 
+                    dash.Show()
+
+                    Me.Close()
+                   
                 Else
                     MsgBox("naaaa")
                     TxtPIN.Clear()
@@ -187,4 +190,8 @@ Class Page1
     End Sub
 
 #End Region
+End Class
+Public Class Admin
+    Public Uid As String
+    Public FName As String
 End Class

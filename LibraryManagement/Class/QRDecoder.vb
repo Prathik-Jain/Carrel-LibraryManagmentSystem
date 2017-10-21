@@ -34,13 +34,8 @@ Public Class QrDecoder
         End If
 
         If disposing Then
-            ' Free any other managed objects here.
-            '
             handle.Dispose()
         End If
-
-        ' Free any unmanaged objects here.
-        '
         disposed = True
     End Sub
 End Class

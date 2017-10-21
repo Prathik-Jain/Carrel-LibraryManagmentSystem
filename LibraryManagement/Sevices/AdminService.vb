@@ -5,14 +5,15 @@ Imports System.Data.SqlClient
 Public Class AdminService
     Public Function MatchPin(uid As String, pin As Integer) As Integer
         Dim connection =
-                New SqlConnection(ConfigurationManager.ConnectionStrings("CarrelConnectionString").ConnectionString)
+                New SqlConnection(ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim command = New SqlCommand("Select count(*) from Admin where UID=@UID and PIN=@PIN", connection)
         command.Parameters.Add(New SqlParameter("@UID", UID))
         command.Parameters.Add(New SqlParameter("@PIN", PIN))
         Try
+            connection.Open()
             MatchPIN = command.ExecuteScalar()
-        Catch e As Exception
-            MsgBox("Database error")
+        Catch ex As Exception
+            MsgBox(ex.ToString())
             Return False
         Finally
             command.connection.Close()
@@ -21,15 +22,15 @@ Public Class AdminService
 
     Public Function CheckUser(uid As String, name As String) As Integer
         Dim connection =
-                New SqlConnection(ConfigurationManager.ConnectionStrings("CarrelConnectionString").ConnectionString)
-        Dim command = New SqlCommand("Select count(*) from Admin where UID=@UID and Name=@Name", connection)
+                New SqlConnection(ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim command = New SqlCommand("Select count(*) from Admin where UID=@UID and FName=@Name", connection)
         command.Parameters.Add(New SqlParameter("@UID", UID))
         command.Parameters.Add(New SqlParameter("@Name", Name))
         Try
             connection.Open()
             CheckUser = command.ExecuteScalar()
-        Catch e As Exception
-            MsgBox("Database error")
+        Catch ex As Exception
+            Msgbox(ex.toString)
             Return False
         Finally
             command.connection.Close()

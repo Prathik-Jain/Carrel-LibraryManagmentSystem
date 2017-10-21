@@ -96,15 +96,13 @@ Public Class DashBoard
     Private Sub Dialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
         Handles MemberFormDialog.DialogClosing,
                 BookFormDialog.DialogClosing,
-                ViewMemberDialog.DialogClosing,
                 ViewBookDialog.DialogClosing
         FAB.IsEnabled = True
         startCameraAndTimer()
     End Sub
 
     Private  Sub Dialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
-        Handles ViewMemberDialog.DialogOpened,
-                ViewBookDialog.DialogOpened,
+        Handles ViewBookDialog.DialogOpened,
                 MemberPopupDialog.DialogOpened,
                 Me.Unloaded
         FAB.IsEnabled = False
