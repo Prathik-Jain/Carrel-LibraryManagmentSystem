@@ -34,7 +34,7 @@
     <!--#region Rows and Coloumn Definitions-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="32"/>
+            <RowDefinition Height="48"/>
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
@@ -78,7 +78,7 @@
                  Grid.Column="1"
                  Height="40" 
                 Grid.ColumnSpan="2" 
-                Margin="0,0,106,10"/>
+                Margin="0,0,106,0"/>
         <!-- #endregion-->
 
 
@@ -116,9 +116,7 @@
                 Grid.Row="4"
                 Grid.Column="4" 
                 HorizontalAlignment="Right" 
-                VerticalAlignment="Bottom" 
-                Margin="0,0,0,352" 
-                Grid.RowSpan="2">
+                VerticalAlignment="Bottom" Margin="0,0,0,336" Grid.RowSpan="2">
             <materialDesign:PackIcon Kind="Pencil"/>
         </Button>
 
@@ -128,7 +126,7 @@
                              Width="220" 
                              Height="244"
                              Grid.Column="2" 
-                             Margin="0,42,70,76"
+                             Margin="0,50,70,52"
                              Grid.Row="5" 
                              HorizontalAlignment="Right"
                              Background="#ffffff"/>
@@ -140,7 +138,7 @@
                              Width="220" 
                              Height="244"
                              Grid.Column="3" 
-                             Margin="0,42,50,76" 
+                             Margin="0,50,50,52" 
                              Grid.Row="5" 
                              HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
 
@@ -152,7 +150,35 @@
                Grid.ColumnSpan="2" 
                HorizontalAlignment="Right" 
                Grid.RowSpan="3" 
-               VerticalAlignment="Bottom" Margin="0,0,0,18"/>
+               VerticalAlignment="Bottom"/>
+
+        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                          IsEnabled="True" 
+                          Margin="0,0,6,54" 
+                          Grid.Column="4" 
+                          HorizontalAlignment="Right" 
+                          VerticalAlignment="Bottom" 
+                          Grid.RowSpan="2">
+            <materialDesign:PackIcon Kind="Delete" 
+                                     Height="21" 
+                                     Width="21" 
+                                     Foreground="#e30101" 
+                                     Opacity="1"/>
+        </Button>
+
+        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                          IsEnabled="True" 
+                          Margin="0,0,10,54" 
+                          Grid.Column="3" 
+                          HorizontalAlignment="Right" 
+                          VerticalAlignment="Bottom" 
+                          Grid.RowSpan="2">
+            <materialDesign:PackIcon Kind="Printer" 
+                                     Height="21" 
+                                     Width="21" 
+                                     Foreground="#283592" 
+                                     Opacity="1"/>
+        </Button>
 
 
 
