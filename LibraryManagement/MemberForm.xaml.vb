@@ -48,10 +48,11 @@ Public Class MemberForm
            
         Else
             Try
-                If Not Await MemberService.EditMember(LblUID.Content.ToString, member) Then
+                If Await MemberService.EditMember(LblUID.Content.ToString, member) Then
+                    
                     DashBoard.SnackBarMessageQueue.Enqueue("Edited " + TxtFirstName.Text + ".", "VIEW", Sub()
-                        Dim viewMember As New ViewMember
-                        viewMember.UpdateView()
+                        Dim memberPopup as new MemberAccount
+                        memberPopup.GetData(MemberService.GetLastUid())
                     End Sub)
 
                 Else
