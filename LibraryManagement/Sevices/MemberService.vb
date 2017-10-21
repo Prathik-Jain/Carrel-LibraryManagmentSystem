@@ -33,30 +33,19 @@ Public Class MemberService
         End Try
     End Function
 
-    Friend Shared Function PrintLastAdded()
+Friend  Shared Function GetLastUid() As String
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim query = New SqlCommand("SELECT * FROM MEMBER WHERE ID = (SELECT MAX(ID) FROM MEMBER)", connection)
+        Dim query = New SqlCommand("SELECT UID FROM MEMBER WHERE ID = (SELECT MAX(ID) FROM MEMBER)", connection)
         Try
             connection.Open()
-            Dim reader As SqlDataReader
-            reader = query.ExecuteReader
-            Dim data As New ArrayList
-            reader.Read()
-            data.Add(reader("FNAME").ToString)
-            data.Add(reader("LNAME").ToString)
-            data.Add(reader("PHONE").ToString)
-            data.Add(reader("DEPT").ToString)
-            data.Add(reader("SEM").ToString)
-            data.Add(reader("UID").ToString)
-            Return data
+            Return query.ExecuteScalar()
         Catch ex As Exception
-            MsgBox(ex.ToString())
+            MsgBox(ex.Message)
             Throw
         Finally
-            query.connection.Close()
+                query.Connection.Close()
         End Try
     End Function
-
     Friend Shared Async Function EditMember(uid As String, member As Object) As Task(Of Integer)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("UPDATE Member 

@@ -36,8 +36,8 @@ Public Class MemberForm
             Try
                 If  Await MemberService.AddMember(member) Then
                     DashBoard.SnackBarMessageQueue.Enqueue("Registered " + TxtFirstName.Text + " as Member.", "VIEW", Sub()
-                        Dim viewMember As New ViewMember
-                        viewMember.UpdateView()
+                        Dim memberPopup as new MemberAccount
+                                                                                                                          memberPopup.GetData(MemberService.GetLastUid())
                     End Sub)
                 else
                     DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
