@@ -251,8 +251,7 @@
                 Command="materialDesign:DialogHost.CloseDialogCommand"
                 Content="ADD"
                 Height="36" 
-                Width="90"
-                Foreground="#283592">
+                Width="90">
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
                         <Style.Triggers>
