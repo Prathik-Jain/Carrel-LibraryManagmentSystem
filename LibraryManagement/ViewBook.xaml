@@ -206,7 +206,7 @@
 
         <!--#region DeleteBook-->
         <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-                          
+                          Click ="OpenDeleteDialog"
                           IsEnabled="True" 
                           Margin="0,0,6,54" 
                           Grid.Column="4" 
@@ -234,7 +234,7 @@
         <!--Fab Edit Button-->
         <!--#endregion-->
 
-        <!--Change column and row span accordingly
+        <!--Change column and row span accordingly-->
 
         <materialDesign:DialogHost x:Name="DeleteBookDialog"
                                    CloseOnClickAway="True"
@@ -245,7 +245,7 @@
                 <local:Delete x:Name="DeleteBook"/>
             </materialDesign:DialogHost.DialogContent>
 
-        </materialDesign:DialogHost>-->
+        </materialDesign:DialogHost>
 
     </Grid>
 </UserControl>

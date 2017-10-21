@@ -13,6 +13,8 @@ Public Class ViewBook
         _data = BookService.GetLastAdded()
         UpdateView(_data)
         LblNoofBooks.Content = number
+        BtnEdit.Visibility = Visibility.Collapsed
+        ImgQR.Visibility = Visibility.Collapsed
         _dashboard.BookView.Content = Me
         _dashboard.ViewBookDialog.IsOpen = True
     End Sub
@@ -49,12 +51,18 @@ Public Class ViewBook
     Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
         _dashBoard.ViewBookDialog.IsOpen = False
         _dashBoard.BookForm.TxtISBN.Text = LblISBN.Content
+        _dashboard.BookForm.TxtISBN.IsEnabled = False
         _dashBoard.BookForm.TxtTitle.Text = LblTitle.Content
-        _dashBoard.BookForm.LstAuthor.ItemsSource = LblAuthors.Content
+        _dashboard.BookForm.LstAuthor.Items.Clear()
         _dashBoard.BookForm.TxtPublisher.Text = LblPublisher.Content
         _dashBoard.BookForm.CmbEdition.Text = LblEdition.Content
-        '_dashBoard.BookForm.LblUID.Content = LblUID.Content
+        _dashBoard.BookForm.LblUID.Content = "UPDATE"
         _dashBoard.BookForm.BtnAccept.Content = "UPDATE"
-        _dashBoard.MemberFormDialog.IsOpen = True
+        _dashBoard.BookFormDialog.IsOpen = True
+    End Sub
+    Private Sub OpenDeleteDialog(sender As Object, e As RoutedEventArgs)
+        DeleteBook.SetData("BOOK",LblUID.Content)
+        DeleteBook.LblPrompt.Content = "Delete Books?"
+        DeleteBookDialog.IsOpen= True
     End Sub
 End Class
