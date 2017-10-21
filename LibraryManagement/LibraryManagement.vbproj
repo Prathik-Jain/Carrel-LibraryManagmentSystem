@@ -129,6 +129,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Class\QRDecoder.vb" />
+    <Compile Include="PrintPopup.xaml.vb">
+      <DependentUpon>PrintPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sevices\AdminService.vb" />
     <Compile Include="Sevices\DepatmentService.vb" />
     <Compile Include="Sevices\AuthorService.vb" />
@@ -178,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MemberPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
