@@ -65,11 +65,14 @@ Public Class DashBoard
             End Try
             Else 
                 If jsonString.Contains("MEM") Then
-                    MsgBox("Member")
-                ElseIf jsonString.Contains("ADM") Then
                     stopcameraandtimer
-                    memberAccount.GetData("MEM-0003")
+                    memberAccount.GetData(jsonString)
                     FAB.IsEnabled = False
+                ElseIf jsonString.Contains("ADM") Then
+                    StopCameraAndTimer()
+                AdminPopup.GetData("ADM-004")
+                'adminpopupdialog.isopen = true
+                FAB.IsEnabled = False
                 ElseIf jsonString.Contains("BOOK") Then
                     MsgBox("BOok")
                 End If
