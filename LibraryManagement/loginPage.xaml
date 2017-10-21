@@ -1,0 +1,186 @@
+﻿<Page x:Class="Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Carrel"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+
+      x:Name="loginPage"
+      mc:Ignorable="d"
+      d:DesignHeight="500" d:DesignWidth="800"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextElement.FontFamily="Roboto"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="#FF00E676"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      TextBlock.Foreground="Black"
+      Title="">
+    <!--Animation Begins-->
+    <Page.Resources>
+        <Storyboard x:Key="moveText">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="txtWelcome" Storyboard.TargetProperty="Margin"
+                                              BeginTime="0:0:0">
+                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="290,211,32,221" />
+                <SplineThicknessKeyFrame KeyTime="00:00:.7" Value="8,211,32,221" />
+                <SplineThicknessKeyFrame KeyTime="00:00:.8" Value="32,211,32,221" />
+
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="txtLoginInstruction"
+                                              Storyboard.TargetProperty="Margin" BeginTime="0:0:0">
+                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="290,265,32,195" />
+                <SplineThicknessKeyFrame KeyTime="00:00:.7" Value="8,265,32,195" />
+                <SplineThicknessKeyFrame KeyTime="00:00:.8" Value="32,265,32,195" />
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="btnOne" Storyboard.TargetProperty="Opacity" From="0" To="1"
+                             Duration="0:0:.8" />
+            <ColorAnimation Storyboard.TargetName="loginPage"
+                            Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#212121"
+                            Duration="0:0:.8" />
+        </Storyboard>
+    </Page.Resources>
+    <!--Animation Ends-->
+
+    <Grid>
+        <!-- GridAndColumnDefs-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="500" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500" />
+            <ColumnDefinition Width="300*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <TextBlock x:Name="txtWelcome" VerticalAlignment="Center" FontFamily="Roboto" FontSize="48"
+                       Foreground="#FFFFFF" Margin="290,211,0,235" Height="54" RenderTransformOrigin="0.151,0.569">
+                <Run Text="Welcome" />
+            </TextBlock>
+            <TextBlock x:Name="txtLoginInstruction" VerticalAlignment="Center" FontFamily="Roboto" FontSize="16"
+                       Foreground="#FFFFFF" Margin="290,265,0,215" Height="20">
+                <Run Text="Please scan your card to login" BaselineAlignment="Center" />
+            </TextBlock>
+            <!--<Button Content="click" Margin="304,434,50,34"  Height="Auto"/>-->
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="82" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="70" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="129" />
+                <RowDefinition Height="69" />
+                <RowDefinition Height="69" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <!--GridAndColumnDefs-->
+            <!--#region PINNumberPad-->
+            <Button x:Name="btnOne" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
+                    materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Grid.Row="1" Margin="13,60,13,13" Background="#ffffff" BorderBrush="#03A9F4" Opacity="0"
+                    IsEnabled="True" IsTabStop="False">
+                <TextBlock x:Name="PINText" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"
+                           Text="1" Foreground="Black" />
+            </Button>
+            <Button x:Name="btnFour" Grid.Row="2" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
+                    materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Margin="13,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="4"
+                           Foreground="{Binding ElementName=PINText,Path=Foreground}" />
+            </Button>
+            <Button x:Name="btnSeven" Grid.Row="3" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
+                    materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Margin="13,0,13,13" Background="#ffffff" BorderBrush="#03A9F4"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="7"
+                           Foreground="{Binding ElementName=PINText,Path=Foreground}" />
+            </Button>
+            <Button x:Name="btnTwo" Grid.Row="1" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
+                    materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Margin="0,60,13,13" Background="#ffffff" BorderBrush="#03A9F4" Grid.Column="1"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="2"
+                           Foreground="{Binding ElementName=PINText,Path=Foreground}" />
+            </Button>
+            <Button x:Name="btnFive" Grid.Row="2" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
+                    materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4" Grid.Column="1"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="5"
+                           Foreground="{Binding ElementName=PINText,Path=Foreground}" />
+            </Button>
+            <Button x:Name="btnEight" Grid.Row="3" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
+                    materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4" Grid.Column="1"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="8"
+                           Foreground="{Binding ElementName=PINText,Path=Foreground}" />
+            </Button>
+            <Button x:Name="btnThree" Grid.Row="1" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
+                    materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Margin="0,60,13,13" Background="#ffffff" BorderBrush="#03A9F4" Grid.Column="2"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="3"
+                           Foreground="{Binding ElementName=PINText,Path=Foreground}" />
+            </Button>
+            <Button x:Name="btnSix" Grid.Row="2" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
+                    materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4" Grid.Column="2"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="6"
+                           Foreground="{Binding ElementName=PINText,Path=Foreground}" />
+            </Button>
+            <Button x:Name="btnNine" Grid.Row="3" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
+                    materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Margin="0,0,13,13" Background="#ffffff" BorderBrush="#03A9F4" Grid.Column="2"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="9"
+                           Foreground="{Binding ElementName=PINText,Path=Foreground}" />
+            </Button>
+            <Button x:Name="btnZero" Grid.Row="3" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"
+                    materialDesign:RippleAssist.Feedback="#03A9F4" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Margin="81,69,13,-55" Background="#ffffff" BorderBrush="#03A9F4" Grid.ColumnSpan="2"
+                    Grid.RowSpan="2" Opacity="{Binding ElementName=btnOne, Path=Opacity}" IsTabStop="False">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Text="0"
+                           Foreground="{Binding ElementName=PINText,Path=Foreground}" />
+            </Button>
+            <!--#endregion PINNumberPad-->
+            <!--#region PINDOts-->
+            <Border x:Name="dot4" CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC"
+                    BorderThickness="1" Margin="60,10,66,104" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" />
+            <Border x:Name="dot3" CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC"
+                    BorderThickness="1" Margin="35,10,20,104" Grid.Column="1" Grid.Row="1"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" />
+            <Border x:Name="dot2" CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC"
+                    BorderThickness="1" Margin="10,10,45,104" Grid.Column="1" Grid.Row="1"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" />
+            <Border x:Name="dot1" CornerRadius="50" Height="15" Width="15" Background="#FFFFFF" BorderBrush="#CCCCCC"
+                    BorderThickness="1" Margin="68,10,0,104" Grid.Row="1"
+                    Opacity="{Binding ElementName=btnOne, Path=Opacity}" />
+            <!--#endregion PINDots-->
+            <!--Close Button-->
+            <Button x:Name="Close" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="2"
+                    Foreground="#FFFFFF" HorizontalAlignment="Left" Padding="0" Margin="91,0,-78,46" Width="59"
+                    Height="Auto" IsTabStop="False">
+                <TextBlock>
+                    <materialDesign:PackIcon Kind="Close" Height="24" Width="24" />
+                </TextBlock>
+            </Button>
+            <!--end close button-->
+        </Grid>
+        <TextBox x:Name="TxtPIN" HorizontalAlignment="Left" Height="23" Opacity="0"
+                 CaretIndex="{x:Static System:Int32.MaxValue}" TextWrapping="Wrap" Text="TextBox"
+                 VerticalAlignment="Top" Width="49" Grid.Column="1" Margin="170,467,0,0" IsEnabled="False" />
+
+
+    </Grid>
+
+</Page>
