@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="AdminAccount"
+﻿<UserControl x:Class="AdminPopup"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -110,7 +110,8 @@
         <!--#endregion-->
 
         <!--Fab Edit Button-->
-        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+        <Button x:Name="BtnEdit"
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
                 Height="56"
                 Grid.Row="4"
@@ -182,8 +183,31 @@
 
 
 
+        <!--Admin Print Dialog-->
+        <materialDesign:DialogHost x:Name="PrintAdminDialog"
+                                   CloseOnClickAway="True"
+                                   IsOpen="False"
+                                   Grid.Column="0" 
+                                   Grid.ColumnSpan="6"
+                                   Grid.Row="0" 
+                                   Grid.RowSpan="8">
+            <materialDesign:DialogHost.DialogContent>
+                <local:Card x:Name="PrintAdmin"/>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
 
 
+        <!--BookForm Dialog-->
+        <materialDesign:DialogHost x:Name="AdminFormDialog"
+                                   CloseOnClickAway="True"
+                                   IsOpen="False"
+                                   Grid.Column ="0"  Grid.ColumnSpan="6"
+                                   Grid.Row="0" Grid.RowSpan="7">
+            <materialDesign:DialogHost.DialogContent>
+                <local:AdminForm  x:Name="AdminForm"/>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <materialDesign:Snackbar Grid.Column ="0" Grid.ColumnSpan ="6"  x:Name="Snackbar" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="5" Margin="56 0 0 56" HorizontalAlignment="Center"/>
 
 
     </Grid>
