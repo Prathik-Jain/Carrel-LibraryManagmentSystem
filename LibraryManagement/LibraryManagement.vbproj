@@ -103,14 +103,10 @@
     <Compile Include="AdminForm.xaml.vb">
       <DependentUpon>AdminForm.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="Adminpopup.xaml.vb">
       <DependentUpon>Adminpopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Class\Admin.vb" />
-
     <Compile Include="Class\Camera.vb" />
-
     <Compile Include="Card.xaml.vb">
       <DependentUpon>Card.xaml</DependentUpon>
     </Compile>
