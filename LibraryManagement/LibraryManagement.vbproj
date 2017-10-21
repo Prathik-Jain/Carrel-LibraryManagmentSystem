@@ -96,11 +96,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdminAccount.xaml.vb">
-      <DependentUpon>AdminAccount.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AdminForm.xaml.vb">
       <DependentUpon>AdminForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adminpopup.xaml.vb">
+      <DependentUpon>Adminpopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Admin.vb" />
     <Compile Include="Camera.vb" />
@@ -148,11 +148,11 @@
     <Compile Include="ViewMember.xaml.vb">
       <DependentUpon>ViewMember.xaml</DependentUpon>
     </Compile>
-    <Page Include="AdminAccount.xaml">
+    <Page Include="AdminForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminForm.xaml">
+    <Page Include="Adminpopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
