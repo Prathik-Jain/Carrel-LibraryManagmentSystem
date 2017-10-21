@@ -49,10 +49,10 @@ Public Class DashBoard
             Try
                 If jsonString.Contains("UID") Then
                     if await memberAccount.CheckBookInList 'Checks and returns book if found
-                        memberAccount.GetData("MEM-0001")
+                        memberAccount.GetData("MEM-0003")
                         StartCameraAndTimer()
-                    ElseIf await BookService.Borrowed("BOOK-2","MEM-0001") 
-                        memberAccount.getData("MEM-0001")
+                    ElseIf await BookService.Borrowed("BOOK-2","MEM-0003") 
+                        memberAccount.getData("MEM-0003")
                         StartCameraAndTimer()
                     Else 
                         MsgBox("Failed to Update database")
@@ -68,7 +68,7 @@ Public Class DashBoard
                     MsgBox("Member")
                 ElseIf jsonString.Contains("ADM") Then
                     stopcameraandtimer
-                    memberAccount.GetData("MEM-0001")
+                    memberAccount.GetData("MEM-0003")
                     FAB.IsEnabled = False
                 ElseIf jsonString.Contains("BOOK") Then
                     MsgBox("BOok")
@@ -105,6 +105,7 @@ Public Class DashBoard
         Handles ViewBookDialog.DialogOpened,
                 MemberPopupDialog.DialogOpened,
                 Me.Unloaded
+        SnackBarMessageQueue = Snackbar.MessageQueue
         FAB.IsEnabled = False
 StartCameraAndTimer()
     End Sub
