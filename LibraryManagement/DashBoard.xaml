@@ -107,7 +107,7 @@
                                    IsOpen="False"
                                    Grid.Row="0" Grid.RowSpan="2">
             <materialDesign:DialogHost.DialogContent>
-                <local:MemberAccount x:Name="MemberPopup"/>
+                <local:MemberPopup x:Name="MemberPopup"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
         <!--#endregion-->

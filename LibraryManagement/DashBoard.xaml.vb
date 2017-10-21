@@ -5,7 +5,7 @@ Public Class DashBoard
     Public Shared SnackBarMessageQueue As SnackbarMessageQueue
     WithEvents _sendImage As DispatcherTimer
     Dim _camera As Camera
-    dim memberAccount as new MemberAccount 
+    dim memberAccount as new MemberPopup
 
     Public Sub New()
         ' This call is required by the designer.
