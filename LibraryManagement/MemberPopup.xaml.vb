@@ -21,16 +21,21 @@ Public Class MemberAccount
 
     End Sub 
     Public sub GetData(uid As String)
-        data = MemberService.GetMember(UID)
-        x =BookService.GetBooksBorrowed(uid)
+        try
+            data = MemberService.GetMember(UID)
+            x =BookService.GetBooksBorrowed(uid)
             borrowedlist.ItemsSource= x
             LblUID.Content = UID
-            LblName.Content = data(0) + "" + data(1)
+            LblName.Content = data(0) + " " + data(1)
             LblPhone.Content = data(2)
             LblDepartment.Content = data(3)
             LblSemester.Content = data(4)
-           _dashBoard.MemberPopup.Content = Me
-           _dashBoard.MemberPopupDialog.IsOpen = True
+            ImgQr.source = qrGenerator.generate(lblUID.content)
+            _dashBoard.MemberPopup.Content = Me
+            _dashBoard.MemberPopupDialog.IsOpen = True
+        Catch ex As Exception
+            msgbox("Member not found")
+        End Try
     End sub
     Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
         _dashBoard.MemberPopupDialog.IsOpen = False
@@ -55,6 +60,7 @@ Public Class MemberAccount
        Return FLAG
     End Function
     Private Sub OpenDeleteDialog(sender As Object, e As RoutedEventArgs)
+        DeleteMember.SetData("MEM",lbluid.Content)
         DeleteMember.LblPrompt.Content = "Delete Member?"
         DeleteMemberDialog.IsOpen= True
     End Sub

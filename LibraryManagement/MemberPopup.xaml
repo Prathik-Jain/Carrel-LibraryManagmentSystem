@@ -173,7 +173,7 @@
                                    Grid.Column="0" 
                                    Grid.ColumnSpan="6"
                                    Grid.Row="0" 
-                                   Grid.RowSpan="11">
+                                   Grid.RowSpan="8">
             <materialDesign:DialogHost.DialogContent>
                 <local:Delete x:Name="DeleteMember"/>
             </materialDesign:DialogHost.DialogContent>
