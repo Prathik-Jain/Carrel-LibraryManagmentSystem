@@ -84,6 +84,8 @@ Friend  Shared Function GetLastUid() As String
                 data.Add(reader("MaxBooks").ToString)
                 data.Add(reader("Dues").ToString)
             Return data
+            Catch ex As exception
+            throw
             Finally
                 query.connection.Close
         End Try
