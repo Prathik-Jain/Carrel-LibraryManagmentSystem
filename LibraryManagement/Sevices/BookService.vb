@@ -169,4 +169,25 @@ Public Class BookService
             query.Connection.Close()
         End Try
     End Function
+
+    Public async Shared Function EditBooks(book As Object, number As Integer) As Task(Of Integer)
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = New SqlCommand("UPDATE Book SET Title = @Title, Author = @Author, Publisher = @Publisher, Edition = @edition , Price = @Price , Rack = @Rack WHERE ISBN= @ISBN", connection)
+        Try
+            query.Parameters.Add(New SqlParameter("@Title", book("Title")))
+            query.Parameters.Add(New SqlParameter("@Author", book("Author")))
+            query.Parameters.Add(New SqlParameter("@Publisher", book("Publisher")))
+            query.Parameters.Add(New SqlParameter("@Edition", book("Edition")))
+            query.Parameters.Add(New SqlParameter("@Price", book("Price")))
+            query.Parameters.Add(New SqlParameter("@Rack", book("Rack")))
+            query.Parameters.Add(New SqlParameter("@ISBN", book("ISBN")))
+            connection.Open()
+            return await query.ExecuteNonQueryAsync()
+        Catch ex As Exception
+            Throw
+        Finally
+           query.Connection.Close
+        End Try
+    End Function
 End Class
