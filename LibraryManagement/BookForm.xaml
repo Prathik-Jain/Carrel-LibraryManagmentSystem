@@ -144,7 +144,10 @@
         </ListBox>
 
         <!--#endregion-->
-
+        <!--#region UID-->
+        <Label x:Name="LblUID"
+               Visibility="Hidden"
+               Content=""/>
         <!--#region Publisher-->
         <materialDesign:PackIcon Kind="Store"
                                  Grid.Row="5" Margin="0,0,16,10" />

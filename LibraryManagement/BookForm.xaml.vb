@@ -48,14 +48,27 @@ Public Class BookForm
         Book.Price = TxtPrice.Text
         Book.Rack = TxtRack.Text
         Dim number As Integer = Convert.ToInt32(TxtNumber.Text)
-        If Await BookService.AddBook(Book, number) Then
-            DashBoard.SnackBarMessageQueue.Enqueue(TxtNumber.Text + " Book(s) Added", "VIEW", Sub()
-                                                                                                  Dim bookView As New ViewBook
-                                                                                                  BookView.ViewLastRecord(number)
-                                                                                              End Sub)
+        If lblUid.Content = ""
+            If Await BookService.AddBook(Book, number) Then
+                DashBoard.SnackBarMessageQueue.Enqueue(TxtNumber.Text + " Book(s) Added", "PRINT QR", Sub()
+                    'Dim bookView As New ViewBook
+                    'BookView.ViewLastRecord(number)
+                     MsgBox("This is an upcoming feature")
+                End Sub)
+            Else
+                DashBoard.SnackBarMessageQueue.Enqueue("Failed registering ")
+            End If
         Else
-            DashBoard.SnackBarMessageQueue.Enqueue("Failed registering ")
+            If Await BookService.EditBooks(Book, number) Then
+                DashBoard.SnackBarMessageQueue.Enqueue(TxtNumber.Text + " Book(s) Added", "VIEW", Sub()
+                    Dim bookView As New ViewBook
+                    BookView.ViewLastRecord(number)
+                End Sub)
+            Else
+                DashBoard.SnackBarMessageQueue.Enqueue("Failed registering ")
+            End If 
         End If
+      
     End Sub
     Private Sub AddAuthor()
         Dim i = 0
