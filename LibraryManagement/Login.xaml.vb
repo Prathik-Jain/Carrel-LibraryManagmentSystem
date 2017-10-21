@@ -3,7 +3,7 @@ Imports System.Windows.Media.Animation
 Imports System.Windows.Threading
 Imports Newtonsoft.Json
 
-Class Page1
+Class Login
     Dim ReadOnly _camera As New Camera
     WithEvents _sendImage As DispatcherTimer
     WithEvents _delayTimer As DispatcherTimer
@@ -50,7 +50,7 @@ Class Page1
                     UpdateScreen()
                 Else
 
-                    loginPage.Background = Brushes.OrangeRed
+                    Me.Background = Brushes.OrangeRed
                     txtLoginInstruction.Text = "Admin not found"
                     _sendImage.Stop()
                     Await Task.Delay(2000)
@@ -75,7 +75,7 @@ Class Page1
         txtLoginInstruction.Text = "Please enter your PIN"
     End Sub
 
-    Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs) Handles Close.Click
+    Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs) Handles BtnClose.Click
         StopAllServices()
         Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown
         Windows.Application.Current.Shutdown()
@@ -119,10 +119,13 @@ Class Page1
                 dot4.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 'HACK to update UI befor matchPIN() executes.
                 If _loginService.MatchPIN(_admin.UID, PIN) = 1 Then
+                    _camera.StopCamera()
                     Dim dash As New DashBoard()
-                    dash.Show()
-                    loginPage.Visibility = Visibility.Collapsed
 
+                    dash.Show()
+
+                    Me.Close()
+                   
                 Else
                     MsgBox("naaaa")
                     TxtPIN.Clear()
