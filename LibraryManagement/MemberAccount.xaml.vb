@@ -4,6 +4,7 @@ Imports Newtonsoft.Json
 Imports  System.Threading
 Public Class MemberAccount
     Dim _dashBoard As DashBoard
+    Dim data as ArrayList
     WithEvents _sendImage As New DispatcherTimer
     Dim _camera As Camera
     public Shared x as DataView
@@ -20,7 +21,7 @@ Public Class MemberAccount
 
     End Sub 
     Public sub GetData(uid As String)
-        dim data as ArrayList = MemberService.GetMember(UID)
+        data = MemberService.GetMember(UID)
         x =BookService.GetBooksBorrowed(uid)
             borrowedlist.ItemsSource= x
             LblUID.Content = UID
@@ -31,6 +32,17 @@ Public Class MemberAccount
            _dashBoard.MemberPopup.Content = Me
            _dashBoard.MemberPopupDialog.IsOpen = True
     End sub
+    Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
+        _dashBoard.MemberPopupDialog.IsOpen = False
+        _dashBoard.MemberForm.TxtFirstName.Text = data(0)
+        _dashBoard.MemberForm.TxtLastName.Text = data(1)
+        _dashBoard.MemberForm.TxtPhone.Text = LblPhone.Content
+        _dashBoard.MemberForm.CmbDept.Text = LblDepartment.Content
+        _dashBoard.MemberForm.CmbSemister.Text = LblSemester.Content
+        _dashBoard.MemberForm.LblUID.Content = LblUID.Content
+        _dashBoard.MemberForm.BtnAccept.Content = "UPDATE"
+        _dashBoard.MemberFormDialog.IsOpen = True
+    End Sub
 
     Public Async Function CheckBookInList() As Task(Of Boolean)
         dim flag = False
