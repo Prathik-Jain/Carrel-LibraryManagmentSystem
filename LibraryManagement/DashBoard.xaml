@@ -89,15 +89,7 @@
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
         
-        <!--ViewMemberDialog Dialog-->
-        <materialDesign:DialogHost x:Name="ViewMemberDialog"
-                                   CloseOnClickAway="True"
-                                   IsOpen="False"
-                                   Grid.Row="0" Grid.RowSpan="2">
-            <materialDesign:DialogHost.DialogContent>
-                <local:ViewMember x:Name="MemberView" />
-            </materialDesign:DialogHost.DialogContent>
-        </materialDesign:DialogHost>
+
         
         <!--ViewBookDialog Dialog-->
         <materialDesign:DialogHost x:Name="ViewBookDialog"
@@ -105,7 +97,7 @@
                                    IsOpen="False"
                                    Grid.Row="0" Grid.RowSpan="2">
             <materialDesign:DialogHost.DialogContent>
-                <local:ViewMember x:Name="BookView" />
+                <local:ViewBook x:Name="BookView" />
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
         
