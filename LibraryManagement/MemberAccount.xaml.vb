@@ -3,7 +3,7 @@ Imports System.Windows.Threading
 Imports Newtonsoft.Json
 Imports  System.Threading
 Public Class MemberAccount
-    Dim _dashBoard As DashBoard = Application.Current.Windows(0)
+    Dim _dashBoard As DashBoard
     WithEvents _sendImage As New DispatcherTimer
     Dim _camera As Camera
     public Shared x as DataView
@@ -12,6 +12,11 @@ Public Class MemberAccount
         ' This call is required by the designer.
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
+        For Each window As Window In Application.Current.Windows
+            If window.GetType() = GetType(DashBoard)
+                _dashBoard = window
+            End If
+        Next
 
     End Sub 
     Public sub GetData(uid As String)
