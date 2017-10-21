@@ -111,6 +111,16 @@
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
         <!--#endregion-->
+        <!--AdminPopUp Dialog-->
+        <materialDesign:DialogHost x:Name="AdminPopupDialog"
+                                   CloseOnClickAway="True"
+                                   IsOpen="False"
+                                   Grid.Row="0" Grid.RowSpan="2">
+            <materialDesign:DialogHost.DialogContent>
+                <local:AdminPopup x:Name="AdminPopup"/>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <!--#endregion-->
 
         <!--FAB Popup-->
         <materialDesign:PopupBox x:Name="FAB"
