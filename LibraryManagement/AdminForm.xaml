@@ -34,7 +34,6 @@
             <Setter Property="Margin" Value="16 0" />
             <Setter Property="MinHeight" Value="24" />
             <Setter Property="MinWidth" Value="240" />
-            <EventSetter Event="LostFocus" Handler="FieldLostFocus"/>
         </Style>
     </UserControl.Resources>
 
@@ -61,15 +60,18 @@
         </Grid.RowDefinitions>
         <!--#endregion-->
 
-        
-        
+        <!--#region UID-->
+        <Label x:Name="LblUID"
+               Visibility="Hidden"
+               Content=""/>
+
         <!--#region Name-->
         <materialDesign:PackIcon Kind="Account"
                                  Grid.Row="1"
                                  Margin="0,0,16,10" />
 
 
-        <TextBox x:Name="TxtFirstName"
+        <TextBox x:Name="TxtFName"
                  Grid.Row="1"
                  materialDesign:HintAssist.Hint="First Name"
                  Margin="16,10" 
@@ -83,7 +85,7 @@
             </TextBox.Text>
         </TextBox>
         
-        <TextBox x:Name="TxtLastName"
+        <TextBox x:Name="TxtLName"
                  Grid.Row="2" Grid.Column="2"
                  materialDesign:HintAssist.Hint="Last Name"
                  Margin="16,10"
@@ -168,7 +170,7 @@
         <materialDesign:PackIcon Kind="Lock"
                                  Grid.Row="6"
                                  Margin="0,0,16,14" />
-        <TextBox x:Name="TxtPassword"
+        <TextBox x:Name="TxtPin"
                  Grid.Row="6" 
                  Grid.Column="2"
                  materialDesign:HintAssist.Hint="Password"
