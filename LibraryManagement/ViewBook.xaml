@@ -169,7 +169,29 @@
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
         <!--#endregion-->
-
+        <!--#region Borrowed-->
+        <materialDesign:PackIcon Kind="ViewStream"
+                                 Grid.Row="9"
+                                 Grid.Column="1"
+                                 Margin="0,0,16,10"/>
+        <TextBlock x:Name="LblBorrowed"
+               Width="200"
+               Grid.Row="5"
+               Grid.Column="3"
+               TextWrapping="Wrap"
+               Height="36"  Margin="0,0,0,0"/>
+        <!--#endregion-->
+        <!--#region Available-->
+        <materialDesign:PackIcon Kind="ViewStream"
+                                 Grid.Row="9"
+                                 Grid.Column="1"
+                                 Margin="0,0,16,10"/>
+        <Label x:Name="LblAvailable"
+               Width="200"
+               Grid.Row="7"
+               Grid.Column="3"
+               Height="36"  Margin="0,0,0,0"/>
+        <!--#endregion-->
 
         <!--#region NoofBooks-->
         <materialDesign:PackIcon Kind="BookMultiple"
