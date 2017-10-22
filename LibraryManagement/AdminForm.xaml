@@ -129,18 +129,17 @@
         <!--#region SecurityQuestion-->
         <materialDesign:PackIcon Kind="Security"
                                  Grid.Row="4"
-                                 Margin="0,0,16,14" />
-        <ComboBox x:Name="CmbSecurityQ"
+                                 Margin="0,0,16,10" />
+        <TextBox x:Name="TxtSecurityQ"
                   Grid.Column="2"
                   Grid.Row="4"
                   materialDesign:HintAssist.Hint="Security Question"
-                  IsEditable="True"
-                  Margin="16,14"
+                  Margin="16,10"
                   VerticalAlignment="Center"
-                  MinHeight="24"
+                  MinHeight="36"
                   MinWidth="240"
                   Height="28">
-            <ComboBox.Text>
+            <TextBox.Text>
                 <Binding ElementName="CmbSecurityQ" 
                          Path="Text" 
                          UpdateSourceTrigger="LostFocus">
@@ -148,8 +147,8 @@
                         <validation:NotEmpty/>
                     </Binding.ValidationRules>
                 </Binding>
-            </ComboBox.Text>
-        </ComboBox>
+            </TextBox.Text>
+        </TextBox>
         <!--#endregion-->
 
         <!--#region Answer-->
