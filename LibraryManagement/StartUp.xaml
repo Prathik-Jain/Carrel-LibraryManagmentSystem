@@ -193,5 +193,7 @@
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
+
+        <ProgressBar Width="800" Height="10" IsIndeterminate="True" Grid.ColumnSpan="2" Margin="0,490,0,-100" />
     </Grid>
 </Window>
