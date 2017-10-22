@@ -59,14 +59,14 @@
 
         <!--#region  QR-->
         <Image x:Name="ImgQR" 
-               Width="200" 
-               Height="200"
-               Grid.Row="2"
+               Width="150" 
+               Height="150"
+               Grid.Row="1"
                Grid.Column="3" 
                Grid.ColumnSpan="2" 
                HorizontalAlignment="Right" 
-               Grid.RowSpan="4" 
-               VerticalAlignment="Bottom" Margin="0,0,0,28"/>
+               Grid.RowSpan="3" 
+               VerticalAlignment="Bottom"/>
 
 
         <!--#region Title-->
@@ -94,10 +94,17 @@
                 Margin="0,0,106,0" />
         <!-- #endregion-->
 
+        <Rectangle 
+                   Height="12" 
+                   Grid.ColumnSpan="6" 
+                   Margin="0,35,0,10" 
+                   Grid.Row="3"
+                   Fill="{DynamicResource PrimaryHueDarkBrush}"/>
 
 
-        <!--#region ISBN-->
-        <materialDesign:PackIcon Kind="BarcodeScan"
+
+        <!--#region ISBN
+       <materialDesign:PackIcon Kind="BarcodeScan"
                                  Grid.Row="4"
                                  Grid.Column="1"
                                  Margin="0,0,16,10"/>
@@ -107,10 +114,10 @@
                  Grid.Column="2" 
                  Margin="0,0,53,0" 
                  Height="36" />
-        <!--#endregion-->
+        
 
 
-        <!--#region Authors-->
+        
         <materialDesign:PackIcon Kind="AccountMultiple"
                                  Grid.Row="5"
                                  Margin="0,0,16,10" Grid.Column="1"/>
@@ -119,9 +126,9 @@
                  Grid.Row="5"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
-        <!--#endregion-->
+       
 
-        <!--#region Publisher-->
+        
         <materialDesign:PackIcon Kind="Store"
                                  Grid.Row="6"
                                  Grid.Column="1"
@@ -131,9 +138,9 @@
                  Grid.Row="6"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
-        <!--#endregion-->
+       
 
-        <!--#region Price-->
+        
         <materialDesign:PackIcon Kind="CurrencyInr"
                                  Grid.Row="7"
                                  Grid.Column="1"
@@ -143,9 +150,9 @@
                  Grid.Row="7"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
-        <!--#endregion-->
+        
 
-        <!--#region Edition-->
+        
         <materialDesign:PackIcon Kind="NotificationClearAll"
                                  Grid.Row="8"
                                  Grid.Column="1"
@@ -155,10 +162,10 @@
                  Grid.Row="8"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,54" Grid.RowSpan="2"/>
-        <!--#endregion-->
+        
 
 
-        <!--#region Rack-->
+        
         <materialDesign:PackIcon Kind="ViewStream"
                                  Grid.Row="9"
                                  Grid.Column="1"
@@ -168,32 +175,8 @@
                  Grid.Row="9"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
-        <!--#endregion-->
-        <!--#region Borrowed-->
-        <materialDesign:PackIcon Kind="ViewStream"
-                                 Grid.Row="9"
-                                 Grid.Column="1"
-                                 Margin="0,0,16,10"/>
-        <TextBlock x:Name="LblBorrowed"
-               Width="200"
-               Grid.Row="5"
-               Grid.Column="3"
-               TextWrapping="Wrap"
-               Height="36"  Margin="0,0,0,0"/>
-        <!--#endregion-->
-        <!--#region Available-->
-        <materialDesign:PackIcon Kind="ViewStream"
-                                 Grid.Row="9"
-                                 Grid.Column="1"
-                                 Margin="0,0,16,10"/>
-        <Label x:Name="LblAvailable"
-               Width="200"
-               Grid.Row="7"
-               Grid.Column="3"
-               Height="36"  Margin="0,0,0,0"/>
-        <!--#endregion-->
 
-        <!--#region NoofBooks-->
+        
         <materialDesign:PackIcon Kind="BookMultiple"
                                  Grid.Row="10"
                                  Grid.Column="1"
@@ -203,13 +186,13 @@
                  Grid.Row="10"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
-        <!--#endregion-->
+        -->
 
         <!--#region Toggle Buttons-->
 
 
         <!--#region PrintQR-->
-        <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+        <Button Style="{StaticResource MaterialDesignFlatButton}"
                           
                           IsEnabled="True" 
                           Margin="0,0,10,54" 
@@ -223,11 +206,11 @@
                                      Height="21" 
                                      Width="21" 
                                      Foreground="#283592"/>
-        </ToggleButton>
+        </Button>
         <!--#endregion-->
 
         <!--#region DeleteBook-->
-        <ToggleButton Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+        <Button Style="{StaticResource MaterialDesignFlatButton}"
                           Click ="OpenDeleteDialog"
                           IsEnabled="True" 
                           Margin="0,0,6,54" 
@@ -236,15 +219,15 @@
                           VerticalAlignment="Bottom" 
                           Grid.RowSpan="2">
             <materialDesign:PackIcon Kind="Delete" Height="21" Width="21" Foreground="#e30101" Opacity="1" />
-        </ToggleButton>
+        </Button>
         <Button x:Name="BtnEdit"
                 Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
                 Width="56"
                 Height="56"
-                Grid.Row="10"
+                Grid.Row="3"
                 Grid.Column="4" 
                 HorizontalAlignment="Right" 
-                VerticalAlignment="Bottom">
+                VerticalAlignment="Bottom" Margin="0,0,0,48" Grid.RowSpan="2">
             <materialDesign:PackIcon Kind="Pencil"
                                      Width="24"
                                      Height="24"/>

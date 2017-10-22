@@ -12,13 +12,15 @@ Public Class ViewBook
         _dashboard = Application.Current.Windows(0)
         _data = BookService.GetLastAdded()
         UpdateView(_data)
-        LblNoofBooks.Content = number
+        'LblNoofBooks.Content = number
         BtnEdit.Visibility = Visibility.Collapsed
         ImgQR.Visibility = Visibility.Collapsed
         _dashboard.BookView.Content = Me
         _dashboard.ViewBookDialog.IsOpen = True
     End Sub
     Friend Sub ViewBookById(bookId As String)
+
+
         _dashboard = Application.Current.Windows(0)
         Try
             _data = bookservice.GetBookByID(bookID)
@@ -39,25 +41,26 @@ Public Class ViewBook
             MsgBox("Book not found!")
             _dashboard.StartCameraAndTimer()
         End Try
+
     End Sub
     Sub UpdateView(data)
-        LblISBN.Content = data(0)
+        'LblISBN.Content = data(0)
         LblTitle.Content = data(1)
-        LblAuthors.Content = data(2)
-        LblPublisher.Content =data(3)
-        LblEdition.Content = data(4)
-        LblPrice.Content = data(5)
-        LblRack.Content = data(6)
+        'LblAuthors.Content = data(2)
+        'LblPublisher.Content =data(3)
+        'LblEdition.Content = data(4)
+        'LblPrice.Content = data(5)
+        'LblRack.Content = data(6)
     End Sub
     Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
         _dashBoard.ViewBookDialog.IsOpen = False
-        _dashBoard.BookForm.TxtISBN.Text = LblISBN.Content
+        ' _dashBoard.BookForm.TxtISBN.Text = LblISBN.Content
         _dashboard.BookForm.TxtISBN.IsEnabled = False
         _dashBoard.BookForm.TxtTitle.Text = LblTitle.Content
         _dashboard.BookForm.LstAuthor.Items.Clear()
-        _dashBoard.BookForm.TxtPublisher.Text = LblPublisher.Content
-        _dashBoard.BookForm.CmbEdition.Text = LblEdition.Content
-        _dashBoard.BookForm.LblUID.Content = "UPDATE"
+        ' _dashBoard.BookForm.TxtPublisher.Text = LblPublisher.Content
+        '_dashboard.BookForm.CmbEdition.Text = LblEdition.Content
+        _dashboard.BookForm.LblUID.Content = "UPDATE"
         _dashBoard.BookForm.BtnAccept.Content = "UPDATE"
         _dashBoard.BookFormDialog.IsOpen = True
     End Sub
