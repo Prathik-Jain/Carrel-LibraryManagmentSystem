@@ -190,7 +190,7 @@ GO
 			LNAME NVARCHAR(MAX) '$.LName',
 			PHONE NCHAR(10) '$.Phone',
 			PIN NCHAR(4) '$.Pin',
-			SECQURITYQUESTION NVARCHAR(MAX) '$.SecurityQuestion',
+			SECURITYQUESTION NVARCHAR(MAX) '$.SecurityQuestion',
 			ANSWER NVARCHAR(MAX) '$.Answer'
 		)
 	 END
@@ -206,11 +206,18 @@ INSERT INTO Author VALUES('Mohana H.K'),('E Balaguruswamy'),('M Morris Mano'),('
 ('Abraham Silberschatz'),('Gurumit Singh'),('M.G.Venkateshmurthy'),('Forouzan'),('Billey E. Gillett'),
 ('John C Martin'),('Dhamdhere'),('Behrouz A. Forouzan'),('Robert W Sebesta')
 
--------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 --INSERTING DEPARTMENT VAULES
 
 INSERT INTO Dept VALUES('BA'),('BCA'),('B.Com'),('B.Sc'),('BHM'),('BBA'),('M.Com'),('MCA'),('M.Sc'),('MBA')
--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------
+-- INSERTING TEST ADMIN
+
+INSERT INTO JSON (CATEGORY,DATA) VALUES ('ADM','{"FName":"TEST","LName":"TEST","Phone":"9876543210","Pin":"0000","SecurityQuestion":"First Phone number","Answer":"1234567890"}')
+
+GO
+---------------------------------------------------------------------------------------------------------
 
 
 
