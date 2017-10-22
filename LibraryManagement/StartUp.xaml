@@ -19,54 +19,34 @@
         Title="LibManager" MinHeight="500" MinWidth="800" MaxHeight="500" Visibility="Visible" WindowStyle="None"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <Storyboard x:Key="bookopoen" RepeatBehavior="10x" >
+        <Storyboard x:Key="bookopoen" RepeatBehavior="6x">
             <DoubleAnimationUsingKeyFrames x:Name="doubleAnimationUsingKeyFrames" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path12_Copy" >
-                <EasingDoubleKeyFrame KeyTime="0:0:0.7"  Value="-1.063"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8"  Value="-1.063"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path12_Copy">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="83.37"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="83.37"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path12_Copy">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="33.997"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="33.997"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path12_Copy1">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1.121"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1.121"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path12_Copy1">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="85.186"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="85.186"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path12_Copy1">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="33.997"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="33.997"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path12_Copy2">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-1.121"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="-1.121"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path12_Copy2">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="83.37"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="83.37"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path12_Copy2">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="32.602"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="32.602"/>
             </DoubleAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path8">
-                <EasingColorKeyFrame KeyTime="0" Value="White"/>
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="#FFE31C60"/>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path7">
-                <EasingColorKeyFrame KeyTime="0" Value="White"/>
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="#FFE31C60"/>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path6">
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="#FFE31C60"/>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path5">
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="#FFE31C60"/>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path4">
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="#FFE31C60"/>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path3">
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="#FFE31C60"/>
-            </ColorAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
@@ -138,7 +118,7 @@
                 <TranslateTransform X="88.106252" Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path9" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M105.39143,4.5558427E-07 L115.16389,140.88054 C115.2689,140.80615 115.37564,140.73742 115.48005,140.66102 L115.48005,145.44725 116.05686,153.76422 104.78875,154.56229 C65.29858,158.91382 41.932093,167.23866 1.9895197E-13,189.86493 41.474143,144.0675 73.575872,149.16965 96.596951,146.80317 L86.506479,1.3391255 z" RenderTransformOrigin="-0.0547696569632303,-0.0524566242529913" Stretch="Fill" HorizontalAlignment="Right" Width="116.057" Height="189.865" VerticalAlignment="Top" Margin="0,70.135,366.943,0" Grid.ColumnSpan="2" >
+        <Path x:Name="path9" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M105.39143,4.5558427E-07 L115.16389,140.88054 C115.2689,140.80615 115.37564,140.73742 115.48005,140.66102 L115.48005,145.44725 116.05686,153.76422 104.78875,154.56229 C65.29858,158.91382 41.932093,167.23866 1.9895197E-13,189.86493 41.474143,144.0675 73.575872,149.16965 96.596951,146.80317 L86.506479,1.3391255 z" RenderTransformOrigin="-0.0547696569632303,-0.0524566242529913" Stretch="Fill" HorizontalAlignment="Right" Width="116.057" Height="189.865" VerticalAlignment="Top" Margin="0,70.135,365,0" Grid.ColumnSpan="2" >
             <Path.RenderTransform>
                 <TranslateTransform X="88.106252" Y="33.602084"/>
             </Path.RenderTransform>
