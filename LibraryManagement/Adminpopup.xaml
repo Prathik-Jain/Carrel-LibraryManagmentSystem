@@ -47,7 +47,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="32"/>
             <ColumnDefinition Width="56"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="274"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="56"/>
             <ColumnDefinition Width="32"/>
@@ -127,7 +127,7 @@
                              Width="220" 
                              Height="244"
                              Grid.Column="2" 
-                             Margin="0,50,70,52"
+                             Margin="0,50,10,52"
                              Grid.Row="5" 
                              HorizontalAlignment="Right"
                              Background="#ffffff"/>
@@ -139,9 +139,9 @@
                              Width="220" 
                              Height="244"
                              Grid.Column="3" 
-                             Margin="0,50,50,52" 
+                             Margin="0,50,10,52" 
                              Grid.Row="5" 
-                             HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
+                             HorizontalAlignment="Right"/>
 
         <Image x:Name="ImgQR" 
                Width="150" 
