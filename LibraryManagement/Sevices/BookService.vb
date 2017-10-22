@@ -110,7 +110,7 @@ Public Class BookService
     Public Shared Function GetBookById(bookId As String) As Object
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim query = New SqlCommand("SELECT * FROM BOOK WHERE ID = @BookID", connection)
+        Dim query = New SqlCommand("SELECT * FROM BOOK WHERE UID = @BookID", connection)
 
         Try
             query.Parameters.Add(New SqlParameter("BookID", bookId))
@@ -132,7 +132,6 @@ Public Class BookService
             data.Add(reader("ADDEDON").ToString())
             Return data
         Catch ex As Exception
-            MsgBox(ex.ToString())
             Throw
         Finally
             query.Connection.Close()
@@ -143,6 +142,8 @@ Public Class BookService
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("SELECT COUNT(ISBN) FROM BOOK WHERE ISBN = @ISBN", connection)
+        query.Parameters.Add(New SqlParameter("@ISBN", isbn))
+
         Try
             connection.Open()
             Return query.ExecuteScalar
@@ -159,6 +160,8 @@ Public Class BookService
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query =
                 New SqlCommand("SELECT COUNT(ISBN) FROM BOOK WHERE ISBN = @ISBN AND AVAILABLE = 1", connection)
+        query.Parameters.Add(New SqlParameter("@ISBN", isbn))
+
         Try
             connection.Open()
             Return query.ExecuteScalar

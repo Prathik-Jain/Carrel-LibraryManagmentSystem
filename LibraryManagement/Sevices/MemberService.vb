@@ -97,7 +97,7 @@ Friend  Shared Function GetLastUid() As String
         query.Parameters.Add(New SqlParameter("@MemberID",memberID))
         Try
             connection.Open()
-            Return query.ExecuteScalarAsync().ToString()
+            Return query.ExecuteScalar()
         Catch ex As Exception
             Throw
             Finally
