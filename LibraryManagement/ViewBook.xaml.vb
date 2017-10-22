@@ -66,4 +66,11 @@ Public Class ViewBook
         DeleteBook.LblPrompt.Content = "Delete Books?"
         DeleteBookDialog.IsOpen= True
     End Sub
+    Private  sub StopcameraonDialogOpen Handles  DeleteBookDialog.DialogOpened
+        _dashBoard.StopCameraAndTimer()
+    End sub
+    private sub StartCameraOnDailogClose Handles DeleteBook.Unloaded, DeleteBookDialog.ContextMenuClosing
+        _dashBoard.StopCameraAndTimer()
+    End sub
+
 End Class
