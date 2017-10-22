@@ -19,26 +19,27 @@ Public Class ViewBook
         _dashboard.ViewBookDialog.IsOpen = True
     End Sub
     Friend Sub ViewBookById(bookId As String)
-        _data = bookservice.GetBookByID(bookID)
-        UpdateView(_data)
-        LblNoofBooks.Content = BookService.GetNumber(_data(0))
-        'LblAvailable.Content = BookService.GetAvailable(data(0))
-        'LblUID.Content = bookID
-        Dim qrContent As Object = New Linq.JObject
-        'qrContent.UID = LblUID.Content
-        Dim qrString = JsonConvert.SerializeObject(qrContent)
-        'ImgQR.source = QRGenerator.Generate(QRString)
-        if(_data(7)) 'Available
-            'LblBorrowedBy.Content = "BOOK IS NOT ISSUED"
-            'LblBorrowedBy.color =green
-            Else 
-            'LblBorrowedBy.Content = MemberService.GetMemberByID(data(8)) + "[" + data(8) + "]"
-            'LblBorrrowedOn.Content = data(9)
-        End If
-        _dashboard.BookView.Content = me
-        _dashboard.ViewBookDialog.IsOpen =True
+        _dashboard = Application.Current.Windows(0)
+        Try
+            _data = bookservice.GetBookByID(bookID)
+            UpdateView(_data)
+            LblNoofBooks.Content = BookService.GetNumber(_data(0))
+            LblAvailable.Content = BookService.GetAvailable(_data(0))
+            LblUID.Content = bookID
+            ImgQR.source = QRGenerator.Generate(LblUID.Content)
+            if (_data(7)) 'Available
+                LblBorrowed.Text = "BOOK NOT ISSUED"
+                LblBorrowed.Foreground= new SolidColorBrush(Colors.LawnGreen)
+            Else
+                LblBorrowed.Text = "Borrowed By " + MemberService.GetMemberById(_data(8)) + " [" + _data(8) + "] On "+ _data(9)
+            End If
+            _dashboard.BookView.Content = me.content
+            _dashboard.ViewBookDialog.IsOpen =True
+        Catch ex As Exception
+            MsgBox("Book not found!")
+            _dashboard.StartCameraAndTimer()
+        End Try
     End Sub
-
     Sub UpdateView(data)
         LblISBN.Content = data(0)
         LblTitle.Content = data(1)

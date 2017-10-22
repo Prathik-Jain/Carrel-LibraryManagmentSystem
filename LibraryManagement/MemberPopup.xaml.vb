@@ -35,6 +35,7 @@ Public Class MemberPopup
             _dashBoard.MemberPopupDialog.IsOpen = True
         Catch ex As Exception
             msgbox("Member not found")
+            _dashBoard.StartCameraAndTimer()
         End Try
     End sub
     Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
@@ -49,11 +50,11 @@ Public Class MemberPopup
         _dashBoard.MemberFormDialog.IsOpen = True
     End Sub
 
-    Public Async Function CheckBookInList() As Task(Of Boolean)
+    Public Async Function CheckBookInList(Bookid As String) As Task(Of Boolean)
         dim flag = False
         for each item in BorrowedList.Items
-            If item.row("UID").ToString().Contains("BOOK-2")
-               Await BookService.Returned("BOOK-2")
+            If item.row("UID").ToString().Contains(Bookid)
+               Await BookService.Returned(Bookid)
                 FLAG =1
             End If
         Next
