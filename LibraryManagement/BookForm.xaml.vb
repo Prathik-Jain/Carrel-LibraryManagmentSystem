@@ -119,4 +119,18 @@ Public Class BookForm
     Private Sub RemoveAuthorFromList(sender As Object, e As RoutedEventArgs)
         LstAuthor.Items.Remove(sender.Content)
     End Sub
+
+    Public Sub ClearAll()
+        LblUID.Content = ""
+        TxtPublisher.Clear()
+        TxtISBN.Clear
+        TxtNumber.Clear()
+        TxtPrice.Clear()
+        TxtTitle.Clear()
+        TxtRack.Clear()
+        LstAuthor.items.Clear()
+        CmbAuthor.Text = ""
+        CmbEdition.Text =""
+        BtnAccept.Content = "ADD"
+    End Sub
 End Class

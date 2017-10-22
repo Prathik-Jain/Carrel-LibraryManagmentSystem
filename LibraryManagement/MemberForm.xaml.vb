@@ -82,4 +82,14 @@ Public Class MemberForm
     Private Sub TxtLastName_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtLastName.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^a-zA-Z]+$")
     End Sub
+
+    Public Sub clearAll()
+        LblUID.Content = ""
+        TxtFirstName.Clear()
+        TxtLastName.Clear()
+        TxtPhone.Clear
+        CmbDept.Text = ""
+        CmbSemister.Text = ""
+        BtnAccept.Content = "ADD"
+    End Sub
 End Class
