@@ -58,6 +58,8 @@ Public Class DashBoard
                     Else 
                         MsgBox("Failed to Update database")
                     End If
+                elseif jsonString.Contains("MEM")
+                    MemberPopupDialog.IsOpen=False
                 else
                     MsgBox("Please scan a book to add or return")
                 End If
@@ -73,18 +75,31 @@ Public Class DashBoard
             Catch ex As Exception
                 MsgBox(ex.Message.ToString())
             End Try
+        ElseIf  viewbookdialog.IsOpen
+            Try
+                If jsonString.Contains("BOOK")
+                    ViewBookDialog.IsOpen = False
+                End If
+            Catch ex As Exception
+
+            End Try
         Else
                 If jsonString.Contains("MEM") Then
-                    stopcameraandtimer
+                    'stopcameraandtimer
                     memberAccount.GetData(jsonString)
+                    'StartCameraAndTimer()
+
                 ElseIf jsonString.Contains("ADM") Then
                     dim _admin = JsonConvert.DeserializeObject (Of Admin)(jsonString)
-                    StopCameraAndTimer()
+                    'StopCameraAndTimer()
                     AdminPopup.GetData(_admin.Uid)
+                    'StartCameraAndTimer()
+
                 ElseIf jsonString.Contains("BOOK") Then
-                    StopCameraAndTimer()
                     Dim viewBook as new ViewBook
                     viewBook.ViewBookById(jsonString)
+                    'StartCameraAndTimer()
+
                 End If
         End If
        
@@ -92,9 +107,10 @@ Public Class DashBoard
 
 
 
-    Private Sub BtnAddBook_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddBook.Click
+    Public Sub BtnAddBook_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddBook.Click
         SnackBarMessageQueue = Snackbar.MessageQueue
         BookFormDialog.IsOpen = True
+        BookForm.ClearAll()
         FAB.IsEnabled = False
         stopCameraAndTimer()
     End Sub
@@ -102,6 +118,7 @@ Public Class DashBoard
     Private Sub BtnAddMember_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddMember.Click
         SnackBarMessageQueue = Snackbar.MessageQueue
         MemberFormDialog.IsOpen = True
+        MemberForm.clearAll()
         FAB.IsEnabled = False
         stopCameraAndTimer()
     End Sub
@@ -109,22 +126,30 @@ Public Class DashBoard
     Private Sub Dialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
         Handles MemberFormDialog.DialogClosing,
                 BookFormDialog.DialogClosing
-        FAB.IsEnabled = True
+        if BookFormDialog.IsOpen = False And  MemberFormDialog.IsOpen=False
+            FAB.IsEnabled = True
+        End If
+        StopCameraAndTimer()
         startCameraAndTimer()
     End Sub
 
     Private  Sub Dialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
-        Handles ViewBookDialog.DialogOpened,
-                MemberPopupDialog.DialogOpened,
-                AdminPopupDialog.DialogOpened,
-                Me.Unloaded
+        Handles MemberPopupDialog.DialogOpened,AdminPopupDialog.DialogOpened,ViewBookDialog.DialogOpened
         SnackBarMessageQueue = Snackbar.MessageQueue
         FAB.IsEnabled = False
         StartCameraAndTimer()
     End Sub
 
 
-    Public Sub Dialog_PopupClosing() Handles ViewBookDialog.DialogClosing,MemberPopupDialog.DialogClosing,AdminPopupDialog.DialogClosing
+    Public Async Sub Dialog_PopupClosing() Handles ViewBookDialog.DialogClosing,MemberPopupDialog.DialogClosing,AdminPopupDialog.DialogClosing,MemberPopup.Unloaded,BookView.Unloaded,AdminPopup.Unloaded
+        StopCameraAndTimer()
+        Await Task.Delay(200)
+        StartCameraAndTimer()
         FAB.IsEnabled=true
+    End Sub
+
+    Private Sub ViewBookDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) Handles Me.Unloaded
+        StopCameraAndTimer()
+        FAB.IsEnabled =true
     End Sub
 End Class
