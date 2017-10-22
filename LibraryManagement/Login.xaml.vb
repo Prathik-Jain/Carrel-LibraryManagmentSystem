@@ -127,7 +127,7 @@ Class Login
                     Me.Close()
                    
                 Else
-                    MsgBox("naaaa")
+                    MsgBox("Wrong Pin!")
                     TxtPIN.Clear()
                 End If
         End Select

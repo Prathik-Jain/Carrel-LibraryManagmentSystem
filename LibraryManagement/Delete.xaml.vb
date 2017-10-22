@@ -22,7 +22,10 @@
                   _dashboard.MemberPopupDialog.IsOpen=False
                 End If
         ElseIf  cat.ToString() = "BOOK"
-            'BookService.Delete(id)
+           if await BookService.Delete(id)
+               DashBoard.SnackBarMessageQueue.Enqueue("Deleted Book. " + id )
+               _dashboard.ViewBookDialog.IsOpen=False
+           End If
         End If
     End Sub
 

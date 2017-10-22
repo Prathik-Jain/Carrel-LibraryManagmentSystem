@@ -97,7 +97,7 @@ Public Class BookService
         Try
             query.Parameters.Add(New SqlParameter("@MemberID", memberId))
             query.Parameters.Add(New SqlParameter("@BooKID", bookId))
-            query.Parameters.Add(New SqlParameter("@NOW", Now.Date()))
+            query.Parameters.Add(New SqlParameter("@NOW", Format(DateTime.Now, "dd MMMM yyyy")))
             Return Await query.ExecuteNonQueryAsync
         Catch e As Exception
             MsgBox(e.ToString())
@@ -173,7 +173,7 @@ Public Class BookService
         End Try
     End Function
 
-    Public async Shared Function EditBooks(book As Object, number As Integer) As Task(Of Integer)
+    Public async Shared Function EditBooks(book As Object) As Task(Of Integer)
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("UPDATE Book SET Title = @Title, Author = @Author, Publisher = @Publisher, Edition = @edition , Price = @Price , Rack = @Rack WHERE ISBN= @ISBN", connection)
@@ -191,6 +191,21 @@ Public Class BookService
             Throw
         Finally
            query.Connection.Close
+        End Try
+    End Function
+
+    Public Async Shared Function Delete(uid As String) As Task(Of Integer)
+        Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = new SqlCommand("DELETE FROM Book WHERE UID = @UID",connection)
+        query.Parameters.Add(new SqlParameter("@UID",uid))
+        Try
+            Connection.Open()
+            Return Await query.ExecuteNonQueryAsync()
+        Catch  ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.Connection.Close()
         End Try
     End Function
 End Class

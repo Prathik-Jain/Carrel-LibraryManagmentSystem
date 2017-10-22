@@ -19,7 +19,7 @@
         Title="LibManager" MinHeight="500" MinWidth="800" MaxHeight="500" Visibility="Visible" WindowStyle="None"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <Storyboard x:Key="bookopoen" RepeatBehavior="6x">
+        <Storyboard x:Key="bookopoen" SpeedRatio="0.75" RepeatBehavior="Forever">
             <DoubleAnimationUsingKeyFrames x:Name="doubleAnimationUsingKeyFrames" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path12_Copy" >
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8"  Value="-1.063"/>
             </DoubleAnimationUsingKeyFrames>
@@ -79,10 +79,9 @@
 
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="400" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Button x:Name="btn1" Content="Button" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75"
-                    Click="Button_Click" Margin="209,346,0,10" Grid.Column="2" Grid.Row="1" />
         <Path x:Name="path3" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M10.806843,7.120228E-06 C13.659157,7.120228E-06 15.945928,0.86327406 17.667159,2.5898158 19.388389,4.3030278 20.390389,6.6802912 20.67316,9.7216062 L17.113914,9.7216062 C16.80653,7.4107479 16.136478,5.7373601 15.10375,4.7014193 14.08332,3.6655218 12.651022,3.1475829 10.806843,3.1475829 8.544664,3.1475829 6.7681144,4.0506701 5.4771884,5.8568642 4.1985584,7.6630583 3.5592469,10.232904 3.5592469,13.566412 L3.5592469,16.375384 C3.5592469,19.522944 4.1678249,22.026369 5.3849877,23.885693 6.6021369,25.745014 8.3049229,26.674666 10.493339,26.674666 12.460452,26.674666 13.96652,26.196567 15.01155,25.240361 16.068876,24.270841 16.769662,22.590809 17.113914,20.200259 L20.67316,20.200259 C20.341184,23.268139 19.290006,25.638773 17.519618,27.312188 15.761513,28.972281 13.419416,29.802322 10.493339,29.802322 7.32136,29.802322 4.7764029,28.573846 2.8584613,26.116903 0.95282259,23.659901 5.3290704E-15,20.372873 5.3290704E-15,16.255837 L5.3290704E-15,13.46686 C5.3290704E-15,10.770837 0.44260013,8.4002035 1.3278008,6.3549304 2.2252977,4.309673 3.4916249,2.7425146 5.1267887,1.6534434 6.7619528,0.55114469 8.6553019,7.120228E-06 10.806843,7.120228E-06 z" RenderTransformOrigin="5.45939899673405,-7.38860647144622" Stretch="Fill" HorizontalAlignment="Right" Width="20.673" Height="29.802" VerticalAlignment="Top" Margin="0,275.198,220,0" >
             <Path.RenderTransform>
                 <TranslateTransform X="88.106252" Y="33.602084"/>
@@ -169,7 +168,6 @@
             </Path.RenderTransform>
         </Path>
 
-        <ProgressBar Width="800" Height="10" IsIndeterminate="True" Grid.ColumnSpan="2" Margin="0,490,0,-100" />
         <Path x:Name="path2" Fill="#e31c60" StrokeThickness="0.24299616" Opacity="1" Data="M2.8421711E-14,3.4643952E-06 L2.8421711E-14,9.0389428 4.3522446,9.0389428 C5.7587334,9.0389428 6.8750692,8.635029 7.701258,7.827214 8.5372806,7.0193643 8.9552948,5.938615 8.9552948,4.5849786 8.9552948,3.1112373 8.5569514,1.981362 7.7602674,1.1953528 6.973423,0.40933097 5.8324965,0.010887492 4.3374908,3.4643952E-06 z" RenderTransformOrigin="2.2253299322386,-19.7750263542661" Stretch="Fill" HorizontalAlignment="Right" Width="8.955" Height="9.039" VerticalAlignment="Top" Margin="0,280,110,0" >
             <Path.RenderTransform>
                 <TransformGroup>
@@ -195,5 +193,7 @@
                 <TranslateTransform X="88.106252" Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
+        <ProgressBar Width="800" Height="5" IsIndeterminate="True" Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Bottom" Margin="0,0,0,0" />
+
     </Grid>
 </Window>

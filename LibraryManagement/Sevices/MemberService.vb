@@ -47,6 +47,7 @@ Friend  Shared Function GetLastUid() As String
                 query.Connection.Close()
         End Try
     End Function
+
     Friend Shared Async Function EditMember(uid As String, member As Object) As Task(Of Integer)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("UPDATE Member 

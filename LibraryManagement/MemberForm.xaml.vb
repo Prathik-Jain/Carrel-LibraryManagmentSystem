@@ -2,6 +2,7 @@
 Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 Public Class MemberForm
+    Dim _dashboard as DashBoard
     Public Sub New()
 
         ' This call is required by the designer.
@@ -11,6 +12,11 @@ Public Class MemberForm
         Else
             'Executes when MemberForm is loaded - Not accessed by designer
             CmbDept.ItemsSource = DepatmentService.GetDept()
+            For Each window As Window In Application.Current.Windows
+                If window.GetType() = GetType(DashBoard)
+                    _dashBoard = window
+                End If
+            Next
         End If
     End Sub
     Private Sub BtnAccept_Click(sender As Object, e As RoutedEventArgs) Handles BtnAccept.Click
@@ -36,8 +42,8 @@ Public Class MemberForm
             Try
                 If  Await MemberService.AddMember(member) Then
                     DashBoard.SnackBarMessageQueue.Enqueue("Registered " + TxtFirstName.Text + " as Member.", "VIEW", Sub()
-                        Dim memberPopup as new MemberPopup
-                                                                                                                          memberPopup.GetData(MemberService.GetLastUid())
+                                                                                                                          _dashboard.StopCameraAndTimer()
+                                                                                                                          _dashboard.memberAccount.GetData(MemberService.GetLastUid())
                     End Sub)
                 else
                     DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
@@ -51,8 +57,8 @@ Public Class MemberForm
                 If Await MemberService.EditMember(LblUID.Content.ToString, member) Then
                     
                     DashBoard.SnackBarMessageQueue.Enqueue("Edited " + TxtFirstName.Text + ".", "VIEW", Sub()
-                        Dim memberPopup as new MemberPopup
-                        memberPopup.GetData(MemberService.GetLastUid())
+                        _dashboard.StopCameraAndTimer()
+                        _dashboard.memberAccount.GetData(LblUID.Content.ToString())
                     End Sub)
 
                 Else

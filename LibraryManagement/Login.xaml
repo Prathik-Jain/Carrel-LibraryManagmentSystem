@@ -15,7 +15,7 @@
         TextElement.FontFamily="Roboto"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="#FF00E676"
+        Background="#FFE31C60"
         FontFamily="{DynamicResource MaterialDesignFont}"
         TextBlock.Foreground="Black"
         WindowStyle="None"

@@ -1,4 +1,5 @@
-﻿Imports System.Windows.Threading
+﻿Imports System.ComponentModel
+Imports System.Windows.Threading
 Imports MaterialDesignThemes.Wpf
 Imports Newtonsoft.Json
 
@@ -6,7 +7,7 @@ Public Class DashBoard
     Public Shared SnackBarMessageQueue As SnackbarMessageQueue
     WithEvents _sendImage As DispatcherTimer
     Dim _camera As Camera
-    dim memberAccount as new MemberPopup
+    Public memberAccount as new MemberPopup
 
     Public Sub New()
         ' This call is required by the designer.
@@ -52,14 +53,14 @@ Public Class DashBoard
                     if await memberAccount.CheckBookInList(jsonString) 'Checks and returns book if found
                         memberAccount.GetData(memberAccount.LblUID.Content)
                         StartCameraAndTimer()
-                    ElseIf await BookService.Borrowed(jsonString,memberAccount.LblUID.Content) 
+                    ElseIf await BookService.Borrowed(jsonString, memberaccount.LblUID.Content)
                         memberAccount.getData(memberAccount.LblUID.Content)
                         StartCameraAndTimer()
-                    Else 
+                    Else
                         MsgBox("Failed to Update database")
                     End If
                 elseif jsonString.Contains("MEM")
-                    MemberPopupDialog.IsOpen=False
+                    MemberPopupDialog.IsOpen = False
                 else
                     MsgBox("Please scan a book to add or return")
                 End If
@@ -75,7 +76,7 @@ Public Class DashBoard
             Catch ex As Exception
                 MsgBox(ex.Message.ToString())
             End Try
-        ElseIf  viewbookdialog.IsOpen
+        ElseIf viewbookdialog.IsOpen
             Try
                 If jsonString.Contains("BOOK")
                     ViewBookDialog.IsOpen = False
@@ -84,25 +85,25 @@ Public Class DashBoard
 
             End Try
         Else
-                If jsonString.Contains("MEM") Then
-                    'stopcameraandtimer
-                    memberAccount.GetData(jsonString)
-                    'StartCameraAndTimer()
+            If jsonString.Contains("MEM") Then
+                'stopcameraandtimer
+                memberAccount.GetData(jsonString)
+                'StartCameraAndTimer()
 
-                ElseIf jsonString.Contains("ADM") Then
-                    dim _admin = JsonConvert.DeserializeObject (Of Admin)(jsonString)
-                    'StopCameraAndTimer()
-                    AdminPopup.GetData(_admin.Uid)
-                    'StartCameraAndTimer()
+            ElseIf jsonString.Contains("ADM") Then
+                dim _admin = JsonConvert.DeserializeObject(Of Admin)(jsonString)
+                'StopCameraAndTimer()
+                AdminPopup.GetData(_admin.Uid)
+                'StartCameraAndTimer()
 
-                ElseIf jsonString.Contains("BOOK") Then
-                    Dim viewBook as new ViewBook
-                    viewBook.ViewBookById(jsonString)
-                    'StartCameraAndTimer()
+            ElseIf jsonString.Contains("BOOK") Then
+                Dim viewBook as new ViewBook
+                viewBook.ViewBookById(jsonString)
+                'StartCameraAndTimer()
 
-                End If
+            End If
         End If
-       
+
     End Sub
 
 
@@ -126,30 +127,35 @@ Public Class DashBoard
     Private Sub Dialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
         Handles MemberFormDialog.DialogClosing,
                 BookFormDialog.DialogClosing
-        if BookFormDialog.IsOpen = False And  MemberFormDialog.IsOpen=False
+        if BookFormDialog.IsOpen = False OR MemberFormDialog.IsOpen = False
             FAB.IsEnabled = True
         End If
         StopCameraAndTimer()
         startCameraAndTimer()
     End Sub
 
-    Private  Sub Dialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
-        Handles MemberPopupDialog.DialogOpened,AdminPopupDialog.DialogOpened,ViewBookDialog.DialogOpened
+    Private Sub Dialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
+        Handles MemberPopupDialog.DialogOpened, AdminPopupDialog.DialogOpened, ViewBookDialog.DialogOpened
         SnackBarMessageQueue = Snackbar.MessageQueue
         FAB.IsEnabled = False
         StartCameraAndTimer()
     End Sub
 
 
-    Public Async Sub Dialog_PopupClosing() Handles ViewBookDialog.DialogClosing,MemberPopupDialog.DialogClosing,AdminPopupDialog.DialogClosing,MemberPopup.Unloaded,BookView.Unloaded,AdminPopup.Unloaded
+    Public Async Sub Dialog_PopupClosing() Handles ViewBookDialog.DialogClosing, MemberPopupDialog.DialogClosing, AdminPopupDialog.DialogClosing, MemberPopup.Unloaded, BookView.Unloaded, AdminPopup.Unloaded
         StopCameraAndTimer()
         Await Task.Delay(200)
         StartCameraAndTimer()
-        FAB.IsEnabled=true
+        FAB.IsEnabled = true
     End Sub
 
     Private Sub ViewBookDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) Handles Me.Unloaded
         StopCameraAndTimer()
-        FAB.IsEnabled =true
+        FAB.IsEnabled = true
+    End Sub
+
+    Private Sub DashBoard_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        StopCameraAndTimer()
+        FAB.IsEnabled = true
     End Sub
 End Class

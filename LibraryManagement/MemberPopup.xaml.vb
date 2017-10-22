@@ -22,7 +22,7 @@ Public Class MemberPopup
     End Sub 
     Public sub GetData(uid As String)
         try
-            data = MemberService.GetMember(UID)
+            data = MemberService.GetMember(uid)
             x =BookService.GetBooksBorrowed(uid)
             borrowedlist.ItemsSource= x
             LblUID.Content = UID
