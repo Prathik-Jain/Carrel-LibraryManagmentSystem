@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="ChangeSemDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Carrel"
+             xmlns:validation="clr-namespace:Carrel.Validation"
+             mc:Ignorable="d" 
+              Background="{DynamicResource MaterialDesignPaper}"
+             MinWidth="350">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="Foreground" Value="#212121"/>
+            <Setter Property="Opacity" Value="0.87"/>
+
+        </Style>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="8"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="8"/>
+        </Grid.ColumnDefinitions>
+
+
+        <TextBlock x:Name="LblMsg" 
+               Text="This action CANNOT be undone.
+                   This will permanently change Semister for all students and students from VI Sem will be removed."
+                   TextWrapping="Wrap"
+                   TextAlignment="Left"
+               FontSize="16" 
+               Margin="10"
+               Width="300"
+               Grid.Column="1" 
+               Grid.Row="1"/>
+
+        <TextBox x:Name="TxtSem"
+                 Grid.Row="2"
+                 CharacterCasing="Upper"
+                 Foreground="DarkRed"
+                 Grid.Column="1"
+                 materialDesign:HintAssist.Hint="Please type SEMISTER to Confirm"
+                 Margin="16,10" 
+                 Height="36" >
+            <TextBox.Text>
+                <Binding ElementName="TxtFirstName" Path="Text" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <validation:NotEmpty/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+
+
+        <Button x:Name="Btnok"
+                Foreground="DarkRed"
+                    IsEnabled="False"
+                    IsDefault="True"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Command="materialDesign:DialogHost.CloseDialogCommand"
+                    Content="CHANGE SEMISTER"
+                    Height="36" 
+                    Grid.Column="1" 
+                    Margin="0,2,10,0" 
+                    Grid.Row="3" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Center"/>
+    </Grid>
+</UserControl>
