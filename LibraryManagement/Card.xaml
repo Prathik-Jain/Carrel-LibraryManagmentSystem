@@ -83,7 +83,8 @@
 
 
         <!--#region Department-->
-        <materialDesign:PackIcon Kind="School" 
+        <materialDesign:PackIcon x:Name="DeptIcon"
+                                 Kind="School" 
                                  Grid.Column="2"
                                  Grid.Row="3" 
                                  Margin="0,0,16,12" />
@@ -93,7 +94,7 @@
                  Grid.Column="3" 
                  Grid.Row="3" />
         <!--#endregion-->
-         
+
         <!--#region Semester-->
         <Label x:Name="LblSemester"
                  Width="40"
@@ -103,14 +104,14 @@
 
         <!--#region Name-->
         <Label x:Name="LblName" 
-                 Width="216"
+                 Width="231"
                  FontSize="18"
                  FontWeight="Bold"
                  Margin="0,0,0,10"
                  Grid.ColumnSpan="3" 
                  Grid.Column="2" 
                  Grid.Row="2" 
-                 Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                 Foreground="{DynamicResource PrimaryHueMidBrush}" d:LayoutOverrides="LeftMargin, RightMargin"/>
         <!--#endregion-->
         <Label x:Name="LblCat"
                Width="100"

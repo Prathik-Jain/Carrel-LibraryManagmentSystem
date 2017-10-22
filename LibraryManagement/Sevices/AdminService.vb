@@ -108,4 +108,24 @@ Public Class AdminService
             query.Connection.Close()
         End Try
         End Function
+
+    Public Shared Sub ChangeSem()
+        Dim connection = New SqlConnection(ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = New SqlCommand("DELETE Member
+                                    Where SEM = 6",connection)
+                                    
+        Dim query2 = New SqlCommand("UPDATE Member
+                                    SET SEM = SEM+1
+                                    WHERE SEM > 0 ", connection)
+        Try
+            connection.Open()
+            query.ExecuteNonQuery()
+            query2.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Throw
+        Finally
+            query.Connection.Close()
+        End Try 
+    End Sub
 End Class

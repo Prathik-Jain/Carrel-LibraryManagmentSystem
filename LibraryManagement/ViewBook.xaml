@@ -175,8 +175,6 @@
                  Grid.Row="9"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,53,0"/>
-        
-
 
         
         <materialDesign:PackIcon Kind="BookMultiple"

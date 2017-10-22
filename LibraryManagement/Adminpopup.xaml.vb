@@ -1,4 +1,5 @@
 ﻿Imports MaterialDesignThemes.Wpf
+Imports Newtonsoft.Json
 
 Public Class AdminPopup
     Dim data As arraylist
@@ -28,11 +29,13 @@ Public Class AdminPopup
             _dashBoard.AdminPopupDialog.IsOpen = True
         Catch ex As Exception
             msgbox("Admin not found")
+            _dashBoard.StartCameraAndTimer()
         End Try
     End Sub
 
-    Private Sub AddAdmin_Click(sender As Object, e As RoutedEventArgs) Handles AddAdmin.Click
+    Private Sub AddAdmin_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddAdmin.Click
         SnackBarMessageQueue = Snackbar.MessageQueue
+        AdminForm.clearAll
         AdminFormDialog.isOpen=true
     End Sub
 
@@ -42,23 +45,39 @@ Public Class AdminPopup
         Adminform.TxtFName.Text = data(0)
         AdminForm.TxtLName.Text = data(1)
         AdminForm.TxtPhone.Text = LblPhone.Content
-        AdminForm.CmbSecurityQ.Text = data(4)
+        AdminForm.TxtSecurityQ.Text = data(4)
         AdminForm.TxtPin.Text = data(3)
         AdminForm.TxtAnswer.Text = data(5)
         AdminForm.BtnAdd.Content = "UPDATE"
         AdminFormDialog.IsOpen = True
     End Sub
-    Friend Sub Print(admin As Object)
-        dim uid = AdminService.GetLastUid()
-        PrintAdmin.ImgQR.Source = QrGenerator.Generate(uid)
+    Friend Sub Print(admin As Object, uid As String)
+        If uid = Nothing
+            uid = AdminService.GetLastUid()
+        End If
+        PrintAdmin.ImgQR.Source = QrGenerator.Generate(UID) ' Need to update image!
         PrintAdmin.LblDepartment.Content = ""
         PrintAdmin.LblPhone.Content = admin("Phone")
-        PrintAdmin.LblName.Content = admin("Fname").ToString() + " " + admin("LName").ToString()
+        PrintAdmin.LblName.Content = admin("FName") + " " + admin("LName")
+        PrintAdmin.DeptIcon.Visibility = Visibility.Collapsed
         PrintAdmin.LblUID.content = uid
+        PrintAdmin.LblPhone.Content = admin("Phone")
         PrintAdmin.LblCat.Content = "ADMIN"
         Dim printdlg As new PrintDialog
         if printDlg.ShowDialog() = true
             printDlg.PrintVisual(PrintAdmin, "Printing Admin Card")
         End If
     End Sub
+
+    Private Sub ChangeSem_Click(sender As Object, e As RoutedEventArgs) Handles BtnChangeSem.Click
+        ChangeSemDialog.isOpen=True
+    End Sub
+    Private  sub StopcameraonDialogOpen Handles  ChangeSemDialog.DialogOpened,AdminFormDialog.DialogOpened
+        _dashBoard.StopCameraAndTimer()
+    End sub
+    private sub StartCameraOnDailogClose Handles AdminForm.Unloaded,
+            AdminFormDialog.DialogClosing,ChangeSemDialog.DialogClosing,ChangeSem.Unloaded,AdminForm.Unloaded
+       _dashBoard.StopCameraAndTimer()
+    End sub
+
 End Class

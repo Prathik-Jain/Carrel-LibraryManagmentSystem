@@ -13,10 +13,15 @@ Public Class Camera
     Private handle As SafeHandle = New SafeFileHandle(IntPtr.Zero, True)
 
     Public Sub StartCamera()
-        videoDevices = New FilterInfoCollection(FilterCategory.VideoInputDevice)
-        camera = New VideoCaptureDevice(videoDevices(0).MonikerString)
-        camera.Start()
-        AddHandler camera.NewFrame, New NewFrameEventHandler(AddressOf Capturer)
+        Try
+            videoDevices = New FilterInfoCollection(FilterCategory.VideoInputDevice)
+            camera = New VideoCaptureDevice(videoDevices(0).MonikerString)
+            camera.Start()
+            AddHandler camera.NewFrame, New NewFrameEventHandler(AddressOf Capturer)
+        Catch ex As Exception
+            MsgBox("Camera not found!")
+        End Try
+
     End Sub
 
     Public Sub Capturer(sender As Object, eventArgs As NewFrameEventArgs)
