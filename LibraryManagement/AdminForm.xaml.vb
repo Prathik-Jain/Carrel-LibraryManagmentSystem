@@ -34,13 +34,13 @@ Public Class AdminForm
         admin.LName = TxtLName.Text
         admin.Phone = TxtPhone.Text
         admin.Pin = TxtPin.Text
-        admin.SecurityQuestion = CmbSecurityQ.Text
+        admin.SecurityQuestion = TxtSecurityQ.Text
         admin.Answer = TxtAnswer.Text
         if lblUid.content = ""
             if await AdminService.AddAdmin(admin) then
                 AdminPopup.SnackBarMessageQueue.Enqueue(TxtFName.Text + " Registered as Admin", "PRINT" , sub()
                                                                                                               dim adminpopup as New AdminPopup
-AdminPopup.Print(admin)
+AdminPopup.Print(admin,String.Empty)
                                                                                               End Sub)
             else
                 AdminPopup.SnackBarMessageQueue.Enqueue("Failed Registering")
@@ -49,7 +49,7 @@ AdminPopup.Print(admin)
             if await AdminService.EditAdmin(admin, lbluid.content) then
                 AdminPopup.SnackBarMessageQueue.Enqueue(" Updated Admin Details", "PRINT" , sub()
                                                                                                  dim adminpopup as New adminpopup
-AdminPopup.Print(admin)
+AdminPopup.Print(admin,LblUID.Content)
                 End Sub)
             else
                 AdminPopup.SnackBarMessageQueue.Enqueue("Failed Updating Details")
@@ -59,4 +59,14 @@ AdminPopup.Print(admin)
     End sub
 
 
+    Public Sub clearAll()
+        LblUID.Content = ""
+        TxtPhone.Clear()
+        TxtAnswer.Clear()
+        TxtFName.Clear()
+        TxtLName.Clear
+        TxtPin.Clear()
+        BtnAdd.Content = "ADD"
+        TxtSecurityQ.Clear()
+    End Sub
 End Class
