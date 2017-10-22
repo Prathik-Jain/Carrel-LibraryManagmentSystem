@@ -28,10 +28,11 @@ Public Class AdminPopup
             _dashBoard.AdminPopupDialog.IsOpen = True
         Catch ex As Exception
             msgbox("Admin not found")
+            _dashBoard.StartCameraAndTimer()
         End Try
     End Sub
 
-    Private Sub AddAdmin_Click(sender As Object, e As RoutedEventArgs) Handles AddAdmin.Click
+    Private Sub AddAdmin_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddAdmin.Click
         SnackBarMessageQueue = Snackbar.MessageQueue
         AdminFormDialog.isOpen=true
     End Sub
@@ -60,5 +61,9 @@ Public Class AdminPopup
         if printDlg.ShowDialog() = true
             printDlg.PrintVisual(PrintAdmin, "Printing Admin Card")
         End If
+    End Sub
+
+    Private Sub ChangeSem_Click(sender As Object, e As RoutedEventArgs) Handles BtnChangeSem.Click
+        ChangeSemDialog.isOpen=True
     End Sub
 End Class

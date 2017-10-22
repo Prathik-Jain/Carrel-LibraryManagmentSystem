@@ -121,7 +121,7 @@
             <materialDesign:PackIcon Kind="Pencil"/>
         </Button>
 
-        <Button x:Name="ChangeSem"
+        <Button x:Name="BtnChangeSem"
                              materialDesign:ShadowAssist.ShadowDepth="Depth3" 
                              BorderBrush="#ffffff"
                              Width="220" 
@@ -132,7 +132,7 @@
                              HorizontalAlignment="Right"
                              Background="#ffffff"/>
 
-        <Button x:Name="AddAdmin"
+        <Button x:Name="BtnAddAdmin"
                              materialDesign:ShadowAssist.ShadowDepth="Depth3"
                              Background="#ffffff"
                               BorderThickness="0"
@@ -190,14 +190,26 @@
                                    Grid.Column="0" 
                                    Grid.ColumnSpan="6"
                                    Grid.Row="0" 
-                                   Grid.RowSpan="8">
+                                   Grid.RowSpan="7">
             <materialDesign:DialogHost.DialogContent>
                 <local:Card x:Name="PrintAdmin"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
+        <!--Change Semister Dialog-->
+        <materialDesign:DialogHost x:Name="ChangeSemDialog"
+                                   CloseOnClickAway="True"
+                                   IsOpen="False"
+                                   Grid.Column="0" 
+                                   Grid.ColumnSpan="6"
+                                   Grid.Row="0" 
+                                   Grid.RowSpan="7">
+            <materialDesign:DialogHost.DialogContent>
+                <local:ChangeSemDialog x:Name="ChangeSem"/>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
 
 
-        <!--BookForm Dialog-->
+        <!--AdminForm Dialog-->
         <materialDesign:DialogHost x:Name="AdminFormDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
