@@ -33,7 +33,7 @@
 
 
         <Label x:Name="LblMsg" 
-               Content="This is an Upcoming Feature..."
+               Content="This is an upcoming Feature..."
                FontSize="21" 
                Margin="10, 10"
                Height="40" 
