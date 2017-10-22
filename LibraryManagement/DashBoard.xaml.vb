@@ -1,5 +1,6 @@
 ﻿Imports System.Windows.Threading
 Imports MaterialDesignThemes.Wpf
+Imports Newtonsoft.Json
 
 Public Class DashBoard
     Public Shared SnackBarMessageQueue As SnackbarMessageQueue
@@ -47,12 +48,12 @@ Public Class DashBoard
         My.Computer.Audio.Play(My.Resources.ScannerBeep, AudioPlayMode.Background)
         If MemberPopupDialog.IsOpen
             Try
-                If jsonString.Contains("UID") Then
-                    if await memberAccount.CheckBookInList 'Checks and returns book if found
-                        memberAccount.GetData("MEM-0003")
+                If jsonString.Contains("BOOK") Then
+                    if await memberAccount.CheckBookInList(jsonString) 'Checks and returns book if found
+                        memberAccount.GetData(memberAccount.LblUID.Content)
                         StartCameraAndTimer()
-                    ElseIf await BookService.Borrowed("BOOK-2","MEM-0003") 
-                        memberAccount.getData("MEM-0003")
+                    ElseIf await BookService.Borrowed(jsonString,memberAccount.LblUID.Content) 
+                        memberAccount.getData(memberAccount.LblUID.Content)
                         StartCameraAndTimer()
                     Else 
                         MsgBox("Failed to Update database")
@@ -63,18 +64,27 @@ Public Class DashBoard
             Catch ex As Exception
                 MsgBox(ex.ToString())
             End Try
-            Else 
+        ElseIf AdminPopupDialog.IsOpen
+            Try
+                If jsonString.Contains("ADM")
+                    StopCameraAndTimer()
+                    me.Close()
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message.ToString())
+            End Try
+        Else
                 If jsonString.Contains("MEM") Then
                     stopcameraandtimer
                     memberAccount.GetData(jsonString)
-                    FAB.IsEnabled = False
                 ElseIf jsonString.Contains("ADM") Then
+                    dim _admin = JsonConvert.DeserializeObject (Of Admin)(jsonString)
                     StopCameraAndTimer()
-                AdminPopup.GetData("ADM-004")
-                'adminpopupdialog.isopen = true
-                FAB.IsEnabled = False
+                    AdminPopup.GetData(_admin.Uid)
                 ElseIf jsonString.Contains("BOOK") Then
-                    MsgBox("BOok")
+                    StopCameraAndTimer()
+                    Dim viewBook as new ViewBook
+                    viewBook.ViewBookById(jsonString)
                 End If
         End If
        
@@ -98,8 +108,7 @@ Public Class DashBoard
 
     Private Sub Dialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
         Handles MemberFormDialog.DialogClosing,
-                BookFormDialog.DialogClosing,
-                ViewBookDialog.DialogClosing
+                BookFormDialog.DialogClosing
         FAB.IsEnabled = True
         startCameraAndTimer()
     End Sub
@@ -107,12 +116,15 @@ Public Class DashBoard
     Private  Sub Dialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
         Handles ViewBookDialog.DialogOpened,
                 MemberPopupDialog.DialogOpened,
+                AdminPopupDialog.DialogOpened,
                 Me.Unloaded
         SnackBarMessageQueue = Snackbar.MessageQueue
         FAB.IsEnabled = False
-StartCameraAndTimer()
+        StartCameraAndTimer()
     End Sub
 
 
-    
+    Public Sub Dialog_PopupClosing() Handles ViewBookDialog.DialogClosing,MemberPopupDialog.DialogClosing,AdminPopupDialog.DialogClosing
+        FAB.IsEnabled=true
+    End Sub
 End Class
