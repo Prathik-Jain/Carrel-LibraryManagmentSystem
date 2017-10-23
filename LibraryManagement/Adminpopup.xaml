@@ -121,7 +121,7 @@
             <materialDesign:PackIcon Kind="Pencil"/>
         </Button>
 
-        <Button x:Name="ChangeSem"
+        <Button x:Name="BtnChangeSem"
                              materialDesign:ShadowAssist.ShadowDepth="Depth3" 
                              BorderBrush="#ffffff"
                              Width="220" 
@@ -132,7 +132,7 @@
                              HorizontalAlignment="Right"
                              Background="#ffffff"/>
 
-        <Button x:Name="AddAdmin"
+        <Button x:Name="BtnAddAdmin"
                              materialDesign:ShadowAssist.ShadowDepth="Depth3"
                              Background="#ffffff"
                               BorderThickness="0"
@@ -197,7 +197,7 @@
         </materialDesign:DialogHost>
 
 
-        <!--BookForm Dialog-->
+        <!--AdminForm Dialog-->
         <materialDesign:DialogHost x:Name="AdminFormDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
@@ -205,9 +205,19 @@
                                    Grid.Row="0" Grid.RowSpan="7" Margin="20.649,-1.452,-20.649,1.452">
             <materialDesign:DialogHost.DialogContent>
                 <local:AdminForm  x:Name="AdminForm"/>
-            </materialDesign:DialogHost.DialogContent> --?
+            </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+            <!--AdminForm Dialog-->
+            <materialDesign:DialogHost x:Name="ChangeSemDialog"
+                                       CloseOnClickAway="True"
+                                       IsOpen="False"
+                                       Grid.Column ="0"  Grid.ColumnSpan="6"
+                                       Grid.Row="0" Grid.RowSpan="7" Margin="20.649,-1.452,-20.649,1.452">
+                <materialDesign:DialogHost.DialogContent>
+                    <local:ChangeSemDialog  x:Name="ChangeSem"/>
+                </materialDesign:DialogHost.DialogContent>
 
-        </materialDesign:DialogHost>
+            </materialDesign:DialogHost>
         <materialDesign:Snackbar Grid.Column ="0" Grid.ColumnSpan ="6"  x:Name="Snackbar" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="5" Margin="56 0 0 56" HorizontalAlignment="Center"/>
 
         <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg8" Width="150" Height="150" Margin="0,73,212,123" Grid.Row="5" Grid.ColumnSpan="3">
