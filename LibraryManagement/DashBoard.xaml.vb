@@ -158,4 +158,11 @@ Public Class DashBoard
         StopCameraAndTimer()
         FAB.IsEnabled = true
     End Sub
+
+    Private Async Sub DashBoard_GotFocus(sender As Object, e As RoutedEventArgs) Handles Me.GotFocus
+        'lblTotalMembers.content = Await MemberService.TotalMembers()
+        'lblTotalBooksIssued.content = Await BookService.TotalBooksIssued()
+        'lblTotalBooks.content = Await BookService.TotalBooks()
+
+    End Sub
 End Class

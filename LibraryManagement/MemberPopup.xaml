@@ -139,10 +139,17 @@
                   ItemsSource="{Binding x}" 
                   CanUserSortColumns="True" 
                   CanUserAddRows="False" 
-                  AutoGenerateColumns="True"
+                  AutoGenerateColumns="False"
                   materialDesign:DataGridAssist.CellPadding="13 8 8 8" 
-                  materialDesign:DataGridAssist.ColumnHeaderPadding="8"/>
-        <!--#endregion-->
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+                  <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding UID}" Header="Book -ID"></DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding TITLE}" Header="Title" Width="350"></DataGridTextColumn>
+            <DataGridTextColumn Binding="{Binding BORROWEDON}" Header="Borrowed On"></DataGridTextColumn>
+                  </DataGrid.Columns>
+            </DataGrid>
+
+            <!--#endregion-->
 
         <!--#region DeleteMember-->
         <Button Style="{StaticResource MaterialDesignFlatButton}"

@@ -33,7 +33,20 @@ Public Class MemberService
             query.Connection.Close()
         End Try
     End Function
-
+    Public Async Shared Function TotalMembers() As Task(Of String)
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = New SqlCommand("SELECT COUNT(*) FROM Member", connection)
+        Try
+            connection.Open()
+            Return Await query.ExecuteScalar
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.Connection.Close()
+        End Try
+    End Function
 Friend  Shared Function GetLastUid() As String
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("SELECT UID FROM MEMBER WHERE ID = (SELECT MAX(ID) FROM MEMBER)", connection)

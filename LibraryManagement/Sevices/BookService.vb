@@ -154,7 +154,34 @@ Public Class BookService
             query.Connection.Close()
         End Try
     End Function
-
+    Public Async Shared Function TotalBooks() As Task(Of String)
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = New SqlCommand("SELECT COUNT(*) FROM BOOK", connection)
+        Try
+            connection.Open()
+            Return Await query.ExecuteScalar
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.Connection.Close()
+        End Try
+    End Function
+    Public Async Shared Function TotalBooksIssued() As Task(Of String)
+        Dim connection =
+                New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
+        Dim query = New SqlCommand("SELECT COUNT(*) FROM BOOK WHERE BORROWEDBY IS NULL", connection)
+        Try
+            connection.Open()
+            Return Await query.ExecuteScalar
+        Catch ex As Exception
+            MsgBox(ex.ToString())
+            Throw
+        Finally
+            query.Connection.Close()
+        End Try
+    End Function
     Public Shared Function GetAvailable(isbn As String) As String
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
