@@ -14,6 +14,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:local="clr-namespace:Carrel"
         mc:Ignorable="d"
+        WindowState="Maximized"
         Title="DashBoard"
         WindowStartupLocation="CenterScreen">
 
@@ -21,91 +22,103 @@
         <!--#region Rows and Coloumn Definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="112" />
+            <RowDefinition Height="63" />
+            <RowDefinition Height="49"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <!--#endregion-->
 
         <!--#region DashBoard -->
         <!--BackgroundCard-->
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="5"
                              UniformCornerRadius="0"
                              MinHeight="400"
                              VerticalAlignment="top"
-                             Background="#E64A19">
+                             Background="#E64A19" Grid.RowSpan="2"></materialDesign:Card>
 
-            <!--TextBox with icon-->
-            <StackPanel VerticalAlignment="Center" Width="800">
-                <Grid Height="40">
-                    <materialDesign:PackIcon
-                        Width="24" Kind="Magnify"
-                        Height="24"
-                        Foreground="Black"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center" />
-                    <TextBlock />
-                    <TextBox materialDesign:HintAssist.Hint="Search"
-                             BorderBrush="{DynamicResource PrimaryHueMidBrush}"
-                             SelectionBrush="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                             VerticalAlignment="Center"
-                             Foreground="{StaticResource PrimaryHueMidForegroundBrush}"
-                             Height="40" />
-                </Grid>
-            </StackPanel>
-
-        </materialDesign:Card>
 
         <!--MainCard-->
-        <materialDesign:Card MinWidth="800"
-                             MinHeight="500"
+        <materialDesign:Card MinWidth="250"
+                             MinHeight="350"
                              materialDesign:ShadowAssist.ShadowDepth="Depth5"
-                             Margin="0 136 0 0"
                              HorizontalAlignment="Center"
-                             VerticalAlignment="Stretch"
+                             Margin="0,0,0,50"
+                             VerticalAlignment="Bottom"
+                             Grid.Column="1"
+                             Grid.Row="0"
+                             Grid.RowSpan="2"  />
+
+        <materialDesign:Card MinWidth="250"
+                             MinHeight="350"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Bottom"
+                             Margin="0,0,0,50"
+                             Grid.Column="2"
+                             Grid.Row="0"
+                             Grid.RowSpan="2"  />
+
+        <materialDesign:Card MinWidth="250"
+                             MinHeight="350"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Bottom"
+                             Margin="0,0,0,50"
+                             Grid.Column="3"
                              Grid.Row="0"
                              Grid.RowSpan="2" />
 
         <!--#region Dialogs-->
-        
+
         <!--BookForm Dialog-->
         <materialDesign:DialogHost x:Name="BookFormDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
-                                   Grid.Row="0" Grid.RowSpan="2">
+                                   Grid.Column="0" Grid.ColumnSpan="5"
+                                   Grid.Row="0" Grid.RowSpan="3">
             <materialDesign:DialogHost.DialogContent>
                 <local:BookForm  x:Name="BookForm"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        
+
         <!--MemberForm Dialog-->
         <materialDesign:DialogHost x:Name="MemberFormDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
-                                   Grid.Row="0" Grid.RowSpan="2">
+                                   Grid.Column="0" Grid.ColumnSpan="5"
+                                   Grid.Row="0" Grid.RowSpan="3">
             <materialDesign:DialogHost.DialogContent>
                 <local:MemberForm x:Name="MemberForm"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        
 
-        
+
+
         <!--ViewBookDialog Dialog-->
         <materialDesign:DialogHost x:Name="ViewBookDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
-                                   Grid.Row="0" Grid.RowSpan="2">
+                                   Grid.Column="0" Grid.ColumnSpan="5"
+                                   Grid.Row="0" Grid.RowSpan="3">
             <materialDesign:DialogHost.DialogContent>
                 <local:ViewBook x:Name="BookView" />
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        
+
         <!--MemberPopUp Dialog-->
         <materialDesign:DialogHost x:Name="MemberPopupDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
-                                   Grid.Row="0" Grid.RowSpan="2">
+                                   Grid.Column="0" Grid.ColumnSpan="5"
+                                   Grid.Row="0" Grid.RowSpan="3">
             <materialDesign:DialogHost.DialogContent>
                 <local:MemberPopup x:Name="MemberPopup"/>
             </materialDesign:DialogHost.DialogContent>
@@ -115,7 +128,8 @@
         <materialDesign:DialogHost x:Name="AdminPopupDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
-                                   Grid.Row="0" Grid.RowSpan="2">
+                                   Grid.Column="0" Grid.ColumnSpan="5"
+                                   Grid.Row="0" Grid.RowSpan="3">
             <materialDesign:DialogHost.DialogContent>
                 <local:AdminPopup x:Name="AdminPopup"/>
             </materialDesign:DialogHost.DialogContent>
@@ -128,8 +142,9 @@
                                  PlacementMode="TopAndAlignCentres"
                                  HorizontalAlignment="Right"
                                  VerticalAlignment="Bottom"
-                                 Margin="0,0,56,56"
+                                 Margin="0,0,56,7"
                                  Width="56"
+                                 Grid.Column="4"
                                  Grid.Row="1">
 
             <StackPanel>
@@ -158,7 +173,7 @@
 
         </materialDesign:PopupBox>
         <!--#endregion-->
-        <materialDesign:Snackbar x:Name="Snackbar" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="1" Margin="56 0 0 56" HorizontalAlignment="Center"/>  
+        <materialDesign:Snackbar x:Name="Snackbar" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="1" Margin="264,0,208,7" HorizontalAlignment="Center"/>
     </Grid>
 
 </Window>
