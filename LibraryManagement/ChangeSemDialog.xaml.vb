@@ -12,7 +12,7 @@ Public Class ChangeSemDialog
     End Sub
 
     Private Sub TxtSem_TextChanged(sender As Object, e As TextChangedEventArgs) Handles TxtSem.TextChanged
-        If TxtSem.Text = "SEMISTER"
+        If TxtSem.Text = "SEMESTER"
             btnok.IsEnabled = True
         Else 
             Btnok.IsEnabled = False
