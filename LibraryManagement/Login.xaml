@@ -15,13 +15,15 @@
         TextElement.FontFamily="Roboto"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="#FFE31C60"
+        Background="#283592"
         FontFamily="{DynamicResource MaterialDesignFont}"
         TextBlock.Foreground="Black"
         WindowStyle="None"
         MinHeight="500" MinWidth="800" MaxHeight="500" MaxWidth="800" ResizeMode="NoResize"
         SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
         Title="">
+    <!--#FFE31C60-->
+
     <!--Animation Begins-->
     <Window.Resources>
         <Storyboard x:Key="moveText">

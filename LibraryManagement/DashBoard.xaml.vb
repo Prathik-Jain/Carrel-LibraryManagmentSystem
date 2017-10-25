@@ -159,10 +159,10 @@ Public Class DashBoard
         FAB.IsEnabled = true
     End Sub
 
-    Private Async Sub DashBoard_GotFocus(sender As Object, e As RoutedEventArgs) Handles Me.GotFocus
-        'lblTotalMembers.content = Await MemberService.TotalMembers()
-        'lblTotalBooksIssued.content = Await BookService.TotalBooksIssued()
-        'lblTotalBooks.content = Await BookService.TotalBooks()
+    Private Async Sub DashBoard_GotFocus(sender As Object, e As RoutedEventArgs) Handles Me.Loaded,MemberPopupDialog.DialogClosing,MemberFormDialog.DialogClosing,BookFormDialog.DialogClosing,ViewBookDialog.DialogClosing,MemberForm.Unloaded,BookForm.Unloaded,MemberPopup.Unloaded
+        Me.lblTotalMembers.Text = Await MemberService.TotalMembers()
+        Me.lblTotalIssued.Text = Await BookService.TotalBooksIssued()
+        Me.lblTotalBooks.Text = Await BookService.TotalBooks()
 
     End Sub
 End Class

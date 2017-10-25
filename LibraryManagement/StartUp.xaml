@@ -69,8 +69,8 @@
     </Window.Resources>
     -->
 
-    <Grid x:Name="grid" Background="#FFE31C60">
-
+    <Grid x:Name="grid" Background="{DynamicResource PrimaryHueDarkBrush}">
+        <!--#FFE31C60-->
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition Width="400"/>
@@ -168,7 +168,7 @@
             </Path.RenderTransform>
         </Path>
 
-        <Path x:Name="path2" Fill="#e31c60" StrokeThickness="0.24299616" Opacity="1" Data="M2.8421711E-14,3.4643952E-06 L2.8421711E-14,9.0389428 4.3522446,9.0389428 C5.7587334,9.0389428 6.8750692,8.635029 7.701258,7.827214 8.5372806,7.0193643 8.9552948,5.938615 8.9552948,4.5849786 8.9552948,3.1112373 8.5569514,1.981362 7.7602674,1.1953528 6.973423,0.40933097 5.8324965,0.010887492 4.3374908,3.4643952E-06 z" RenderTransformOrigin="2.2253299322386,-19.7750263542661" Stretch="Fill" HorizontalAlignment="Right" Width="8.955" Height="9.039" VerticalAlignment="Top" Margin="0,280,110,0" >
+        <Path x:Name="path2" Fill="{DynamicResource PrimaryHueDarkBrush}" StrokeThickness="0.24299616" Opacity="1" Data="M2.8421711E-14,3.4643952E-06 L2.8421711E-14,9.0389428 4.3522446,9.0389428 C5.7587334,9.0389428 6.8750692,8.635029 7.701258,7.827214 8.5372806,7.0193643 8.9552948,5.938615 8.9552948,4.5849786 8.9552948,3.1112373 8.5569514,1.981362 7.7602674,1.1953528 6.973423,0.40933097 5.8324965,0.010887492 4.3374908,3.4643952E-06 z" RenderTransformOrigin="2.2253299322386,-19.7750263542661" Stretch="Fill" HorizontalAlignment="Right" Width="8.955" Height="9.039" VerticalAlignment="Top" Margin="0,280,110,0" >
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -178,7 +178,7 @@
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path2_Copy" Fill="#FFe32c60" StrokeThickness="0.24299616" Opacity="1" Data="M2.8421711E-14,3.4643952E-06 L2.8421711E-14,9.0389428 4.3522446,9.0389428 C5.7587334,9.0389428 6.8750692,8.635029 7.701258,7.827214 8.5372806,7.0193643 8.9552948,5.938615 8.9552948,4.5849786 8.9552948,3.1112373 8.5569514,1.981362 7.7602674,1.1953528 6.973423,0.40933097 5.8324965,0.010887492 4.3374908,3.4643952E-06 z" RenderTransformOrigin="2.2253299322386,-19.7750263542661" Stretch="Fill" HorizontalAlignment="Right" Width="9.705" Height="9.039" VerticalAlignment="Top" Margin="0,280,87.764,0" >
+        <Path x:Name="path2_Copy" Fill="{DynamicResource PrimaryHueDarkBrush}" StrokeThickness="0.24299616" Opacity="1" Data="M2.8421711E-14,3.4643952E-06 L2.8421711E-14,9.0389428 4.3522446,9.0389428 C5.7587334,9.0389428 6.8750692,8.635029 7.701258,7.827214 8.5372806,7.0193643 8.9552948,5.938615 8.9552948,4.5849786 8.9552948,3.1112373 8.5569514,1.981362 7.7602674,1.1953528 6.973423,0.40933097 5.8324965,0.010887492 4.3374908,3.4643952E-06 z" RenderTransformOrigin="2.2253299322386,-19.7750263542661" Stretch="Fill" HorizontalAlignment="Right" Width="9.705" Height="9.039" VerticalAlignment="Top" Margin="0,280,87.764,0" >
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>
@@ -188,7 +188,7 @@
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path4613" Fill="#e31c60" StrokeThickness="0.24299616" Opacity="1" Data="M4.5550987,2.8421709E-14 L1.8465292E-06,13.939167 9.128645,13.939167 z" RenderTransformOrigin="7.31834992795971,-16.1450591664341" Stretch="Fill" HorizontalAlignment="Right" Width="9.129" Height="13.939" VerticalAlignment="Top" Margin="0,280,165.871,0" >
+        <Path x:Name="path4613" Fill="{DynamicResource PrimaryHueDarkBrush}" StrokeThickness="0.24299616" Opacity="1" Data="M4.5550987,2.8421709E-14 L1.8465292E-06,13.939167 9.128645,13.939167 z" RenderTransformOrigin="7.31834992795971,-16.1450591664341" Stretch="Fill" HorizontalAlignment="Right" Width="9.129" Height="13.939" VerticalAlignment="Top" Margin="0,280,165.871,0" >
             <Path.RenderTransform>
                 <TranslateTransform X="88.106252" Y="33.602084"/>
             </Path.RenderTransform>

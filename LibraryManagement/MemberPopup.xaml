@@ -152,7 +152,8 @@
             <!--#endregion-->
 
         <!--#region DeleteMember-->
-        <Button Style="{StaticResource MaterialDesignFlatButton}"
+        <Button     x:Name="BtnDelete"
+                           Style="{StaticResource MaterialDesignFlatButton}"
                           Click ="OpenDeleteDialog"
                           IsEnabled="True" 
                           Margin="0,0,6,54" 

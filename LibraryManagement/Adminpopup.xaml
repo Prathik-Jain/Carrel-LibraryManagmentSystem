@@ -190,7 +190,7 @@
                                    Grid.Column="0" 
                                    Grid.ColumnSpan="6"
                                    Grid.Row="0" 
-                                   Grid.RowSpan="8">
+                                  Grid.RowSpan="7">
             <materialDesign:DialogHost.DialogContent>
                 <local:Card x:Name="PrintAdmin"/>
             </materialDesign:DialogHost.DialogContent>
@@ -202,17 +202,17 @@
                                    CloseOnClickAway="True"
                                    IsOpen="False"
                                    Grid.Column ="0"  Grid.ColumnSpan="6"
-                                   Grid.Row="0" Grid.RowSpan="7" Margin="20.649,-1.452,-20.649,1.452">
+                                   Grid.Row="0" Grid.RowSpan="7">
             <materialDesign:DialogHost.DialogContent>
                 <local:AdminForm  x:Name="AdminForm"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        <!--AdminForm Dialog-->
+        <!--ChaneSem Dialog-->
         <materialDesign:DialogHost x:Name="ChangeSemDialog"
                                        CloseOnClickAway="True"
                                        IsOpen="False"
                                        Grid.Column ="0"  Grid.ColumnSpan="6"
-                                       Grid.Row="0" Grid.RowSpan="7" Margin="20.649,-1.452,-20.649,1.452">
+                                       Grid.Row="0" Grid.RowSpan="7" >
             <materialDesign:DialogHost.DialogContent>
                 <local:ChangeSemDialog  x:Name="ChangeSem"/>
             </materialDesign:DialogHost.DialogContent>

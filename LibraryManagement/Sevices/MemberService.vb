@@ -39,7 +39,7 @@ Public Class MemberService
         Dim query = New SqlCommand("SELECT COUNT(*) FROM Member", connection)
         Try
             connection.Open()
-            Return Await query.ExecuteScalar
+            Return Await query.ExecuteScalarAsync
         Catch ex As Exception
             MsgBox(ex.ToString())
             Throw

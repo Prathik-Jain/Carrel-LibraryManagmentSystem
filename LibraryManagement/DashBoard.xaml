@@ -15,6 +15,7 @@
         xmlns:local="clr-namespace:Carrel"
         mc:Ignorable="d"
         WindowState="Maximized"
+        WindowStyle="None"
         Title="DashBoard"
         WindowStartupLocation="CenterScreen">
 
@@ -42,8 +43,8 @@
                              UniformCornerRadius="0"
                              MinHeight="400"
                              VerticalAlignment="top"
-                             Background="#E64A19" Grid.RowSpan="2"></materialDesign:Card>
-
+                             Background="{DynamicResource PrimaryHueDarkBrush}" Grid.RowSpan="2"></materialDesign:Card>
+        <!--#E64A19-->
 
         <!--MainCard-->
         <materialDesign:Card MinWidth="250"
@@ -54,9 +55,14 @@
                              VerticalAlignment="Bottom"
                              Grid.Column="1"
                              Grid.Row="0"
-                             Grid.RowSpan="2"  />
+                             Grid.RowSpan="2">
+            <StackPanel>
+                <TextBlock Text="TOTAL BOOKS" Margin="0,50,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
+                <TextBlock x:Name="LblTotalBooks" Text="9999" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Padding="0" Margin="0,0,0,0"/>
+            </StackPanel>
+            </materialDesign:Card>
 
-        <materialDesign:Card MinWidth="250"
+            <materialDesign:Card MinWidth="250"
                              MinHeight="350"
                              materialDesign:ShadowAssist.ShadowDepth="Depth5"
                              HorizontalAlignment="Center"
@@ -64,7 +70,12 @@
                              Margin="0,0,0,50"
                              Grid.Column="2"
                              Grid.Row="0"
-                             Grid.RowSpan="2"  />
+                             Grid.RowSpan="2"  >
+            <StackPanel>
+                    <TextBlock Text="BOOKS ISSUED" Margin="0,50,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
+                    <TextBlock x:Name="LblTotalIssued" Text="9999" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Padding="0" Margin="0,0,0,0"/>
+                </StackPanel>
+            </materialDesign:Card>
 
         <materialDesign:Card MinWidth="250"
                              MinHeight="350"
@@ -74,7 +85,13 @@
                              Margin="0,0,0,50"
                              Grid.Column="3"
                              Grid.Row="0"
-                             Grid.RowSpan="2" />
+                             Grid.RowSpan="2">
+        <StackPanel>
+            <TextBlock Text="TOTAL MEMBERS" Margin="0,50,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
+            <TextBlock x:Name="LblTotalMembers" Text="9999" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Padding="0" Margin="0,0,0,0"/>
+        </StackPanel>
+        </materialDesign:Card>
+
 
         <!--#region Dialogs-->
 
@@ -173,7 +190,7 @@
 
         </materialDesign:PopupBox>
         <!--#endregion-->
-        <materialDesign:Snackbar x:Name="Snackbar" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="1" Margin="264,0,208,7" HorizontalAlignment="Center"/>
+        <materialDesign:Snackbar x:Name="Snackbar" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Center"/>
     </Grid>
 
 </Window>

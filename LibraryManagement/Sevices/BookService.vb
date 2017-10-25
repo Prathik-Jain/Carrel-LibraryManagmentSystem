@@ -160,7 +160,7 @@ Public Class BookService
         Dim query = New SqlCommand("SELECT COUNT(*) FROM BOOK", connection)
         Try
             connection.Open()
-            Return Await query.ExecuteScalar
+            Return Await query.ExecuteScalarAsync
         Catch ex As Exception
             MsgBox(ex.ToString())
             Throw
@@ -171,10 +171,10 @@ Public Class BookService
     Public Async Shared Function TotalBooksIssued() As Task(Of String)
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
-        Dim query = New SqlCommand("SELECT COUNT(*) FROM BOOK WHERE BORROWEDBY IS NULL", connection)
+        Dim query = New SqlCommand("SELECT COUNT(*) FROM BOOK WHERE BORROWEDBY IS NOT NULL", connection)
         Try
             connection.Open()
-            Return Await query.ExecuteScalar
+            Return Await query.ExecuteScalarAsync
         Catch ex As Exception
             MsgBox(ex.ToString())
             Throw
