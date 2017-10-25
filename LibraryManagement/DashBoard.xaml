@@ -57,7 +57,7 @@
                              Grid.Row="0"
                              Grid.RowSpan="2">
             <StackPanel>
-                <TextBlock Text="TOTAL BOOKS" Margin="0,50,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
+                <TextBlock Text="TOTAL BOOKS" FontWeight="Bold" Margin="0,50,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
                 <TextBlock x:Name="LblTotalBooks" Text="9999" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Padding="0" Margin="0,0,0,0"/>
             </StackPanel>
             </materialDesign:Card>
@@ -72,7 +72,7 @@
                              Grid.Row="0"
                              Grid.RowSpan="2"  >
             <StackPanel>
-                    <TextBlock Text="BOOKS ISSUED" Margin="0,50,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
+                <TextBlock Text="BOOKS ISSUED" FontWeight="Bold" Margin="0,50,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
                     <TextBlock x:Name="LblTotalIssued" Text="9999" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Padding="0" Margin="0,0,0,0"/>
                 </StackPanel>
             </materialDesign:Card>
@@ -87,7 +87,7 @@
                              Grid.Row="0"
                              Grid.RowSpan="2">
         <StackPanel>
-            <TextBlock Text="TOTAL MEMBERS" Margin="0,50,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
+                <TextBlock Text="TOTAL MEMBERS" Margin="0,50,0,50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
             <TextBlock x:Name="LblTotalMembers" Text="9999" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Padding="0" Margin="0,0,0,0"/>
         </StackPanel>
         </materialDesign:Card>
