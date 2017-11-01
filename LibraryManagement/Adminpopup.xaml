@@ -128,7 +128,7 @@
                              HorizontalAlignment="Right"
                              Background="#ffffff"/>
         <!--#endregion-->
-        
+
         <!--#region AddAdmin-->
         <Button x:Name="BtnAddAdmin"
                              materialDesign:ShadowAssist.ShadowDepth="Depth3"
@@ -141,8 +141,8 @@
                              Grid.Row="5" 
                              HorizontalAlignment="Right"/>
         <!--#endregion-->
-        
-        
+
+
         <!--#region QR-->
         <Image x:Name="ImgQR" 
                Width="150" 
@@ -154,7 +154,7 @@
                Grid.RowSpan="3" 
                VerticalAlignment="Bottom"/>
         <!--#endregion-->
-        
+
         <!--#region DeleteAdminButton-->
         <Button Style="{StaticResource MaterialDesignFlatButton}"
                           IsEnabled="True" 
@@ -170,7 +170,7 @@
                                      Opacity="1"/>
         </Button>
         <!--#endregion-->
-        
+
         <!--#region PrintAdminButton-->
         <Button Style="{StaticResource MaterialDesignFlatButton}"
                           IsEnabled="True" 
@@ -215,8 +215,8 @@
                 <local:AdminForm  x:Name="AdminForm"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        
-        
+
+
         <!--ChaneSem Dialog-->
         <materialDesign:DialogHost x:Name="ChangeSemDialog"
                                        CloseOnClickAway="True"
@@ -237,36 +237,36 @@
                                  Grid.Row="5" 
                                  Margin="56 0 0 56"
                                  HorizontalAlignment="Center"/>
-        
+
         <!--Change Sem Label-->
         <Label x:Name="LblChangesem"
-               Width="207" 
-               Content="Change SEMESTER" 
+               Width="133" 
+               Content="CHANGE SEMESTER" 
                Foreground="#000000" 
                Grid.Column="2"
-               Margin="0,0,44,255" 
+               Margin="48,0,0,235" 
                Grid.Row="5" 
-               FontSize="21" 
+               FontSize="13" 
                FontWeight="Bold" 
-               HorizontalAlignment="Right" 
+               HorizontalAlignment="Left" 
                VerticalAlignment="Bottom"/>
 
         <!--Add Admin Label-->
         <Label x:Name="LblAddadmin"
-               Width="136" 
-               Content="Add ADMIN" 
+               Width="102" 
+               Content="ADD ADMIN" 
                Grid.Column="3" 
                Foreground="#000000" 
-               Margin="52,53,0,255" 
+               Margin="76,84,0,235" 
                Grid.Row="5" 
-               FontSize="21" 
+               FontSize="13" 
                FontWeight="Bold" 
                HorizontalAlignment="Left" 
                VerticalAlignment="Center"/>
 
 
         <!--SVG to XAML converted code-->
-        
+
         <!--Change Sem Icon-->
         <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
                 Name="SVG_ChangeSem" 
@@ -302,16 +302,16 @@
             </Canvas>
             <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                   x:Name="path4522" 
-                  Fill="#FF00ff66" 
+                  Fill="#FF000000" 
                   StrokeThickness="18.89763832" 
                   StrokeMiterLimit="4" 
                   Opacity="1" 
                   Data="m -373 384.51953 a 127.99999 127.99999 0 0 0 -128 128 127.99999 127.99999 0 0 0 61 108.94727 v -21.87696 a 109.99999 109.99999 0 0 1 -43 -87.07031 109.99999 109.99999 0 0 1 110 -110 109.99999 109.99999 0 0 1 110 110 h 18 a 127.99999 127.99999 0 0 0 -128 -128 z" 
                   Stretch="Fill" 
-                  Height="422.768"
-                  Canvas.Left="40.11" 
-                  Canvas.Top="161.087" 
-                  Width="443.837">
+                  Height="222.768"
+                  Canvas.Left="62.512" 
+                  Canvas.Top="180.107" 
+                  Width="243.837">
                 <Path.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="0.265" 
@@ -324,16 +324,16 @@
             </Path>
             <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                   x:Name="path4530" 
-                  Fill="#FF00ff66" 
+                  Fill="#FF000000" 
                   StrokeThickness="5" 
                   StrokeMiterLimit="4"
                   Opacity="1"
                   Data="m -66.410415 157.56457 -8.187496 -13.26461 -8.187496 -13.26461 15.581241 -0.45828 15.58124 -0.45827 -7.393745 13.72289 z" 
                   Stretch="Fill" 
-                  Height="46.768" 
-                  Canvas.Left="202.029" 
-                  Canvas.Top="156.087" 
-                  Width="62.126">
+                  Height="26.768" 
+                  Canvas.Left="172.055" 
+                  Canvas.Top="151.304" 
+                  Width="42.126">
                 <Path.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="0.523" ScaleX="-0.523"/>
@@ -347,13 +347,13 @@
 
         <!--Add Admin Icon-->
         <Path x:Name="Plus"
-              Fill="#00ff66" 
+              Fill="#000000" 
               HorizontalAlignment="Center" 
               VerticalAlignment="Top"
-              Width="110" 
+              Width="65.033" 
               Grid.Column="3" 
               Grid.Row="5" 
-              Data="M45.720783,0 L55.719928,0.13089371 55.065452,50.126183 110,50.126183 110,60.126183 54.934547,60.126183 54.280071,110.12147 44.280929,109.99057 44.933689,60.126183 0,60.126183 0,50.126183 45.064598,50.126183 z" Height="110.121" Margin="69,135,71,0" 
+              Data="M45.720783,0 L55.719928,0.13089371 55.065452,50.126183 110,50.126183 110,60.126183 54.934547,60.126183 54.280071,110.12147 44.280929,109.99057 44.933689,60.126183 0,60.126183 0,50.126183 45.064598,50.126183 z" Height="69.575" Margin="91.754,153.296,93.213,0" 
               RenderTransformOrigin="0.499999998508454,0.500594315103155" 
               Stretch="Fill">
             <Path.RenderTransform>
