@@ -18,7 +18,9 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="LibManager" MinHeight="500" MinWidth="800" MaxHeight="500" Visibility="Visible" WindowStyle="None"
         WindowStartupLocation="CenterScreen">
+    
     <Window.Resources>
+        <!--Animation Begins-->
         <Storyboard x:Key="bookopoen" SpeedRatio="0.75" RepeatBehavior="Forever">
             <DoubleAnimationUsingKeyFrames x:Name="doubleAnimationUsingKeyFrames" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="path12_Copy" >
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8"  Value="-1.063"/>
@@ -48,12 +50,14 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="32.602"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <!--Animation Ends-->
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard Storyboard="{StaticResource bookopoen}"/>
         </EventTrigger>
     </Window.Triggers>
+    
     <!-- <Window.Resources>
         <Storyboard x:Key="showWin" Storyboard.TargetName="btn1">
             <DoubleAnimation Storyboard.TargetName="btn1" Storyboard.TargetProperty="Width" Duration="0:0:.5" To="150" BeginTime="0:0:2"/>
@@ -69,131 +73,332 @@
     </Window.Resources>
     -->
 
-    <Grid x:Name="grid" Background="{DynamicResource PrimaryHueDarkBrush}">
-        <!--#FFE31C60-->
+    <Grid x:Name="grid" 
+          Background="{DynamicResource PrimaryHueDarkBrush}">
+        
+      <!--#region Rows and Coloumn Definitions-->
         <Grid.ColumnDefinitions>
-
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-
             <RowDefinition Height="*" />
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Path x:Name="path3" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M10.806843,7.120228E-06 C13.659157,7.120228E-06 15.945928,0.86327406 17.667159,2.5898158 19.388389,4.3030278 20.390389,6.6802912 20.67316,9.7216062 L17.113914,9.7216062 C16.80653,7.4107479 16.136478,5.7373601 15.10375,4.7014193 14.08332,3.6655218 12.651022,3.1475829 10.806843,3.1475829 8.544664,3.1475829 6.7681144,4.0506701 5.4771884,5.8568642 4.1985584,7.6630583 3.5592469,10.232904 3.5592469,13.566412 L3.5592469,16.375384 C3.5592469,19.522944 4.1678249,22.026369 5.3849877,23.885693 6.6021369,25.745014 8.3049229,26.674666 10.493339,26.674666 12.460452,26.674666 13.96652,26.196567 15.01155,25.240361 16.068876,24.270841 16.769662,22.590809 17.113914,20.200259 L20.67316,20.200259 C20.341184,23.268139 19.290006,25.638773 17.519618,27.312188 15.761513,28.972281 13.419416,29.802322 10.493339,29.802322 7.32136,29.802322 4.7764029,28.573846 2.8584613,26.116903 0.95282259,23.659901 5.3290704E-15,20.372873 5.3290704E-15,16.255837 L5.3290704E-15,13.46686 C5.3290704E-15,10.770837 0.44260013,8.4002035 1.3278008,6.3549304 2.2252977,4.309673 3.4916249,2.7425146 5.1267887,1.6534434 6.7619528,0.55114469 8.6553019,7.120228E-06 10.806843,7.120228E-06 z" RenderTransformOrigin="5.45939899673405,-7.38860647144622" Stretch="Fill" HorizontalAlignment="Right" Width="20.673" Height="29.802" VerticalAlignment="Top" Margin="0,275.198,220,0" >
+        <!--#endregion-->
+        
+        <!-- Carrel logo-->
+        <!--#region SVG to XAML converted code-->
+        <Path x:Name="path3" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M10.806843,7.120228E-06 C13.659157,7.120228E-06 15.945928,0.86327406 17.667159,2.5898158 19.388389,4.3030278 20.390389,6.6802912 20.67316,9.7216062 L17.113914,9.7216062 C16.80653,7.4107479 16.136478,5.7373601 15.10375,4.7014193 14.08332,3.6655218 12.651022,3.1475829 10.806843,3.1475829 8.544664,3.1475829 6.7681144,4.0506701 5.4771884,5.8568642 4.1985584,7.6630583 3.5592469,10.232904 3.5592469,13.566412 L3.5592469,16.375384 C3.5592469,19.522944 4.1678249,22.026369 5.3849877,23.885693 6.6021369,25.745014 8.3049229,26.674666 10.493339,26.674666 12.460452,26.674666 13.96652,26.196567 15.01155,25.240361 16.068876,24.270841 16.769662,22.590809 17.113914,20.200259 L20.67316,20.200259 C20.341184,23.268139 19.290006,25.638773 17.519618,27.312188 15.761513,28.972281 13.419416,29.802322 10.493339,29.802322 7.32136,29.802322 4.7764029,28.573846 2.8584613,26.116903 0.95282259,23.659901 5.3290704E-15,20.372873 5.3290704E-15,16.255837 L5.3290704E-15,13.46686 C5.3290704E-15,10.770837 0.44260013,8.4002035 1.3278008,6.3549304 2.2252977,4.309673 3.4916249,2.7425146 5.1267887,1.6534434 6.7619528,0.55114469 8.6553019,7.120228E-06 10.806843,7.120228E-06 z" 
+              RenderTransformOrigin="5.45939899673405,-7.38860647144622" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="20.673" 
+              Height="29.802" 
+              VerticalAlignment="Top" 
+              Margin="0,275.198,220,0" >
             <Path.RenderTransform>
-                <TranslateTransform X="88.106252" Y="33.602084"/>
+                <TranslateTransform X="88.106252" 
+                                    Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path4" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M1.4210855E-13,-1.1368684E-13 L3.559249,-1.1368684E-13 3.559249,26.588861 16.284026,26.588861 16.284026,29.802453 1.4210855E-13,29.802453 z" RenderTransformOrigin="-5.58976718619547,-7.38857364784856" Stretch="Fill" Grid.Column="1" HorizontalAlignment="Right" Width="16.284" Height="29.802" VerticalAlignment="Top" Margin="0,275.198,340,0" >
+        <Path x:Name="path4" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M1.4210855E-13,-1.1368684E-13 L3.559249,-1.1368684E-13 3.559249,26.588861 16.284026,26.588861 16.284026,29.802453 1.4210855E-13,29.802453 z" 
+              RenderTransformOrigin="-5.58976718619547,-7.38857364784856" 
+              Stretch="Fill" 
+              Grid.Column="1" 
+              HorizontalAlignment="Right" 
+              Width="16.284" 
+              Height="29.802" 
+              VerticalAlignment="Top" 
+              Margin="0,275.198,340,0" >
             <Path.RenderTransform>
-                <TranslateTransform X="88.106252" Y="33.602084"/>
+                <TranslateTransform X="88.106252" 
+                                    Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path5" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M1.1368684E-13,-1.1368684E-13 L16.874162,-1.1368684E-13 16.874162,3.2340621 3.5408032,3.2340621 3.5408032,12.813375 15.177524,12.813375 15.177524,16.026978 3.5408032,16.026978 3.5408032,26.588861 17.058578,26.588861 17.058578,29.802453 1.1368684E-13,29.802453 z" RenderTransformOrigin="-3.05441172594859,-7.38857364784856" Stretch="Fill" HorizontalAlignment="Right" Width="17.059" Height="29.802" VerticalAlignment="Top" Margin="0,275.198,393.413,0" Grid.ColumnSpan="2" >
+        <Path x:Name="path5" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M1.1368684E-13,-1.1368684E-13 L16.874162,-1.1368684E-13 16.874162,3.2340621 3.5408032,3.2340621 3.5408032,12.813375 15.177524,12.813375 15.177524,16.026978 3.5408032,16.026978 3.5408032,26.588861 17.058578,26.588861 17.058578,29.802453 1.1368684E-13,29.802453 z" RenderTransformOrigin="-3.05441172594859,-7.38857364784856" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="17.059" 
+              Height="29.802" 
+              VerticalAlignment="Top" 
+              Margin="0,275.198,393.413,0" 
+              Grid.ColumnSpan="2" >
             <Path.RenderTransform>
-                <TranslateTransform X="88.106252" Y="33.602084"/>
+                <TranslateTransform X="88.106252" 
+                                    Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path6" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M10.603985,-1.1368684E-13 L19.492887,-1.1368684E-13 19.492887,29.802453 15.933638,29.802453 15.933638,17.746324 9.6265725,17.746324 3.7989908,29.802165 3.1763736E-22,29.802165 3.1763736E-22,29.556815 6.3070652,16.907117 C4.6964885,16.224825 3.442453,15.19457 2.5449589,13.816349 1.6351652,12.438111 1.1802701,10.821094 1.1802701,8.965281 1.1802701,6.0450588 1.9978527,3.8207772 3.6330215,2.2924404 5.2558871,0.7641468 7.5795429,-1.1368684E-13 10.603985,-1.1368684E-13 z" RenderTransformOrigin="-0.567638818300903,-7.38857364784856" Stretch="Fill" HorizontalAlignment="Right" Width="19.493" Height="29.802" VerticalAlignment="Top" Margin="0,275.198,50,0" >
+        <Path x:Name="path6" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M10.603985,-1.1368684E-13 L19.492887,-1.1368684E-13 19.492887,29.802453 15.933638,29.802453 15.933638,17.746324 9.6265725,17.746324 3.7989908,29.802165 3.1763736E-22,29.802165 3.1763736E-22,29.556815 6.3070652,16.907117 C4.6964885,16.224825 3.442453,15.19457 2.5449589,13.816349 1.6351652,12.438111 1.1802701,10.821094 1.1802701,8.965281 1.1802701,6.0450588 1.9978527,3.8207772 3.6330215,2.2924404 5.2558871,0.7641468 7.5795429,-1.1368684E-13 10.603985,-1.1368684E-13 z" 
+              RenderTransformOrigin="-0.567638818300903,-7.38857364784856" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="19.493" 
+              Height="29.802" 
+              VerticalAlignment="Top" 
+              Margin="0,275.198,50,0" >
             <Path.RenderTransform>
-                <TranslateTransform X="88.106252" Y="33.602084"/>
+                <TranslateTransform X="88.106252" 
+                                    Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path7" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M9.9475984E-14,-1.1368684E-13 L8.8889014,-1.1368684E-13 C11.913337,-1.1368684E-13 14.236992,0.7641468 15.859865,2.2924404 17.495027,3.8207772 18.312609,6.0450588 18.312609,8.965281 18.312609,10.821094 17.857714,12.438111 16.947924,13.816349 16.05043,15.19457 14.796395,16.224825 13.185818,16.907117 L19.49288,29.556815 19.49288,29.802165 15.693892,29.802165 9.8663071,17.746324 3.5592454,17.746324 3.5592454,29.802453 9.9475984E-14,29.802453 z" RenderTransformOrigin="1.46052584301503,-7.38857364784856" Stretch="Fill" HorizontalAlignment="Right" Width="19.493" Height="29.802" VerticalAlignment="Top" Margin="0,275.198,103.943,0" >
+        <Path x:Name="path7" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M9.9475984E-14,-1.1368684E-13 L8.8889014,-1.1368684E-13 C11.913337,-1.1368684E-13 14.236992,0.7641468 15.859865,2.2924404 17.495027,3.8207772 18.312609,6.0450588 18.312609,8.965281 18.312609,10.821094 17.857714,12.438111 16.947924,13.816349 16.05043,15.19457 14.796395,16.224825 13.185818,16.907117 L19.49288,29.556815 19.49288,29.802165 15.693892,29.802165 9.8663071,17.746324 3.5592454,17.746324 3.5592454,29.802453 9.9475984E-14,29.802453 z" 
+              RenderTransformOrigin="1.46052584301503,-7.38857364784856" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="19.493" 
+              Height="29.802" 
+              VerticalAlignment="Top" 
+              Margin="0,275.198,103.943,0" >
             <Path.RenderTransform>
-                <TranslateTransform X="88.106252" Y="33.602084"/>
+                <TranslateTransform X="88.106252" 
+                                    Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path8" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M10.253592,-1.1368684E-13 L13.351796,-1.1368684E-13 23.623839,29.802453 19.990814,29.802453 17.427423,22.024309 6.1779747,22.024309 3.6514616,29.802453 1.4309427E-06,29.802453 z" RenderTransformOrigin="3.13472372662464,-7.38857364784856" Stretch="Fill" HorizontalAlignment="Right" Width="23.624" Height="29.802" VerticalAlignment="Top" Margin="0,275.198,158.192,0" >
+        <Path x:Name="path8" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M10.253592,-1.1368684E-13 L13.351796,-1.1368684E-13 23.623839,29.802453 19.990814,29.802453 17.427423,22.024309 6.1779747,22.024309 3.6514616,29.802453 1.4309427E-06,29.802453 z" 
+              RenderTransformOrigin="3.13472372662464,-7.38857364784856" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="23.624" 
+              Height="29.802" 
+              VerticalAlignment="Top" 
+              Margin="0,275.198,158.192,0" >
             <Path.RenderTransform>
-                <TranslateTransform X="88.106252" Y="33.602084"/>
+                <TranslateTransform X="88.106252" 
+                                    Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path9" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M105.39143,4.5558427E-07 L115.16389,140.88054 C115.2689,140.80615 115.37564,140.73742 115.48005,140.66102 L115.48005,145.44725 116.05686,153.76422 104.78875,154.56229 C65.29858,158.91382 41.932093,167.23866 1.9895197E-13,189.86493 41.474143,144.0675 73.575872,149.16965 96.596951,146.80317 L86.506479,1.3391255 z" RenderTransformOrigin="-0.0547696569632303,-0.0524566242529913" Stretch="Fill" HorizontalAlignment="Right" Width="116.057" Height="189.865" VerticalAlignment="Top" Margin="0,70.135,365,0" Grid.ColumnSpan="2" >
+        <Path x:Name="path9" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M105.39143,4.5558427E-07 L115.16389,140.88054 C115.2689,140.80615 115.37564,140.73742 115.48005,140.66102 L115.48005,145.44725 116.05686,153.76422 104.78875,154.56229 C65.29858,158.91382 41.932093,167.23866 1.9895197E-13,189.86493 41.474143,144.0675 73.575872,149.16965 96.596951,146.80317 L86.506479,1.3391255 z" 
+              RenderTransformOrigin="-0.0547696569632303,-0.0524566242529913" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right"
+              Width="116.057" 
+              Height="189.865" 
+              VerticalAlignment="Top" 
+              Margin="0,70.135,365,0" 
+              Grid.ColumnSpan="2" >
             <Path.RenderTransform>
-                <TranslateTransform X="88.106252" Y="33.602084"/>
+                <TranslateTransform X="88.106252" 
+                                    Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path10" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M10.665437,-5.3290705E-15 L29.55036,1.3390067 19.459907,146.80312 C42.480984,149.16964 74.582721,144.06745 116.05686,189.86493 74.124771,167.23861 50.75828,158.91377 11.268113,154.56225 L0,153.76421 0.57681405,145.44725 0.57681405,140.66097 C0.68117446,140.73737 0.7879641,140.8061 0.89296593,140.88049 z" RenderTransformOrigin="1.09934690282502,-0.0524564106559611" Stretch="Fill" HorizontalAlignment="Right" Width="116.057" Height="189.865" VerticalAlignment="Top" Margin="0,70.135,103.943,0" >
+        <Path x:Name="path10" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M10.665437,-5.3290705E-15 L29.55036,1.3390067 19.459907,146.80312 C42.480984,149.16964 74.582721,144.06745 116.05686,189.86493 74.124771,167.23861 50.75828,158.91377 11.268113,154.56225 L0,153.76421 0.57681405,145.44725 0.57681405,140.66097 C0.68117446,140.73737 0.7879641,140.8061 0.89296593,140.88049 z" 
+              RenderTransformOrigin="1.09934690282502,-0.0524564106559611" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="116.057" 
+              Height="189.865" 
+              VerticalAlignment="Top" 
+              Margin="0,70.135,103.943,0" >
             <Path.RenderTransform >
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform/>
-                    <TranslateTransform X="88.106252" Y="33.602084"/>
+                    <TranslateTransform X="88.106252" 
+                                        Y="33.602084"/>
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path11" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M25.844126,0.0049004441 C48.929811,-0.27529584 65.992814,11.473682 91.816088,31.796285 L91.816088,183.60501 C49.521218,150.71771 29.358662,152.1589 -3.5527138E-15,152.20996 L12.30524,1.4200765 C17.087328,0.52119646 21.569,0.056785687 25.844126,0.0049004441 z" RenderTransformOrigin="1.0519555249441,-6.93972852826111E-08" Stretch="Fill" HorizontalAlignment="Right" Width="91.816" Height="183.605" VerticalAlignment="Top" Margin="0,60.175,90,0" >
+        <Path x:Name="path11" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M25.844126,0.0049004441 C48.929811,-0.27529584 65.992814,11.473682 91.816088,31.796285 L91.816088,183.60501 C49.521218,150.71771 29.358662,152.1589 -3.5527138E-15,152.20996 L12.30524,1.4200765 C17.087328,0.52119646 21.569,0.056785687 25.844126,0.0049004441 z" 
+              RenderTransformOrigin="1.0519555249441,-6.93972852826111E-08" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="91.816" 
+              Height="183.605" 
+              VerticalAlignment="Top" 
+              Margin="0,60.175,90,0" >
             <Path.RenderTransform>
                 <TranslateTransform X="88.106252" Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path12" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M65.971959,0.0049006797 C70.247085,0.056786984 74.728756,0.52119899 79.510841,1.4200808 L91.81609,152.20997 C62.457447,152.15891 42.294884,150.71769 2.842171E-14,183.60503 L2.842171E-14,31.79626 C25.823281,11.473671 42.886266,-0.27530236 65.971959,0.0049006797 z" RenderTransformOrigin="-2.38374209383901E-08,-1.21233197944337E-09" Stretch="Fill" HorizontalAlignment="Right" Width="91.816" Height="183.605" VerticalAlignment="Top" Margin="0,60.175,393.413,0" Grid.ColumnSpan="2" >
+        <Path x:Name="path12" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M65.971959,0.0049006797 C70.247085,0.056786984 74.728756,0.52119899 79.510841,1.4200808 L91.81609,152.20997 C62.457447,152.15891 42.294884,150.71769 2.842171E-14,183.60503 L2.842171E-14,31.79626 C25.823281,11.473671 42.886266,-0.27530236 65.971959,0.0049006797 z" 
+              RenderTransformOrigin="-2.38374209383901E-08,-1.21233197944337E-09" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="91.816" Height="183.605" 
+              VerticalAlignment="Top" 
+              Margin="0,60.175,393.413,0" 
+              Grid.ColumnSpan="2" >
             <Path.RenderTransform>
-                <TranslateTransform X="88.106252" Y="33.602084"/>
+                <TranslateTransform X="88.106252" 
+                                    Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path12_Copy" Fill="White" StrokeThickness="0.24299616" Opacity="0.82099998" Data="M65.971959,0.0049006797 C70.247085,0.056786984 74.728756,0.52119899 79.510841,1.4200808 L91.81609,152.20997 C62.457447,152.15891 42.294884,150.71769 2.842171E-14,183.60503 L2.842171E-14,31.79626 C25.823281,11.473671 42.886266,-0.27530236 65.971959,0.0049006797 z" RenderTransformOrigin="-2.38374209383901E-08,-1.21233197944337E-09" Stretch="Fill" HorizontalAlignment="Right" Width="91.816" Height="183.605" VerticalAlignment="Top" Margin="0,60.175,393.413,0" Grid.ColumnSpan="2" >
+        <Path x:Name="path12_Copy" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="0.82099998" 
+              Data="M65.971959,0.0049006797 C70.247085,0.056786984 74.728756,0.52119899 79.510841,1.4200808 L91.81609,152.20997 C62.457447,152.15891 42.294884,150.71769 2.842171E-14,183.60503 L2.842171E-14,31.79626 C25.823281,11.473671 42.886266,-0.27530236 65.971959,0.0049006797 z" 
+              RenderTransformOrigin="-2.38374209383901E-08,-1.21233197944337E-09" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="91.816" 
+              Height="183.605" 
+              VerticalAlignment="Top" 
+              Margin="0,60.175,393.413,0" 
+              Grid.ColumnSpan="2" >
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform/>
-                    <TranslateTransform X="88.106252" Y="33.602084"/>
+                    <TranslateTransform X="88.106252" 
+                                        Y="33.602084"/>
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path12_Copy1" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M65.971959,0.0049006797 C70.247085,0.056786984 74.728756,0.52119899 79.510841,1.4200808 L91.81609,152.20997 C62.457447,152.15891 42.294884,150.71769 2.842171E-14,183.60503 L2.842171E-14,31.79626 C25.823281,11.473671 42.886266,-0.27530236 65.971959,0.0049006797 z" RenderTransformOrigin="-2.38374209383901E-08,-1.21233197944337E-09" Stretch="Fill" HorizontalAlignment="Right" Width="91.816" Height="183.605" VerticalAlignment="Top" Margin="0,60.175,393.413,0" Grid.ColumnSpan="2" >
+        <Path x:Name="path12_Copy1" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M65.971959,0.0049006797 C70.247085,0.056786984 74.728756,0.52119899 79.510841,1.4200808 L91.81609,152.20997 C62.457447,152.15891 42.294884,150.71769 2.842171E-14,183.60503 L2.842171E-14,31.79626 C25.823281,11.473671 42.886266,-0.27530236 65.971959,0.0049006797 z" RenderTransformOrigin="-2.38374209383901E-08,-1.21233197944337E-09" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right"
+              Width="91.816" 
+              Height="183.605" 
+              VerticalAlignment="Top" 
+              Margin="0,60.175,393.413,0" 
+              Grid.ColumnSpan="2" >
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform/>
-                    <TranslateTransform X="88.106252" Y="33.602084"/>
+                    <TranslateTransform X="88.106252" 
+                                        Y="33.602084"/>
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path12_Copy2" Fill="White" StrokeThickness="0.24299616" Opacity="1" Data="M65.971959,0.0049006797 C70.247085,0.056786984 74.728756,0.52119899 79.510841,1.4200808 L91.81609,152.20997 C62.457447,152.15891 42.294884,150.71769 2.842171E-14,183.60503 L2.842171E-14,31.79626 C25.823281,11.473671 42.886266,-0.27530236 65.971959,0.0049006797 z" RenderTransformOrigin="-2.38374209383901E-08,-1.21233197944337E-09" Stretch="Fill" HorizontalAlignment="Right" Width="91.816" Height="183.605" VerticalAlignment="Top" Margin="0,60.175,393.413,0" Grid.ColumnSpan="2" >
+        <Path x:Name="path12_Copy2" 
+              Fill="White" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M65.971959,0.0049006797 C70.247085,0.056786984 74.728756,0.52119899 79.510841,1.4200808 L91.81609,152.20997 C62.457447,152.15891 42.294884,150.71769 2.842171E-14,183.60503 L2.842171E-14,31.79626 C25.823281,11.473671 42.886266,-0.27530236 65.971959,0.0049006797 z" RenderTransformOrigin="-2.38374209383901E-08,-1.21233197944337E-09" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="91.816" 
+              Height="183.605" 
+              VerticalAlignment="Top" 
+              Margin="0,60.175,393.413,0" 
+              Grid.ColumnSpan="2" >
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform/>
-                    <TranslateTransform X="88.106252" Y="33.602084"/>
+                    <TranslateTransform X="88.106252" 
+                                        Y="33.602084"/>
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
 
-        <Path x:Name="path2" Fill="{DynamicResource PrimaryHueDarkBrush}" StrokeThickness="0.24299616" Opacity="1" Data="M2.8421711E-14,3.4643952E-06 L2.8421711E-14,9.0389428 4.3522446,9.0389428 C5.7587334,9.0389428 6.8750692,8.635029 7.701258,7.827214 8.5372806,7.0193643 8.9552948,5.938615 8.9552948,4.5849786 8.9552948,3.1112373 8.5569514,1.981362 7.7602674,1.1953528 6.973423,0.40933097 5.8324965,0.010887492 4.3374908,3.4643952E-06 z" RenderTransformOrigin="2.2253299322386,-19.7750263542661" Stretch="Fill" HorizontalAlignment="Right" Width="8.955" Height="9.039" VerticalAlignment="Top" Margin="0,280,110,0" >
+        <Path x:Name="path2" Fill="{DynamicResource PrimaryHueDarkBrush}" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M2.8421711E-14,3.4643952E-06 L2.8421711E-14,9.0389428 4.3522446,9.0389428 C5.7587334,9.0389428 6.8750692,8.635029 7.701258,7.827214 8.5372806,7.0193643 8.9552948,5.938615 8.9552948,4.5849786 8.9552948,3.1112373 8.5569514,1.981362 7.7602674,1.1953528 6.973423,0.40933097 5.8324965,0.010887492 4.3374908,3.4643952E-06 z" RenderTransformOrigin="2.2253299322386,-19.7750263542661" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="8.955" 
+              Height="9.039" 
+              VerticalAlignment="Top" 
+              Margin="0,280,110,0" >
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform/>
-                    <TranslateTransform X="88.106252" Y="33.602084"/>
+                    <TranslateTransform X="88.106252" 
+                                        Y="33.602084"/>
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path2_Copy" Fill="{DynamicResource PrimaryHueDarkBrush}" StrokeThickness="0.24299616" Opacity="1" Data="M2.8421711E-14,3.4643952E-06 L2.8421711E-14,9.0389428 4.3522446,9.0389428 C5.7587334,9.0389428 6.8750692,8.635029 7.701258,7.827214 8.5372806,7.0193643 8.9552948,5.938615 8.9552948,4.5849786 8.9552948,3.1112373 8.5569514,1.981362 7.7602674,1.1953528 6.973423,0.40933097 5.8324965,0.010887492 4.3374908,3.4643952E-06 z" RenderTransformOrigin="2.2253299322386,-19.7750263542661" Stretch="Fill" HorizontalAlignment="Right" Width="9.705" Height="9.039" VerticalAlignment="Top" Margin="0,280,87.764,0" >
+        <Path x:Name="path2_Copy" Fill="{DynamicResource PrimaryHueDarkBrush}" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M2.8421711E-14,3.4643952E-06 L2.8421711E-14,9.0389428 4.3522446,9.0389428 C5.7587334,9.0389428 6.8750692,8.635029 7.701258,7.827214 8.5372806,7.0193643 8.9552948,5.938615 8.9552948,4.5849786 8.9552948,3.1112373 8.5569514,1.981362 7.7602674,1.1953528 6.973423,0.40933097 5.8324965,0.010887492 4.3374908,3.4643952E-06 z" RenderTransformOrigin="2.2253299322386,-19.7750263542661" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="9.705" 
+              Height="9.039" 
+              VerticalAlignment="Top" 
+              Margin="0,280,87.764,0" >
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>
                     <SkewTransform/>
                     <RotateTransform/>
-                    <TranslateTransform X="88.106252" Y="33.602084"/>
+                    <TranslateTransform X="88.106252" 
+                                        Y="33.602084"/>
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
-        <Path x:Name="path4613" Fill="{DynamicResource PrimaryHueDarkBrush}" StrokeThickness="0.24299616" Opacity="1" Data="M4.5550987,2.8421709E-14 L1.8465292E-06,13.939167 9.128645,13.939167 z" RenderTransformOrigin="7.31834992795971,-16.1450591664341" Stretch="Fill" HorizontalAlignment="Right" Width="9.129" Height="13.939" VerticalAlignment="Top" Margin="0,280,165.871,0" >
+        <Path x:Name="path4613" Fill="{DynamicResource PrimaryHueDarkBrush}" 
+              StrokeThickness="0.24299616" 
+              Opacity="1" 
+              Data="M4.5550987,2.8421709E-14 L1.8465292E-06,13.939167 9.128645,13.939167 z" RenderTransformOrigin="7.31834992795971,-16.1450591664341" 
+              Stretch="Fill" 
+              HorizontalAlignment="Right" 
+              Width="9.129"
+              Height="13.939" 
+              VerticalAlignment="Top" 
+              Margin="0,280,165.871,0" >
             <Path.RenderTransform>
-                <TranslateTransform X="88.106252" Y="33.602084"/>
+                <TranslateTransform X="88.106252" 
+                                    Y="33.602084"/>
             </Path.RenderTransform>
         </Path>
-        <ProgressBar Width="800" Height="5" IsIndeterminate="True" Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Bottom" Margin="0,0,0,0" />
+        <!--#endregion-->
+        
+        <!--Progress Bar-->
+        <ProgressBar Width="800" 
+                     Height="5" 
+                     IsIndeterminate="True" 
+                     Grid.ColumnSpan="2" 
+                     Grid.Row="1" 
+                     VerticalAlignment="Bottom" 
+                     Margin="0,0,0,0" />
 
     </Grid>
 </Window>

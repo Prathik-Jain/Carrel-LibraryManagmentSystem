@@ -8,16 +8,18 @@
              mc:Ignorable="d" 
               Background="{DynamicResource MaterialDesignPaper}"
              MinWidth="350">
+    
+    <!--Change defaults-->
     <UserControl.Resources>
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="Foreground" Value="#212121"/>
             <Setter Property="Opacity" Value="0.87"/>
-
         </Style>
-
     </UserControl.Resources>
+    
     <Grid>
+        <!--#region Rows and Coloumn Definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height="8"/>
             <RowDefinition Height="*"/>
@@ -30,8 +32,9 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="8"/>
         </Grid.ColumnDefinitions>
+        <!--#endregion-->
 
-
+        <!--Message-->
         <Label x:Name="LblMsg" 
                Content="This is an upcoming Feature..."
                FontSize="21" 
@@ -39,23 +42,20 @@
                Height="40" 
                Grid.Column="1" 
                 Grid.Row="1"/>
-
-
-
-
-
+        
+        <!--FlatButton OK-->
         <Button x:Name="Btnok"
-                    IsDefault="True"
-                    Style="{StaticResource MaterialDesignFlatButton}"
-                    Command="materialDesign:DialogHost.CloseDialogCommand"
-                    Content="OK"
-                    Height="36" 
-                    MinWidth="64" 
-                    Grid.Column="1" 
-                    Margin="0,2,10,0" 
-                    Grid.Row="2" 
-                    VerticalAlignment="Top" 
-                    HorizontalAlignment="Right" 
-                    Width="64" />
+                IsDefault="True"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                Command="materialDesign:DialogHost.CloseDialogCommand"
+                Content="OK"
+                Height="36" 
+                MinWidth="64" 
+                Grid.Column="1" 
+                Margin="0,2,10,0" 
+                Grid.Row="2" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Right" 
+                Width="64" />
     </Grid>
 </UserControl>
