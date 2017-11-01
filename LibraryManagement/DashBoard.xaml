@@ -35,7 +35,8 @@
         </Grid.ColumnDefinitions>
         <!--#endregion-->
 
-        <!--#region DashBoard -->
+        <!--#region Cards -->
+        
         <!--BackgroundCard-->
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth0"
                              Grid.Column="0"
@@ -43,10 +44,12 @@
                              UniformCornerRadius="0"
                              MinHeight="400"
                              VerticalAlignment="top"
-                             Background="{DynamicResource PrimaryHueDarkBrush}" Grid.RowSpan="2"></materialDesign:Card>
-        <!--#E64A19-->
+                             Background="{DynamicResource PrimaryHueDarkBrush}" 
+                             Grid.RowSpan="2">
+        </materialDesign:Card>
+        
 
-        <!--MainCard-->
+        <!--Total Books Card-->
         <materialDesign:Card MinWidth="250"
                              MinHeight="350"
                              materialDesign:ShadowAssist.ShadowDepth="Depth5"
@@ -57,11 +60,24 @@
                              Grid.Row="0"
                              Grid.RowSpan="2">
             <StackPanel>
-                <TextBlock Text="TOTAL BOOKS" FontWeight="Bold" Margin="0,50,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
-                <TextBlock x:Name="LblTotalBooks" Text="9999" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Padding="0" Margin="0,0,0,0"/>
+                <TextBlock Text="TOTAL BOOKS" 
+                           FontWeight="Bold" 
+                           Margin="0,50,0,50" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top" 
+                           Foreground="Black"/>
+                <TextBlock x:Name="LblTotalBooks" 
+                           Text="9999" 
+                           VerticalAlignment="Center" 
+                           Foreground="Black" 
+                           HorizontalAlignment="Center" 
+                           FontSize="60" 
+                           Padding="0" 
+                           Margin="0,0,0,0"/>
             </StackPanel>
             </materialDesign:Card>
 
+            <!--Books Issued Card-->
             <materialDesign:Card MinWidth="250"
                              MinHeight="350"
                              materialDesign:ShadowAssist.ShadowDepth="Depth5"
@@ -72,11 +88,24 @@
                              Grid.Row="0"
                              Grid.RowSpan="2"  >
             <StackPanel>
-                <TextBlock Text="BOOKS ISSUED" FontWeight="Bold" Margin="0,50,0,50" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
-                    <TextBlock x:Name="LblTotalIssued" Text="9999" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Padding="0" Margin="0,0,0,0"/>
+                <TextBlock Text="BOOKS ISSUED" 
+                           FontWeight="Bold" 
+                           Margin="0,50,0,50" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top" 
+                           Foreground="Black"/>
+                    <TextBlock x:Name="LblTotalIssued" 
+                               Text="9999" 
+                               VerticalAlignment="Center" 
+                               Foreground="Black" 
+                               HorizontalAlignment="Center" 
+                               FontSize="60" 
+                               Padding="0" 
+                               Margin="0,0,0,0"/>
                 </StackPanel>
             </materialDesign:Card>
 
+        <!--Total Members Card-->
         <materialDesign:Card MinWidth="250"
                              MinHeight="350"
                              materialDesign:ShadowAssist.ShadowDepth="Depth5"
@@ -87,8 +116,20 @@
                              Grid.Row="0"
                              Grid.RowSpan="2">
         <StackPanel>
-                <TextBlock Text="TOTAL MEMBERS" Margin="0,50,0,50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
-            <TextBlock x:Name="LblTotalMembers" Text="9999" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Padding="0" Margin="0,0,0,0"/>
+            <TextBlock Text="TOTAL MEMBERS" 
+                           Margin="0,50,0,50" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top" 
+                           Foreground="Black"/>
+                 <TextBlock x:Name="LblTotalMembers" 
+                       Text="9999" 
+                       VerticalAlignment="Center" 
+                       Foreground="Black" 
+                       HorizontalAlignment="Center" 
+                       FontSize="60" 
+                       Padding="0"
+                       Margin="0,0,0,0"/>
         </StackPanel>
         </materialDesign:Card>
 
@@ -140,7 +181,8 @@
                 <local:MemberPopup x:Name="MemberPopup"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        <!--#endregion-->
+        
+        
         <!--AdminPopUp Dialog-->
         <materialDesign:DialogHost x:Name="AdminPopupDialog"
                                    CloseOnClickAway="True"
@@ -151,9 +193,9 @@
                 <local:AdminPopup x:Name="AdminPopup"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        <!--#endregion-->
+        
 
-        <!--FAB Popup-->
+        <!--#region FAB Popup-->
         <materialDesign:PopupBox x:Name="FAB"
                                  Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
                                  PlacementMode="TopAndAlignCentres"
@@ -187,10 +229,16 @@
                     <materialDesign:PackIcon Kind="BookVariant" />
                 </Button>
             </StackPanel>
-
         </materialDesign:PopupBox>
         <!--#endregion-->
-        <materialDesign:Snackbar x:Name="Snackbar" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Center"/>
+        
+        <!--SnackBar-->
+        <materialDesign:Snackbar x:Name="Snackbar" 
+                                 MessageQueue="{materialDesign:MessageQueue}" 
+                                 Grid.Row="1" 
+                                 Grid.Column="0" 
+                                 Grid.ColumnSpan="5" 
+                                 HorizontalAlignment="Center"/>
     </Grid>
 
 </Window>
