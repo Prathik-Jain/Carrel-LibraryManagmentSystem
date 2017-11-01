@@ -9,16 +9,19 @@
              mc:Ignorable="d" 
               Background="{DynamicResource MaterialDesignPaper}"
              MinWidth="350">
+    
+    <!--Change Defaults-->
     <UserControl.Resources>
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="Foreground" Value="#212121"/>
             <Setter Property="Opacity" Value="0.87"/>
-
         </Style>
+     </UserControl.Resources>
 
-    </UserControl.Resources>
+
     <Grid>
+        <!--#region Rows and Coloum Grid Definition-->
         <Grid.RowDefinitions>
             <RowDefinition Height="8"/>
             <RowDefinition Height="*"/>
@@ -32,19 +35,22 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="8"/>
         </Grid.ColumnDefinitions>
+        <!--#endregion-->
 
-
+        <!--#region Message Block-->
         <TextBlock x:Name="LblMsg" 
                Text="This action CANNOT be undone.
                    This will permanently change Semester for all students and students from VI Sem will be removed."
-                   TextWrapping="Wrap"
-                   TextAlignment="Left"
+               TextWrapping="Wrap"
+               TextAlignment="Left"
                FontSize="16" 
                Margin="10"
                Width="300"
                Grid.Column="1" 
                Grid.Row="1"/>
+        <!--#endregion-->
 
+        <!--#region Confirmation Textbox-->
         <TextBox x:Name="TxtSem"
                  Grid.Row="2"
                  CharacterCasing="Upper"
@@ -54,16 +60,19 @@
                  Margin="16,10" 
                  Height="36" >
             <TextBox.Text>
-                <Binding ElementName="TxtFirstName" Path="Text" UpdateSourceTrigger="LostFocus">
+                <Binding ElementName="TxtFirstName" 
+                         Path="Text" 
+                         UpdateSourceTrigger="LostFocus">
                     <Binding.ValidationRules>
                         <validation:NotEmpty/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
+        <!--#endregion-->
 
 
-
+        <!--OK Button-->
         <Button x:Name="Btnok"
                 Foreground="DarkRed"
                     IsEnabled="False"
