@@ -7,12 +7,12 @@ Public Class DashBoard
     Public Shared SnackBarMessageQueue As SnackbarMessageQueue
     WithEvents _sendImage As DispatcherTimer
     Dim _camera As Camera
-    Public memberAccount as new MemberPopup
+    Public memberAccount As New MemberPopup
 
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
-        startCameraAndTimer()
+        StartCameraAndTimer()
     End Sub
 
     Public Sub StartCameraAndTimer()
@@ -32,12 +32,12 @@ Public Class DashBoard
     End Sub
 
     Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles _sendImage.Tick
-        Dim qrDecoder As New QRDecoder
+        Dim qrDecoder As New QrDecoder
         Dim jsonString = ""
-        jsonString = qrDecoder.ScanQR(_camera.frame)
+        jsonString = qrDecoder.ScanQr(_camera.Frame)
         Try
             If jsonString <> "" Then
-                stopCameraAndTimer()
+                StopCameraAndTimer()
                 QrScanned(jsonString)
                 qrDecoder.Dispose()
             End If
@@ -45,40 +45,44 @@ Public Class DashBoard
             MsgBox(ex.ToString)
         End Try
     End Sub
+
     Private Async Sub QrScanned(jsonString As String)
         My.Computer.Audio.Play(My.Resources.ScannerBeep, AudioPlayMode.Background)
-        If MemberPopupDialog.IsOpen
+        If MemberPopupDialog.IsOpen Then
+
             Try
                 If jsonString.Contains("BOOK") Then
-                    if await memberAccount.CheckBookInList(jsonString) 'Checks and returns book if found
+                    If Await memberAccount.CheckBookInList(jsonString) Then 'Checks and returns book if found
                         memberAccount.GetData(memberAccount.LblUID.Content)
                         StartCameraAndTimer()
-                    ElseIf await BookService.Borrowed(jsonString, memberaccount.LblUID.Content)
-                        memberAccount.getData(memberAccount.LblUID.Content)
+                    ElseIf Await BookService.Borrowed(jsonString, memberAccount.LblUID.Content) Then
+                        memberAccount.GetData(memberAccount.LblUID.Content)
                         StartCameraAndTimer()
                     Else
                         MsgBox("Failed to Update database")
                     End If
-                elseif jsonString.Contains("MEM")
+                ElseIf jsonString.Contains("MEM") Then
                     MemberPopupDialog.IsOpen = False
-                else
+                Else
                     MsgBox("Please scan a book to add or return")
                 End If
             Catch ex As Exception
                 MsgBox(ex.ToString())
             End Try
-        ElseIf AdminPopupDialog.IsOpen
+        ElseIf AdminPopupDialog.IsOpen Then
+
             Try
-                If jsonString.Contains("ADM")
+                If jsonString.Contains("ADM") Then
                     StopCameraAndTimer()
-                    me.Close()
+                    Me.Close()
                 End If
             Catch ex As Exception
                 MsgBox(ex.Message.ToString())
             End Try
-        ElseIf viewbookdialog.IsOpen
+        ElseIf ViewBookDialog.IsOpen Then
+
             Try
-                If jsonString.Contains("BOOK")
+                If jsonString.Contains("BOOK") Then
                     ViewBookDialog.IsOpen = False
                 End If
             Catch ex As Exception
@@ -86,21 +90,13 @@ Public Class DashBoard
             End Try
         Else
             If jsonString.Contains("MEM") Then
-                'stopcameraandtimer
                 memberAccount.GetData(jsonString)
-                'StartCameraAndTimer()
-
             ElseIf jsonString.Contains("ADM") Then
-                dim _admin = JsonConvert.DeserializeObject(Of Admin)(jsonString)
-                'StopCameraAndTimer()
+                Dim _admin = JsonConvert.DeserializeObject(Of Admin)(jsonString)
                 AdminPopup.GetData(_admin.Uid)
-                'StartCameraAndTimer()
-
             ElseIf jsonString.Contains("BOOK") Then
-                Dim viewBook as new ViewBook
+                Dim viewBook As New ViewBook
                 viewBook.ViewBookById(jsonString)
-                'StartCameraAndTimer()
-
             End If
         End If
 
@@ -113,7 +109,7 @@ Public Class DashBoard
         BookFormDialog.IsOpen = True
         BookForm.ClearAll()
         FAB.IsEnabled = False
-        stopCameraAndTimer()
+        StopCameraAndTimer()
     End Sub
 
     Private Sub BtnAddMember_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddMember.Click
@@ -121,48 +117,61 @@ Public Class DashBoard
         MemberFormDialog.IsOpen = True
         MemberForm.clearAll()
         FAB.IsEnabled = False
-        stopCameraAndTimer()
+        StopCameraAndTimer()
     End Sub
 
     Private Sub Dialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
         Handles MemberFormDialog.DialogClosing,
                 BookFormDialog.DialogClosing
-        if BookFormDialog.IsOpen = False OR MemberFormDialog.IsOpen = False
+        If BookFormDialog.IsOpen = False Or MemberFormDialog.IsOpen = False Then
             FAB.IsEnabled = True
         End If
         StopCameraAndTimer()
-        startCameraAndTimer()
+        StartCameraAndTimer()
     End Sub
 
     Private Sub Dialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
-        Handles MemberPopupDialog.DialogOpened, AdminPopupDialog.DialogOpened, ViewBookDialog.DialogOpened
+        Handles MemberPopupDialog.DialogOpened,
+                AdminPopupDialog.DialogOpened,
+                ViewBookDialog.DialogOpened
         SnackBarMessageQueue = Snackbar.MessageQueue
         FAB.IsEnabled = False
         StartCameraAndTimer()
     End Sub
 
 
-    Public Async Sub Dialog_PopupClosing() Handles ViewBookDialog.DialogClosing, MemberPopupDialog.DialogClosing, AdminPopupDialog.DialogClosing, MemberPopup.Unloaded, BookView.Unloaded, AdminPopup.Unloaded
+    Public Async Sub Dialog_DialogClosing() _
+        Handles ViewBookDialog.DialogClosing,
+                BookView.Unloaded,
+                MemberPopupDialog.DialogClosing,
+                MemberPopup.Unloaded,
+                AdminPopupDialog.DialogClosing,
+                AdminPopup.Unloaded
         StopCameraAndTimer()
         Await Task.Delay(200)
         StartCameraAndTimer()
-        FAB.IsEnabled = true
+        FAB.IsEnabled = True
     End Sub
 
-    Private Sub ViewBookDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) Handles Me.Unloaded
+    Private Sub CloseEvent () _
+        Handles Me.Unloaded,
+                Me.Closing
         StopCameraAndTimer()
-        FAB.IsEnabled = true
+        FAB.IsEnabled = True
     End Sub
 
-    Private Sub DashBoard_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        StopCameraAndTimer()
-        FAB.IsEnabled = true
-    End Sub
-
-    Private Async Sub DashBoard_GotFocus(sender As Object, e As RoutedEventArgs) Handles Me.Loaded,MemberPopupDialog.DialogClosing,MemberFormDialog.DialogClosing,BookFormDialog.DialogClosing,ViewBookDialog.DialogClosing,MemberForm.Unloaded,BookForm.Unloaded,MemberPopup.Unloaded
-        Me.lblTotalMembers.Text = Await MemberService.TotalMembers()
-        Me.lblTotalIssued.Text = Await BookService.TotalBooksIssued()
-        Me.lblTotalBooks.Text = Await BookService.TotalBooks()
-
+    Private Async Sub DashBoard_GotFocus(sender As Object, e As RoutedEventArgs) _
+        Handles Me.Loaded,
+                MemberPopupDialog.DialogClosing,
+                MemberPopup.Unloaded,
+                MemberFormDialog.DialogClosing,
+                MemberForm.Unloaded,
+                BookFormDialog.DialogClosing,
+                BookForm.Unloaded,
+                ViewBookDialog.DialogClosing,
+                BookView.Unloaded
+        Me.LblTotalMembers.Text = Await MemberService.TotalMembers()
+        Me.LblTotalIssued.Text = Await BookService.TotalBooksIssued()
+        Me.LblTotalBooks.Text = Await BookService.TotalBooks()
     End Sub
 End Class
