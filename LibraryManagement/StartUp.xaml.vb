@@ -20,6 +20,7 @@ Class StartUp
     End Function
     Private Async Sub Me_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Await InitialConnection
+        Await Task.Delay(5000)
         Dim login As New Login
         login.Show()
         Me.Close()
