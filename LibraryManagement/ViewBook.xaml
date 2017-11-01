@@ -46,11 +46,8 @@
             <RowDefinition Height="56" />
             <RowDefinition Height="56"/>
             <RowDefinition Height="56"/>
-
-
             <RowDefinition Height="56"/>
             <RowDefinition Height="422"/>
-
         </Grid.RowDefinitions>
         <!--#endregion-->
 
@@ -63,7 +60,9 @@
                Grid.ColumnSpan="2" 
                HorizontalAlignment="Right" 
                Grid.RowSpan="4" 
-               VerticalAlignment="Bottom" Margin="0,0,0,10"/>
+               VerticalAlignment="Bottom" 
+               Margin="0,0,0,10"/>
+        <!--#endregion-->
 
 
         <!--#region Title-->
@@ -97,60 +96,92 @@
                    Margin="0,10,0,400" 
                    Grid.Row="6"
                    Fill="{DynamicResource PrimaryHueDarkBrush}"/>
+        
+        <!--No of Books Card-->
         <Button materialDesign:ShadowAssist.ShadowDepth="Depth2" 
                 Focusable="False"
-                            Background="White"
-                            BorderBrush="{Binding Path=Background}"
-                            Foreground="Black"
-                             Width="170" 
-                             Height="170"
-                             Grid.Column="2" 
-                             Margin="0,58,32,194"
-                             Grid.Row="6" 
-                             HorizontalAlignment="Right">
+                Background="White"
+                BorderBrush="{Binding Path=Background}"
+                Foreground="Black"
+                Width="170" 
+                Height="170"
+                Grid.Column="2" 
+                Margin="0,58,32,194"
+                Grid.Row="6" 
+                HorizontalAlignment="Right">
             <StackPanel>
-            <TextBlock Text="NUMBER OF BOOKS"  HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <TextBlock x:Name="LblNoofBooks" Text="9999" FontSize="60" HorizontalAlignment="Center" Padding="0" Margin="0,0,0,0"/>
+                <TextBlock Text="NUMBER OF BOOKS"  
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Top"/>
+                <TextBlock x:Name="LblNoofBooks" 
+                       Text="9999" 
+                       FontSize="60" 
+                       HorizontalAlignment="Center" 
+                       Padding="0" 
+                       Margin="0,0,0,0"/>
             </StackPanel>
-
         </Button>
+        
+        
         <Button x:Name="Borrowed"
                Focusable="False"
                 BorderBrush="{Binding Path=Foreground}"
-                             materialDesign:ShadowAssist.ShadowDepth="Depth2" 
-                             Width="402" 
-                             Height="70"
-                             Grid.Column="2" 
-                             Margin="0,263,32,89"
-                             Grid.Row="6" 
-                             HorizontalAlignment="Right"
-                             Background="#ffffff" Grid.ColumnSpan="2">
+                materialDesign:ShadowAssist.ShadowDepth="Depth2" 
+                Width="402" 
+                Height="70"
+                Grid.Column="2" 
+                Margin="0,263,32,89"
+                Grid.Row="6" 
+                HorizontalAlignment="Right"
+                Background="#ffffff" 
+                Grid.ColumnSpan="2">
             <StackPanel>
-                <TextBlock x:Name="LblBorrowed" Foreground ="White"  Text="AVAILABLE" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <TextBlock x:Name="LblBorrowed" 
+                           Foreground ="White"  
+                           Text="AVAILABLE" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top"/>
             </StackPanel>
         </Button>
-        <Label x:Name="LblBorrowedby" Width="200" Height="50" Grid.Column="2" Margin="0,0,22,89" Grid.Row="6"/>
+        
+        
+        <Label x:Name="LblBorrowedby" 
+               Width="200" 
+               Height="50" 
+               Grid.Column="2" 
+               Margin="0,0,22,89" 
+               Grid.Row="6"/>
 
+       <!--Available Books Card-->
         <Button materialDesign:ShadowAssist.ShadowDepth="Depth3"
                 Focusable="False"             
                 Background="#ffffff"
-                              BorderThickness="0"
-                             Width="170" 
-                             Height="170"
-                             Grid.Column="3" 
-                             Margin="0,58,32,194" 
-                             Grid.Row="6" 
-                             HorizontalAlignment="Right">
+                BorderThickness="0"
+                Width="170" 
+                Height="170"
+                Grid.Column="3" 
+                Margin="0,58,32,194" 
+                Grid.Row="6" 
+                HorizontalAlignment="Right">
             <StackPanel>
-                <TextBlock Text="AVAILABLE"  HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Black"/>
-                <TextBlock x:Name="LblAvailable" Text="9999" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Padding="0" Margin="0,0,0,0"/>
+                <TextBlock Text="AVAILABLE"  
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top" 
+                           Foreground="Black"/>
+                <TextBlock x:Name="LblAvailable" 
+                           Text="9999" 
+                           Foreground="Black" 
+                           HorizontalAlignment="Center" 
+                           FontSize="60" 
+                           Padding="0" 
+                           Margin="0,0,0,0"/>
             </StackPanel>
             </Button>
 
 
 
-
-            <materialDesign:PackIcon Kind="BarcodeScan"
+        <!--#region ISBN-->
+        <materialDesign:PackIcon Kind="BarcodeScan"
                                  Grid.Row="3"
                                  Grid.Column="1"
                                  Margin="0,0,16,10"/>
@@ -160,10 +191,11 @@
                  Grid.Column="2" 
                  Margin="0,0,32,0" 
                  Height="36" />
+        <!--#endregion-->
 
 
 
-
+        <!--#region Authors-->
         <materialDesign:PackIcon Kind="AccountMultiple"
                                  Grid.Row="4"
                                  Margin="0,0,16,10" Grid.Column="1"/>
@@ -171,11 +203,15 @@
                  MinWidth="200"
                  Grid.Row="4"
                  Grid.Column="2"
-               Grid.ColumnSpan="2"
-                 Height="36" HorizontalAlignment="Left" Margin="0,0,32,54" Grid.RowSpan="2"/>
+                 Grid.ColumnSpan="2"
+                 Height="36" 
+                 HorizontalAlignment="Left" 
+                 Margin="0,0,32,54" 
+                 Grid.RowSpan="2"/>
+        <!--#endregion-->
 
 
-
+        <!--#region Publisher-->
         <materialDesign:PackIcon Kind="Store"
                                  Grid.Row="5"
                                  Grid.Column="1"
@@ -185,7 +221,9 @@
                  Grid.Row="5"
                  Grid.Column="2"
                  Height="36"  Margin="0,0,32,0"/>
+        <!--#endregion-->
 
+        <!--#region Rack-->
         <materialDesign:PackIcon Kind="ViewStream"
                                  Grid.Row="5"
                                  Grid.Column="2"
@@ -195,7 +233,10 @@
                  Width="200"
                  Grid.Row="5"
                  Grid.Column="3"
-                 Height="36"  Margin="0,0,22,420" Grid.RowSpan="2"/>
+                 Height="36"  
+                 Margin="0,0,22,420" 
+               Grid.RowSpan="2"/>
+        <!--#endregion-->
 
 
         <!--<materialDesign:PackIcon Kind="CurrencyInr"
@@ -258,8 +299,15 @@
                           HorizontalAlignment="Right" 
                           VerticalAlignment="Bottom" 
                           Grid.RowSpan="2">
-            <materialDesign:PackIcon Kind="Delete" Height="21" Width="21" Foreground="#e30101" Opacity="1" />
+            <materialDesign:PackIcon Kind="Delete" 
+                                     Height="21" 
+                                     Width="21" 
+                                     Foreground="#e30101" 
+                                     Opacity="1" />
         </Button>
+        <!--#endregion-->
+        
+        <!--FAB Edit Button-->
         <Button x:Name="BtnEdit"
                 Visibility="Collapsed"
                 Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
@@ -268,29 +316,30 @@
                 Grid.Row="5"
                 Grid.Column="4" 
                 HorizontalAlignment="Right" 
-                VerticalAlignment="Bottom" Margin="0,0,0,382" Grid.RowSpan="2">
+                VerticalAlignment="Bottom" 
+                Margin="0,0,0,382" 
+                Grid.RowSpan="2">
             <materialDesign:PackIcon Kind="Pencil"
                                      Width="24"
                                      Height="24"/>
         </Button>
         <!--#endregion-->
 
-        <!--#endregion-->
-
-        <!--Fab Edit Button-->
-        <!--#endregion-->
+       
 
         <!--Change column and row span accordingly-->
 
         <materialDesign:DialogHost x:Name="DeleteBookDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
-                                   Grid.Column="0" Grid.ColumnSpan="6"
-                                   Grid.Row="0" Grid.RowSpan="8" Margin="0,0,0,89">
+                                   Grid.Column="0" 
+                                   Grid.ColumnSpan="6"
+                                   Grid.Row="0" 
+                                   Grid.RowSpan="8" 
+                                   Margin="0,0,0,89">
             <materialDesign:DialogHost.DialogContent>
                 <local:Delete x:Name="DeleteBook"/>
             </materialDesign:DialogHost.DialogContent>
-
         </materialDesign:DialogHost>
 
     </Grid>

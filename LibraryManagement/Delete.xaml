@@ -8,16 +8,18 @@
              mc:Ignorable="d" 
               Background="{DynamicResource MaterialDesignPaper}"
              MinWidth="350">
+    
+    <!--Change Defaults-->
     <UserControl.Resources>
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="Roboto"/>
             <Setter Property="Foreground" Value="#212121"/>
             <Setter Property="Opacity" Value="0.87"/>
-
         </Style>
-        
-     </UserControl.Resources>
+    </UserControl.Resources>
+    
     <Grid>
+        <!--#region Rows and Coloumn Definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height="8"/>
             <RowDefinition Height="*"/>
@@ -30,15 +32,18 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="8"/>
         </Grid.ColumnDefinitions>
+        <!--#endregion-->
 
-
-        <Label x:Name="LblPrompt" Content="Are you sure you want to"
+        <!--PromptMessage-->
+        <Label x:Name="LblPrompt" 
+               Content="Are you sure you want to"
                FontSize="21" 
                Margin="10, 10"
                Height="40" 
                Grid.Column="1" 
                 Grid.Row="1"/>
-
+        
+        <!--#region Buttons-->
         <StackPanel
            Orientation="Horizontal"
                     Grid.Row="2" Grid.Column="1"
@@ -46,6 +51,8 @@
                     HorizontalAlignment="Right"
                     Height="40"
                     Width="174">
+            
+            <!--Delete Button-->
             <Button
                 x:Name="BtnDelete"
                 Command="materialDesign:DialogHost.CloseDialogCommand"
@@ -54,17 +61,19 @@
                 Style="{StaticResource MaterialDesignFlatButton}"
                 Content="DELETE"
                 Opacity="0.87"
-               Height="36" Width="90" />
-
-
-
+                Height="36" 
+                Width="90"/>
+            
+            <!--Cancel Button-->
             <Button x:Name="BtnCancel"
                     IsDefault="True"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     Command="materialDesign:DialogHost.CloseDialogCommand"
                     Content="CANCEL"
-                    Height="36" MinWidth="64" />
+                    Height="36" 
+                    MinWidth="64" />
         </StackPanel>
+        <!--#endregion-->
 
     </Grid>
 </UserControl>

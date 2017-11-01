@@ -206,6 +206,7 @@
                HorizontalAlignment="Right" 
                Grid.RowSpan="3" 
                VerticalAlignment="Bottom"/>
+        
         <!--#region PrintMember-->
         <Button Style="{StaticResource MaterialDesignFlatButton}"
                           Click ="OpenPrintDialog"
