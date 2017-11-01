@@ -82,7 +82,6 @@
         <!-- #endregion-->
 
 
-
         <!--#region Phone-->
         <materialDesign:PackIcon Kind="Phone"
                                  Grid.Row="3"
@@ -96,18 +95,12 @@
                  Margin="0,0,74,10" />
         <!--#endregion-->
 
-
-
-
         <Rectangle Width="700" 
                    Height="10" 
                    Grid.ColumnSpan="6" 
                    Margin="0,36,0,10" 
                    Grid.Row="4"
                    Fill="{DynamicResource PrimaryHueDarkBrush}"/>
-
-        <!--#region Borrowed Book Details List-->
-        <!--#endregion-->
 
         <!--Fab Edit Button-->
         <Button x:Name="BtnEdit"
@@ -117,10 +110,13 @@
                 Grid.Row="4"
                 Grid.Column="4" 
                 HorizontalAlignment="Right" 
-                VerticalAlignment="Bottom" Margin="0,0,0,336" Grid.RowSpan="2">
+                VerticalAlignment="Bottom" 
+                Margin="0,0,0,336" 
+                Grid.RowSpan="2">
             <materialDesign:PackIcon Kind="Pencil"/>
         </Button>
 
+        <!--#region ChangeSemester-->
         <Button x:Name="BtnChangeSem"
                              materialDesign:ShadowAssist.ShadowDepth="Depth3" 
                              BorderBrush="#ffffff"
@@ -131,7 +127,9 @@
                              Grid.Row="5" 
                              HorizontalAlignment="Right"
                              Background="#ffffff"/>
-
+        <!--#endregion-->
+        
+        <!--#region AddAdmin-->
         <Button x:Name="BtnAddAdmin"
                              materialDesign:ShadowAssist.ShadowDepth="Depth3"
                              Background="#ffffff"
@@ -142,7 +140,10 @@
                              Margin="0,50,17,52" 
                              Grid.Row="5" 
                              HorizontalAlignment="Right"/>
-
+        <!--#endregion-->
+        
+        
+        <!--#region QR-->
         <Image x:Name="ImgQR" 
                Width="150" 
                Height="150"
@@ -152,7 +153,9 @@
                HorizontalAlignment="Right" 
                Grid.RowSpan="3" 
                VerticalAlignment="Bottom"/>
-
+        <!--#endregion-->
+        
+        <!--#region DeleteAdminButton-->
         <Button Style="{StaticResource MaterialDesignFlatButton}"
                           IsEnabled="True" 
                           Margin="0,0,6,54" 
@@ -166,7 +169,9 @@
                                      Foreground="#e30101" 
                                      Opacity="1"/>
         </Button>
-
+        <!--#endregion-->
+        
+        <!--#region PrintAdminButton-->
         <Button Style="{StaticResource MaterialDesignFlatButton}"
                           IsEnabled="True" 
                           Margin="0,0,10,54" 
@@ -180,6 +185,7 @@
                                      Foreground="#283592" 
                                      Opacity="1"/>
         </Button>
+        <!--#endregion-->
 
 
 
@@ -201,26 +207,74 @@
         <materialDesign:DialogHost x:Name="AdminFormDialog"
                                    CloseOnClickAway="True"
                                    IsOpen="False"
-                                   Grid.Column ="0"  Grid.ColumnSpan="6"
-                                   Grid.Row="0" Grid.RowSpan="7">
+                                   Grid.Column ="0"  
+                                   Grid.ColumnSpan="6"
+                                   Grid.Row="0" 
+                                   Grid.RowSpan="7">
             <materialDesign:DialogHost.DialogContent>
                 <local:AdminForm  x:Name="AdminForm"/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
+        
+        
         <!--ChaneSem Dialog-->
         <materialDesign:DialogHost x:Name="ChangeSemDialog"
                                        CloseOnClickAway="True"
                                        IsOpen="False"
-                                       Grid.Column ="0"  Grid.ColumnSpan="6"
-                                       Grid.Row="0" Grid.RowSpan="7" >
+                                       Grid.Column ="0"  
+                                       Grid.ColumnSpan="6"
+                                       Grid.Row="0" 
+                                       Grid.RowSpan="7" >
             <materialDesign:DialogHost.DialogContent>
                 <local:ChangeSemDialog  x:Name="ChangeSem"/>
             </materialDesign:DialogHost.DialogContent>
 
         </materialDesign:DialogHost>
-        <materialDesign:Snackbar Grid.Column ="0" Grid.ColumnSpan ="6"  x:Name="Snackbar" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="5" Margin="56 0 0 56" HorizontalAlignment="Center"/>
+        <materialDesign:Snackbar Grid.Column ="0" 
+                                 Grid.ColumnSpan ="6"  
+                                 x:Name="Snackbar" 
+                                 MessageQueue="{materialDesign:MessageQueue}" 
+                                 Grid.Row="5" 
+                                 Margin="56 0 0 56"
+                                 HorizontalAlignment="Center"/>
+        
+        <!--Change Sem Label-->
+        <Label x:Name="LblChangesem"
+               Width="207" 
+               Content="Change SEMESTER" 
+               Foreground="#000000" 
+               Grid.Column="2"
+               Margin="0,0,44,255" 
+               Grid.Row="5" 
+               FontSize="21" 
+               FontWeight="Bold" 
+               HorizontalAlignment="Right" 
+               VerticalAlignment="Bottom"/>
 
-        <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg8" Width="150" Height="150" Margin="0,73,212,123" Grid.Row="5" Grid.ColumnSpan="3">
+        <!--Add Admin Label-->
+        <Label x:Name="LblAddadmin"
+               Width="136" 
+               Content="Add ADMIN" 
+               Grid.Column="3" 
+               Foreground="#000000" 
+               Margin="52,53,0,255" 
+               Grid.Row="5" 
+               FontSize="21" 
+               FontWeight="Bold" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Center"/>
+
+
+        <!--SVG to XAML converted code-->
+        
+        <!--Change Sem Icon-->
+        <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                Name="SVG_ChangeSem" 
+                Width="150" 
+                Height="150" 
+                Margin="0,73,212,123" 
+                Grid.Row="5" 
+                Grid.ColumnSpan="3">
             <Canvas.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -230,14 +284,15 @@
                 </TransformGroup>
             </Canvas.RenderTransform>
             <Canvas.Resources/>
-            <!--Unknown tag: sodipodi:namedview-->
-            <!--Unknown tag: metadata-->
             <Canvas Name="layer1">
                 <Canvas Name="g4534" Opacity="1">
                     <Canvas.RenderTransform>
                         <MatrixTransform Matrix="0.36976736 -0.33740662 0.33740662 0.36976736 -106.05981 53.760711"/>
                     </Canvas.RenderTransform>
-                    <Canvas Height="163.447" Canvas.Left="-229.32" Canvas.Top="121.555" Width="128.982"/>
+                    <Canvas Height="163.447" 
+                            Canvas.Left="-229.32" 
+                            Canvas.Top="121.555" 
+                            Width="128.982"/>
                 </Canvas>
                 <Canvas Name="g4588">
                     <Canvas.RenderTransform>
@@ -245,17 +300,40 @@
                     </Canvas.RenderTransform>
                 </Canvas>
             </Canvas>
-            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4522" Fill="#FF283592" StrokeThickness="18.89763832" StrokeMiterLimit="4" Opacity="1" Data="m -373 384.51953 a 127.99999 127.99999 0 0 0 -128 128 127.99999 127.99999 0 0 0 61 108.94727 v -21.87696 a 109.99999 109.99999 0 0 1 -43 -87.07031 109.99999 109.99999 0 0 1 110 -110 109.99999 109.99999 0 0 1 110 110 h 18 a 127.99999 127.99999 0 0 0 -128 -128 z" Stretch="Fill" Height="422.768" Canvas.Left="40.11" Canvas.Top="161.087" Width="443.837">
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                  x:Name="path4522" 
+                  Fill="#FF00ff66" 
+                  StrokeThickness="18.89763832" 
+                  StrokeMiterLimit="4" 
+                  Opacity="1" 
+                  Data="m -373 384.51953 a 127.99999 127.99999 0 0 0 -128 128 127.99999 127.99999 0 0 0 61 108.94727 v -21.87696 a 109.99999 109.99999 0 0 1 -43 -87.07031 109.99999 109.99999 0 0 1 110 -110 109.99999 109.99999 0 0 1 110 110 h 18 a 127.99999 127.99999 0 0 0 -128 -128 z" 
+                  Stretch="Fill" 
+                  Height="422.768"
+                  Canvas.Left="40.11" 
+                  Canvas.Top="161.087" 
+                  Width="443.837">
                 <Path.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform ScaleY="0.265" ScaleX="0.265"/>
+                        <ScaleTransform ScaleY="0.265" 
+                                        ScaleX="0.265"/>
                         <SkewTransform/>
                         <RotateTransform Angle="1.807"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Path.RenderTransform>
             </Path>
-            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path4530" Fill="#FF283592" StrokeThickness="5" StrokeMiterLimit="4" Opacity="1" Data="m -66.410415 157.56457 -8.187496 -13.26461 -8.187496 -13.26461 15.581241 -0.45828 15.58124 -0.45827 -7.393745 13.72289 z" Stretch="Fill" Height="46.768" Canvas.Left="202.029" Canvas.Top="156.087" Width="62.126">
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                  x:Name="path4530" 
+                  Fill="#FF00ff66" 
+                  StrokeThickness="5" 
+                  StrokeMiterLimit="4"
+                  Opacity="1"
+                  Data="m -66.410415 157.56457 -8.187496 -13.26461 -8.187496 -13.26461 15.581241 -0.45828 15.58124 -0.45827 -7.393745 13.72289 z" 
+                  Stretch="Fill" 
+                  Height="46.768" 
+                  Canvas.Left="202.029" 
+                  Canvas.Top="156.087" 
+                  Width="62.126">
                 <Path.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="0.523" ScaleX="-0.523"/>
@@ -266,10 +344,18 @@
                 </Path.RenderTransform>
             </Path>
         </Canvas>
-        <Rectangle Fill="#00c78c" Grid.Column="2" Margin="10,50,44,243" Grid.Row="5"/>
-        <Label Width="190" Height="50" Content="Change SEMESTER" Foreground="#ffffff" Grid.Column="2" Margin="0,0,57,243" Grid.Row="5" FontSize="21" FontWeight="SemiBold"/>
-        <Rectangle Fill="#00ff66" Grid.Column="3" Margin="13,50,17,236" Grid.Row="5" Height="60"/>
-        <Path Fill="#283592" HorizontalAlignment="Center" VerticalAlignment="Top" Width="110" Grid.Column="3" Grid.Row="5" Data="M45.720783,0 L55.719928,0.13089371 55.065452,50.126183 110,50.126183 110,60.126183 54.934547,60.126183 54.280071,110.12147 44.280929,109.99057 44.933689,60.126183 0,60.126183 0,50.126183 45.064598,50.126183 z" Height="110.121" Margin="69,145,71,0" RenderTransformOrigin="0.499999998508454,0.500594315103155" Stretch="Fill">
+
+        <!--Add Admin Icon-->
+        <Path x:Name="Plus"
+              Fill="#00ff66" 
+              HorizontalAlignment="Center" 
+              VerticalAlignment="Top"
+              Width="110" 
+              Grid.Column="3" 
+              Grid.Row="5" 
+              Data="M45.720783,0 L55.719928,0.13089371 55.065452,50.126183 110,50.126183 110,60.126183 54.934547,60.126183 54.280071,110.12147 44.280929,109.99057 44.933689,60.126183 0,60.126183 0,50.126183 45.064598,50.126183 z" Height="110.121" Margin="69,135,71,0" 
+              RenderTransformOrigin="0.499999998508454,0.500594315103155" 
+              Stretch="Fill">
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -279,6 +365,6 @@
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
-        <Label Width="136" Height="50" Content="Add ADMIN" Grid.Column="3" Foreground="#ffffff" Margin="0,0,52,243" Grid.Row="5" FontSize="21" FontWeight="SemiBold"/>
+
     </Grid>
 </UserControl>
