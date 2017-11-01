@@ -1,14 +1,16 @@
 ﻿Imports System.Data
 Imports System.Windows.Threading
 Imports Newtonsoft.Json
-Imports  System.Threading
+Imports System.Threading
+Imports MaterialDesignThemes.Wpf
+
 Public Class MemberPopup
     Dim _dashBoard As DashBoard
     Dim data as ArrayList
     WithEvents _sendImage As New DispatcherTimer
     Dim _camera As Camera
     public Shared x as DataView
-    Public sub New 
+    Public sub New
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -19,12 +21,12 @@ Public Class MemberPopup
             End If
         Next
 
-    End Sub 
+    End Sub
     Public sub GetData(uid As String)
         try
             data = MemberService.GetMember(uid)
-            x =BookService.GetBooksBorrowed(uid)
-            borrowedlist.ItemsSource= x
+            x = BookService.GetBooksBorrowed(uid)
+            borrowedlist.ItemsSource = x
             LblUID.Content = UID
             LblName.Content = data(0) + " " + data(1)
             LblPhone.Content = data(2)
@@ -54,29 +56,34 @@ Public Class MemberPopup
         dim flag = False
         for each item in BorrowedList.Items
             If item.row("UID").ToString().Contains(Bookid)
-               Await BookService.Returned(Bookid)
-                FLAG =1
+                Await BookService.Returned(Bookid)
+                FLAG = 1
             End If
         Next
-       Return FLAG
+        Return FLAG
     End Function
     Private Sub OpenDeleteDialog(sender As Object, e As RoutedEventArgs)
-        DeleteMember.SetData("MEM",lbluid.Content)
+        DeleteMember.SetData("MEM", lbluid.Content)
         DeleteMember.LblPrompt.Content = "Delete Member?"
-        DeleteMemberDialog.IsOpen= True
+        DeleteMemberDialog.IsOpen = True
     End Sub
 
     Private Sub OpenPrintDialog(sender As Object, e As RoutedEventArgs)
         PrintMember.ImgQR.Source = ImgQR.Source
         PrintMember.LblDepartment.Content = LblDepartment.Content
-        PrintMember.LblPhone.Content =LblPhone.Content
+        PrintMember.LblPhone.Content = LblPhone.Content
         PrintMember.LblName.Content = LblName.Content
         PrintMember.LblUID.content = LblUID.Content
         PrintMember.LblCat.Content = "MEMBER"
         Dim printdlg As new PrintDialog
         if printDlg.ShowDialog() = true
             printDlg.PrintVisual(PrintMember, "User Control Printing.")
-            End If
+        End If
     End Sub
+
+    Private Sub DeleteMemberDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) Handles DeleteMemberDialog.DialogOpened
+        _dashBoard.StopCameraAndTimer
+    End Sub
+
 End Class
 
