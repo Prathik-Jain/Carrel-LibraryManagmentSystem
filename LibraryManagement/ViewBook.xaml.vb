@@ -75,8 +75,4 @@ Public Class ViewBook
     Private  sub StopcameraonDialogOpen Handles  DeleteBookDialog.DialogOpened
         _dashBoard.StopCameraAndTimer()
     End sub
-    private sub StartCameraOnDailogClose Handles DeleteBook.Unloaded, DeleteBookDialog.ContextMenuClosing
-        _dashBoard.StopCameraAndTimer()
-    End sub
-
 End Class
