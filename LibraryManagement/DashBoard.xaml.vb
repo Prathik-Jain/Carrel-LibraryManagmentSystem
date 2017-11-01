@@ -148,7 +148,7 @@ Public Class DashBoard
                 AdminPopupDialog.DialogClosing,
                 AdminPopup.Unloaded
         StopCameraAndTimer()
-        Await Task.Delay(200)
+        Await Task.Delay(100)
         StartCameraAndTimer()
         FAB.IsEnabled = True
     End Sub
@@ -157,7 +157,6 @@ Public Class DashBoard
         Handles Me.Unloaded,
                 Me.Closing
         StopCameraAndTimer()
-        FAB.IsEnabled = True
     End Sub
 
     Private Async Sub DashBoard_GotFocus(sender As Object, e As RoutedEventArgs) _
@@ -174,4 +173,10 @@ Public Class DashBoard
         Me.LblTotalIssued.Text = Await BookService.TotalBooksIssued()
         Me.LblTotalBooks.Text = Await BookService.TotalBooks()
     End Sub
+Private Sub Window_KeyDown(sender As Object, e As System.Windows.Input.KeyEventArgs) Handles Me.KeyDown
+	If Keyboard.Modifiers = ModifierKeys.Alt AndAlso e.SystemKey = Key.F4 Then
+		e.handled = True
+	End If
+End Sub
+
 End Class
