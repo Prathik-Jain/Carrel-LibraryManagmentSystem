@@ -1,8 +1,15 @@
 ﻿Imports System.Data.SqlClient
 Imports Newtonsoft.Json
-
+''' <summary>
+''' Hanadles function related to a Member of the library
+''' </summary>
 Public Class MemberService
-
+    ''' <summary>
+    ''' This function is used to add new member to the Database.
+    ''' <para>This is done by adding a JSON string to <c>JSON</c> table and then the TRIGGER on the JSON table adds it to the <c>Member</c> table in the database.</para>
+    ''' </summary>
+    ''' <param name="member">A dynamic Object created when the <see cref="MemberForm"/> is submitted - contatining all the details about the member.</param>
+    ''' <returns>The number of rows affected; A positive integer would mean true.</returns>
     Friend Async Shared Function AddMember(member As Object) As Task(Of Integer)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("INSERT INTO JSON (CATEGORY,DATA) VALUES ('MEM',@JSONString)", connection)
@@ -18,7 +25,11 @@ Public Class MemberService
                 query.connection.Close()
         End Try
     End Function
-
+    ''' <summary>
+    ''' This function is used to remove a member from the <c>Member</c> table.
+    ''' </summary>
+    ''' <param name="uid">Unique ID of the member to be removed.</param>
+    ''' <returns>Number of rows affected. A possitive integer would mean the delete was successful.</returns>
     Friend Async Shared Function Delete(uid As String) As Task(Of Boolean)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = new SqlCommand("DELETE FROM Member WHERE UID = @UID",connection)
@@ -33,6 +44,10 @@ Public Class MemberService
             query.Connection.Close()
         End Try
     End Function
+    ''' <summary>
+    ''' This function is used to get the Total numbers of member registered with the library.
+    ''' </summary>
+    ''' <returns>The count from <c>Member</c> table.</returns>
     Public Async Shared Function TotalMembers() As Task(Of String)
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
@@ -47,6 +62,10 @@ Public Class MemberService
             query.Connection.Close()
         End Try
     End Function
+    ''' <summary>
+    ''' This function is used to get the Unique ID of the last Member added to the Database.
+    ''' </summary>
+    ''' <returns>The Unique ID of the member last added.</returns>
 Friend  Shared Function GetLastUid() As String
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("SELECT UID FROM MEMBER WHERE ID = (SELECT MAX(ID) FROM MEMBER)", connection)
@@ -60,7 +79,12 @@ Friend  Shared Function GetLastUid() As String
                 query.Connection.Close()
         End Try
     End Function
-
+    ''' <summary>
+    ''' This function is used to edit member details
+    ''' </summary>
+    ''' <param name="uid">Unique ID of the member whose details are to be changed.</param>
+    ''' <param name="member">A dynamic object which contains the member details.</param>
+    ''' <returns>The number of rows affected - Basically a possitve integer if the function was executed properly.</returns>
     Friend Shared Async Function EditMember(uid As String, member As Object) As Task(Of Integer)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("UPDATE Member 
@@ -79,7 +103,11 @@ Friend  Shared Function GetLastUid() As String
             query.connection.Close()
         End Try
     End Function
-
+    ''' <summary>
+    ''' This function is used to get the member details by the Unique ID from <c>Member</c> table.
+    ''' </summary>
+    ''' <param name="uid">Unique ID of the member whose details are to be extracted.</param>
+    ''' <returns>An ArrayList contating the member details.</returns>
     Friend Shared Function GetMember(uid As String)
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("SELECT * FROM MEMBER WHERE UID = @UID",connection)
@@ -104,7 +132,11 @@ Friend  Shared Function GetLastUid() As String
                 query.connection.Close
         End Try
     End Function
-
+    ''' <summary>
+    ''' This function is used to get only the first name of the member by the Unique ID of the Member.
+    ''' </summary>
+    ''' <param name="memberId">Unique ID of the member.</param>
+    ''' <returns>First Name of the Member</returns>
     Public Shared Function GetMemberById(memberId As String) As String
         Dim connection = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query = New SqlCommand("SELECT FNAME FROM MEMBER WHERE UID = @MemberID",connection)
