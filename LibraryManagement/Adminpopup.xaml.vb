@@ -1,13 +1,14 @@
 ﻿Imports MaterialDesignThemes.Wpf
 Imports Newtonsoft.Json
-
+''' <summary>
+''' This class is responsible for generating UI to view the details and options available to the admin.
+''' </summary>
 Public Class AdminPopup
     Dim data As arraylist
     Dim _dashBoard As DashBoard
     Public Shared SnackBarMessageQueue As SnackbarMessageQueue
 
     Public sub New 
-
         ' This call is required by the designer.
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
@@ -18,6 +19,11 @@ Public Class AdminPopup
         Next
 
     End Sub
+    ''' <summary>
+    ''' This sub procedure is called to get the details of the admin. 
+    ''' <para>This calls <see cref="AdminService.GetAdmin(String)"/> for the data.</para>
+    ''' </summary>
+    ''' <param name="UID">Unique ID of the Admin.</param>
     Public Sub GetData(UID As String)
         try
             data = AdminService.GetAdmin(UID)
@@ -32,13 +38,18 @@ Public Class AdminPopup
             _dashBoard.StartCameraAndTimer()
         End Try
     End Sub
-
+    ''' <summary>
+    ''' This procedure is called when Add button on the popup is clicked. It gives access to the snackbar, clears the admin form and opens it.
+    ''' </summary>
     Private Sub AddAdmin_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddAdmin.Click
         SnackBarMessageQueue = Snackbar.MessageQueue
         AdminForm.clearAll
         AdminFormDialog.isOpen=true
     End Sub
-
+    ''' <summary>
+    ''' This sub procedure is called when Edit button on the popup is clicked.
+    ''' <para>This grabs the data from the popup and autofills the Adminform with the same.</para>
+    ''' </summary>
     Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
         SnackBarMessageQueue = Snackbar.MessageQueue
         AdminForm.LblUID.Content = LblUID.Content
@@ -51,11 +62,17 @@ Public Class AdminPopup
         AdminForm.BtnAdd.Content = "UPDATE"
         AdminFormDialog.IsOpen = True
     End Sub
+    ''' <summary>
+    ''' This function is used to generate an Admin card.
+    ''' </summary>
+    ''' <param name="admin">Dynamic object of admin.</param>
+    ''' <param name="uid">Unique ID of admin</param>
+    ''' <seealso cref="Card"/>
     Friend Sub Print(admin As Object, uid As String)
         If uid = Nothing
             uid = AdminService.GetLastUid()
         End If
-        PrintAdmin.ImgQR.Source = QrGenerator.Generate(UID) ' Need to update image!
+        PrintAdmin.ImgQR.Source = QrGenerator.Generate(UID) 'TODO: Need to update image!
         PrintAdmin.LblDepartment.Content = ""
         PrintAdmin.LblPhone.Content = admin("Phone")
         PrintAdmin.LblName.Content = admin("FName") + " " + admin("LName")
@@ -68,13 +85,22 @@ Public Class AdminPopup
             printDlg.PrintVisual(PrintAdmin, "Printing Admin Card")
         End If
     End Sub
-
+    ''' <summary>
+    ''' This is called when Change sem button is clicked.
+    ''' </summary>
+    ''' <seealso cref="Carrel.ChangeSemDialog"/>
     Private Sub ChangeSem_Click(sender As Object, e As RoutedEventArgs) Handles BtnChangeSem.Click
         ChangeSemDialog.isOpen=True
     End Sub
+    ''' <summary>
+    ''' Stops the camera and timer on <see cref="DashBoard"/>
+    ''' </summary>
     Private  sub StopcameraonDialogOpen Handles  ChangeSemDialog.DialogOpened,AdminFormDialog.DialogOpened
         _dashBoard.StopCameraAndTimer()
     End sub
+    ''' <summary>
+    ''' Starts camera and Timer on <see cref="DashBoard"/>
+    ''' </summary>
     private sub StartCameraOnDailogClose Handles AdminForm.Unloaded,
             AdminFormDialog.DialogClosing,ChangeSemDialog.DialogClosing,ChangeSem.Unloaded,AdminForm.Unloaded
        _dashBoard.StopCameraAndTimer()
