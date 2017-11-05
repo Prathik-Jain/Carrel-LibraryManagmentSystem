@@ -28,8 +28,6 @@ Public Class BookForm
     ''' <summary>
     ''' This sub procedure adds the selected Author in the combobox to Author List when an item is selected and DropDown is closed, alse clears the combobox list later.
     ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
     Private Sub CmbAuthor_DropDownClosed() Handles CmbAuthor.DropDownClosed
         If Trim(CmbAuthor.Text) <> "" Then
             LstAuthor.Items.Add(CmbAuthor.Text)
@@ -122,7 +120,7 @@ Public Class BookForm
     ''' <summary>
     ''' Removes the author from selected list when the cross button (X) is pressed.
     ''' </summary>
-    Private Sub RemoveAuthorFromList()
+    Private Sub RemoveAuthorFromList(sender As Object, e As RoutedEventArgs)
         LstAuthor.Items.Remove(sender.Content)
     End Sub
 ''' <summary>
