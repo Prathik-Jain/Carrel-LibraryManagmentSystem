@@ -7,17 +7,23 @@ Public Class ViewBook
     End Sub
     Dim _dashboard As DashBoard
     Dim _data = New ArrayList
-
+''' <summary>
+'''  Opens the <c>ViewBookDialog</c> and sets the fields to the data obtained from <see cref="BookService.GetLastAdded()"/> function.
+''' </summary>
+''' <param name="number">Total number of books last added.</param>
      Friend Sub ViewLastRecord(number As Integer)
         _dashboard = Application.Current.Windows(0)
         _data = BookService.GetLastAdded()
         UpdateView(_data)
-        'LblNoofBooks.Content = number
         BtnEdit.Visibility = Visibility.Collapsed
         ImgQR.Visibility = Visibility.Collapsed
         _dashboard.BookView.Content = Me
         _dashboard.ViewBookDialog.IsOpen = True
     End Sub
+    ''' <summary>
+    ''' Shows the details of book with Unique ID
+    ''' </summary>
+    ''' <param name="bookId">Unique ID of the book</param>
     Friend Sub ViewBookById(bookId As String)
 
 
@@ -31,7 +37,6 @@ Public Class ViewBook
             ImgQR.source = QRGenerator.Generate(LblUID.Content)
             if (_data(7)) 'Available
                 LblBorrowed.Text = "BOOK NOT ISSUED"
-                'LblBorrowed.Foreground = new SolidColorBrush(Colors.LawnGreen)
                 Borrowed.Background = New SolidColorBrush(color.FromRgb(127,255,0))
             Else
                 LblBorrowed.Text = "Borrowed By " + MemberService.GetMemberById(_data(8)) + " [" + _data(8) + "] On " + _data(9)
@@ -45,6 +50,10 @@ Public Class ViewBook
         End Try
 
     End Sub
+    ''' <summary>
+    ''' This is the default data that is to be viewed.
+    ''' </summary>
+    ''' <param name="data">Data obtained of either <see cref="ViewBookById(String)"/> or <see cref="ViewLastRecord(Integer)"/></param>
     Sub UpdateView(data)
         LblISBN.Content = data(0)
         LblTitle.Content = data(1)
@@ -52,6 +61,10 @@ Public Class ViewBook
         LblPublisher.Content = data(3)
         LblRack.Content = data(6)
     End Sub
+    ''' <summary>
+    ''' This function is used to autofill the <c>BookForm</c> with data from <c>BookView</c> and open the BookForm.
+    ''' The <c>TxtISBN</c> field is disabled in this case
+    ''' </summary>
     Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
         _dashBoard.ViewBookDialog.IsOpen = False
         _dashBoard.BookForm.TxtISBN.Text = LblISBN.Content
@@ -67,11 +80,17 @@ Public Class ViewBook
         _dashboard.BookForm.TxtNumber.Text = "1"
         _dashBoard.BookFormDialog.IsOpen = True
     End Sub
+    ''' <summary>
+    ''' Opens up the Delete Dialog - with a prompt.
+    ''' </summary>
     Private Sub OpenDeleteDialog(sender As Object, e As RoutedEventArgs)
         DeleteBook.SetData("BOOK",LblUID.Content)
         DeleteBook.LblPrompt.Content = "Delete Books?"
         DeleteBookDialog.IsOpen= True
     End Sub
+    ''' <summary>
+    ''' Stops the camera and timer when Delete Dialog is opened.
+    ''' </summary>
     Private  sub StopcameraonDialogOpen Handles  DeleteBookDialog.DialogOpened
         _dashBoard.StopCameraAndTimer()
     End sub

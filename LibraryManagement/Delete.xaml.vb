@@ -5,7 +5,11 @@
         InitializeComponent()
     End Sub
 
-    
+    ''' <summary>
+    ''' This sub procedure sets the category and the Unique ID of the Item to be deleted; either form <c>Book</c> or <c>Member</c> table.
+    ''' </summary>
+    ''' <param name="category">The category of the item to be deleted.</param>
+    ''' <param name="uid">Unique ID of the Item</param>
     Friend Sub SetData(category As String, uid As String)
         cat = category
         id =uid
@@ -15,7 +19,12 @@
             End If
         Next
     End Sub
-    Private ASYNC Sub BtnDelete_Click(sender As Object, e As RoutedEventArgs) Handles BtnDelete.Click
+    ''' <summary>
+    ''' This function calls <see cref="MemberService.Delete(String)"/> or <see cref="BookService.Delete(String)"/> depending on the category set.
+    ''' </summary>
+    ''' <seealso cref="BookService"/>
+    ''' <seealso cref="MemberService"/>
+    Private Async Sub BtnDelete_Click(sender As Object, e As RoutedEventArgs) Handles BtnDelete.Click
         if cat.ToString() = "MEM"
           If await MemberService.Delete(id) Then
                   DashBoard.SnackBarMessageQueue.Enqueue("Deleted Member.")

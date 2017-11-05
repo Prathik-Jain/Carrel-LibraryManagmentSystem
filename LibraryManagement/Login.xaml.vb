@@ -9,19 +9,24 @@ Class Login
     WithEvents _delayTimer As DispatcherTimer
     Dim _movetxt As Storyboard
     Dim _jsonConvert As JsonConvert
-
+    ''' <summary>
+    ''' Starts camera and timer when loaded.
+    ''' Initializes animation
+    ''' </summary>
     Private Sub Me_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         ' Initializing animation
         _movetxt = Me.Resources("moveText")
         InitializeComponent()
-
         _camera.StartCamera()
         _sendImage = New DispatcherTimer With {
             .Interval = New TimeSpan(0, 0, 0.2)
             }
         _sendImage.Start()
     End Sub
-
+    ''' <summary>
+    ''' This function is called every time the timer ticks. This is used to decode the QR code and this continues until decoded.
+    ''' </summary>
+    ''' <seealso cref="QrDecoder"/>
     Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles _sendImage.Tick
         Dim qrDecoder As New QRDecoder
         Dim jsonString = ""
@@ -38,7 +43,12 @@ Class Login
 
     Dim _admin = New Admin
     Dim ReadOnly _loginService = New AdminService
-
+    ''' <summary>
+    ''' This functions checks if the decoded string contains a valid Admin Info.
+    ''' </summary>
+    ''' <param name="str">Decoded String</param>
+    ''' <seealso cref="AdminService.CheckUser(String, String)"/>
+    ''' <seealso cref="AdminService.MatchPin(String, Integer)"/>
     Public Async Sub QrScanned(str As String)
         My.Computer.Audio.Play(My.Resources.ScannerBeep, AudioPlayMode.Background)
         If str.Contains("ADM") Then
@@ -64,9 +74,10 @@ Class Login
         End If
     End Sub
 
-
+    ''' <summary>
+    ''' Updates the screen with Admin Info.
+    ''' </summary>
     Private Sub UpdateScreen()
-        'Updates login screen with Admin info.
         BeginStoryboard(_movetxt)
         TxtPIN.IsEnabled = True
         TxtPIN.Clear()
@@ -75,12 +86,17 @@ Class Login
         txtLoginInstruction.Text = "Please enter your PIN"
     End Sub
 
+    ''' <summary>
+    ''' Closes the application when the close button is clicked.
+    ''' </summary>
     Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs) Handles BtnClose.Click
         StopAllServices()
         Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown
         Windows.Application.Current.Shutdown()
     End Sub
-
+    ''' <summary>
+    ''' Stops the camera and the timer.
+    ''' </summary>
     Private Sub StopAllServices()
         _camera.StopCamera()  'Stops the webCam.
         _sendImage.Stop() 'Stops sending images to decode.
@@ -90,7 +106,12 @@ Class Login
         Handles TxtPIN.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
     End Sub
-
+       ''' <summary>
+       ''' This procedure is used to update the color of the dots on every character typed for the PIN. Once the length of the filed reaches four, <see cref="AdminService.MatchPin(String, Integer)"/> function is called.
+       ''' <para>If the function returns true the dashboard is opened.</para>
+       ''' </summary>
+       ''' <seealso cref="DashBoard"/>
+       ''' <seealso cref="AdminService"/>
     Private Sub TxtPIN_TextChanged(sender As Object, e As TextChangedEventArgs) Handles TxtPIN.TextChanged
         Dim pin = TxtPIN.Text.Replace(" ", "")
         Select Case (PIN.Length)
@@ -117,7 +138,6 @@ Class Login
                 dot2.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 dot3.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
                 dot4.Background = DirectCast(New BrushConverter().ConvertFrom("#000000"), SolidColorBrush)
-                'HACK to update UI befor matchPIN() executes.
                 If _loginService.MatchPIN(_admin.UID, PIN) = 1 Then
                     _camera.StopCamera()
                     Dim dash As New DashBoard()
@@ -133,14 +153,19 @@ Class Login
         End Select
     End Sub
 
-
+    ''' <summary>
+    ''' This function is used to clear the PIN indicaters
+    ''' </summary>
     Private Sub ClearDots()
         dot1.Background = New SolidColorBrush(Colors.White)
         dot2.Background = New SolidColorBrush(Colors.White)
         dot3.Background = New SolidColorBrush(Colors.White)
         dot4.Background = New SolidColorBrush(Colors.White)
     End Sub
-
+    ''' <summary>
+    ''' Thisprocedure adds the character to the <c>TxtPIN</c> field and forces the keyboard to focus on the same.
+    ''' </summary>
+    ''' <param name="number"></param>
     Private Sub AddNumberToPin(number As Integer)
         TxtPIN.Text += number.ToString
         Keyboard.Focus(TxtPIN)
@@ -191,6 +216,9 @@ Class Login
 
 #End Region
 End Class
+''' <summary>
+''' Class Admin with UID and FName fields.
+''' </summary>
 Public Class Admin
     Public Uid As String
     Public FName As String

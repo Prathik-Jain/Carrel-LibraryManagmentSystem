@@ -2,7 +2,7 @@
 ''' <summary>
 ''' This class is responsible managing the departments in the library, works with the <c>Depatment</c> table.
 ''' </summary>
-Public Class DepatmentService
+Public Class DepartmentService
     ''' <summary>
     ''' Grabs all the departments from the <c>Department</c> table in the Database.
     ''' </summary>

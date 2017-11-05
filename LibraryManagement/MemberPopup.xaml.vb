@@ -22,6 +22,11 @@ Public Class MemberPopup
         Next
 
     End Sub
+    ''' <summary>
+    ''' Gets the data about a member. Calls <see cref="MemberService.GetMemberById(String)"/>
+    ''' </summary>
+    ''' <param name="uid">Unique ID of the member</param>
+    ''' <seealso cref="MemberService"/>
     Public sub GetData(uid As String)
         try
             data = MemberService.GetMember(uid)
@@ -40,6 +45,9 @@ Public Class MemberPopup
             _dashBoard.StartCameraAndTimer()
         End Try
     End sub
+    ''' <summary>
+    ''' Used to edit a member - Opens the member form - Auto fills all the  fileds - Grabs data from Member Popup.
+    ''' </summary>
     Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
         _dashBoard.MemberPopupDialog.IsOpen = False
         _dashBoard.MemberForm.TxtFirstName.Text = data(0)
@@ -51,7 +59,12 @@ Public Class MemberPopup
         _dashBoard.MemberForm.BtnAccept.Content = "UPDATE"
         _dashBoard.MemberFormDialog.IsOpen = True
     End Sub
-
+    ''' <summary>
+    ''' This function is used to check if the book is already present in the borrowedlist of the member 
+    ''' <para>If already present <see cref="BookService.Returned(String)"/>is called to return the book</para>
+    ''' </summary>
+    ''' <param name="Bookid">Unique ID of the book</param>
+    ''' <returns>Returns <c>One</c> if book already present, else returns <c>Zero</c></returns>
     Public Async Function CheckBookInList(Bookid As String) As Task(Of Boolean)
         dim flag = False
         for each item in BorrowedList.Items
@@ -62,12 +75,19 @@ Public Class MemberPopup
         Next
         Return FLAG
     End Function
+    ''' <summary>
+    ''' This function is called when Delete button is clicked. This sets the category and the Unique ID in <see cref="Delete.SetData(String, String)"/> and pops up a confirmation.
+    ''' </summary>
+    ''' <seealso cref="Delete"/>
     Private Sub OpenDeleteDialog(sender As Object, e As RoutedEventArgs)
         DeleteMember.SetData("MEM", lbluid.Content)
         DeleteMember.LblPrompt.Content = "Delete Member?"
         DeleteMemberDialog.IsOpen = True
     End Sub
-
+    ''' <summary>
+    ''' Grabs all the data and sets to <see cref="Card"/>
+    ''' <para> Opes the print dialog once done.</para>
+    ''' </summary>
     Private Sub OpenPrintDialog(sender As Object, e As RoutedEventArgs)
         PrintMember.ImgQR.Source = ImgQR.Source
         PrintMember.LblDepartment.Content = LblDepartment.Content
@@ -80,7 +100,10 @@ Public Class MemberPopup
             printDlg.PrintVisual(PrintMember, "User Control Printing.")
         End If
     End Sub
-
+    ''' <summary>
+    ''' Stops the camera and timer in dashboard if <c>DeleteDialog</c> is open.
+    ''' </summary>
+    ''' <seealso cref="DashBoard"/>
     Private Sub DeleteMemberDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) Handles DeleteMemberDialog.DialogOpened
         _dashBoard.StopCameraAndTimer
     End Sub

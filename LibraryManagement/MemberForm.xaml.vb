@@ -23,6 +23,10 @@ Public Class MemberForm
         AddMember()
         AddDept()
     End Sub
+    ''' <summary>
+    ''' Checks if the deparment is in already present in the Database or not. If not <see cref="DepartmentService.AddDepatment(String)" /> is called.
+    ''' <see cref="DepartmentService"/>
+    ''' </summary>
     Private Sub AddDept()
         For Each item In CmbDept.Items
             If CmbDept.Text = item
@@ -31,6 +35,11 @@ Public Class MemberForm
         Next
         DepartmentService.AddDepatment(CmbDept.Text)
     End Sub
+    ''' <summary>
+    ''' This function takes all the filed and wraps them into a dynamic object to add or edit Member. The  hidden label <c>LblUID</c> is checked for the purpose.
+    ''' <para>If <c>LblUID</c> is empty - <see cref="MemberService.AddMember(Object)"/> is called, else <see cref="MemberService.EditMember(String, Object)"/> is called.</para>
+    ''' </summary>
+    ''' <seealso cref="MemberService"/>
     Private Async Sub AddMember()
         Dim member As Object = New Linq.JObject()
         member.FName = TxtFirstName.Text
@@ -42,8 +51,8 @@ Public Class MemberForm
             Try
                 If  Await MemberService.AddMember(member) Then
                     DashBoard.SnackBarMessageQueue.Enqueue("Registered " + TxtFirstName.Text + " as Member.", "VIEW", Sub()
-                                                                                                                          _dashboard.StopCameraAndTimer()
-                                                                                                                          _dashboard.memberAccount.GetData(MemberService.GetLastUid())
+                       _dashboard.StopCameraAndTimer()
+                       _dashboard.memberAccount.GetData(MemberService.GetLastUid())
                     End Sub)
                 else
                     DashBoard.SnackBarMessageQueue.Enqueue("Failed registering " + TxtFirstName.Text)
@@ -71,12 +80,14 @@ Public Class MemberForm
         End If
 
     End Sub
-
+    ''' <summary>
+    ''' Used for validation.
+    ''' </summary>
     Private Sub FieldLostFocus(sender As Object, e As RoutedEventArgs)
         Dim txt = DirectCast(sender, TextBox)
         txt.GetBindingExpression(TextBox.TextProperty).UpdateSource()
     End Sub
-
+    #Region "Input Constraints"
     Private Sub TxtPhone_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtPhone.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
     End Sub
@@ -88,7 +99,10 @@ Public Class MemberForm
     Private Sub TxtLastName_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtLastName.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^a-zA-Z]+$")
     End Sub
-
+    #End Region
+    ''' <summary>
+    ''' Clears all the fileds in Member form.
+    ''' </summary>
     Public Sub clearAll()
         LblUID.Content = ""
         TxtFirstName.Clear()
