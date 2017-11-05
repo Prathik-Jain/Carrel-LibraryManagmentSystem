@@ -4,30 +4,34 @@ Public Class AdminForm
       ' This call is required by the designer.
         InitializeComponent()
     End Sub
-    'Private Sub FieldLostFocus(sender As Object, e As RoutedEventArgs)
-    '    Dim txt = DirectCast(sender, TextBox)
-    '    txt.GetBindingExpression(TextBox.TextProperty).UpdateSource()
-    'End Sub
 
-    Private Sub TxtPhone_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtPhone.PreviewTextInput
+    #Region "Validation"
+    ''' <summary>
+    ''' Checks the input according to the rules in <see cref="Validation"/>
+    ''' </summary>
+    Private Sub TxtPhone_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) _
+        Handles TxtPhone.PreviewTextInput,
+                TxtPin.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
     End Sub
-
-    Private Sub TxtFirstName_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtFName.PreviewTextInput
+    ''' <summary>
+    ''' Checks the input according to the rules in <see cref="Validation"/>
+    ''' </summary>
+    Private Sub TxtLastName_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) _
+        Handles TxtFName.PreviewTextInput,
+                TxtLName.PreviewTextInput
         e.Handled = Regex.IsMatch(e.Text, "[^a-zA-Z]+$")
     End Sub
+    #End Region
 
-    Private Sub TxtLastName_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtLName.PreviewTextInput
-        e.Handled = Regex.IsMatch(e.Text, "[^a-zA-Z]+$")
-    End Sub
-
-    Private Sub TxtPassword_PreviewTextInput(sender As Object, e As TextCompositionEventArgs) Handles TxtPin.PreviewTextInput
-        e.Handled = Regex.IsMatch(e.Text, "[^0-9]")
-    End Sub
-
+    
     Private Sub BtnAdd_Click(sender As Object, e As RoutedEventArgs) Handles BtnAdd.Click
         AddAdmin()
     End Sub
+    ''' <summary>
+    ''' This sub procedure converts all the fileds in the Admin form into a Dynamic Linq object and then <see cref="AdminService.AddAdmin(Object)"/> is called if the hidden <c>lblUid</c> is empty and <see cref="AdminService.EditAdmin(Object, String)"/> is called if <c>lblUid</c> is not empty.
+    ''' </summary>
+    ''' <seealso cref="AdminService"/>
     private async sub AddAdmin()
         dim admin as Object = New Newtonsoft.Json.Linq.JObject
         admin.FName = TxtFName.Text
@@ -58,7 +62,9 @@ AdminPopup.Print(admin,LblUID.Content)
 
     End sub
 
-
+    ''' <summary>
+    ''' This sub procedure clears all the textfileds of the form.
+    ''' </summary>
     Public Sub clearAll()
         LblUID.Content = ""
         TxtPhone.Clear()
