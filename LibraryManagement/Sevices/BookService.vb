@@ -11,7 +11,7 @@ Public Class BookService
     ''' </summary>
     ''' <param name="book">Dynamic object of book which contains all the details about the book.</param>
     ''' <param name="number">Total number of books to be added.</param>
-    ''' <returns></returns>
+    ''' <returns>Number of rows affected</returns>
     Friend Shared Async Function AddBook(book As Object, number As Integer) As Task(Of Integer)
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
@@ -112,7 +112,7 @@ Public Class BookService
     ''' </summary>
     ''' <param name="bookId">Unique ID of the book which is borrowed.</param>
     ''' <param name="memberId">Unique ID of the member who borrows the book.</param>
-    ''' <returns></returns>
+    ''' <returns>The number of rows affected.</returns>
     Friend Shared Async Function Borrowed(bookId As String, memberId As String) as Task(Of Integer)
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
