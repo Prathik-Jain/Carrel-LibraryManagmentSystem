@@ -144,11 +144,11 @@ Public Class AdminService
         End Try
     End Function
     ''' <summary>
-    ''' This function is used to change the semister of students, called when Change Semister Button on <c>Admin Popup</c> is clicked.
-    ''' <para>Adds one to members of semister less than 6 and deletes all the members  who are in sixth semister - This can be changed as the institutions requiement</para>
+    ''' This function is used to change the semester of students, called when Change semester Button on <c>Admin Popup</c> is clicked.
+    ''' <para>Adds one to members of semester less than 6 and deletes all the members  who are in sixth semester - This can be changed as the institutions requiement</para>
     ''' </summary>
     ''' <example>
-    ''' To change the Semister and remove members after 'X' semisters
+    ''' To change the semester and remove members after 'X' semisters
     ''' <code>
     '''        Dim query = New SqlCommand("DELETE Member
     '''                    Where SEM = x",connection) ' X = maximun number of semisters in the institution.
