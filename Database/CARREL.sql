@@ -70,44 +70,42 @@ GO
 --CREATING Department Table
 	CREATE TABLE [dbo].[Dept](
 	[ID] INT NOT NULL IDENTITY,
- 	[NAME] [NVARCHAR](MAX) NOT NULL
+	[NAME] [NVARCHAR](MAX) NOT NULL
 	);
 
 -------------------------------------------------------------------------------
 --Creating Admin Table
 	CREATE TABLE [dbo].[Admin] (
-    [ID]        [TINYINT]           NOT NULL,
-    [UID]       AS            ('ADM-'+right('00'+CONVERT([varchar](4),[ID]),(3))) PERSISTED UNIQUE NOT NULL, --ADM-001 to ADM255
-    [FNAME]     [NVARCHAR](MAX)  NOT NULL,
-    [LNAME]     [NVARCHAR](MAX)  NULL,
+	[ID]        [TINYINT]           NOT NULL,
+	[UID]       AS            ('ADM-'+right('00'+CONVERT([varchar](4),[ID]),(3))) PERSISTED UNIQUE NOT NULL, --ADM-001 to ADM255
+	[FNAME]     [NVARCHAR](MAX)  NOT NULL,
+	[LNAME]     [NVARCHAR](MAX)  NULL,
 	[PHONE]     [NCHAR] (10)    NOT NULL,
 	[PIN]       [NCHAR] (4)      NOT NULL,
 	[SECURITYQUESTION] [NVARCHAR](MAX) NOT NULL,
 	[ANSWER]	[NVARCHAR](MAX)     NOT NULL,
-    [IMAGE]     [IMAGE]         NULL,
-    PRIMARY KEY CLUSTERED ([UID] ASC)
+	PRIMARY KEY CLUSTERED ([UID] ASC)
 );
 
 -------------------------------------------------------------------------------
 --Creating Member Table
 	CREATE TABLE [dbo].[Member](
 	[ID]        [SMALLINT]     NOT NULL,
-    [UID]       AS            ('MEM-'+right('000'+CONVERT([varchar](4),[ID]),(4))) PERSISTED UNIQUE NOT NULL, --MEM-0001 to MEM-9999
-    [FNAME]     [NVARCHAR](MAX)  NOT NULL,
-    [LNAME]     [NVARCHAR](MAX)  NULL,
+	[UID]       AS            ('MEM-'+right('000'+CONVERT([varchar](4),[ID]),(4))) PERSISTED UNIQUE NOT NULL, --MEM-0001 to MEM-9999
+	[FNAME]     [NVARCHAR](MAX)  NOT NULL,
+	[LNAME]     [NVARCHAR](MAX)  NULL,
 	[PHONE]     [NCHAR](10)    NOT NULL,
 	[DEPT]		[NVARCHAR](5) NOT NULL,
 	[SEM]		[TINYINT] NULL,
 	[MAXBOOKS]	[TINYINT] NOT NULL DEFAULT 2,
 	[DUES]		[NVARCHAR](MAX) NULL,
-	[IMAGE]		[IMAGE] NULL,
 	PRIMARY KEY CLUSTERED ([UID] ASC)
 	);	
 -------------------------------------------------------------------------------
 --CREATING Author Table
 	CREATE TABLE [dbo].[Author](
 	[ID] INT NOT NULL IDENTITY,
- 	[NAME] [NVARCHAR](MAX) NOT NULL
+	[NAME] [NVARCHAR](MAX) NOT NULL
 	);
 
 -------------------------------------------------------------------------------
@@ -126,7 +124,7 @@ CREATE TABLE [dbo].[JSON](
 
 -- Creating non-clustured index on book.isbn
 CREATE NONCLUSTERED INDEX BOOK_ISBN   
-    ON Book (ISBN);   
+	ON Book (ISBN);   
 GO 
 
 -------------------------------------------------------------------------
