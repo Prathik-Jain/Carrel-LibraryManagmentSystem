@@ -137,7 +137,7 @@
       <DependentUpon>PrintPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sevices\AdminService.vb" />
-    <Compile Include="Sevices\DepatmentService.vb" />
+    <Compile Include="Sevices\DepartmentService.vb" />
     <Compile Include="Sevices\AuthorService.vb" />
     <Compile Include="Sevices\BookService.vb" />
     <Compile Include="Sevices\MemberService.vb" />

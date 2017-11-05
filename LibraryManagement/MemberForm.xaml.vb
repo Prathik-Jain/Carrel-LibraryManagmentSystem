@@ -11,7 +11,7 @@ Public Class MemberForm
             Return
         Else
             'Executes when MemberForm is loaded - Not accessed by designer
-            CmbDept.ItemsSource = DepatmentService.GetDept()
+            CmbDept.ItemsSource = DepartmentService.GetDept()
             For Each window As Window In Application.Current.Windows
                 If window.GetType() = GetType(DashBoard)
                     _dashBoard = window
@@ -29,7 +29,7 @@ Public Class MemberForm
                 Exit Sub
             End If
         Next
-        DepatmentService.AddDepatment(CmbDept.Text)
+        DepartmentService.AddDepatment(CmbDept.Text)
     End Sub
     Private Async Sub AddMember()
         Dim member As Object = New Linq.JObject()
