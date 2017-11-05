@@ -47,7 +47,7 @@ Public Class DashBoard
 	''' <summary>
 	''' This function is executed everytime the <c>_sendImage</c> timer ticks. This takes the Frame form camera and then calls the QR decoder to extract the sting. Once the string is extracted <see cref="QrScanned(String)"/> is called.
 	''' </summary>
-	Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles _sendImage.Tick
+	Public Sub SendImage_Tick() Handles _sendImage.Tick
 		Dim qrDecoder As New QrDecoder
 		Dim qrString = ""
 		qrString = qrDecoder.ScanQr(_camera.Frame)
@@ -126,7 +126,7 @@ Public Class DashBoard
 	''' This sub procedure is called when Add Book Button is clicked.
 	''' The snackbar is assigned, Book Form is opened, The <c>FAB</c> is disable and the camera and timer are sotpped.
 	''' </summary>
-	Public Sub BtnAddBook_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddBook.Click
+	Public Sub BtnAddBook_Click() Handles BtnAddBook.Click
 		SnackBarMessageQueue = Snackbar.MessageQueue
 		BookFormDialog.IsOpen = True
 		BookForm.ClearAll()
@@ -137,7 +137,7 @@ Public Class DashBoard
 	'''This sub procedure is called when Add Book Button is clicked.
 	''' The snackbar is assigned, Member Form is opened, The <c>FAB</c> is disable and the camera and timer are sotpped. 
 	''' </summary>
-	Private Sub BtnAddMember_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddMember.Click
+	Private Sub BtnAddMember_Click() Handles BtnAddMember.Click
 		SnackBarMessageQueue = Snackbar.MessageQueue
 		MemberFormDialog.IsOpen = True
 		MemberForm.clearAll()
@@ -148,7 +148,7 @@ Public Class DashBoard
 	''' This sub procedure is called when Member And Book form dialogs are closed.
 	''' - The FAB is enabled; And the camera is also refreshed.
 	''' </summary>
-	Private Sub Dialog_DialogClosing(sender As Object, eventArgs As DialogClosingEventArgs) _
+	Private Sub FormDialog_DialogClosing() _
 		Handles MemberFormDialog.DialogClosing,
 				BookFormDialog.DialogClosing
 		If BookFormDialog.IsOpen = False Or MemberFormDialog.IsOpen = False Then
@@ -160,7 +160,7 @@ Public Class DashBoard
 	''' <summary>
 	''' Snackbar is assigned , FAB is disabled and the Camera and timer is started.
 	''' </summary>
-	Private Sub Dialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) _
+	Private Sub Dialog_DialogOpened() _
 		Handles MemberPopupDialog.DialogOpened,
 				AdminPopupDialog.DialogOpened,
 				ViewBookDialog.DialogOpened
@@ -196,7 +196,7 @@ Public Class DashBoard
 	''' <summary>
 	''' This function is used to update the cards on the dashboard everytime any of the Dialogs is closed.
 	''' </summary>
-	Private Async Sub DashBoard_GotFocus(sender As Object, e As RoutedEventArgs) _
+	Private Async Sub DashBoard_GotFocus() _
 		Handles Me.Loaded,
 				MemberPopupDialog.DialogClosing,
 				MemberPopup.Unloaded,

@@ -41,7 +41,7 @@ Public Class AdminPopup
     ''' <summary>
     ''' This procedure is called when Add button on the popup is clicked. It gives access to the snackbar, clears the admin form and opens it.
     ''' </summary>
-    Private Sub AddAdmin_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddAdmin.Click
+    Private Sub AddAdmin_Click() Handles BtnAddAdmin.Click
         SnackBarMessageQueue = Snackbar.MessageQueue
         AdminForm.clearAll
         AdminFormDialog.isOpen=true
@@ -50,7 +50,7 @@ Public Class AdminPopup
     ''' This sub procedure is called when Edit button on the popup is clicked.
     ''' <para>This grabs the data from the popup and autofills the Adminform with the same.</para>
     ''' </summary>
-    Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
+    Private Sub BtnEdit_Click() Handles BtnEdit.Click
         SnackBarMessageQueue = Snackbar.MessageQueue
         AdminForm.LblUID.Content = LblUID.Content
         Adminform.TxtFName.Text = data(0)
@@ -89,7 +89,7 @@ Public Class AdminPopup
     ''' This is called when Change sem button is clicked.
     ''' </summary>
     ''' <seealso cref="Carrel.ChangeSemDialog"/>
-    Private Sub ChangeSem_Click(sender As Object, e As RoutedEventArgs) Handles BtnChangeSem.Click
+    Private Sub ChangeSem_Click() Handles BtnChangeSem.Click
         ChangeSemDialog.isOpen=True
     End Sub
     ''' <summary>

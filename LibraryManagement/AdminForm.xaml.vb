@@ -25,7 +25,7 @@ Public Class AdminForm
     #End Region
 
     
-    Private Sub BtnAdd_Click(sender As Object, e As RoutedEventArgs) Handles BtnAdd.Click
+    Private Sub BtnAdd_Click() Handles BtnAdd.Click
         AddAdmin()
     End Sub
     ''' <summary>

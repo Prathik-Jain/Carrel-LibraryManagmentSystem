@@ -30,7 +30,7 @@ Public Class BookForm
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub CmbAuthor_DropDownClosed(sender As Object, e As EventArgs) Handles CmbAuthor.DropDownClosed
+    Private Sub CmbAuthor_DropDownClosed() Handles CmbAuthor.DropDownClosed
         If Trim(CmbAuthor.Text) <> "" Then
             LstAuthor.Items.Add(CmbAuthor.Text)
             CmbAuthor.Text = ""
@@ -38,7 +38,7 @@ Public Class BookForm
         End If
     End Sub
 
-    Private Sub BtnAccept_Click(sender As Object, e As RoutedEventArgs) Handles BtnAccept.Click
+    Private Sub BtnAccept_Click() Handles BtnAccept.Click
         AddBook()
         AddAuthor()
     End Sub
@@ -122,7 +122,7 @@ Public Class BookForm
     ''' <summary>
     ''' Removes the author from selected list when the cross button (X) is pressed.
     ''' </summary>
-    Private Sub RemoveAuthorFromList(sender As Object, e As RoutedEventArgs)
+    Private Sub RemoveAuthorFromList()
         LstAuthor.Items.Remove(sender.Content)
     End Sub
 ''' <summary>

@@ -79,7 +79,7 @@ Public Class MemberPopup
     ''' This function is called when Delete button is clicked. This sets the category and the Unique ID in <see cref="Delete.SetData(String, String)"/> and pops up a confirmation.
     ''' </summary>
     ''' <seealso cref="Delete"/>
-    Private Sub OpenDeleteDialog(sender As Object, e As RoutedEventArgs)
+    Private Sub OpenDeleteDialog()
         DeleteMember.SetData("MEM", lbluid.Content)
         DeleteMember.LblPrompt.Content = "Delete Member?"
         DeleteMemberDialog.IsOpen = True
@@ -88,7 +88,7 @@ Public Class MemberPopup
     ''' Grabs all the data and sets to <see cref="Card"/>
     ''' <para> Opes the print dialog once done.</para>
     ''' </summary>
-    Private Sub OpenPrintDialog(sender As Object, e As RoutedEventArgs)
+    Private Sub OpenPrintDialog()
         PrintMember.ImgQR.Source = ImgQR.Source
         PrintMember.LblDepartment.Content = LblDepartment.Content
         PrintMember.LblPhone.Content = LblPhone.Content
@@ -104,7 +104,7 @@ Public Class MemberPopup
     ''' Stops the camera and timer in dashboard if <c>DeleteDialog</c> is open.
     ''' </summary>
     ''' <seealso cref="DashBoard"/>
-    Private Sub DeleteMemberDialog_DialogOpened(sender As Object, eventArgs As DialogOpenedEventArgs) Handles DeleteMemberDialog.DialogOpened
+    Private Sub DeleteMemberDialog_DialogOpened() Handles DeleteMemberDialog.DialogOpened
         _dashBoard.StopCameraAndTimer
     End Sub
 

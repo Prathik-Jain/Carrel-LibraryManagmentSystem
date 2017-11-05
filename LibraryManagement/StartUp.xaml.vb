@@ -26,7 +26,7 @@ Class StartUp
     ''' Calls tge <see cref="InitialConnection()"/> function - Add <c>5 s</c> Delay -Shows Login Window.
     ''' </summary>
     ''' <seealso cref="Login"/>
-    Private Async Sub Me_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+    Private Async Sub Me_Loaded() Handles Me.Loaded
         Await InitialConnection
         Await Task.Delay(5000)
         Dim login As New Login

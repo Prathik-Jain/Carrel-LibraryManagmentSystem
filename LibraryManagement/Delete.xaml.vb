@@ -24,7 +24,7 @@
     ''' </summary>
     ''' <seealso cref="BookService"/>
     ''' <seealso cref="MemberService"/>
-    Private Async Sub BtnDelete_Click(sender As Object, e As RoutedEventArgs) Handles BtnDelete.Click
+    Private Async Sub BtnDelete_Click() Handles BtnDelete.Click
         if cat.ToString() = "MEM"
           If await MemberService.Delete(id) Then
                   DashBoard.SnackBarMessageQueue.Enqueue("Deleted Member.")

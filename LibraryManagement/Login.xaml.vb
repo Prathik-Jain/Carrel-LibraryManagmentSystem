@@ -13,7 +13,7 @@ Class Login
     ''' Starts camera and timer when loaded.
     ''' Initializes animation
     ''' </summary>
-    Private Sub Me_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+    Private Sub Me_Loaded() Handles Me.Loaded
         ' Initializing animation
         _movetxt = Me.Resources("moveText")
         InitializeComponent()
@@ -27,7 +27,7 @@ Class Login
     ''' This function is called every time the timer ticks. This is used to decode the QR code and this continues until decoded.
     ''' </summary>
     ''' <seealso cref="QrDecoder"/>
-    Public Sub SendImage_Tick(sender As Object, e As EventArgs) Handles _sendImage.Tick
+    Public Sub SendImage_Tick() Handles _sendImage.Tick
         Dim qrDecoder As New QRDecoder
         Dim jsonString = ""
         jsonString = qrDecoder.ScanQR(_camera.frame)
@@ -89,7 +89,7 @@ Class Login
     ''' <summary>
     ''' Closes the application when the close button is clicked.
     ''' </summary>
-    Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs) Handles BtnClose.Click
+    Private Sub BtnClose_Click() Handles BtnClose.Click
         StopAllServices()
         Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown
         Windows.Application.Current.Shutdown()
@@ -112,7 +112,7 @@ Class Login
        ''' </summary>
        ''' <seealso cref="DashBoard"/>
        ''' <seealso cref="AdminService"/>
-    Private Sub TxtPIN_TextChanged(sender As Object, e As TextChangedEventArgs) Handles TxtPIN.TextChanged
+    Private Sub TxtPIN_TextChanged() Handles TxtPIN.TextChanged
         Dim pin = TxtPIN.Text.Replace(" ", "")
         Select Case (PIN.Length)
             Case 0

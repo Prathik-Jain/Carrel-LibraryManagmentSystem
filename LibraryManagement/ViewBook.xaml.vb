@@ -65,7 +65,7 @@ Public Class ViewBook
     ''' This function is used to autofill the <c>BookForm</c> with data from <c>BookView</c> and open the BookForm.
     ''' The <c>TxtISBN</c> field is disabled in this case
     ''' </summary>
-    Private Sub BtnEdit_Click(sender As Object, e As RoutedEventArgs) Handles BtnEdit.Click
+    Private Sub BtnEdit_Click() Handles BtnEdit.Click
         _dashBoard.ViewBookDialog.IsOpen = False
         _dashBoard.BookForm.TxtISBN.Text = LblISBN.Content
         _dashboard.BookForm.TxtISBN.IsEnabled = False
@@ -83,7 +83,7 @@ Public Class ViewBook
     ''' <summary>
     ''' Opens up the Delete Dialog - with a prompt.
     ''' </summary>
-    Private Sub OpenDeleteDialog(sender As Object, e As RoutedEventArgs)
+    Private Sub OpenDeleteDialog()
         DeleteBook.SetData("BOOK",LblUID.Content)
         DeleteBook.LblPrompt.Content = "Delete Books?"
         DeleteBookDialog.IsOpen= True

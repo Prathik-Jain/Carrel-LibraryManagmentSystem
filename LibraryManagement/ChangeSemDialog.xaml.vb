@@ -15,9 +15,7 @@ Public Class ChangeSemDialog
     ''' <summary>
     ''' Checks if the Text entered is <c>SEMESTER</c>
     ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub TxtSem_TextChanged(sender As Object, e As TextChangedEventArgs) Handles TxtSem.TextChanged
+    Private Sub TxtSem_TextChanged() Handles TxtSem.TextChanged
         If TxtSem.Text = "SEMESTER"
             btnok.IsEnabled = True
         Else 
@@ -27,7 +25,7 @@ Public Class ChangeSemDialog
     ''' <summary>
     ''' Calls <see cref="AdminService.ChangeSem()"/> when ok is clicked.
     ''' </summary>
-    Private Sub Btnok_Click(sender As Object, e As RoutedEventArgs) Handles Btnok.Click
+    Private Sub Btnok_Click() Handles Btnok.Click
         AdminService.ChangeSem()
     End Sub
 End Class
