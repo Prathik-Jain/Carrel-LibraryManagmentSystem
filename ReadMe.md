@@ -19,16 +19,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development environment running
+A step by step series of examples that tells you how to get a development environment running
 
 Clone the GitHub repository
 ```
 git clone https://github.com/Prathik-Jain/Carrel-LibraryManagmentSystem.git
 ```
-Create local dabase
+Create local database
 - Open `CARREL.sql` in Database folder with SQL Server Management Studio and  Execute it.
 
-Build the solutution
+Build the solution
 - Open `LibraryManagement.sln` in Visual Studio
 - Click on `Build` tab -> `Build - LibraryManagement.sln`
 - Click on `Start` to start working with the project.
