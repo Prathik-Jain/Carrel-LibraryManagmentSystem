@@ -92,10 +92,11 @@ Public Class BookService
         Dim connection =
                 New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Carrel").ConnectionString)
         Dim query =
-                New SqlCommand("UPDATE Book SET BORROWEDBY = '', BORROWEDON = '', AVAILABLE = 1  WHERE UID = @BookID",
+                New SqlCommand("UPDATE Book SET BORROWEDBY = @null , BORROWEDON = @null, AVAILABLE = 1  WHERE UID = @BookID",
                                connection)
 
         Try
+            query.Parameters.Add(New SqlParameter("@null", DBNull.Value))
             query.Parameters.Add(New SqlParameter("@BookID", bookId))
             connection.Open()
             Return Await query.ExecuteNonQueryAsync
