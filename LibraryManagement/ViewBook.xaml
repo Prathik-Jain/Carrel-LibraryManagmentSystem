@@ -73,7 +73,7 @@
                  Grid.Column="1"
                  Height="50" 
                  Grid.ColumnSpan="3"  
-                 Margin="0,0,120,0" 
+                 Margin="0,0,110,0" 
                  Foreground="#283592"
                  />
         <!--#endregion-->
@@ -87,7 +87,7 @@
                  Grid.Column="1"
                  Height="40" 
                 Grid.ColumnSpan="2" 
-                Margin="0,0,38,0" />
+                Margin="0,0,28,0" />
         <!-- #endregion-->
 
         <Rectangle 

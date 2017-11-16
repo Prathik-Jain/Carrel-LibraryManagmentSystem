@@ -78,7 +78,7 @@
                  Grid.Column="1"
                  Height="40" 
                 Grid.ColumnSpan="2" 
-                Margin="0,0,80,0"/>
+                Margin="0,0,80,10"/>
         <!-- #endregion-->
 
 
@@ -86,13 +86,13 @@
         <materialDesign:PackIcon Kind="Phone"
                                  Grid.Row="3"
                                  Grid.Column="1"
-                                 Margin="0,0,22,10"/>
+                                 Margin="0,0,32,10"/>
         <Label x:Name="LblPhone"
                  Width="200"
                  Grid.Row="3"
-                 Grid.Column="2"
+                 Grid.Column="1"
                  Height="36"  
-                 Margin="0,0,74,10" />
+                 Margin="0,0,80,0" Grid.ColumnSpan="2" />
         <!--#endregion-->
 
         <Rectangle Width="700" 

@@ -69,7 +69,7 @@
                        FontFamily="Roboto" 
                        FontSize="48"
                        Foreground="#FFFFFF" 
-                       Margin="290,211,0,235" 
+                       Margin="281,211,0,235" 
                        Height="54" 
                        RenderTransformOrigin="0.151,0.569">
                 <Run Text="Welcome" />
@@ -79,7 +79,7 @@
                        FontFamily="Roboto" 
                        FontSize="16"
                        Foreground="#FFFFFF" 
-                       Margin="290,265,0,215" 
+                       Margin="281,265,0,215" 
                        Height="20">
                 <Run Text="Please scan your card to login" 
                      BaselineAlignment="Center" />
